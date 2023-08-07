@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ChaseScene : MonoBehaviour
+{
+    // 플레이어가 죽었는지 판단
+    // 스테이지가 끝났는지 판단
+
+    void Start()
+    {
+        GameManager._instance.Playstate = GameManager.PlayState.Real_Chase;
+        SceneManagerEX._instance.NowScene = SceneManagerEX.SceneType.Chase;
+    }
+
+    void Update()
+    {
+           
+    }
+}
