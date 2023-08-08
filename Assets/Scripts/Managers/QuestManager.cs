@@ -14,9 +14,13 @@ public class QuestManager : MonoBehaviour
     
     Dictionary<int, QuestData> _processQuestDict = new Dictionary<int, QuestData>(); // 현재 진행중인 퀘스트 Dict
 
+    Dictionary<int, List<QuestData>> _questObjDict = new Dictionary<int, List<QuestData>>();
+
+    /*
     Dictionary<int, List<KilledMonsterQuestData>> _monsterQuestDict = new Dictionary<int, List<KilledMonsterQuestData>>(); // 몬스터 퇴치 퀘스트 Dict => Key값으로 몬스터 ID를 지닌다.
 
     Dictionary<int, List<BringQuestData>> _bringQuestDict = new Dictionary<int, List<BringQuestData>>(); // 물건 가져오는 퀘스트 dict => Key값으로 오브젝트 ID를 지닌다.
+    */
 
     List<QuestData> _processQeustLst = new List<QuestData>(); // 현재 진행중인 퀘스트? => 현재는 일단 그냥 만들어 놓기만 함, 후에 필요(사용)하면 이 주석 지울 예정
     
@@ -42,6 +46,9 @@ public class QuestManager : MonoBehaviour
 
         questData._isStart = true;
 
+        InitQuestObjDict(questData);
+
+        /*
         switch(questData._questType)
         {
             case QuestType.BringObject:
@@ -56,27 +63,29 @@ public class QuestManager : MonoBehaviour
                 InitMonsterQuestDict(questData as KilledMonsterQuestData);
                 break;
         }
+        */
         _processQuestDict.Add(questData._questID, questData);
 
         _processQeustLst.Add(questData);
+
+        UIManager._instacne.StartQuest(questData);
         
         // 해당 퀘스트의 타입을 확인 후, => 알맞는 퀘스트를 시작하게 만듬 => 일단 전부 다 같이 받도록 하자.
-    }
-    
-    public List<string> GetQuestData(int id)
-    {
-        List<string> temp = new List<string>();
-        if (!_processQuestDict.ContainsKey(id)) return null;
-
-        temp.Add(_processQuestDict[id]._questName); // 퀘스트 제목
-        temp.Add(_processQuestDict[id]._questContentText); // 퀘스트 내용 텍스트 부분
-        temp.Add(_processQuestDict[id]._questContentCount); // 퀘스트 내용 수치 부분
-
-        return temp.ToList();
     }
 
     // count가 증가하면, 그 함수에서 
     // 파이브라인으로 만들어, 0번째 제목, 1번째 퀘스트 내용 이런식으로 string 리스트로 만든 후 리턴해주는 게 좋을라나?
+    void InitQuestObjDict(QuestData objData)
+    {
+        foreach(ObjectData data in objData._objLst)
+        {
+            if (!_questObjDict.ContainsKey(data._objID))
+                _questObjDict.Add(data._objID, new List<QuestData>() { objData });
+            else
+                _questObjDict[data._objID].Add(objData);
+        }
+    }
+    /*
     void InitMonsterQuestDict(KilledMonsterQuestData questData) // 몬스터 퇴치 퀘스트 Dict을 초기화
     {
         foreach(MonsterData monsterData in questData._monsterLst)
@@ -98,7 +107,55 @@ public class QuestManager : MonoBehaviour
                 _bringQuestDict[objData._objID].Add(questData); // 해당 리스트에 등록
         }
     }
+    */
+    public void QuestTrigger(int id)
+    {
+        List<QuestData> dataLst = null;
+        if (!_questObjDict.ContainsKey(id)) return;
 
+        dataLst = _questObjDict[id];
+
+        foreach (QuestData data in dataLst)
+        {
+            foreach (ObjectData objData in data._objLst)
+            {
+                if (objData._objID != id || objData._isFull) continue; // objID가 맞지 않거나, 이미 완료 조건이 만족한 퀘스트라면 넘김
+
+                objData._nowCount++;
+
+                if (objData._totalCount <= objData._nowCount)
+                    objData._isFull = true;
+            }
+
+            bool isAchieve = true; // 퀘스트 완료 조건 만족여부 => Default를 true로 준다.
+
+            // objLst의 모든 _isFull이 true라면 진행하도록
+            foreach (ObjectData objData in data._objLst)
+            {
+                if (!objData._isFull) // 단 하나라도 isFull이 false라면, 아직 해당 퀘스트가 완료되지 않았으므로, 멈춤
+                {
+                    isAchieve = false;
+                    break;
+                }
+            }
+
+            UIManager._instacne.UpdateQuestContent(data); // 퀘스트UI 갱신
+
+            if (isAchieve)
+            {
+                data._isAchieve = true; // Object리스트의 isFull이 모두 true라면, 퀘스트 완료조건이 만족하므로, isAchieve를 true;
+                if (data._questType == QuestType.KillMonster) // 만약 몬스터 퇴치 퀘스트라면
+                {
+                    data._isFinish = true; // 바로 퀘스트 끝내기
+                    FinishQuest(data);
+                }
+            }
+
+            if (dataLst.Count <= 0) // dataLst에 더 이상 데이터가 없다면 => 몬스터 퇴치 퀘스트만 있었는데 끝났다면 => foreach종료
+                break;
+        }
+    }
+    /*
     public void BringQuestTrigger(int objID) // 물건 가져오는 퀘스트를 진행할 때 호출 => 플레이어가 물건을 가졌을 때
     {
         List<BringQuestData> dataLst = null;
@@ -181,6 +238,7 @@ public class QuestManager : MonoBehaviour
                 break;
         }
     }
+    */
     public void FinishQuest(QuestData questData) // 퀘스트 끝냄
     {
         if (!questData._isFinish) return; // isFinish가 false라면 아직 끝난게 아니니까 리턴
@@ -188,6 +246,24 @@ public class QuestManager : MonoBehaviour
         if (_quests != null)
             _quests.Invoke(questData);
 
+        UIManager._instacne.FinishQuest(questData); // 퀘스트 UI 갱신 => 끝냄
+
+        foreach (ObjectData objData in questData._objLst) // 해당 퀘스트의 objLst들을 확인해서, id를 통해 해당 퀘스트를 제거한다. => 굳이 foreach를 써야할까? 어차피 하나의 id만으로 퀘스트 자체를 지울 수 있으니까...?
+        {
+            if (_questObjDict.TryGetValue(objData._objID, out List<QuestData> objLst))
+            {
+                objLst.Remove(questData);
+
+                break;
+            }
+        }
+
+
+
+        if (_processQuestDict.ContainsKey(questData._questID)) // 진행중인 퀘스트 Dict에 퀘스트가 존재한다면,
+            _processQuestDict.Remove(questData._questID); // Dict에 해당 퀘스트를 지워준다.
+
+        /*
         switch (questData._questType) // 퀘스트 타입에 따라서, 해당하는 Dict에 존재하는 퀘스트를 제거해준다.
         {
             case QuestType.BringObject:
@@ -229,7 +305,7 @@ public class QuestManager : MonoBehaviour
         if (_processQuestDict.ContainsKey(questData._questID)) // 진행중인 퀘스트 Dict에 퀘스트가 존재한다면,
             _processQuestDict.Remove(questData._questID); // Dict에 해당 퀘스트를 지워준다.
 
-
+        */
     }
 
     // ID의 알맞는 퀘스트가 현재 진행중인지 확인

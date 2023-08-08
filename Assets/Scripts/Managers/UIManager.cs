@@ -16,8 +16,9 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public Action<List<string>> _questDataEvt = null; // 퀘스트 UI를 등록시키기 위해 사용하는 콜백
-    public Action<List<string>> _questContentEvt = null; // 퀘스트 내용을 갱신시키기 위해 사용하는 콜백
+    public Action<QuestData> _questDataEvt = null; // 퀘스트 UI를 등록시키기 위해 사용하는 콜백
+    public Action<QuestData> _questContentEvt = null; // 퀘스트 내용을 갱신시키기 위해 사용하는 콜백
+    public Action<QuestData> _questFinishEvt = null; // 퀘스트 내용을 완료시키기 위해 사용하는 콜백
 
     public SceneUIState SceneUI { get { return _sceneUIState; } set { _sceneUIState = value; } }
 
@@ -89,48 +90,22 @@ public class UIManager : MonoBehaviour
                 _sceneUILst[i].SetActive(false);
         }
     }
-    public void SetQuestUI(int id) // 플레이어가 퀘스트를 받으면, 해당 퀘스트의 id를 가져와서, 등록시킨다?
+
+    public void StartQuest(QuestData data) // 퀘스트 매니저로 부터 시작한 퀘스트의 정보를 받는다.
     {
-        // id를 통해 가져와야 하는것 => 퀘스트 제목, 퀘스트 내용
-        // 어떻게 가져와야 할까?
-        // 1. 제목과 내용을 리스트로 담은 후 리스트를 리턴받는다.
-        // 2. 각 함수를 하나 씩 만든 후 strng값을 하나하나 받는다.
-        // PlayUI에게 전달해야 한다 => 콜백을 이용해서 주도록 하자. => 무엇을 줘야 할까? => 퀘스트 매니저로 부터 받은 그 데이터를 그대로 줘야한다. => 그럼 리스트의 값만 복제해서 주도록 하자.
-
-        List<string> temp;
-        temp = QuestManager._instance.GetQuestData(id); // 복제된 값만 받는다.
-
-        _questDataEvt.Invoke(temp);
-
+        if(_questDataEvt != null)
+            _questDataEvt.Invoke(data);
     }
-
-    public void GetBringQuestContent(BringQuestData data) // 퀘스트 매니저가 이 함수를 호출한다 => 언제? Content 즉, Count가 갱신될 때, 
+    public void UpdateQuestContent(QuestData data) // 퀘스트 매니저로 부터 퀘스트 갱신의 정보를 받는다.
     {
-        List<string> tempLst = new List<string>();
-        for(int i = 0; i < data._objLst.Count; i++) // 오브젝트 리스트를 가져와서 하나마다 적어준다.
-        {
-            int now = data._objLst[i]._nowCount;
-            int total = data._objLst[i]._totalCount;
-            tempLst.Add(now + " / " + total);
-        }
-
-        _questContentEvt.Invoke(tempLst);
+        if (_questContentEvt != null)
+            _questContentEvt.Invoke(data);
     }
-
-    public void GetKillMonsterQuestContent(KilledMonsterQuestData data) // 퀘스트 매니저가 이 함수를 호출한다 => 언제? Content 즉, Count가 갱신될 때, 
+    public void FinishQuest(QuestData data) // 퀘스트 매니저로 부터 퀘스트 갱신의 정보를 받는다.
     {
-        /*
-        List<string> tempLst = new List<string>();
-        for (int i = 0; i < data._monsterLst.Count; i++) // 오브젝트 리스트를 가져와서 하나마다 적어준다.
-        {
-            int now = data._monsterLst[i]._nowCount;
-            int total = data._monsterLst[i]._totalCount;
-            tempLst.Add(now + " / " + total);
-        }
-
-        _questContentEvt.Invoke(tempLst);*/
+        if (_questFinishEvt != null)
+            _questFinishEvt.Invoke(data);
     }
-
     #endregion
 
     #region Popup 관련로직

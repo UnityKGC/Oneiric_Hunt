@@ -8,7 +8,7 @@ public class DreamEvtTrigger : MonoBehaviour
     [SerializeField] bool _isLast = false;
     Collider _coll;
 
-    [SerializeField] KilledMonsterQuestData _questData;
+    [SerializeField] QuestData _questData;
     void Start()
     {
         _coll = GetComponent<Collider>();

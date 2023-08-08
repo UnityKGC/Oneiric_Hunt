@@ -67,7 +67,7 @@ public class MonsterStat : MonoBehaviour
 
             Debug.Log("»ç¸Á");
 
-            QuestManager._instance.MonsterQuestTrigger(_id);
+            QuestManager._instance.QuestTrigger(_id);
             SpawnManager._instance.KilledMonster();
 
             Destroy(gameObject);

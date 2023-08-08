@@ -7,40 +7,65 @@ using UnityEngine;
 public class QuestPanel : MonoBehaviour
 {
     public TextMeshProUGUI _questTitle;
-    public TextMeshProUGUI _questContent;
-    public string _questContentDefault;
-    public string _questContentCount;
+    public TextMeshProUGUI _questContentText;
+    public TextMeshProUGUI _questObjContent;
+
+    StringBuilder sb = new StringBuilder();
 
     void Start()
     {
         UIManager._instacne._questDataEvt -= GetQuestData;
         UIManager._instacne._questDataEvt += GetQuestData;
+
         UIManager._instacne._questContentEvt -= UpdateContent;
         UIManager._instacne._questContentEvt += UpdateContent;
+
+        UIManager._instacne._questFinishEvt -= FinishQuest;
+        UIManager._instacne._questFinishEvt += FinishQuest;
+
+        gameObject.SetActive(false); // 자기자신을 비활성화 함
     }
 
-    void GetQuestData(List<string> lst) // 플레이어가 퀘스트를 받으면 UI매니저에게 퀘스트 받았다고 전달 => UI매니저를 퀘스트 매니저에게 정보달라고 하고 나에게 그 정보를 전달
+    void GetQuestData(QuestData data) // 플레이어가 퀘스트를 받으면 UI매니저에게 퀘스트 받았다고 전달 => UI매니저를 퀘스트 매니저에게 정보달라고 하고 나에게 그 정보를 전달
+                                            // 왜 데이터를 받나? 매니저가 데이터 받은 후, 정보 세공하고 그 정보만 여기에 주면 되지 않나? => string만 있으면 상관없는데, List<string>도 받아야 해서... 그냥 데이터 자체를 받도록 만듬
     {
-        // 0번째 : 제목
-        // 1번째 : 내용 텍스트
-        // 2번째 : 내용 수치
-        _questTitle.text = lst[0];
-        _questContentDefault = lst[1];
-        _questContentCount = lst[2];
+        gameObject.SetActive(true); // 자기자신을 활성화 함
 
-        _questContent.text = _questContentDefault + _questContentCount;
-    }
-    void UpdateContent(List<string> lst)
-    {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < lst.Count; i++)
+        _questTitle.text = data._questName;
+
+        _questContentText.text = data._questContentText;
+
+        for(int i = 0; i < data._objLst.Count; i++)
         {
-            stringBuilder.AppendLine(lst[i]);
+            ObjectData od = data._objLst[i];
+            sb.Append(od._objName + " " + od._nowCount + " / " + od._totalCount + "\n");
         }
-        _questContent.text = _questContentDefault + stringBuilder.ToString();
+        _questObjContent.text = sb.ToString();
+        sb.Clear(); // stringbuilder 초기화
+    }
+    void UpdateContent(QuestData data) // 퀘스트 오브젝트 내용 갱신
+    {
+        for (int i = 0; i < data._objLst.Count; i++)
+        {
+            ObjectData od = data._objLst[i];
+            sb.Append(od._objName + " " + od._nowCount + " / " + od._totalCount + "\n");
+        }
+
+        _questObjContent.text = sb.ToString();
+        sb.Clear(); // stringbuilder 초기화
+    }
+    void FinishQuest(QuestData data) // 퀘스트 UI 초기화
+    {
+        _questTitle.text = "";
+        _questContentText.text = "";
+        _questObjContent.text = "";
+
+        gameObject.SetActive(false); // 자기자신을 비활성화 함
     }
     private void OnDestroy()
     {
         UIManager._instacne._questDataEvt -= GetQuestData;
+        UIManager._instacne._questContentEvt -= GetQuestData;
+        UIManager._instacne._questFinishEvt -= GetQuestData;
     }
 }

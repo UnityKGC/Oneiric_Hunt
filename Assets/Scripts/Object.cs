@@ -46,7 +46,7 @@ public class Object : MonoBehaviour
                 
                 if(Input.GetKeyDown(KeyCode.Space)) // Sapce를 누를때
                 {
-                    QuestManager._instance.BringQuestTrigger(_objID);
+                    QuestManager._instance.QuestTrigger(_objID);
                 }
             }
             else // 가까운 대상이 아니라면, 외곽 해제 

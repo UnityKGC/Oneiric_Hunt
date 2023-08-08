@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestNPC : MonoBehaviour
 {
-    [SerializeField] List<BringQuestData> _questList = new List<BringQuestData>(); // 해당 NPC가 지니고 있는 퀘스트 목록 => 1. 이렇게 NPC가 퀘스트를 지니고 있는게 맞을까? 2. 아니면, 퀘스트 ID만 지니고, 퀘스트 매니저가 모든 퀘스트를 지니고 있는게 맞을가? => 일단 1로 진행한다.
+    [SerializeField] List<QuestData> _questList = new List<QuestData>(); // 해당 NPC가 지니고 있는 퀘스트 목록 => 1. 이렇게 NPC가 퀘스트를 지니고 있는게 맞을까? 2. 아니면, 퀘스트 ID만 지니고, 퀘스트 매니저가 모든 퀘스트를 지니고 있는게 맞을가? => 일단 1로 진행한다.
 
     [SerializeField] Collider _doorCol; // 임시로?
     void Start()
@@ -35,18 +35,17 @@ public class TestNPC : MonoBehaviour
             {
                 if(!_questList[0]._isStart) // 퀘스트가 시작도 안했으면
                 {
-                    BringQuestData quest = _questList[0];
+                    QuestData quest = _questList[0];
                     for (int i = 0; i < quest._questStartTextList.Count; i++)
                     {
                         Debug.Log(quest._questStartTextList[i]);
                     }
                     QuestManager._instance.StartQuest(_questList[0]); // 퀘스트 시작
 
-                    UIManager._instacne.SetQuestUI(_questList[0]._questID); // 퀘스트 UI 갱신
                 }
                 else if(_questList[0]._isAchieve && !_questList[0]._isFinish)
                 {
-                    BringQuestData quest = _questList[0];
+                    QuestData quest = _questList[0];
                     quest._isFinish = true;
 
                     for (int i = 0; i < quest._questEndTextList.Count; i++)

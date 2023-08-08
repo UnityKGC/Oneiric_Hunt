@@ -56,7 +56,7 @@ public class BossStat : MonoBehaviour
         HP -= dmg;
         if (HP <= 0)
         {
-            QuestManager._instance.MonsterQuestTrigger(_id);
+            QuestManager._instance.QuestTrigger(_id);
             SpawnManager._instance.KilledMonster();
             Destroy(gameObject);
         }
