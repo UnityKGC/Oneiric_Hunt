@@ -10903,7 +10903,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632246918}
-  m_LocalRotation: {x: 0.108757466, y: 0.706976, z: -0.11145252, w: 0.6898805}
+  m_LocalRotation: {x: 0.044928074, y: 0.7142279, z: -0.04604183, w: 0.6969507}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13434,7 +13434,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758722092}
   m_LocalRotation: {x: 0.07021513, y: 0.712084, z: -0.07195574, w: 0.69485873}
-  m_LocalPosition: {x: 0.02596569, y: -0.9955559, z: -0.0006222725}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22748,7 +22748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291931765}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.500709, y: -13.812992, z: -6.769655}
+  m_LocalPosition: {x: 11.526674, y: -14.808548, z: -6.7702775}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28770,10 +28770,10 @@ MonoBehaviour:
     _questName: "\uBB3C\uAC74 \uAC00\uC838\uC624\uAE30"
     _questContentText: "\uBC29 \uC548\uC5D0\uC11C \uBB3C\uAC74\uC744 \uAC00\uC838\uB2E4\uC8FC\uC790."
     _questStartTextList:
-    - "\uC77C\uB0A8?"
-    - "\uBC29 \uC548\uC5D0\uC11C \uBB3C\uAC74 \uC880 \uAC00\uC838\uC640 \uC918"
+    - 
+    - 
     _questEndTextList:
-    - "\uAC10\uC0AC"
+    - 
     _objLst:
     - _objID: 10000
       _objName: "\uD050\uBE0C"
@@ -33488,7 +33488,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899265776}
-  m_LocalRotation: {x: 0.121255, y: 0.70483774, z: -0.12425973, w: 0.687794}
+  m_LocalRotation: {x: 0.05756439, y: 0.7132751, z: -0.058991384, w: 0.6960209}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

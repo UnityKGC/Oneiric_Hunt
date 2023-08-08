@@ -34,10 +34,6 @@ public class QuestData
 
     public string _questContentText;
 
-    public List<string> _questStartTextList; // 퀘스트 대사 리스트 => 대사 만들면 적용 예정
-
-    public List<string> _questEndTextList; // 퀘스트 대사 리스트 => 대사 만들면 적용 예정
-
     public List<ObjectData> _objLst; // 수행해야 할 퀘스트의 오브젝트 리스트
 
     public QuestRewards _reward; // 퀘스트 보상
