@@ -11,6 +11,19 @@ public enum QuestType
 }
 
 [System.Serializable]
+public class ObjectData
+{
+    public int _objID; // 수행해야 할 objID
+
+    public string _objName; // 원래는 매니저 같은 곳에서 _objID를 토대로 오브젝트 정보를 가져오게 해야하나
+
+    public int _totalCount; // 수행해야 할 전체 개수
+    public int _nowCount; // 플레이어가 수행한 현재 개수
+
+    public bool _isFull; // 플레이어가 모두 다 했는지
+}
+
+[System.Serializable]
 public class QuestData
 {
     public int _questID; // 퀘스트 ID
@@ -37,18 +50,7 @@ public class QuestData
 
 }
 
-[System.Serializable]
-public class ObjectData
-{
-    public int _objID; // 수행해야 할 objID
 
-    public string _objName; // 원래는 매니저 같은 곳에서 _objID를 토대로 오브젝트 정보를 가져오게 해야하나
-
-    public int _totalCount; // 수행해야 할 전체 개수
-    public int _nowCount; // 플레이어가 수행한 현재 개수
-
-    public bool _isFull; // 플레이어가 모두 다 했는지
-}
 
 [System.Serializable]
 public class QuestRewards

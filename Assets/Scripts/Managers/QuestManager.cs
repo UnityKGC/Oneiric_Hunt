@@ -39,7 +39,10 @@ public class QuestManager : MonoBehaviour
         
     }
     
-    
+    public void StartQuest(int questID)
+    {
+
+    }
     public void StartQuest(QuestData questData) // 플레이어가 해당 퀘스트 시작함. => 퀘스트 시작은 Inspctor에서 기입한 데이터를 가져와야 하므로, QuestData를 가져온다.
     {
         if (questData._isStart || questData._isFinish) return; // 이미 시작된 퀘스트 혹은 이미 끝난 퀘스트라면 리턴

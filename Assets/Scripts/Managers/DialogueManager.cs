@@ -1,0 +1,57 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DialogueManager : MonoBehaviour
+{
+    public static DialogueManager _instance;
+
+    public DialogueData _nowData; // 현재 대화 데이터 => 필요정보? 1. 대화참여하는 NPC리스트 2. 대사 리스트 3. NPC마다 지니는 대사 index 4. 마지막대사인지? 
+
+    public Action<DialogueData> _dialogueEvt = null;
+
+    public Action _clickNext = null; // 다음 대사 출력해라.
+
+    QuestData _quest;
+    void Awake()
+    {
+        _instance = this;
+    }
+    private void Update()
+    {
+        if (_nowData == null) return; //현재 등록된 대하가 없으면 바로 리턴때림
+
+        if(_clickNext != null && _nowData._isStart)
+        {
+            if(Input.GetKeyDown(KeyCode.Space) && !_nowData._isFinish)
+            {
+                _clickNext.Invoke();
+            }
+        }
+    }
+    
+    public void GetDialogueLine(DialogueData data, QuestData quest = null) // 다이얼로그 데이터를 가져온다.
+    {
+        _nowData = data;
+        _quest = quest;
+
+        if (_dialogueEvt != null)
+        {
+            _dialogueEvt.Invoke(data); // 보낸다.
+        }
+    }
+    public void EndDialogue()
+    {
+        switch (_nowData._dialogueType)
+        {
+            case DialogueType.QuestStart:
+                QuestManager._instance.StartQuest(_quest);
+                break;
+            case DialogueType.QuestEnd:
+                QuestManager._instance.FinishQuest(_quest);
+                break;
+        }
+        _nowData = null;
+    }
+}
