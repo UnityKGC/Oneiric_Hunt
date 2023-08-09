@@ -13,12 +13,17 @@ public class UIManager : MonoBehaviour
         None = -1,
         Pause,
         Play,
+        GameOver,
     }
 
 
     public Action<QuestData> _questDataEvt = null; // 퀘스트 UI를 등록시키기 위해 사용하는 콜백
     public Action<QuestData> _questContentEvt = null; // 퀘스트 내용을 갱신시키기 위해 사용하는 콜백
     public Action<QuestData> _questFinishEvt = null; // 퀘스트 내용을 완료시키기 위해 사용하는 콜백
+
+    public Action<float> _hpEvt = null; // 플레이어 HP증감 이벤트
+
+    public Action<int> _coolTimeEvt = null; // 스킬 쿨타임, 버프 지속시간 이벤트
 
     public SceneUIState SceneUI { get { return _sceneUIState; } set { _sceneUIState = value; } }
 
@@ -27,6 +32,8 @@ public class UIManager : MonoBehaviour
     public List<GameObject> _sceneUILst;
 
     public Stack<GameObject> _popupUIStack = new Stack<GameObject>();
+
+    bool _isGameOver = false; // 게임오버인지 아닌지
     private void Awake()
     {
         _instacne = this;
@@ -50,7 +57,7 @@ public class UIManager : MonoBehaviour
             {
                 ClosePopupUI();
             }
-            else
+            else if (!_isGameOver)
                 SetSceneUI(SceneUIState.Pause);
         }
     }
@@ -69,6 +76,10 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 0f; // 시간 멈춰!
                 break;
             case SceneUIState.Play: // 미니맵, 등등 호출
+                Time.timeScale = 1f;
+                break;
+            case SceneUIState.GameOver: // 게임 오버 호출
+                _isGameOver = true;
                 Time.timeScale = 1f;
                 break;
         }
@@ -106,6 +117,11 @@ public class UIManager : MonoBehaviour
         if (_questFinishEvt != null)
             _questFinishEvt.Invoke(data);
     }
+
+    public void SetPlayerHP(float value)
+    {
+        _hpEvt?.Invoke(value); // ?. 은, _hpEvt가 null일시 null 리턴, 값이 존재할 시 Invoke실행 => 삼항연산자 : A>B ? 10 : 20 => A>B조건이 true면 10 아니면 20이라는 뜻
+    }
     #endregion
 
     #region Popup 관련로직
@@ -137,6 +153,7 @@ public class UIManager : MonoBehaviour
         switch (state)
         {
             case SceneUIState.Pause:
+            case SceneUIState.GameOver:
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 break;

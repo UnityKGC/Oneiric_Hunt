@@ -56,6 +56,8 @@ public class PlayerStat : MonoBehaviour
     private void Start()
     {
         _player = gameObject.GetComponent<PlayerSkill>();
+
+        UIManager._instacne.SetPlayerHP(HP); // 현재 HP를 UI매니저에게 전달
     }
     public float GetDamage() // 누군가에게 데미지를 줄 때
     {
@@ -81,9 +83,15 @@ public class PlayerStat : MonoBehaviour
     {
         float dmg = value - Defense;
         HP -= dmg;
+
+        UIManager._instacne.SetPlayerHP(HP); // 현재 HP를 UI매니저에게 전달
+
         if (HP <= 0)
         {
             GameManager._instance.PlayerDie = true;
+
+            UIManager._instacne.SetSceneUI(UIManager.SceneUIState.GameOver); // 게임 오버 UI 호출
+
             Debug.Log("플레이어 사망");
         }
     }
