@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
         None = -1,
         Pause,
         Play,
+        Dialogue,
         GameOver,
     }
 
@@ -22,6 +23,8 @@ public class UIManager : MonoBehaviour
     public Action<QuestData> _questFinishEvt = null; // 퀘스트 내용을 완료시키기 위해 사용하는 콜백
 
     public Action<float> _hpEvt = null; // 플레이어 HP증감 이벤트
+
+    public Action<GameManager.PlayState> _playStateEvt = null; // 게임의 현재 진행 상태
 
     public Action<SkillScriptable, SkillManager.Skills> _skillEvt = null; // 스킬 스크립터블을 이용하여 스킬 쿨타임 확인
     public Action<WeaponType> _weaponEvt = null; // 무기 변경 시 호출 => 현재 무기를 알려줌
@@ -117,6 +120,10 @@ public class UIManager : MonoBehaviour
         if (_questFinishEvt != null)
             _questFinishEvt.Invoke(data);
     }
+    public void SetPlayState(GameManager.PlayState playState) // 게임매니저로 부터 게임상태변화시 변화한 상태를 받는다.
+    {
+        _playStateEvt?.Invoke(playState); // 뿌린다.
+    }
 
     public void SetPlayerHP(float value) // 굳이 함수를 만든 이유가 무엇인가? => 누가 이 함수를 참조하고 있는지 한번에 확인할 수 있어 찾아가기 편하다.
     {
@@ -183,6 +190,7 @@ public class UIManager : MonoBehaviour
         _questFinishEvt = null;
         _hpEvt = null;
         _skillEvt = null;
+        _playStateEvt = null;
 
     }
 }

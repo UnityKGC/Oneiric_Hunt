@@ -18,7 +18,15 @@ public class GameManager : MonoBehaviour
         MiniGame,
     }
 
-    public PlayState Playstate { get { return _playState; } set { _playState = value; } }
+    public PlayState Playstate 
+    { 
+        get { return _playState; } 
+        set 
+        { 
+            _playState = value;
+            UIManager._instacne.SetPlayState(_playState); // UI에게 게임상태 변화했다고 알림.
+        } 
+    }
 
     private PlayState _playState;
 
