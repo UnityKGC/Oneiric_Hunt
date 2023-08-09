@@ -86,7 +86,7 @@ public class PlayerStat : MonoBehaviour
 
         UIManager._instacne.SetPlayerHP(HP); // 현재 HP를 UI매니저에게 전달
 
-        if (HP <= 0)
+        if (HP <= 0 && !GameManager._instance.PlayerDie)
         {
             GameManager._instance.PlayerDie = true;
 

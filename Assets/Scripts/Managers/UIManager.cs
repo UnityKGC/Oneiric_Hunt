@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour
         None = -1,
         Pause,
         Play,
-        Dialogue,
         GameOver,
     }
 
@@ -71,7 +70,7 @@ public class UIManager : MonoBehaviour
     {
         AllClosePopupUI(); // 혹시나 열려있는 모든 PopupUI를 꺼준다. => 해줄필요 있는지 다시 판단하기 바람 KGC
 
-        if (SceneUI == state) // 이미 켜져있는 UI라면, sceneUI를 Play로 전환시킨다.
+        if (SceneUI == state) // 이미 켜져있는 UI이고 게임오버가 아니라면, sceneUI를 Play로 전환시킨다.
             state = SceneUIState.Play;
 
         switch(state)
@@ -138,7 +137,6 @@ public class UIManager : MonoBehaviour
     {
         _weaponEvt?.Invoke(weapon);
     }
-
     public void EndBattle() // 전투 종료 => 스킬 UI상태 초기화
     {
         _endBattleEvt?.Invoke();
@@ -197,6 +195,8 @@ public class UIManager : MonoBehaviour
         _hpEvt = null;
         _skillEvt = null;
         _playStateEvt = null;
+        _weaponEvt = null;
+        _endBattleEvt = null;
 
     }
 }
