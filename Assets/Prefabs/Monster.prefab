@@ -194,9 +194,8 @@ MonoBehaviour:
   _hp: 100
   _maxMp: 100
   _mp: 100
-  _minAtk: 10
-  _maxAtk: 20
+  _minAtk: 5
+  _maxAtk: 10
   _defense: 3
   _moveSpd: 3
-  _questID: 20
   _id: 100

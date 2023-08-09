@@ -260,8 +260,8 @@ MonoBehaviour:
   _hp: 500
   _maxMp: 100
   _mp: 100
-  _minAtk: 25
-  _maxAtk: 50
+  _minAtk: 10
+  _maxAtk: 20
   _defense: 0
   _moveSpd: 3
   _id: 200
