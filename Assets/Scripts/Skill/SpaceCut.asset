@@ -16,13 +16,14 @@ MonoBehaviour:
   _skillAmount: 10
   _damageAmount: 5
   _durationTime: 10
-  _remainTime: 0
+  _remainTime: 60
   _castTime: 2
   _skillCoolTime: 60
   _damageDelay: 0.5
   _damageValue: 0.9
   _damage: 0
   _moveSpd: 0
+  _buffDurationTime: 0
   _atkBuffValue: 0
   _defBuffValue: 0
   _movSpdBuffValue: 0
