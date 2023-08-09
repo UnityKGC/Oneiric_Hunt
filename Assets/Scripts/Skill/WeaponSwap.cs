@@ -19,16 +19,17 @@ public class WeaponSwap : MonoBehaviour
         {
             switch (_playerSkill.Weapon)
             {
-                case PlayerSkill.WeaponType.Sword:
-                    _playerSkill.Weapon = PlayerSkill.WeaponType.Spear;
+                case WeaponType.Sword:
+                    _playerSkill.Weapon = WeaponType.Spear;
                     break;
-                case PlayerSkill.WeaponType.Spear:
-                    _playerSkill.Weapon = PlayerSkill.WeaponType.Axe;
+                case WeaponType.Spear:
+                    _playerSkill.Weapon = WeaponType.Axe;
                     break;
-                case PlayerSkill.WeaponType.Axe:
-                    _playerSkill.Weapon = PlayerSkill.WeaponType.Sword;
+                case WeaponType.Axe:
+                    _playerSkill.Weapon = WeaponType.Sword;
                     break;
             }
+            UIManager._instacne.SetWeapon(_playerSkill.Weapon);
         }
         Destroy(gameObject);
     }

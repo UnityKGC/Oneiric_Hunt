@@ -67,13 +67,13 @@ public class PlayerStat : MonoBehaviour
         float dmg = 0f;
         switch (_player.Weapon)
         {
-            case PlayerSkill.WeaponType.Sword:
+            case WeaponType.Sword:
                 dmg = Random.Range(_swordMinAtk, _swordMaxAtk);
                 break;
-            case PlayerSkill.WeaponType.Spear:
+            case WeaponType.Spear:
                 dmg = Random.Range(_spearMinAtk, _spearMaxAtk);
                 break;
-            case PlayerSkill.WeaponType.Axe:
+            case WeaponType.Axe:
                 dmg = Random.Range(_axeMinAtk, _axeMaxAtk);
                 break;
         }

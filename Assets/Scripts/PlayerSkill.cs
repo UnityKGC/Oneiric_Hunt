@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WeaponType
+{
+    Sword,
+    Spear,
+    Axe,
+    Max,
+}
+
 public class PlayerSkill : MonoBehaviour
 {
-    public enum WeaponType
-    {
-        Sword,
-        Spear,
-        Axe,
-        Max,
-    }
 
     public WeaponType Weapon { get { return _weapon; } set { _weapon = value; } }
 
@@ -24,7 +25,7 @@ public class PlayerSkill : MonoBehaviour
     }
     void Start()
     {
-
+        UIManager._instacne.SetWeapon(Weapon); // 현재 무기 정보를 UI매니저에게 전달
     }
 
     void Update()

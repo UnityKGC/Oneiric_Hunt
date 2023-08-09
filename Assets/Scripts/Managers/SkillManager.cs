@@ -237,7 +237,11 @@ public class SkillManager : MonoBehaviour
         scriptable = _skills[(int)type];
 
         if(scriptable != null)
+        {
+            UIManager._instacne.SetSkillUI(scriptable, type);
             StartCoroutine(StartCoolTimeCo(scriptable));
+        }
+            
     }
     
     IEnumerator StartCoolTimeCo(SkillScriptable scriptable)
@@ -250,8 +254,8 @@ public class SkillManager : MonoBehaviour
 
         while (scriptable._remainTime > 0)
         {
-            yield return new WaitForSeconds(1f);
             scriptable._remainTime = coolTime - (Time.time - _startCoolTime);
+            yield return new WaitForEndOfFrame();
         }
 
         scriptable._remainTime = scriptable._skillCoolTime; // 남은 시간 초기화

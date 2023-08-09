@@ -23,7 +23,8 @@ public class UIManager : MonoBehaviour
 
     public Action<float> _hpEvt = null; // 플레이어 HP증감 이벤트
 
-    public Action<int> _coolTimeEvt = null; // 스킬 쿨타임, 버프 지속시간 이벤트
+    public Action<SkillScriptable, SkillManager.Skills> _skillEvt = null; // 스킬 스크립터블을 이용하여 스킬 쿨타임 확인
+    public Action<WeaponType> _weaponEvt = null; // 무기 변경 시 호출 => 현재 무기를 알려줌
 
     public SceneUIState SceneUI { get { return _sceneUIState; } set { _sceneUIState = value; } }
 
@@ -44,7 +45,6 @@ public class UIManager : MonoBehaviour
         SetCursor(SceneUI);
     }
 
-    
     void Update()
     {
         Debug.Log("Stack 크기 : "+_popupUIStack.Count);
@@ -118,9 +118,17 @@ public class UIManager : MonoBehaviour
             _questFinishEvt.Invoke(data);
     }
 
-    public void SetPlayerHP(float value)
+    public void SetPlayerHP(float value) // 굳이 함수를 만든 이유가 무엇인가? => 누가 이 함수를 참조하고 있는지 한번에 확인할 수 있어 찾아가기 편하다.
     {
         _hpEvt?.Invoke(value); // ?. 은, _hpEvt가 null일시 null 리턴, 값이 존재할 시 Invoke실행 => 삼항연산자 : A>B ? 10 : 20 => A>B조건이 true면 10 아니면 20이라는 뜻
+    }
+    public void SetSkillUI(SkillScriptable scriptable, SkillManager.Skills skill)
+    {
+        _skillEvt?.Invoke(scriptable, skill);
+    }
+    public void SetWeapon(WeaponType weapon)
+    {
+        _weaponEvt?.Invoke(weapon);
     }
     #endregion
 
@@ -169,5 +177,12 @@ public class UIManager : MonoBehaviour
         _sceneUILst.Clear(); // 어차피 오브젝트는 전부 파괴되었으므로, 데이터를 담고있는 자료구조만 Clear시켜준다.
         _popupUIStack.Clear();
         SetSceneUI(SceneUIState.Play); // UI켜준 채로 나갈 순 없으니까, PlaySceneUI로 해준다
+
+        _questDataEvt = null;
+        _questContentEvt = null;
+        _questFinishEvt = null;
+        _hpEvt = null;
+        _skillEvt = null;
+
     }
 }
