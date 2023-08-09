@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
     }
 
     #region Scene 관련로직
-    public void SetSceneUI(SceneUIState state) // 키고 싶은 SceneUI를 State을 이용해서 호출
+    public void SetSceneUI(SceneUIState state) // SceneState 갱신
     {
         AllClosePopupUI(); // 혹시나 열려있는 모든 PopupUI를 꺼준다. => 해줄필요 있는지 다시 판단하기 바람 KGC
 

@@ -29,6 +29,8 @@ public class FirstDreamScene : MonoBehaviour
         SceneManagerEX._instance.NowScene = SceneManagerEX.SceneType.FirstDreamScene;
         InitSpawnList();
         InitDict();
+
+        CameraManager._instance.SetFreeLookCam(); // 시작 시 플레이어 카메라로 이동하게끔
     }
 
     void Update()

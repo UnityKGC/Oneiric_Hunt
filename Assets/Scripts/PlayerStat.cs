@@ -90,7 +90,7 @@ public class PlayerStat : MonoBehaviour
         {
             GameManager._instance.PlayerDie = true;
 
-            UIManager._instacne.SetSceneUI(UIManager.SceneUIState.GameOver); // 게임 오버 UI 호출
+            GameManager._instance.GameOver(); // 게임매니저에게 게임오버라고 알림
 
             Debug.Log("플레이어 사망");
         }

@@ -27,24 +27,8 @@ public class DreamEvtTrigger : MonoBehaviour
 
             QuestManager._instance.StartQuest(_questData);
 
-            //QuestManager._instance._quests -= EndQuest;
-            //QuestManager._instance._quests += EndQuest;
-
             _scene.GetTriggerEvt(this, _isLast);
             _coll.enabled = false; // 들어왔으면 자신의 Collider false로
         }
     }
-    
-    /*
-    void EndQuest(QuestData data)
-    {
-        if(_questData == data) // 끝났다고 전달받은 QuestData가 본인의 QuestData라면,
-        {
-            QuestManager._instance.FinishQuest(_questData);
-
-            QuestManager._instance._quests -= EndQuest; // 퀘스트 해제
-            Debug.Log("끼요오옷");
-        }
-    }
-    */
 }

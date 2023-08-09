@@ -47,6 +47,15 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    public void GameStart() // Scene 시작 시 공통적으로 해야 할 모든 것들
+    {
+        CameraManager._instance.AbleCinemachineCams(); // 시네머신 카메라's 활성화
+    }
+    public void GameOver() // 게임오버 시 해야 할 모든 것들
+    {
+        UIManager._instacne.SetSceneUI(UIManager.SceneUIState.GameOver); // 게임 오버 UI 호출
+        CameraManager._instance.DisableCinemachineCams(); // 카메라 시네머신 들 비활성화
+    }
     
     private void OnDestroy()
     {
