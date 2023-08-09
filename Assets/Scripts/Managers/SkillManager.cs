@@ -275,7 +275,7 @@ public class SkillManager : MonoBehaviour
     {
         foreach (SkillScriptable skill in _skills)
         {
-            skill._remainTime = 0f;
+            skill._remainTime = skill._skillCoolTime; // 남은 시간을 쿨타임으로 초기화
             skill._isAble = true;
         }
     }
