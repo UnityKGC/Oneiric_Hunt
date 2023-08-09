@@ -19,10 +19,10 @@ public class DreamPlayUI : MonoBehaviour
     {
         _state = PlayStateUI.Normal;
 
-        UIManager._instacne._playStateEvt -= SetBattleState;
-        UIManager._instacne._playStateEvt += SetBattleState;
+        UIManager._instacne._playStateEvt -= SetPlayState;
+        UIManager._instacne._playStateEvt += SetPlayState;
     }
-    void SetBattleState(GameManager.PlayState playState)
+    void SetPlayState(GameManager.PlayState playState)
     {
         switch(playState)
         {
@@ -48,6 +48,6 @@ public class DreamPlayUI : MonoBehaviour
     }
     private void OnDestroy()
     {
-        UIManager._instacne._playStateEvt -= SetBattleState;
+        UIManager._instacne._playStateEvt -= SetPlayState;
     }
 }
