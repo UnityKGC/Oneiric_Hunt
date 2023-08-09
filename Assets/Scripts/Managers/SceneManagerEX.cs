@@ -16,6 +16,7 @@ public class SceneManagerEX : MonoBehaviour
         Chase,
         MiniGame,
     }
+
     public enum PortalType
     {
         ExitPortal,

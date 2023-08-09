@@ -12,6 +12,7 @@ TagManager:
   - BossAtk
   - MiniGameObstacle
   - MiniGameCheckPoint
+  - Car
   layers:
   - Default
   - TransparentFX

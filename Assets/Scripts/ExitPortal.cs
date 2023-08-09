@@ -12,23 +12,20 @@ public class ExitPortal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        switch(SceneManagerEX._instance.NowScene)
         {
-            switch(SceneManagerEX._instance.NowScene)
-            {
-                case SceneManagerEX.SceneType.FirstDreamScene:
-                    SceneManager.LoadScene("Chase");
-                    break;
-                case SceneManagerEX.SceneType.Chase:
-                    SceneManager.LoadScene("FirstHouseScene");
-                    break;
-                case SceneManagerEX.SceneType.FirstHouseScene:
-                    SceneManager.LoadScene("MiniGame");
-                    break;
-                case SceneManagerEX.SceneType.MiniGame:
-                    SceneManager.LoadScene("Dream");
-                    break;
-            }
+            case SceneManagerEX.SceneType.FirstHouseScene:
+                SceneManagerEX._instance.LoadScene(SceneManagerEX.SceneType.FirstDreamScene);
+                break;
+            case SceneManagerEX.SceneType.FirstDreamScene:
+                SceneManagerEX._instance.LoadScene(SceneManagerEX.SceneType.Chase);
+                break;
+            case SceneManagerEX.SceneType.Chase:
+                SceneManagerEX._instance.LoadScene(SceneManagerEX.SceneType.MiniGame);
+                break;
+            case SceneManagerEX.SceneType.MiniGame:
+                SceneManagerEX._instance.LoadScene(SceneManagerEX.SceneType.FirstHouseScene);
+                break;
         }
     }
 }
