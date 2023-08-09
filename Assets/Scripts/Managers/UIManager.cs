@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
 
     public Action<SkillScriptable, SkillManager.Skills> _skillEvt = null; // 스킬 스크립터블을 이용하여 스킬 쿨타임 확인
     public Action<WeaponType> _weaponEvt = null; // 무기 변경 시 호출 => 현재 무기를 알려줌
+    public Action _endBattleEvt = null; // 전투가 끝났을 시,
 
     public SceneUIState SceneUI { get { return _sceneUIState; } set { _sceneUIState = value; } }
 
@@ -136,6 +137,11 @@ public class UIManager : MonoBehaviour
     public void SetWeapon(WeaponType weapon)
     {
         _weaponEvt?.Invoke(weapon);
+    }
+
+    public void EndBattle() // 전투 종료 => 스킬 UI상태 초기화
+    {
+        _endBattleEvt?.Invoke();
     }
     #endregion
 

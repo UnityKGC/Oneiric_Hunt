@@ -40,6 +40,7 @@ public class BattleManager : MonoBehaviour
         _isBattle = false;
 
         SkillManager._instance.EndBattle(); // 스킬이 남아있으면 스킬 파괴 및 스킬 변수 초기화
+        UIManager._instacne.EndBattle(); // 스킬 UI 초기화
 
         GameManager._instance.Playstate = GameManager.PlayState.Dream_Normal;
 

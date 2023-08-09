@@ -15,6 +15,9 @@ public class SkillUI : MonoBehaviour
 
         UIManager._instacne._weaponEvt -= ChangeWeapon;
         UIManager._instacne._weaponEvt += ChangeWeapon;
+
+        UIManager._instacne._endBattleEvt -= ResetSkillUI;
+        UIManager._instacne._endBattleEvt += ResetSkillUI;
     }
 
     void Update()
@@ -57,8 +60,19 @@ public class SkillUI : MonoBehaviour
                 _weaponSkillLst[i].SetActive(false);
         }
     }
+
+    void ResetSkillUI() // 스킬 UI 초기화
+    {
+        foreach(Image img in _skillFrontImgLst)
+        {
+            img.fillAmount = 0f;
+        }
+    }
     private void OnDestroy()
     {
         UIManager._instacne._skillEvt -= StartCoolTime;
+        UIManager._instacne._weaponEvt -= ChangeWeapon;
+        UIManager._instacne._endBattleEvt -= ResetSkillUI;
+
     }
 }

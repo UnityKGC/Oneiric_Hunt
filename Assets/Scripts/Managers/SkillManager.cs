@@ -269,7 +269,10 @@ public class SkillManager : MonoBehaviour
             if(obj != null)
                 Destroy(obj);
         }
+        StopAllCoroutines(); // 여기에서 실행되고 있는 모든 코루틴(스킬 쿨타임 Co)를 종료시킨다.
         _useSkill.Clear();
+        ResetSkillValue(); // 스킬 초기화
+
     }
     void ResetSkillValue() // 스킬 변수 초기화
     {
