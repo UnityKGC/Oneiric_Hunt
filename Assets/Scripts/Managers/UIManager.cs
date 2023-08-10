@@ -73,8 +73,11 @@ public class UIManager : MonoBehaviour
     {
         AllClosePopupUI(); // 혹시나 열려있는 모든 PopupUI를 꺼준다. => 해줄필요 있는지 다시 판단하기 바람 KGC
 
-        if (SceneUI == state) // 이미 켜져있는 UI이고 게임오버가 아니라면, sceneUI를 Play로 전환시킨다.
-            state = SceneUIState.Play;
+        if (state == SceneUIState.None)
+            return;
+
+        if (SceneUI == state && _sceneUILst[(int)SceneUI].activeSelf) // 아, 켜져있는 메뉴라면, Play로 변경
+            _sceneUIState = SceneUIState.Play;
 
         switch(state)
         {
@@ -83,6 +86,7 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 0f; // 시간 멈춰!
                 break;
             case SceneUIState.Play: // 미니맵, 등등 호출
+            case SceneUIState.None: // 미니맵, 등등 호출
                 Time.timeScale = 1f;
                 break;
             case SceneUIState.GameOver: // 게임 오버 호출
