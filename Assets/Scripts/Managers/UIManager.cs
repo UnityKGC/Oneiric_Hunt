@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
 
     public SceneUIState SceneUI { get { return _sceneUIState; } set { _sceneUIState = value; } }
 
-    private SceneUIState _sceneUIState;
+    [SerializeField] private SceneUIState _sceneUIState = SceneUIState.None; // 이건 Scene이 시작할 때 Scene관리자가 설정해준다.
     
     public List<GameObject> _sceneUILst;
 
@@ -46,23 +46,24 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
-        SceneUI = SceneUIState.Play;
-        SetCursor(SceneUI);
+        
     }
 
     void Update()
     {
         Debug.Log("Stack 크기 : "+_popupUIStack.Count);
+
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             // Popup메뉴가 열려있으면, 가장 최근에 열린 PopupUI 순서대로 꺼준다. STack으로 Popup관리
             // 혹시나 바로 게임으로 진행하면, Popup에 들어가있는 모든 데이터 초기화
             // 열려있는 Popup메뉴가 없으면 PauseUI를 키거나 껴준다.
+            // Title은 
             if(_popupUIStack.Count > 0)
             {
                 ClosePopupUI();
             }
-            else if (!_isGameOver)
+            else if (!_isGameOver && _sceneUIState != SceneUIState.None)
                 SetSceneUI(SceneUIState.Pause);
         }
     }
@@ -177,6 +178,7 @@ public class UIManager : MonoBehaviour
     {
         switch (state)
         {
+            case SceneUIState.None:
             case SceneUIState.Pause:
             case SceneUIState.GameOver:
             case SceneUIState.Tutorial:
