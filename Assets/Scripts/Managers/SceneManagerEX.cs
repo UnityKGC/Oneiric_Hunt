@@ -13,8 +13,8 @@ public class SceneManagerEX : MonoBehaviour
         Title,
         FirstHouseScene,
         FirstDreamScene,
-        Chase,
         MiniGame,
+        Chase,
     }
 
     public enum PortalType

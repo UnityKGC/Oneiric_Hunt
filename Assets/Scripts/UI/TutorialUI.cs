@@ -4,15 +4,40 @@ using UnityEngine;
 
 public class TutorialUI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // 현재 Scene에 따라서, 해당하는 튜토리얼 UI를 활성화 시키자.
+
+    enum SceneType
+    {
+        None = -1,
+        Real,
+        Dream,
+        MiniGame,
+        Chase,
+    }
+
+    SceneType _sceneType = SceneType.None;
+
+    public List<GameObject> _tutorialUILst;
+    
     void Start()
+    {
+        SetTutorial();
+    }
+    void OnEnable() // 켜질때 세팅함
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetTutorial()
     {
-        
+        _sceneType = (SceneType)(int)SceneManagerEX._instance.NowScene - 1;
+
+        for(int i = 0; i < _tutorialUILst.Count; i++)
+        {
+            if(i == (int)_sceneType)
+                _tutorialUILst[i].SetActive(true);
+            else
+                _tutorialUILst[i].SetActive(false);
+        }
     }
 }

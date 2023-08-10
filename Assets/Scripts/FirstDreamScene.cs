@@ -31,6 +31,8 @@ public class FirstDreamScene : MonoBehaviour
         InitDict();
 
         CameraManager._instance.SetFreeLookCam(); // 시작 시 플레이어 카메라로 이동하게끔
+
+        UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Tutorial); // 첫 꿈은 시작하면 튜토리얼 시작
     }
 
     void Update()
