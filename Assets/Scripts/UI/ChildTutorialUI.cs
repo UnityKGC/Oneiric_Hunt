@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DreamTutorialUI : MonoBehaviour
+public class ChildTutorialUI : MonoBehaviour
 {
     enum Buttons
     {
@@ -18,12 +18,17 @@ public class DreamTutorialUI : MonoBehaviour
 
     void Start()
     {
-        SetPage();
+        UISetting();
     }
-
+    
+    void UISetting()
+    {
+        SetPage();
+        SetButton();
+    }
     void SetPage() // 페이지 세팅
     {
-        for(int i = 0; i < _pageLst.Count; i++)
+        for (int i = 0; i < _pageLst.Count; i++)
         {
             if (_nowPage == i)
                 _pageLst[i].SetActive(true);
@@ -41,17 +46,15 @@ public class DreamTutorialUI : MonoBehaviour
     }
     public void ClickBtn(int idx)
     {
-        switch(idx)
+        switch (idx)
         {
             case 0: // 이전
                 _nowPage--;
-                SetPage();
-                SetButton();
+                UISetting();
                 break;
             case 1: // 다음
                 _nowPage++;
-                SetPage();
-                SetButton();
+                UISetting();
                 break;
             case 2: // 닫기 => PlayScene으로 전환
                 gameObject.SetActive(false); // 닫은 후
