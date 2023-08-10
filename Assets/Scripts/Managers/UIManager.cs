@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
             return;
 
         if (SceneUI == state && _sceneUILst[(int)SceneUI].activeSelf) // 아, 켜져있는 메뉴라면, Play로 변경
-            _sceneUIState = SceneUIState.Play;
+            state = SceneUIState.Play;
 
         switch(state)
         {
