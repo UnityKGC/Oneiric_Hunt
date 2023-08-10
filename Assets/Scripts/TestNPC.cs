@@ -47,6 +47,11 @@ public class TestNPC : MonoBehaviour
                     _doorCol.enabled = true; // TestNPC만 할 수 있는 전용 보상 => 문 열기
                     // 퀘스트 끝
                 }
+                else if(_questList[0]._isFinish && !_questList[1]._isStart) // 테스트테스트
+                {
+                    QuestData quest = _questList[1];
+                    DialogueManager._instance.GetDialogueLine(_dialogueLst[2], quest);
+                }
             }
         }
     }

@@ -16,12 +16,6 @@ public class QuestManager : MonoBehaviour
 
     Dictionary<int, List<QuestData>> _questObjDict = new Dictionary<int, List<QuestData>>();
 
-    /*
-    Dictionary<int, List<KilledMonsterQuestData>> _monsterQuestDict = new Dictionary<int, List<KilledMonsterQuestData>>(); // 몬스터 퇴치 퀘스트 Dict => Key값으로 몬스터 ID를 지닌다.
-
-    Dictionary<int, List<BringQuestData>> _bringQuestDict = new Dictionary<int, List<BringQuestData>>(); // 물건 가져오는 퀘스트 dict => Key값으로 오브젝트 ID를 지닌다.
-    */
-
     List<QuestData> _processQeustLst = new List<QuestData>(); // 현재 진행중인 퀘스트? => 현재는 일단 그냥 만들어 놓기만 함, 후에 필요(사용)하면 이 주석 지울 예정
     
 
@@ -150,5 +144,11 @@ public class QuestManager : MonoBehaviour
     private void OnDestroy()
     {
         _quests = null; // 차피 한 Scene에는 한 종류의 퀘스트만 존재하므로 그냥 바로 파괴시킨다.
+
+        /*
+        _processQuestDict.Clear(); // 내 게임은 Scene이 전환되면 그 전으로 되돌아 가지 않으므로, => 근데 죽어서 다시 시작한다면??
+        _questObjDict.Clear();
+        _processQeustLst.Clear();
+        */
     }
 }

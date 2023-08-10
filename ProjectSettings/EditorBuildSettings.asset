@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Dream.unity
     guid: c88bb65a6e7af7d47bc4b9538e1bc934
   - enabled: 1
-    path: Assets/Scenes/Chase.unity
-    guid: 8bf214f8142599940b1cbb6a9e8e943a
-  - enabled: 1
     path: Assets/Scenes/MiniGame.unity
     guid: b466e806dcdedcc4b91167e433969237
+  - enabled: 1
+    path: Assets/Scenes/Chase.unity
+    guid: 8bf214f8142599940b1cbb6a9e8e943a
   m_configObjects: {}
