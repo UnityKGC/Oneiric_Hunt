@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public class PauseMenu : MonoBehaviour
 {
+    public RectTransform _pausePanel; // DOTween 효과를 주기위해 사용
     public enum PauseMenuState
     {
         None = -1,
@@ -17,12 +18,16 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] List<GameObject> _popupUI;
     void Start()
     {
-        
+
     }
 
-    void Update()
+    void OnEnable()
     {
-        
+        _pausePanel.DOMoveX(0, 0.3f).SetUpdate(true);
+    }
+    private void OnDisable()
+    {
+        _pausePanel.DOMoveX(-500, 0f).SetUpdate(true);
     }
 
     public void ClickResume() // 게임 재개는 혼자 Popup을 여는게 아니므로 따로 제작
@@ -38,11 +43,13 @@ public class PauseMenu : MonoBehaviour
             if(idx == i)
             {
                 _popupUI[i].SetActive(true);
+                _popupUI[i].transform.DOScale(1, 0.3f).SetUpdate(true); // 닷트윈 실행 => 스케일을 1로 만듬
                 UIManager._instacne.SetPopupUI(_popupUI[i]); // UIManager에게 연 PopupUI를 전달해준다.
             }  
             else
             {
                 _popupUI[i].SetActive(false); // i번째가 아닌 PopupUI는 전부 비활성화 해준다.
+                _popupUI[i].transform.DOScale(0, 0f).SetUpdate(true); // 닷트윈 실행 => 스케일을 1로 만듬
             }
         }
     }

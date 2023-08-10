@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -155,17 +156,20 @@ public class UIManager : MonoBehaviour
         if (_popupUIStack.Count <= 0) // popup stack에 데이터가 없으면 리턴
             return;
 
-        _popupUIStack.Pop().SetActive(false); // 해당 popupUI를 꺼낸 후, 비활성화 시킨다.
+        GameObject obj = _popupUIStack.Pop();
+
+        obj.transform.DOScale(0, 0f).SetUpdate(true); // 닷트윈 => 스케일을 작게 만듬
+
+        obj.SetActive(false); // 해당 popupUI를 꺼낸 후, 비활성화 시킨다.
                                               // => 후에 Popup UI의 부모를 만들어서, ClosePopupUI를 호출하게 만들어야 겠다?
                                               // => 왜? 옵션같은 경우는, 수치를 바꾸면, 변경된 수치가 있습니다. 적용시키겠습니까? 라는 경고 UI를 호출시켜야 한다. => 즉! 각 popupUI마다 Close할 때 호출하는게 다르니, 공통적인 종료 함수를 만들어 주고, 여기에서 호출시키게 해야 한다.
     }
     public void AllClosePopupUI() // 현재 열린 모든 PopupUI를 닫아준다.
     {
-        foreach(GameObject obj in _popupUIStack) // 등록되어 있는 모든 popupUI를 전부 비활성화 해 준다.
-        {
-            obj.SetActive(false);
-        }
-        _popupUIStack.Clear(); // popupStack 초기화
+        while(_popupUIStack.Count > 0) // popupUI 스탯의 개수가 0이 될때까지 ClosePopupUI를 실행
+            ClosePopupUI();
+
+        _popupUIStack.Clear(); // popupStack 초기화 => 혹시나 모르니까
     }
     #endregion
 
