@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-public class CarDOT : MonoBehaviour
+
+public class DreamTutorialUI : MonoBehaviour
 {
-    public List<Transform> _wayPoints;
+    // Start is called before the first frame update
     void Start()
     {
-       
+        
     }
 
+    // Update is called once per frame
     void Update()
     {
         
