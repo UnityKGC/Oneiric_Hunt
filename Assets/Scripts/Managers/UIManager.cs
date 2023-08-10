@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
         Pause,
         Play,
         GameOver,
+        Tutorial,
     }
 
 
@@ -76,6 +77,7 @@ public class UIManager : MonoBehaviour
         switch(state)
         {
             case SceneUIState.Pause: // Pause메뉴 호출
+            case SceneUIState.Tutorial: // Tutorial메뉴 호출
                 Time.timeScale = 0f; // 시간 멈춰!
                 break;
             case SceneUIState.Play: // 미니맵, 등등 호출
@@ -83,7 +85,7 @@ public class UIManager : MonoBehaviour
                 break;
             case SceneUIState.GameOver: // 게임 오버 호출
                 _isGameOver = true;
-                Time.timeScale = 1f;
+                Time.timeScale = 0f;
                 break;
         }
 
@@ -173,6 +175,7 @@ public class UIManager : MonoBehaviour
         {
             case SceneUIState.Pause:
             case SceneUIState.GameOver:
+            case SceneUIState.Tutorial:
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 break;
