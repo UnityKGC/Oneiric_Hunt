@@ -34,6 +34,6 @@ public class CatchUI : MonoBehaviour
     }
     private void OnDestroy()
     {
-        
+        UIManager._instacne._catchUIEvt -= SetCatchUI;
     }
 }

@@ -62,11 +62,13 @@ public class UIManager : MonoBehaviour
             // 혹시나 바로 게임으로 진행하면, Popup에 들어가있는 모든 데이터 초기화
             // 열려있는 Popup메뉴가 없으면 PauseUI를 키거나 껴준다.
             // Title은 
-            if(_popupUIStack.Count > 0)
+            if (_popupUIStack.Count > 0)
             {
                 ClosePopupUI();
             }
-            else if (!_isGameOver && _sceneUIState != SceneUIState.None)
+            else if (!_isGameOver && SceneUI == SceneUIState.Pause)
+                SetSceneUI(SceneUIState.Play);
+            else if (!_isGameOver && SceneUI == SceneUIState.Play)
                 SetSceneUI(SceneUIState.Pause);
         }
     }
@@ -213,7 +215,8 @@ public class UIManager : MonoBehaviour
     {
         _sceneUILst.Clear(); // 어차피 오브젝트는 전부 파괴되었으므로, 데이터를 담고있는 자료구조만 Clear시켜준다.
         _popupUIStack.Clear();
-        SetSceneUI(SceneUIState.Play); // UI켜준 채로 나갈 순 없으니까, PlaySceneUI로 해준다
+
+        // SetSceneUI(SceneUIState.Play); // UI켜준 채로 나갈 순 없으니까, PlaySceneUI로 해준다
 
         _questDataEvt = null;
         _questContentEvt = null;
@@ -223,6 +226,8 @@ public class UIManager : MonoBehaviour
         _playStateEvt = null;
         _weaponEvt = null;
         _endBattleEvt = null;
+        _qtePosEvt = null;
+        _catchUIEvt = null;
 
     }
 }

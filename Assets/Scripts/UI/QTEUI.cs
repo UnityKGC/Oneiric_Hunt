@@ -34,6 +34,7 @@ public class QTEUI : MonoBehaviour
     }
     private void OnDestroy()
     {
+        _qteFront.DOScale(1, 0f).SetUpdate(true);
         UIManager._instacne._qtePosEvt -= SetUIPos;
     }
 }
