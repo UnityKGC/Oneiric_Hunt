@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class QTEUI : MonoBehaviour
 {
     public RectTransform _qteUI;
     public TextMeshProUGUI _qteText;
-    void Start()
+    void Awake()
     {
         UIManager._instacne._qtePosEvt -= SetUIPos;
         UIManager._instacne._qtePosEvt += SetUIPos;
@@ -22,5 +22,9 @@ public class QTEUI : MonoBehaviour
     {
         // 위치를 받은 후, _qteUI를 해당 위치로 보낸다.
         _qteUI.anchoredPosition = vec;
+    }
+    private void OnDestroy()
+    {
+        UIManager._instacne._qtePosEvt -= SetUIPos;
     }
 }

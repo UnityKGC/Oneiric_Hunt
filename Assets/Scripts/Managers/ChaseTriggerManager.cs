@@ -60,8 +60,6 @@ public class ChaseTriggerManager : MonoBehaviour
         _triggerData = _triggerDict[trigger];
 
         QTEManager._instance.StartEvent(_triggerData._qteEvt);
-        GameManager._instance.Playstate = GameManager.PlayState.Real_QTE;
-
     }
     public void StartCatchEvent(EvtTrigger trigger)
     {
@@ -71,7 +69,6 @@ public class ChaseTriggerManager : MonoBehaviour
         _triggerData = _triggerDict[trigger];
 
         CatchManager._instance.StartCatchEvt(_triggerData._catchEvt);
-        GameManager._instance.Playstate = GameManager.PlayState.Real_Catch;
     }
     public CatchPolice GetCatchPolice(EvtTrigger trigger)
     {

@@ -48,6 +48,8 @@ public class CatchManager : MonoBehaviour
     }
     public void StartCatchEvt(CatchEvent evt)
     {
+        GameManager._instance.Playstate = GameManager.PlayState.Real_Catch; // 게임매니저의 상태를 변경시킨다.
+
         _eventData = evt;
 
         _isStart = true;

@@ -1020,11 +1020,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 537640184465836592, guid: df34683344f971442b58821103ad4025, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0
+      value: 0.3947082
       objectReference: {fileID: 0}
     - target: {fileID: 537640184465836592, guid: df34683344f971442b58821103ad4025, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -5
+      value: -5.964273
       objectReference: {fileID: 0}
     - target: {fileID: 537640184568704309, guid: df34683344f971442b58821103ad4025, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1056,11 +1056,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 537640185077484409, guid: df34683344f971442b58821103ad4025, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0
+      value: 0.3947082
       objectReference: {fileID: 0}
     - target: {fileID: 537640185077484409, guid: df34683344f971442b58821103ad4025, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -5
+      value: -5.964273
       objectReference: {fileID: 0}
     - target: {fileID: 537640185366559840, guid: df34683344f971442b58821103ad4025, type: 3}
       propertyPath: m_Name
@@ -1168,11 +1168,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 537640185368204238, guid: df34683344f971442b58821103ad4025, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.12362481
+      value: -0.12362477
       objectReference: {fileID: 0}
     - target: {fileID: 537640185368204238, guid: df34683344f971442b58821103ad4025, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.019319946
+      value: 0.01931994
       objectReference: {fileID: 0}
     - target: {fileID: 537640185422898268, guid: df34683344f971442b58821103ad4025, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1200,11 +1200,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 537640185726296423, guid: df34683344f971442b58821103ad4025, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0
+      value: 0.3947082
       objectReference: {fileID: 0}
     - target: {fileID: 537640185726296423, guid: df34683344f971442b58821103ad4025, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -5
+      value: -5.964273
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df34683344f971442b58821103ad4025, type: 3}

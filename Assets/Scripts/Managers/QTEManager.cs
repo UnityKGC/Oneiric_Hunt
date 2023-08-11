@@ -47,6 +47,8 @@ public class QTEManager : MonoBehaviour
     }
     public void StartEvent(QTEEvent evt) // 이벤트 시작
     {
+        GameManager._instance.Playstate = GameManager.PlayState.Real_QTE; // 게임매니저의 상태를 변경시킨다.
+
         _eventData = evt; // 매니저에 인자로 전달받은 이벤트 등록
 
         _isSuccess = false; // 변수들 초기화
