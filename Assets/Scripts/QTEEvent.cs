@@ -12,7 +12,7 @@ public class QTEEvent : MonoBehaviour
 {
     public List<QTEKeys> _keys = new List<QTEKeys>(); // 해당 이벤트에서 눌러야 할 키 리스트
 
-    public RectTransform _pos; // QTEUI가 배치되야 할 위치
+    public Vector2 _pos; // QTEUI가 배치되야 할 위치
 
     public float _time; // 눌러야 할 시간
 }

@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     public Action<WeaponType> _weaponEvt = null; // 무기 변경 시 호출 => 현재 무기를 알려줌
     public Action _endBattleEvt = null; // 전투가 끝났을 시,
 
-    public Action _qtePosEvt = null; // QTE의 위치를 설정한다.
+    public Action<Vector2> _qtePosEvt = null; // QTE의 위치를 설정한다.
 
     public SceneUIState SceneUI { get { return _sceneUIState; } set { _sceneUIState = value; } }
 
@@ -152,9 +152,9 @@ public class UIManager : MonoBehaviour
         _endBattleEvt?.Invoke();
     }
 
-    public void SetQTEPosEvt() // QTE이벤트가 실행될 시, Trigger들이 QTEUI가 배치될 위치를 보낸다.
+    public void SetQTEPosEvt(Vector2 vec) // QTE이벤트가 실행될 시, QTE매니저가 Trigger들의 QTEUI가 배치될 위치를 보낸다.
     {
-        _qtePosEvt?.Invoke();
+        _qtePosEvt?.Invoke(vec);
     }
     #endregion
 

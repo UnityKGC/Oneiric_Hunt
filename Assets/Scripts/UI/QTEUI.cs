@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class QTEUI : MonoBehaviour
 {
-    public GameObject _qteUI;
+    public RectTransform _qteUI;
     public TextMeshProUGUI _qteText;
     void Start()
     {
@@ -18,9 +18,9 @@ public class QTEUI : MonoBehaviour
         
     }
     */
-    void SetUIPos()
+    void SetUIPos(Vector2 vec)
     {
         // 위치를 받은 후, _qteUI를 해당 위치로 보낸다.
-
+        _qteUI.anchoredPosition = vec;
     }
 }
