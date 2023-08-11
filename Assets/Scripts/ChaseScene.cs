@@ -9,7 +9,7 @@ public class ChaseScene : MonoBehaviour
 
     void Start()
     {
-        GameManager._instance.Playstate = GameManager.PlayState.Real_Chase;
+        GameManager._instance.Playstate = GameManager.PlayState.Real_Normal;
         SceneManagerEX._instance.NowScene = SceneManagerEX.SceneType.Chase;
     }
 

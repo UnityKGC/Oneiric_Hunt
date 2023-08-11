@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
         Dream_Normal,
         Dream_Battle,
         Real_Normal,
-        Real_Chase,
-        Real_Detect,
+        Real_QTE,
+        Real_Catch,
         MiniGame,
     }
 

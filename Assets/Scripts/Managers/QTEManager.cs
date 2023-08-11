@@ -60,6 +60,8 @@ public class QTEManager : MonoBehaviour
 
         _evtTime = evt._time; // 전달받은 이벤트의 제한시간을 저장
 
+        //UIManager._instacne.SetQTEPosEvt(_eventData._pos); // UI에게 QTE가 배치되야 할 위치를 알려줌
+
         CheckKeyUI(); // 무슨 키를 눌러야 하는지 알려주는 함수 => 현재는 Debug로 알려줌 => 후에 UI로 수정 예정
         StartCoroutine(StartCountDown()); // 카운트 다운 코루틴 시작
     }
