@@ -78,6 +78,8 @@ public class CatchManager : MonoBehaviour
                 }
             }
 
+            UIManager._instacne.UpdateCatchUI(_nowGauge);
+
             Debug.Log("현재 게이지 량 : " + _nowGauge);
 
             if (_maxGauge <= _nowGauge)
@@ -90,6 +92,7 @@ public class CatchManager : MonoBehaviour
     {
         if(_isSuccess)
         {
+            GameManager._instance.Playstate = GameManager.PlayState.Real_Normal; // 게임상태를 평상시로,
             _isStart = false;
             _isEnd = true;
             _eventData = null;

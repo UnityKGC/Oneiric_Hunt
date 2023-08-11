@@ -71,11 +71,11 @@ public class QTEManager : MonoBehaviour
     {
         _isStart = true; // 시작했으니, 변수 갱신
 
-        while(_isStart && _evtTime > 0) // 시작했고, 눌러야 할 시간이 0초보다 크면 반복
+        while(_isStart && _evtTime > 1f) // 시작했고, 눌러야 할 시간이 0초보다 크면 반복
         {
             Debug.Log(_evtTime);
-            _evtTime--; // 제한 시간 줄어듬
-            yield return new WaitForSecondsRealtime(1f); // 1초마다 줄어듦
+            _evtTime -= 1f; // 제한 시간 줄어듬
+            yield return new WaitForSecondsRealtime(1f); // 프레임마다 줄어듦
         }
 
         if(_isEnd == false) // 끝났을 때, _isEnd가 false라면 실패!
@@ -89,6 +89,7 @@ public class QTEManager : MonoBehaviour
         if(_keys.Count == 0) // 모두 눌렀다면
         {
             _isSuccess = true; // 성공 확인 변수를 true로
+            GameManager._instance.Playstate = GameManager.PlayState.Real_Normal; // 게임 상태를 평상시 로,
         }
 
         _isEnd = true; // 변수 갱신

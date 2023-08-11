@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
 
     public Action<Vector2> _qtePosEvt = null; // QTE의 위치를 설정한다.
 
+    public Action<float> _catchUIEvt = null; // CatchEvt의 게이지 UI
     public SceneUIState SceneUI { get { return _sceneUIState; } set { _sceneUIState = value; } }
 
     [SerializeField] private SceneUIState _sceneUIState = SceneUIState.None; // 이건 Scene이 시작할 때 Scene관리자가 설정해준다.
@@ -155,6 +156,11 @@ public class UIManager : MonoBehaviour
     public void SetQTEPosEvt(Vector2 vec) // QTE이벤트가 실행될 시, QTE매니저가 Trigger들의 QTEUI가 배치될 위치를 보낸다.
     {
         _qtePosEvt?.Invoke(vec);
+    }
+
+    public void UpdateCatchUI(float value) // value => 전체의 현재 게이지 량 비율
+    {
+        _catchUIEvt?.Invoke(value);
     }
     #endregion
 

@@ -16,7 +16,7 @@ public class QTEUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        _qteFront.DOScale(0, 2f).SetUpdate(true);
+        _qteFront.DOScale(0, 3f).SetUpdate(true);
     }
     /*
     private void OnEnable() // 활성화 될 시, QTEUI를 1. 랜덤한 위치에 생성시킨다. 2. 지정된 위치에 생성시킨다.
