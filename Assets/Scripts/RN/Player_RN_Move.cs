@@ -7,6 +7,7 @@ public class Player_RN_Move : MonoBehaviour
     public Vector3 _dir;
 
     private PlayerStat _stat;
+    private Player_RN_Anim _anim;
     private Player_RN_State _state;
     private Transform _cameTrans;
 
@@ -19,6 +20,8 @@ public class Player_RN_Move : MonoBehaviour
     {
         _stat = GetComponent<PlayerStat>();
         _state = GetComponent<Player_RN_State>();
+        _anim = GetComponent<Player_RN_Anim>();
+
         _cameTrans = Camera.main.transform;
     }
     void Start()
@@ -71,6 +74,8 @@ public class Player_RN_Move : MonoBehaviour
                 _state.PlayerState = Player_RN_State.RN_State.Walk;
             else
                 _state.PlayerState = Player_RN_State.RN_State.Run;
+
+            _anim.CrossFade(_state.PlayerState);
         }
     }
     private void UpdateMove()
@@ -78,6 +83,7 @@ public class Player_RN_Move : MonoBehaviour
         if (_magnitude <= 0)
         {
             _state.PlayerState = Player_RN_State.RN_State.Idle;
+            _anim.CrossFade(_state.PlayerState);
             return;
         }
 
@@ -90,6 +96,8 @@ public class Player_RN_Move : MonoBehaviour
         {
             _state.PlayerState = Player_RN_State.RN_State.Run;
         }
+
+        _anim.CrossFade(_state.PlayerState);
 
         transform.position += _dir * _magnitude * Time.deltaTime;
     }
