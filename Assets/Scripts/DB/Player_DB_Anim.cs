@@ -4,41 +4,51 @@ using UnityEngine;
 
 public class Player_DB_Anim : MonoBehaviour
 {
-    private Player_DB_State _state;
+    enum WaponAnimator
+    {
+        None = -1,
+        Sword,
+        Spear,
+        Axe,
+    }
 
-    private Player_DB_State.DB_State _animState;
+    [SerializeField] List<RuntimeAnimatorController> _animLst;
+
     private Animator _anim;
+
+    Player_DB_State.DB_State _animState;
     void Start()
     {
-        _state = GetComponent<Player_DB_State>();
         _anim = GetComponent<Animator>();
     }
 
-    void Update()
+    public void CrossFade(Player_DB_State.DB_State state) // 무기 종류의 인자?
     {
-        if (_state.PlayerState == _animState) return;
+        if (_animState == state)
+            return;
 
-        switch (_state.PlayerState)
+
+        _animState = state;
+
+        switch (_animState)
         {
             case Player_DB_State.DB_State.Idle:
-                UpdateIdle();
+                _anim.CrossFade("Idle", 0.1f);
                 break;
-
             case Player_DB_State.DB_State.Run:
-                UpdateRun();
+                _anim.CrossFade("Run", 0.1f);
                 break;
-
             case Player_DB_State.DB_State.Attack_1:
-
+                _anim.CrossFade("Attack_1", 0.1f);
                 break;
             case Player_DB_State.DB_State.Attack_2:
-
+                _anim.CrossFade("Attack_2", 0.1f);
                 break;
             case Player_DB_State.DB_State.Attack_3:
-
+                _anim.CrossFade("Attack_3", 0.1f);
                 break;
             case Player_DB_State.DB_State.Attack_4:
-
+                _anim.CrossFade("Attack_4", 0.1f);
                 break;
             case Player_DB_State.DB_State.Skill:
 
@@ -47,45 +57,5 @@ public class Player_DB_Anim : MonoBehaviour
 
                 break;
         }
-    }
-    private void UpdateIdle()
-    {
-        _animState = Player_DB_State.DB_State.Idle;
-        _anim.CrossFade("Idle", 0.1f);
-    }
-    private void UpdateRun()
-    {
-        _animState = Player_DB_State.DB_State.Run;
-        _anim.CrossFade("Run", 0.1f);
-    }
-    private void UpdateAttack_1()
-    {
-        _animState = Player_DB_State.DB_State.Run;
-        _anim.CrossFade("Run", 0.1f);
-    }
-    private void UpdateAttack_2()
-    {
-        _animState = Player_DB_State.DB_State.Run;
-        _anim.CrossFade("Run", 0.1f);
-    }
-    private void UpdateAttack_3()
-    {
-        _animState = Player_DB_State.DB_State.Run;
-        _anim.CrossFade("Run", 0.1f);
-    }
-    private void UpdateAttack_4()
-    {
-        _animState = Player_DB_State.DB_State.Run;
-        _anim.CrossFade("Run", 0.1f);
-    }
-    private void UpdateSkill()
-    {
-        _animState = Player_DB_State.DB_State.Run;
-        _anim.CrossFade("Run", 0.1f);
-    }
-    private void UpdateDie()
-    {
-        _animState = Player_DB_State.DB_State.Run;
-        _anim.CrossFade("Run", 0.1f);
     }
 }

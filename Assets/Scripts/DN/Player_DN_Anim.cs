@@ -10,7 +10,6 @@ public class Player_DN_Anim : MonoBehaviour
     void Start()
     {
         _anim = GetComponent<Animator>();
-
     }
 
     public void CrossFade(Player_DN_State.DN_State state)
