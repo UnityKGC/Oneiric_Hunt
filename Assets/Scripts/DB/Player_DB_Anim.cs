@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class Player_DB_Anim : MonoBehaviour
 {
-    enum WaponAnimator
+    enum WeaponAnim
     {
         None = -1,
         Sword,
         Spear,
         Axe,
     }
-
+    
     [SerializeField] List<RuntimeAnimatorController> _animLst;
 
     private Animator _anim;
 
     Player_DB_State.DB_State _animState;
+
     void Start()
     {
         _anim = GetComponent<Animator>();
     }
 
-    public void CrossFade(Player_DB_State.DB_State state) // 무기 종류의 인자?
+    public void CrossFade(Player_DB_State.DB_State state, SkillManager.Skills type = SkillManager.Skills.None) // 무기 종류의 인자?
     {
         if (_animState == state)
             return;
-
 
         _animState = state;
 
@@ -51,11 +51,21 @@ public class Player_DB_Anim : MonoBehaviour
                 _anim.CrossFade("Attack_4", 0.1f);
                 break;
             case Player_DB_State.DB_State.Skill:
-
+                StartSkillAnim(type);
                 break;
             case Player_DB_State.DB_State.Die:
 
                 break;
         }
     }
+    void StartSkillAnim(SkillManager.Skills type) // 무기, 스킬타입을 인자로 받는다.
+    {
+        switch(type)
+        {
+            case SkillManager.Skills.Dodge:
+                _anim.CrossFade("Dodge", 0.1f);
+                break;
+        }
+    }
+    // 스킬이 종료되면 다시 Idle이나 Move로 전환시켜야 하는데, 그걸 누가 언제 판별하지?
 }

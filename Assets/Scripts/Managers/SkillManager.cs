@@ -8,6 +8,8 @@ public class SkillManager : MonoBehaviour
 
     public enum Skills
     {
+        None = -1,
+
         WeaponSwap,
         Dodge,
 
@@ -56,6 +58,7 @@ public class SkillManager : MonoBehaviour
                 break;
 
             case Skills.Dodge:
+                // 플레이어가 이동 하는 중에만 사용할 수 있도록 구현 => 플레이어 매니저 만들어라? KGC
                 StartCoroutine(StartDodge(_skills[(int)skill], parent));
                 break;
 
@@ -104,11 +107,7 @@ public class SkillManager : MonoBehaviour
     }
     IEnumerator StartDodge(SkillScriptable scriptable, Transform parent)
     {
-        _isSkilling = true;
-
         yield return new WaitForSeconds(scriptable._castTime);
-
-        _isSkilling = false;
 
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Dodge], parent);
 
@@ -195,7 +194,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime);
 
-        _isSkilling = false; // 스킬 사용 끝
+        _isSkilling = false;
 
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.WindMill], playerPos, Quaternion.identity, parent);
 
@@ -260,6 +259,13 @@ public class SkillManager : MonoBehaviour
 
         scriptable._remainTime = scriptable._skillCoolTime; // 남은 시간 초기화
         scriptable._isAble = true; // 쿨타임만큼 시간이 지나면 스킬 사용 가능으로 변경
+    }
+
+    public void EndSkill()
+    {
+        if (_isSkilling) return;
+
+        // PlayerManager._instance.ChangeState() 변환시키기.
     }
 
     public void EndBattle()

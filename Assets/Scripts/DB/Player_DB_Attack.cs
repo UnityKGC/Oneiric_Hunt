@@ -32,7 +32,7 @@ public class Player_DB_Attack : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || _move._isMove) return;
+        if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || _move._isMove || SkillManager._instance._isSkilling) return;
 
         if (_isStopAtk)
         {

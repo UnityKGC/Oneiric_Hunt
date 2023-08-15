@@ -21,9 +21,11 @@ public class Player_DB_Move : MonoBehaviour
     private void Awake()
     {
         _stat = GetComponent<PlayerStat>();
+
         _state = GetComponent<Player_DB_State>();
         _anim = GetComponent<Player_DB_Anim>();
         _attack = GetComponent<Player_DB_Attack>();
+
         _cameTrans = Camera.main.transform;
     }
     void Start()
@@ -37,7 +39,7 @@ public class Player_DB_Move : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (GameManager._instance.PlayerDie || _attack._isAttack) // 죽었거나 공격중이면 리턴
+        if (GameManager._instance.PlayerDie || _attack._isAttack || SkillManager._instance._isSkilling) // 죽었거나 공격중이면 리턴
             return;
 
         GetDir();
@@ -50,6 +52,9 @@ public class Player_DB_Move : MonoBehaviour
 
             case Player_DB_State.DB_State.Run:
                 UpdateMove();
+                break;
+            case Player_DB_State.DB_State.Skill:
+
                 break;
         }
 

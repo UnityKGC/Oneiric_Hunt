@@ -90,6 +90,10 @@ public class WindMill : MonoBehaviour
             }
         }
         else
+        {
+            
             Destroy(gameObject);
+        }
+            
     }
 }
