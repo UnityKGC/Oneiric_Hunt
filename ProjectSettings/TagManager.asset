@@ -13,6 +13,7 @@ TagManager:
   - MiniGameObstacle
   - MiniGameCheckPoint
   - Car
+  - CamFocus
   layers:
   - Default
   - TransparentFX

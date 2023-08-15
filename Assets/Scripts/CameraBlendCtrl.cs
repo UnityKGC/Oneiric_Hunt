@@ -10,7 +10,15 @@ public class CameraBlendCtrl : MonoBehaviour
     
     public void SetFreeLookCam()
     {
+        if (_fCam.Follow == null || _fCam.LookAt == null)
+            SetPlayerFocus();
+
         _fCam.MoveToTopOfPrioritySubqueue();
+    }
+    void SetPlayerFocus()
+    {
+        _fCam.Follow = GameManager._instance.PlayerFocus;
+        _fCam.LookAt = GameManager._instance.PlayerFocus;
     }
     public void SetVirtualCam()
     {

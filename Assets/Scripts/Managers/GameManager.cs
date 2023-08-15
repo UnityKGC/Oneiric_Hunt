@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
     public GameObject Player { get { return _player; } }
 
     private GameObject _player;
+
+    public Transform PlayerFocus { get { return _playeFocus; } }
+
+    private Transform _playeFocus;
+
     public bool ChasePlayerDie { get { return _isChasePlayerDie; } set { _isChasePlayerDie = value; } }
     public bool PlayerDie { get { return _isPlayerDie; } set { _isPlayerDie = value; } }
     
@@ -45,6 +50,7 @@ public class GameManager : MonoBehaviour
         _instance = this;
 
         _player = GameObject.FindGameObjectWithTag("Player"); // Scene 전환 후, Player 태그를 찾아, 변수에 등록한다.
+        _playeFocus = GameObject.FindGameObjectWithTag("CamFocus").transform;
     }
     void Start()
     {
