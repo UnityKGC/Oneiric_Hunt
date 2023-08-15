@@ -18,5 +18,5 @@ public class Player_DB_State : MonoBehaviour
     }
     public DB_State PlayerState { get { return _playerState; } set { _playerState = value; } }
 
-    private DB_State _playerState;
+    [SerializeField] private DB_State _playerState;
 }

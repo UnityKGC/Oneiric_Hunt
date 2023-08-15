@@ -9,10 +9,12 @@ public class Player_DB_Move : MonoBehaviour
     private PlayerStat _stat;
     private Player_DB_Anim _anim;
     private Player_DB_State _state;
+    private Player_DB_Attack _attack;
     private Transform _cameTrans;
 
     public float _rotSpd;
     public float _h, _v;
+    public bool _isMove = false;
 
     private float _magnitude;
 
@@ -21,7 +23,7 @@ public class Player_DB_Move : MonoBehaviour
         _stat = GetComponent<PlayerStat>();
         _state = GetComponent<Player_DB_State>();
         _anim = GetComponent<Player_DB_Anim>();
-
+        _attack = GetComponent<Player_DB_Attack>();
         _cameTrans = Camera.main.transform;
     }
     void Start()
@@ -35,7 +37,7 @@ public class Player_DB_Move : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (GameManager._instance.PlayerDie) // 스킬인데, Move스킬을 사용 중이라면 진행
+        if (GameManager._instance.PlayerDie || _attack._isAttack) // 죽었거나 공격중이면 리턴
             return;
 
         GetDir();
@@ -67,26 +69,22 @@ public class Player_DB_Move : MonoBehaviour
     }
     private void UpdateIdle()
     {
+        _anim.CrossFade(_state.PlayerState);
+        _isMove = false;
         if (_magnitude > 0)
         {
             _state.PlayerState = Player_DB_State.DB_State.Run;
-
-            _anim.CrossFade(_state.PlayerState);
         }
     }
     private void UpdateMove()
     {
+        _anim.CrossFade(_state.PlayerState);
+        _isMove = true;
         if (_magnitude <= 0)
         {
             _state.PlayerState = Player_DB_State.DB_State.Idle;
-            _anim.CrossFade(_state.PlayerState);
             return;
         }
-
-        _state.PlayerState = Player_DB_State.DB_State.Run;
-
-        _anim.CrossFade(_state.PlayerState);
-
         transform.position += _dir * _magnitude * Time.deltaTime;
     }
     private void UpdateCheck()

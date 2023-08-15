@@ -5,14 +5,17 @@ using UnityEngine;
 public class Player_DB_Attack : MonoBehaviour
 {
     private PlayerStat _stat;
+    private Player_DB_Anim _anim;
+    private Player_DB_Move _move;
+
+    public bool _isAttack = false;
 
     private float _stopAtkTime;
     private float _startAtkDelay;
-    private float _atkDelay = 0.7f;
+    private float _atkDelay = 1f;
     private float _idleTime = 2f;
 
     private bool _isStopAtk = true;
-    private bool _isAttack = false;
     private bool _isFirstAttack = false;
     private bool _isSecondAtk = false;
     private bool _isThirdAtk = false;
@@ -20,6 +23,8 @@ public class Player_DB_Attack : MonoBehaviour
     void Awake()
     {
         _stat = GetComponent<PlayerStat>();
+        _anim = GetComponent<Player_DB_Anim>();
+        _move = GetComponent<Player_DB_Move>();
     }
     void Start()
     {
@@ -27,7 +32,7 @@ public class Player_DB_Attack : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle) return;
+        if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || _move._isMove) return;
 
         if (_isStopAtk)
         {
@@ -39,32 +44,40 @@ public class Player_DB_Attack : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             if (_isAttack)
                 return;
 
             //_hand.enabled = true;
 
-            if (Input.GetMouseButtonDown(0) && _isFirstAttack == false)
+            if (Input.GetMouseButton(0) && _isFirstAttack == false)
             {
                 Debug.Log("첫번째 공격 시작");
+
+                _anim.CrossFade(Player_DB_State.DB_State.Attack_1);
                 _isStopAtk = false;
                 _isFirstAttack = true;
             }
-            else if (Input.GetMouseButtonDown(0) && _isSecondAtk == false)
+            else if (Input.GetMouseButton(0) && _isSecondAtk == false)
             {
                 Debug.Log("두번째 공격 시작");
+
+                _anim.CrossFade(Player_DB_State.DB_State.Attack_2);
                 _isSecondAtk = true;
             }
-            else if (Input.GetMouseButtonDown(0) && _isThirdAtk == false)
+            else if (Input.GetMouseButton(0) && _isThirdAtk == false)
             {
                 Debug.Log("세번째 공격 시작");
+
+                _anim.CrossFade(Player_DB_State.DB_State.Attack_3);
                 _isThirdAtk = true;
             }
-            else if (Input.GetMouseButtonDown(0))
+            else if (Input.GetMouseButton(0))
             {
                 Debug.Log("네번째 공격 시작");
+
+                _anim.CrossFade(Player_DB_State.DB_State.Attack_4);
                 _isFirstAttack = _isSecondAtk = _isThirdAtk = false; // 다시 첫번째 공격으로
             }
             StartCoroutine(StartAttackDelayTime());
