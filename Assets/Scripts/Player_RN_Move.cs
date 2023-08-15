@@ -44,11 +44,8 @@ public class Player_RN_Move : MonoBehaviour
                 break;
 
             case Player_RN_State.RN_State.Run:
-                UpdateRun();
-                break;
-
             case Player_RN_State.RN_State.Walk:
-                UpdateWalk();
+                UpdateMove();
                 break;
         }
 
@@ -76,6 +73,27 @@ public class Player_RN_Move : MonoBehaviour
                 _state.PlayerState = Player_RN_State.RN_State.Run;
         }
     }
+    private void UpdateMove()
+    {
+        if (_magnitude <= 0)
+        {
+            _state.PlayerState = Player_RN_State.RN_State.Idle;
+            return;
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            _magnitude /= 2f;
+            _state.PlayerState = Player_RN_State.RN_State.Walk;
+        }
+        else
+        {
+            _state.PlayerState = Player_RN_State.RN_State.Run;
+        }
+
+        transform.position += _dir * _magnitude * Time.deltaTime;
+    }
+    /*
     private void UpdateWalk()
     {
         if (_magnitude <= 0)
@@ -113,6 +131,7 @@ public class Player_RN_Move : MonoBehaviour
             _state.PlayerState = Player_RN_State.RN_State.Walk;
         }
     }
+    */
     void Rotate()
     {
         if (_dir != Vector3.zero) // _dir이 0이 아니라면, 즉! 움직이고 있다면,
