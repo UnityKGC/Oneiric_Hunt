@@ -7,8 +7,10 @@ public class Player_DB_Attack : MonoBehaviour
     private PlayerStat _stat;
     private Player_DB_Anim _anim;
     private Player_DB_Move _move;
+    private Coroutine _atkCo;
 
     public bool _isAttack = false;
+    private bool _ischeckAttack = false;
 
     private float _stopAtkTime;
     private float _startAtkDelay;
@@ -46,10 +48,9 @@ public class Player_DB_Attack : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            if (_isAttack)
-                return;
+            _isAttack = true;
 
-            //_hand.enabled = true;
+            if (_ischeckAttack) return;
 
             if (Input.GetMouseButton(0) && _isFirstAttack == false)
             {
@@ -80,24 +81,28 @@ public class Player_DB_Attack : MonoBehaviour
                 _anim.CrossFade(Player_DB_State.DB_State.Attack_4);
                 _isFirstAttack = _isSecondAtk = _isThirdAtk = false; // 다시 첫번째 공격으로
             }
+
+            if (_atkCo != null)
+                StopCoroutine(StartAttackDelayTime());
             StartCoroutine(StartAttackDelayTime());
         }
         else if (_isStopAtk == false) // 공격을 하지 않으면, 대기상태 시간측정 시작
         {
-            //_hand.enabled = false;
+            _isAttack = false;
+            _ischeckAttack = false;
+
             _stopAtkTime = Time.time;
             _isStopAtk = true;
         }
     }
+    
     IEnumerator StartAttackDelayTime() // 공격 딜레이
     {
-        _isAttack = true;
-        //_hand.enabled = true;
+        _ischeckAttack = true;
 
         yield return new WaitForSeconds(_atkDelay);
 
-        //_hand.enabled = false;
-        _isAttack = false;
+        _ischeckAttack = false;
     }
     void FixedUpdate()
     {

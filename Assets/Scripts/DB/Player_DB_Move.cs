@@ -39,10 +39,13 @@ public class Player_DB_Move : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (GameManager._instance.PlayerDie || _attack._isAttack || SkillManager._instance._isSkilling) // 죽었거나 공격중이면 리턴
+        if (GameManager._instance.PlayerDie || SkillManager._instance._isSkilling) // 죽었거나 공격중이면 리턴
             return;
 
         GetDir();
+        Rotate();
+
+        if (_attack._isAttack) return; // 공격중이면 이동은 불가능하게
 
         switch (_state.PlayerState)
         {
@@ -54,8 +57,6 @@ public class Player_DB_Move : MonoBehaviour
                 UpdateMove();
                 break;
         }
-
-        Rotate();
     }
     void GetDir()
     {

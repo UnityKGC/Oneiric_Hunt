@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dodge : MonoBehaviour
 {
     SkillScriptable _scriptable;
-    Collider coll;
+    CapsuleCollider coll;
     float _moveSpd = 15f;
     public void Init(SkillScriptable scriptable, Vector3 playerPos, Quaternion playerRot)
     {
@@ -13,9 +13,9 @@ public class Dodge : MonoBehaviour
 
         _scriptable._isAble = false;
 
-        coll = GetComponentInParent<Collider>();
+        coll = GetComponentInParent<CapsuleCollider>();
 
-        //coll.enabled = false;
+        coll.enabled = false;
 
         //BuffManager._instance.StartMovSpdBuff(transform.parent.gameObject, _scriptable._movSpdBuffValue, _scriptable._buffDurationTime);
 
@@ -32,7 +32,7 @@ public class Dodge : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        //coll.enabled = true;
+        coll.enabled = true;
 
         Destroy(gameObject);
     }
