@@ -51,11 +51,12 @@ public class PlayerStat : MonoBehaviour
     [SerializeField]
     private float _moveSpd;
 
-    private PlayerSkill _player;
-
+    //private PlayerSkill _player;
+    private Player_DB_Skill _player;
     private void Start()
     {
-        _player = gameObject.GetComponent<PlayerSkill>();
+        //_player = gameObject.GetComponent<PlayerSkill>();
+        _player = gameObject.GetComponent<Player_DB_Skill>();
 
         UIManager._instacne.SetPlayerHP(HP); // 현재 HP를 UI매니저에게 전달
     }
