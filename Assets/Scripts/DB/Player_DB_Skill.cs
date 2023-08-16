@@ -18,14 +18,8 @@ public class Player_DB_Skill : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // 회피
-            // 0.5초? 간 캐릭터의 Collider를 끄기 => 무적상태
-            // 이동속도를 잠시동안 2배로 늘린다.
-            if (SkillManager._instance.CheckCoolTime(SkillManager.Skills.Dodge))
-            {
-                SkillManager._instance.StartSkill(SkillManager.Skills.Dodge, 0f, transform.position, transform.rotation, transform);
-                _anim.CrossFade(Player_DB_State.DB_State.Skill, SkillManager.Skills.Dodge);
-            }
+            SkillManager._instance.StartSkill(SkillManager.Skills.Dodge, 0f, transform.position, transform.rotation, transform);
+            _anim.CrossFade(Player_DB_State.DB_State.Skill, SkillManager.Skills.Dodge);
         }
     }
 }

@@ -18,7 +18,6 @@ public class PlayerSkill : MonoBehaviour
     public WeaponType _weapon = WeaponType.Sword;
 
     private PlayerStat _stat;
-
     private void Awake()
     {
         _stat = GetComponent<PlayerStat>();
@@ -45,10 +44,7 @@ public class PlayerSkill : MonoBehaviour
             // 회피
             // 0.5초? 간 캐릭터의 Collider를 끄기 => 무적상태
             // 이동속도를 잠시동안 2배로 늘린다.
-            if (SkillManager._instance.CheckCoolTime(SkillManager.Skills.Dodge))
-            {
-                SkillManager._instance.StartSkill(SkillManager.Skills.Dodge, 0f, transform.position, transform.rotation, transform);
-            }
+            SkillManager._instance.StartSkill(SkillManager.Skills.Dodge, 0f, transform.position, transform.rotation, transform);
         }
 
         if (Input.GetKeyDown(KeyCode.Z))

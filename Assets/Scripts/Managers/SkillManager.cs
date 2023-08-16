@@ -32,8 +32,10 @@ public class SkillManager : MonoBehaviour
     [SerializeField]
     List<GameObject> _useSkill = new List<GameObject>();
 
-    public bool _isSkilling = false; // 스킬을 사용 중 인가
+    [SerializeField] private Player_DB_State _playerState;
 
+    public bool _isSkilling = false; // 스킬을 사용 중 인가
+    public bool _isMoveSkill = false; // 이동하는 스킬(Dodge, Windmill)을 사용 중 인가
     private void Awake()
     {
         _instance = this;
@@ -51,7 +53,10 @@ public class SkillManager : MonoBehaviour
     public void StartSkill(Skills skill, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
         if (!CheckCoolTime(skill)) return;
-        switch(skill)
+
+        _playerState.PlayerState = Player_DB_State.DB_State.Skill;
+
+        switch (skill)
         {
             case Skills.WeaponSwap:
                 StartCoroutine(StartWeaponSwap(_skills[(int)skill], parent));
@@ -59,7 +64,7 @@ public class SkillManager : MonoBehaviour
 
             case Skills.Dodge:
                 // 플레이어가 이동 하는 중에만 사용할 수 있도록 구현 => 플레이어 매니저 만들어라? KGC
-                StartCoroutine(StartDodge(_skills[(int)skill], parent));
+                StartCoroutine(StartDodge(_skills[(int)skill], playerPos, playerRot, parent));
                 break;
 
             case Skills.SwordForce:
@@ -95,7 +100,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime);
 
-        _isSkilling = false;
+        EndSkill();
 
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.WeaponSwap], parent);
 
@@ -105,13 +110,15 @@ public class SkillManager : MonoBehaviour
 
         yield return null;
     }
-    IEnumerator StartDodge(SkillScriptable scriptable, Transform parent)
+    IEnumerator StartDodge(SkillScriptable scriptable, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
+        _isMoveSkill = true;
+
         yield return new WaitForSeconds(scriptable._castTime);
 
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Dodge], parent);
 
-        obj.GetComponent<Dodge>().Init(scriptable);
+        obj.GetComponent<Dodge>().Init(scriptable, playerPos, playerRot);
 
         _useSkill.Add(obj);
 
@@ -128,7 +135,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
 
-        _isSkilling = false; // 스킬 사용 끝
+        EndSkill();
 
         Vector3 forward = playerRot * Vector3.forward * 2;
 
@@ -145,7 +152,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
 
-        _isSkilling = false; // 스킬 사용 끝
+        EndSkill();
 
         Vector3 forward = playerRot * Vector3.forward * 2; // 플레이어의 Rot의 값을 이용하여 플레이어의 정면값을 얻는다.
         // 의문1 : 왜 Quaternion이 앞에 나와야 할까? 그냥 사회적으로 약속되어 있어서?
@@ -163,7 +170,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime);
 
-        _isSkilling = false; // 스킬 사용 끝
+        EndSkill();
 
         Vector3 forward = playerRot * Vector3.forward * 2;
 
@@ -179,7 +186,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime);
 
-        _isSkilling = false; // 스킬 사용 끝
+        EndSkill();
 
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Challenge], playerPos, Quaternion.identity, parent);
 
@@ -194,7 +201,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime);
 
-        _isSkilling = false;
+        EndSkill();
 
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.WindMill], playerPos, Quaternion.identity, parent);
 
@@ -208,7 +215,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
 
-        _isSkilling = false; // 스킬 사용 끝
+        EndSkill();
 
         Vector3 down = Vector3.down * 1.5f;
 
@@ -263,8 +270,11 @@ public class SkillManager : MonoBehaviour
 
     public void EndSkill()
     {
-        if (_isSkilling) return;
+        _isMoveSkill = _isSkilling = false;
 
+        if (_isSkilling || !_playerState.gameObject.activeSelf) return;
+
+        _playerState.PlayerState = Player_DB_State.DB_State.Idle;
         // PlayerManager._instance.ChangeState() 변환시키기.
     }
 
@@ -277,6 +287,7 @@ public class SkillManager : MonoBehaviour
         }
         StopAllCoroutines(); // 여기에서 실행되고 있는 모든 코루틴(스킬 쿨타임 Co)를 종료시킨다.
         _useSkill.Clear();
+        EndSkill();
         ResetSkillValue(); // 스킬 초기화
 
     }

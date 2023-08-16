@@ -60,9 +60,11 @@ public class Player_DB_Anim : MonoBehaviour
     }
     void StartSkillAnim(SkillManager.Skills type) // 무기, 스킬타입을 인자로 받는다.
     {
-        switch(type)
+        if (!SkillManager._instance.CheckCoolTime(type)) return; // 사용하려는 스킬을 아직 사용하지 못하면 리턴
+        
+        switch (type)
         {
-            case SkillManager.Skills.Dodge:
+            case SkillManager.Skills.Dodge: // Dodge라면 Run으로 변경시킨다.
                 _anim.CrossFade("Dodge", 0.1f);
                 break;
         }

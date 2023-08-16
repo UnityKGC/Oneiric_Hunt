@@ -53,9 +53,6 @@ public class Player_DB_Move : MonoBehaviour
             case Player_DB_State.DB_State.Run:
                 UpdateMove();
                 break;
-            case Player_DB_State.DB_State.Skill:
-
-                break;
         }
 
         Rotate();

@@ -12,7 +12,7 @@ public class Player_DB_Attack : MonoBehaviour
 
     private float _stopAtkTime;
     private float _startAtkDelay;
-    private float _atkDelay = 1f;
+    private float _atkDelay = 0.7f;
     private float _idleTime = 2f;
 
     private bool _isStopAtk = true;

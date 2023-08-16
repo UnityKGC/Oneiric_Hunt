@@ -6,7 +6,8 @@ public class Dodge : MonoBehaviour
 {
     SkillScriptable _scriptable;
     Collider coll;
-    public void Init(SkillScriptable scriptable)
+    float _moveSpd = 15f;
+    public void Init(SkillScriptable scriptable, Vector3 playerPos, Quaternion playerRot)
     {
         _scriptable = scriptable;
 
@@ -16,16 +17,27 @@ public class Dodge : MonoBehaviour
 
         //coll.enabled = false;
 
-        BuffManager._instance.StartMovSpdBuff(transform.parent.gameObject, _scriptable._movSpdBuffValue, _scriptable._buffDurationTime);
+        //BuffManager._instance.StartMovSpdBuff(transform.parent.gameObject, _scriptable._movSpdBuffValue, _scriptable._buffDurationTime);
 
-        StartCoroutine(StartDodgeCo());
+        StartCoroutine(StartDodgeCo(playerRot));
     }
-    IEnumerator StartDodgeCo()
+    IEnumerator StartDodgeCo(Quaternion playerRot)
     {
-        yield return new WaitForSeconds(_scriptable._durationTime);
+        float time = _scriptable._durationTime;
+        while(time > 0f)
+        {
+            Vector3 dir = playerRot * Vector3.forward;
+            transform.parent.position += dir * _moveSpd * Time.deltaTime; // 부모가 플레이어니까 이렇게 하긴 했는데.. 이게 맞나...? KGC
+            time -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
 
         //coll.enabled = true;
 
         Destroy(gameObject);
+    }
+    private void OnDestroy()
+    {
+        SkillManager._instance.EndSkill();
     }
 }
