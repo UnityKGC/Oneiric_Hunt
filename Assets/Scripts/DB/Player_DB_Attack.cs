@@ -6,12 +6,11 @@ public class Player_DB_Attack : MonoBehaviour
 {
     private PlayerStat _stat;
     private Player_DB_Anim _anim;
-    private Player_DB_State _state;
     private Player_DB_Move _move;
     private Coroutine _atkCo;
 
-    public bool _isAttack = false; // 공격하고 있는지 확인하는 변수 => 외부에서 공격 진행 확인 용.
-    private bool _ischeckAttack = false; // 공격 N번째 확인을 위해 사용하는 변수
+    public bool _isAttack = false;
+    private bool _ischeckAttack = false;
 
     private float _stopAtkTime;
     private float _startAtkDelay;
@@ -26,7 +25,6 @@ public class Player_DB_Attack : MonoBehaviour
     void Awake()
     {
         _stat = GetComponent<PlayerStat>();
-        _state = GetComponent<Player_DB_State>();
         _anim = GetComponent<Player_DB_Anim>();
         _move = GetComponent<Player_DB_Move>();
     }
@@ -36,7 +34,7 @@ public class Player_DB_Attack : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || SkillManager._instance._isSkilling) return;
+        if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || _move._isMove || SkillManager._instance._isSkilling) return;
 
         if (_isStopAtk)
         {
@@ -90,8 +88,6 @@ public class Player_DB_Attack : MonoBehaviour
         }
         else if (_isStopAtk == false) // 공격을 하지 않으면, 대기상태 시간측정 시작
         {
-            // 실행중인 애니메이션 정지!!
-            _anim.StopAnim();
             _isAttack = false;
             _ischeckAttack = false;
 
