@@ -52,12 +52,13 @@ public class Player_DB_Attack : MonoBehaviour
 
             if (_ischeckAttack) return;
 
+            _isStopAtk = false;
+
             if (Input.GetMouseButton(0) && _isFirstAttack == false)
             {
                 Debug.Log("첫번째 공격 시작");
 
                 _anim.CrossFade(Player_DB_State.DB_State.Attack_1);
-                _isStopAtk = false;
                 _isFirstAttack = true;
             }
             else if (Input.GetMouseButton(0) && _isSecondAtk == false)
