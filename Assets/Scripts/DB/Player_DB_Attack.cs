@@ -87,7 +87,7 @@ public class Player_DB_Attack : MonoBehaviour
                 StopCoroutine(StartAttackDelayTime());
             StartCoroutine(StartAttackDelayTime());
         }
-        else if (_isStopAtk == false) // 공격을 하지 않으면, 대기상태 시간측정 시작
+        else if (_isStopAtk == false) // 공격을 하지 않으면, 대기상태 시간측정 시작 // 마우스 좌클릭을 꾹 누르지 않고, 클릭을 계속 할시, 클릭을 땔 때 마다, 이 부분을 실행하여 _ischeckAttack이 false가 되어, 빠르게 다음 공격으로 넘어갈 수 있게 된 것.
         {
             _isAttack = false;
             _ischeckAttack = false;
