@@ -9,15 +9,16 @@ public class Player_DB_Attack : MonoBehaviour
     private Player_DB_Move _move;
     private Coroutine _atkCo;
 
-    public bool _isAttack = false;
-    private bool _ischeckAttack = false;
+    public bool _isAttack = false; // 외부에서 플레이어가 공격을 그만 뒀는지 확인하는 변수
+    private bool _ischeckAttack = false; // 내부에서 플레이어의 공격을 했는지 확인하는 변수
 
-    private float _stopAtkTime;
-    private float _startAtkDelay;
+    //private float _stopAtkTime;
+    private float _startStopAtkTime; // 공격을 그만 둔 시간
+    private float _atkAgreeTime = 0.8f; // 공격 인정 시간
     private float _atkDelay = 0.8f;
-    private float _idleTime = 2f;
+    //private float _idleTime = 2f;
 
-    private bool _isStopAtk = true;
+    //private bool _isStopAtk = true;
     private bool _isFirstAttack = false;
     private bool _isSecondAtk = false;
     private bool _isThirdAtk = false;
@@ -36,6 +37,7 @@ public class Player_DB_Attack : MonoBehaviour
     {
         if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || _move._isMove || SkillManager._instance._isSkilling) return;
 
+        /*
         if (_isStopAtk)
         {
             // 2초 동안 계속 가만히 있었으면
@@ -45,6 +47,7 @@ public class Player_DB_Attack : MonoBehaviour
                 _isFirstAttack = _isSecondAtk = _isThirdAtk = false;
             }
         }
+        */
 
         if (Input.GetMouseButton(0))
         {
@@ -52,7 +55,9 @@ public class Player_DB_Attack : MonoBehaviour
 
             if (_ischeckAttack) return;
 
-            _isStopAtk = false;
+            //_isStopAtk = false;
+
+            _startStopAtkTime = 0f;
 
             if (Input.GetMouseButton(0) && _isFirstAttack == false)
             {
@@ -83,17 +88,32 @@ public class Player_DB_Attack : MonoBehaviour
                 _isFirstAttack = _isSecondAtk = _isThirdAtk = false; // 다시 첫번째 공격으로
             }
 
+            /*
             if (_atkCo != null) // 사실 할 필요 없는 듯 한데 혹시나 모를 변수를 막기위해
-                StopCoroutine(StartAttackDelayTime());
+                StopCoroutine(StartAttackDelayTime());*/
             StartCoroutine(StartAttackDelayTime());
         }
-        else if (_isStopAtk == false) // 공격을 하지 않으면, 대기상태 시간측정 시작 // 마우스 좌클릭을 꾹 누르지 않고, 클릭을 계속 할시, 클릭을 땔 때 마다, 이 부분을 실행하여 _ischeckAttack이 false가 되어, 빠르게 다음 공격으로 넘어갈 수 있게 된 것.
+        else// if (_isStopAtk == false) // 공격을 하지 않으면, 대기상태 시간측정 시작
         {
+            /*
+            if (_startStopAtkTime == 0) // 시간재기
+                _startStopAtkTime = Time.time;*/
+            StopAllCoroutines();
             _isAttack = false;
             _ischeckAttack = false;
+            _isFirstAttack = _isSecondAtk = _isThirdAtk = false;
+            /*
+            if (Time.time - _startStopAtkTime > _atkAgreeTime) // 좌클릭을 0.8초 동안 하지 않으면
+            {
+                //_isAttack = false;  // 변수들 초기화
+                
 
-            _stopAtkTime = Time.time;
-            _isStopAtk = true;
+                //_stopAtkTime = Time.time;
+                //_isStopAtk = true;
+
+                
+                _startStopAtkTime = 0f; // 시간도 초기화
+            }*/
         }
     }
     
