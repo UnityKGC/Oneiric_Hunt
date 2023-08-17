@@ -14,7 +14,7 @@ public class Player_DB_Attack : MonoBehaviour
 
     private float _stopAtkTime;
     private float _startAtkDelay;
-    private float _atkDelay = 0.7f;
+    private float _atkDelay = 0.8f;
     private float _idleTime = 2f;
 
     private bool _isStopAtk = true;
@@ -82,7 +82,7 @@ public class Player_DB_Attack : MonoBehaviour
                 _isFirstAttack = _isSecondAtk = _isThirdAtk = false; // 다시 첫번째 공격으로
             }
 
-            if (_atkCo != null)
+            if (_atkCo != null) // 사실 할 필요 없는 듯 한데 혹시나 모를 변수를 막기위해
                 StopCoroutine(StartAttackDelayTime());
             StartCoroutine(StartAttackDelayTime());
         }

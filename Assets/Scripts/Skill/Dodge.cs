@@ -5,17 +5,13 @@ using UnityEngine;
 public class Dodge : MonoBehaviour
 {
     SkillScriptable _scriptable;
-    CapsuleCollider coll;
+
     float _moveSpd = 15f;
     public void Init(SkillScriptable scriptable, Vector3 playerPos, Quaternion playerRot)
     {
         _scriptable = scriptable;
 
         _scriptable._isAble = false;
-
-        coll = GetComponentInParent<CapsuleCollider>();
-
-        coll.enabled = false;
 
         //BuffManager._instance.StartMovSpdBuff(transform.parent.gameObject, _scriptable._movSpdBuffValue, _scriptable._buffDurationTime);
 
@@ -31,8 +27,6 @@ public class Dodge : MonoBehaviour
             time -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-
-        coll.enabled = true;
 
         Destroy(gameObject);
     }

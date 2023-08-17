@@ -63,9 +63,14 @@ public class Player_DB_Anim : MonoBehaviour
         for(int i = 0; i < (int)WeaponType.Max; i++)
         {
             if(i == (int)weapon)
+            {
                 _weaponLst[i].SetActive(true);
+                _anim.runtimeAnimatorController = _animLst[i];
+            }
             else
+            {
                 _weaponLst[i].SetActive(false);
+            } 
         }
     }
     void StartSkillAnim(SkillManager.Skills type) // 무기, 스킬타입을 인자로 받는다.
