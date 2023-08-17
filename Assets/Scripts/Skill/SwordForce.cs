@@ -6,6 +6,8 @@ public class SwordForce : MonoBehaviour
 {
     SkillScriptable _scriptable;
 
+    public GameObject _hitObj;
+
     float _startTime; // 시작시간
     float _duringTime; // 지속시간
 
@@ -52,11 +54,17 @@ public class SwordForce : MonoBehaviour
                     else
                         bossStat.SetDamage(_atk);
 
+                    HitObj(coll.gameObject.transform.position);
                     _damagedTargets.Add(coll.gameObject);
                 }
             }
         }
         else
             Destroy(gameObject);
+    }
+    void HitObj(Vector3 pos)
+    {
+        GameObject obj = Instantiate(_hitObj, pos, Quaternion.identity).gameObject;
+        Destroy(obj, 0.5f);
     }
 }

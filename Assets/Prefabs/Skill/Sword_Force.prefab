@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 623986040524750555}
-  - component: {fileID: 8546924579500426152}
   - component: {fileID: 4993940603394601706}
   m_Layer: 0
   m_Name: Sword_Force
@@ -34,25 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8546924579500426152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697813242102494417}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaa5cb770ff50fd45be824531ff122e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 2.5
-  MoveSpeed: 10
-  AbleHit: 1
-  HitDelay: 0.1
-  m_hitObject: {fileID: 3051192656727342104, guid: 9094ea6123d59ee489baa2bccc2416de, type: 3}
-  MaxLength: 0.5
-  DestroyTime2: 0.3
 --- !u!114 &4993940603394601706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bcea441d1e7803438fd34681974dba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitObj: {fileID: 3051192656727342104, guid: 9094ea6123d59ee489baa2bccc2416de, type: 3}
 --- !u!1 &6028576630217689627
 GameObject:
   m_ObjectHideFlags: 0
