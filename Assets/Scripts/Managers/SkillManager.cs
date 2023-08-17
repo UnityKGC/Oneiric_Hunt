@@ -13,12 +13,15 @@ public class SkillManager : MonoBehaviour
         WeaponSwap,
         Dodge,
 
+        Slash,
         SwordForce,
         SpaceCut,
 
+        Stabing,
         Sweep,
         Challenge,
 
+        Takedown,
         WindMill,
         Berserk,
     }
@@ -67,6 +70,10 @@ public class SkillManager : MonoBehaviour
                 StartCoroutine(StartDodge(_skills[(int)skill], playerPos, playerRot, parent));
                 break;
 
+            case Skills.Slash:
+                StartCoroutine(StartSlash(_skills[(int)skill], playerAtk, playerPos, playerRot, parent));
+                break;
+
             case Skills.SwordForce:
                 StartCoroutine(StartSwordForce(_skills[(int)skill], playerAtk, playerPos, playerRot, parent));
                 break;
@@ -75,12 +82,20 @@ public class SkillManager : MonoBehaviour
                 StartCoroutine(StartSpaceCut(_skills[(int)skill], playerAtk, playerPos, playerRot, parent));
                 break;
 
+            case Skills.Stabing:
+                StartCoroutine(StartStabing(_skills[(int)skill], playerAtk, playerPos, playerRot, parent));
+                break;
+
             case Skills.Sweep:
                 StartCoroutine(StartSweep(_skills[(int)skill], playerAtk, playerPos, playerRot, parent));
                 break;
 
             case Skills.Challenge:
                 StartCoroutine(StartChallenge(_skills[(int)skill], playerAtk, playerPos, playerRot, parent));
+                break;
+
+            case Skills.Takedown:
+                StartCoroutine(StartTakedown(_skills[(int)skill], playerAtk, playerPos, playerRot, parent));
                 break;
 
             case Skills.WindMill:
@@ -124,9 +139,21 @@ public class SkillManager : MonoBehaviour
 
         yield return null;
     }
-    public void StartCut(float playerAtk, Vector3 playerPos, Quaternion playerRot)
+    IEnumerator StartSlash(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
+        _isSkilling = true; // 스킬 사용 중
 
+        yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
+
+        EndSkill();
+
+        Vector3 forward = playerRot * Vector3.forward;
+
+        GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Slash], playerPos + forward, playerRot, parent);
+
+        obj.GetComponent<Slash>().Init(scriptable, playerAtk); // 인자에 플레이어 공격력을 넣는다.
+
+        _useSkill.Add(obj);
     }
 
     IEnumerator StartSwordForce(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
@@ -164,6 +191,21 @@ public class SkillManager : MonoBehaviour
         _useSkill.Add(obj);
     }
 
+    IEnumerator StartStabing(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
+    {
+        _isSkilling = true; // 스킬 사용 중
+
+        yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
+
+        EndSkill();
+
+        GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Stabing], playerPos, playerRot, parent);
+
+        obj.GetComponent<Stabing>().Init(scriptable, playerAtk); // 인자에 플레이어 공격력을 넣는다.
+
+        _useSkill.Add(obj);
+    }
+
     IEnumerator StartSweep(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
         _isSkilling = true; // 스킬 사용 중
@@ -195,6 +237,22 @@ public class SkillManager : MonoBehaviour
         _useSkill.Add(obj);
     }
 
+    IEnumerator StartTakedown(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
+    {
+        _isSkilling = true; // 스킬 사용 중
+
+        yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
+
+        EndSkill();
+
+        Vector3 forward = playerRot * Vector3.forward * 2;
+
+        GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Takedown], playerPos + forward, playerRot, parent);
+
+        obj.GetComponent<Takedown>().Init(scriptable, playerAtk); // 인자에 플레이어 공격력을 넣는다.
+
+        _useSkill.Add(obj);
+    }
     IEnumerator StartWindMill(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
         _isSkilling = true; // 스킬 사용 중

@@ -48,16 +48,21 @@ public class Player_DB_Skill : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            float dmg;
             switch (Weapon)
             {
                 case WeaponType.Sword:
-
+                    dmg = Random.Range(_stat.SwordMinAtk, _stat.SwordMaxAtk);
+                    SkillManager._instance.StartSkill(SkillManager.Skills.Slash, dmg, transform.position, transform.rotation);
+                    _anim.CrossFade(Player_DB_State.DB_State.Skill, SkillManager.Skills.Slash);
                     break;
                 case WeaponType.Spear:
-
+                    dmg = Random.Range(_stat.SpearMinAtk, _stat.SpearMaxAtk);
+                    SkillManager._instance.StartSkill(SkillManager.Skills.Stabing, dmg, transform.position, transform.rotation);
                     break;
                 case WeaponType.Axe:
-
+                    dmg = Random.Range(_stat.AxeMinAtk, _stat.AxeMaxAtk);
+                    SkillManager._instance.StartSkill(SkillManager.Skills.Takedown, dmg, transform.position, transform.rotation);
                     break;
             }
         }

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac9a31d2a313804383c3afcf2230350, type: 3}
+  m_Name: Stabing
+  m_EditorClassIdentifier: 
+  _skillName: Stabing
+  _skillAmount: 0.5
+  _damageAmount: 0.5
+  _durationTime: 1
+  _remainTime: 3
+  _castTime: 0.5
+  _skillCoolTime: 3
+  _damageDelay: 0
+  _damageValue: 1
+  _damage: 0
+  _moveSpd: 0
+  _buffDurationTime: 0
+  _atkBuffValue: 0
+  _defBuffValue: 0
+  _movSpdBuffValue: 0
+  _atkDeBuffValue: 0
+  _defDeBuffValue: 0
+  _movSpdDeBuffValue: 0
+  _isAble: 1
