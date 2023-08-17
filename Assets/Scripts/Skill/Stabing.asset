@@ -17,7 +17,7 @@ MonoBehaviour:
   _damageAmount: 0.5
   _durationTime: 1
   _remainTime: 3
-  _castTime: 0.5
+  _castTime: 0.8
   _skillCoolTime: 3
   _damageDelay: 0
   _damageValue: 1

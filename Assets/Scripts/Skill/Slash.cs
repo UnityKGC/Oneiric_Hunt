@@ -51,9 +51,4 @@ public class Slash : MonoBehaviour
     {
         
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(_point0, _dmgAmount);
-        Gizmos.DrawWireSphere(_point1, _dmgAmount);
-    }
 }

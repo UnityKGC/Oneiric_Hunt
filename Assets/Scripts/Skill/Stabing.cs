@@ -29,8 +29,8 @@ public class Stabing : MonoBehaviour
 
     void Start()
     {
-        _point0 = transform.forward * 2;
-        _point1 = transform.forward;
+        _point0 = transform.position + Vector3.forward * 2;
+        _point1 = transform.position + Vector3.forward;
 
         _colls = Physics.OverlapCapsule(_point0, _point1, _dmgAmount, _layerMask);
 
@@ -45,5 +45,10 @@ public class Stabing : MonoBehaviour
                 bossStat.SetDamage(_atk);
         }
         Destroy(gameObject, _durationTime);
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(_point0, _dmgAmount);
+        Gizmos.DrawWireSphere(_point1, _dmgAmount);
     }
 }
