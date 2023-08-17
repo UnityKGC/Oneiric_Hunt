@@ -58,6 +58,11 @@ public class Player_DB_Anim : MonoBehaviour
                 break;
         }
     }
+
+    public void StopAnim()
+    {
+        _anim.StopPlayback();
+    }
     public void ChangeWeapon(WeaponType weapon)
     {
         for(int i = 0; i < (int)WeaponType.Max; i++)
