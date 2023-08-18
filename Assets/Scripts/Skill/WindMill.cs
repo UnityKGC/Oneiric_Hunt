@@ -91,7 +91,7 @@ public class WindMill : MonoBehaviour
         }
         else
         {
-            
+            SkillManager._instance.EndSkill();
             Destroy(gameObject);
         }
             

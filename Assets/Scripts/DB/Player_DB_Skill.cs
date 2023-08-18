@@ -64,6 +64,7 @@ public class Player_DB_Skill : MonoBehaviour
                 case WeaponType.Axe:
                     dmg = Random.Range(_stat.AxeMinAtk, _stat.AxeMaxAtk);
                     SkillManager._instance.StartSkill(SkillManager.Skills.Takedown, dmg, transform.position, transform.rotation);
+                    _anim.CrossFade(Player_DB_State.DB_State.Skill, SkillManager.Skills.Takedown);
                     break;
             }
         }

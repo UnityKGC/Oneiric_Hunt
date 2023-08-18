@@ -58,6 +58,7 @@ public class Player_DB_Anim : MonoBehaviour
                 break;
         }
     }
+
     public void ChangeWeapon(WeaponType weapon)
     {
         for(int i = 0; i < (int)WeaponType.Max; i++)
@@ -73,6 +74,7 @@ public class Player_DB_Anim : MonoBehaviour
             } 
         }
     }
+
     void StartSkillAnim(SkillManager.Skills type) // 무기, 스킬타입을 인자로 받는다.
     {
         if (!SkillManager._instance.CheckCoolTime(type)) return; // 사용하려는 스킬을 아직 사용하지 못하면 리턴

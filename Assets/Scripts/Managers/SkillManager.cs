@@ -214,9 +214,7 @@ public class SkillManager : MonoBehaviour
 
         EndSkill();
 
-        Vector3 forward = playerRot * Vector3.forward * 2;
-
-        GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Sweep], playerPos + forward, playerRot, parent);
+        GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Sweep], playerPos + Vector3.up * 1.5f, playerRot, parent);
 
         obj.GetComponent<Sweep>().Init(scriptable, playerAtk); // 인자에 플레이어 공격력을 넣는다.
 
@@ -245,7 +243,7 @@ public class SkillManager : MonoBehaviour
 
         EndSkill();
 
-        Vector3 forward = playerRot * Vector3.forward * 2;
+        Vector3 forward = playerRot * Vector3.forward;
 
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Takedown], playerPos + forward, playerRot, parent);
 
@@ -259,8 +257,6 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime);
 
-        EndSkill();
-
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.WindMill], playerPos, Quaternion.identity, parent);
 
         obj.GetComponent<WindMill>().Init(scriptable, playerAtk, parent); // 인자에 플레이어 공격력을 넣는다.
@@ -272,8 +268,6 @@ public class SkillManager : MonoBehaviour
         _isSkilling = true; // 스킬 사용 중
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
-
-        EndSkill();
 
         Vector3 down = Vector3.down * 1.5f;
 

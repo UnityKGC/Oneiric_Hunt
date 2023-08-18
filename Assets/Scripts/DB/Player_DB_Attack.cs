@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Player_DB_Attack : MonoBehaviour
 {
+    [SerializeField] Collider[] _weaponColls;
+
     private PlayerStat _stat;
     private Player_DB_Anim _anim;
     private Player_DB_Move _move;
     private Coroutine _atkCo;
+    private Collider _weaponColl;
 
     public bool _isAttack = false; // 외부에서 플레이어가 공격을 그만 뒀는지 확인하는 변수
     private bool _ischeckAttack = false; // 내부에서 플레이어의 공격을 했는지 확인하는 변수
@@ -31,7 +34,8 @@ public class Player_DB_Attack : MonoBehaviour
     }
     void Start()
     {
-
+        _weaponColl = GameObject.FindWithTag("PlayerAtk").GetComponent<Collider>();
+        _weaponColl.enabled = false; // 무기 collider의 기본은 false
     }
     void Update()
     {
@@ -100,6 +104,7 @@ public class Player_DB_Attack : MonoBehaviour
                 _startStopAtkTime = Time.time;*/
             StopAllCoroutines();
             _isAttack = false;
+            _weaponColl.enabled = false;
             _ischeckAttack = false;
             _isFirstAttack = _isSecondAtk = _isThirdAtk = false;
             /*
@@ -120,9 +125,11 @@ public class Player_DB_Attack : MonoBehaviour
     IEnumerator StartAttackDelayTime() // 공격 딜레이
     {
         _ischeckAttack = true;
+        AttackStart();
 
         yield return new WaitForSeconds(_atkDelay);
-
+        
+        AttackEnd();
         _ischeckAttack = false;
     }
     void FixedUpdate()
@@ -141,5 +148,25 @@ public class Player_DB_Attack : MonoBehaviour
             float dmg = other.GetComponentInParent<BossStat>().GetDamage();
             _stat.SetDamage(dmg);
         }
+    }
+    public void ChangeWeapon(WeaponType weapon) // 무기 Collider를 갱신;
+    {
+        for (int i = 0; i < (int)WeaponType.Max; i++)
+        {
+            if (i == (int)weapon)
+            {
+                _weaponColl = _weaponColls[i];
+                return;
+            }
+        }
+    }
+
+    public void AttackStart()
+    {
+        _weaponColl.enabled = true;
+    }
+    public void AttackEnd()
+    {
+        _weaponColl.enabled = false;
     }
 }

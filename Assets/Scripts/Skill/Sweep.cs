@@ -7,7 +7,7 @@ public class Sweep : MonoBehaviour
     SkillScriptable _scriptable;
     Collider[] colls;
 
-    float _dmgAmount = 7f; // 스킬 범위
+    float _dmgAmount; // 스킬 범위
 
     float _atk; // 최종 스킬 공격력
 
@@ -37,5 +37,10 @@ public class Sweep : MonoBehaviour
                 bossStat.SetDamage(_atk);
         }
         Destroy(gameObject, 1f);
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _dmgAmount);
     }
 }

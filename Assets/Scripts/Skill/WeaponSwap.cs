@@ -8,6 +8,7 @@ public class WeaponSwap : MonoBehaviour
 
     //PlayerSkill _playerSkill;
     Player_DB_Skill _playerSkill;
+    Player_DB_Attack _playerAtk;
     Player_DB_Anim _anim;
     public void Init(SkillScriptable scriptable)
     {
@@ -17,6 +18,7 @@ public class WeaponSwap : MonoBehaviour
 
         //_playerSkill = GetComponentInParent<PlayerSkill>();
         _playerSkill = GetComponentInParent<Player_DB_Skill>();
+        _playerAtk = GetComponentInParent<Player_DB_Attack>();
         _anim = GetComponentInParent<Player_DB_Anim>();
         if (_playerSkill != null)
         {
@@ -34,6 +36,7 @@ public class WeaponSwap : MonoBehaviour
             }
             UIManager._instacne.SetWeapon(_playerSkill.Weapon);
             _anim.ChangeWeapon(_playerSkill.Weapon);
+            _playerAtk.ChangeWeapon(_playerSkill.Weapon);
         }
         Destroy(gameObject);
     }
