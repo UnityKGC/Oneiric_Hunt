@@ -9,6 +9,7 @@ public class BuffManager : MonoBehaviour
     public GameObject _buff;
     public GameObject _deBuff;
 
+
     private void Awake()
     {
         _instance = this;
@@ -28,6 +29,7 @@ public class BuffManager : MonoBehaviour
 
         Buff buff = obj.GetComponent<Buff>();
 
+        UIManager._instacne._buffEvt.Invoke(time);
         buff.StartAtkBuff(target, value, time);
     }
     public void StartDefBuff(GameObject target, float value, float time)
@@ -36,6 +38,7 @@ public class BuffManager : MonoBehaviour
 
         Buff buff = obj.GetComponent<Buff>();
 
+        UIManager._instacne._buffEvt.Invoke(time);
         buff.StartDefBuff(target, value, time);
 
     }
@@ -45,6 +48,7 @@ public class BuffManager : MonoBehaviour
 
         Buff buff = obj.GetComponent<Buff>();
 
+        UIManager._instacne._buffEvt.Invoke(time);
         buff.StartMovSpdBuff(target, value, time);
     }
 
@@ -54,6 +58,7 @@ public class BuffManager : MonoBehaviour
 
         DeBuff debuff = obj.GetComponent<DeBuff>();
 
+        UIManager._instacne._buffEvt.Invoke(time);
         debuff.StartAtkDeBuff(target, value, time);
     }
     
@@ -63,6 +68,7 @@ public class BuffManager : MonoBehaviour
 
         DeBuff debuff = obj.GetComponent<DeBuff>();
 
+        UIManager._instacne._buffEvt.Invoke(time);
         debuff.StartDefDeBuff(target, value, time);
     }
     
@@ -72,6 +78,7 @@ public class BuffManager : MonoBehaviour
 
         DeBuff debuff = obj.GetComponent<DeBuff>();
 
+        UIManager._instacne._buffEvt.Invoke(time);
         debuff.StartMovSpdDeBuff(target, value, time);
     }
 }
