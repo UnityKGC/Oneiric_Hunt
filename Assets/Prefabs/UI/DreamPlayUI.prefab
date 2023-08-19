@@ -1,5 +1,95 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &341397313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 341397314}
+  - component: {fileID: 341397317}
+  - component: {fileID: 341397316}
+  - component: {fileID: 341397315}
+  m_Layer: 5
+  m_Name: BuffUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &341397314
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341397313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6476161397098933024}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 1, y: 1}
+--- !u!222 &341397317
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341397313}
+  m_CullTransparentMesh: 1
+--- !u!114 &341397316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341397313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 2
+  m_StartCorner: 1
+  m_StartAxis: 1
+  m_CellSize: {x: 90, y: 90}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
+--- !u!114 &341397315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341397313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cf184208aa00842ac8b33238b9c2dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buffList:
+  - {fileID: 2225360887247622498, guid: 01ee5269dcc36464e8411c096b7e25cc, type: 3}
+  - {fileID: 2225360887247622498, guid: bd4e203c4c9d05a4cba8b5fe69e18228, type: 3}
+  - {fileID: 2225360887247622498, guid: 04f3ae56450d34e49a9a6be5d38860a6, type: 3}
+  - {fileID: 2225360887247622498, guid: 895abdc3fb24b794ba4c9dc8b5ab40c8, type: 3}
+  - {fileID: 2225360887247622498, guid: cdf4e390ba64c2e40b30db8a44322d71, type: 3}
+  - {fileID: 2225360887247622498, guid: e2654c70b3f99784c95b74ca6545995e, type: 3}
 --- !u!1 &6476161395015982174
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +406,7 @@ GameObject:
   - component: {fileID: 6476161395152726652}
   - component: {fileID: 6476161395152726653}
   m_Layer: 5
-  m_Name: StabBack
+  m_Name: StabingBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,7 +482,7 @@ GameObject:
   - component: {fileID: 6476161395167482499}
   - component: {fileID: 6476161395167482496}
   m_Layer: 5
-  m_Name: StabFront
+  m_Name: StabingFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1036,7 +1126,7 @@ GameObject:
   - component: {fileID: 6476161395682907292}
   - component: {fileID: 6476161395682907293}
   m_Layer: 5
-  m_Name: HewFront
+  m_Name: TakedownFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1148,7 +1238,7 @@ GameObject:
   - component: {fileID: 6476161395727707150}
   - component: {fileID: 6476161395727707151}
   m_Layer: 5
-  m_Name: CutBack
+  m_Name: SlashBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1346,7 +1436,7 @@ GameObject:
   - component: {fileID: 6476161396085876667}
   - component: {fileID: 6476161396085876645}
   m_Layer: 5
-  m_Name: Hew
+  m_Name: Takedown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1672,10 +1762,13 @@ MonoBehaviour:
   _skillFrontImgLst:
   - {fileID: 6476161395191021622}
   - {fileID: 6476161396254524485}
+  - {fileID: 6476161396561921942}
   - {fileID: 6476161396983571039}
   - {fileID: 6476161395194815012}
+  - {fileID: 6476161395167482496}
   - {fileID: 6476161395047948871}
   - {fileID: 6476161395138693571}
+  - {fileID: 6476161395682907293}
   - {fileID: 6476161395650338889}
   - {fileID: 6476161397048144485}
   _weaponSkillLst:
@@ -1897,7 +1990,7 @@ GameObject:
   - component: {fileID: 6476161396466624051}
   - component: {fileID: 6476161396466624061}
   m_Layer: 5
-  m_Name: Cut
+  m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1945,7 +2038,7 @@ GameObject:
   - component: {fileID: 6476161396561921937}
   - component: {fileID: 6476161396561921942}
   m_Layer: 5
-  m_Name: SwapFront
+  m_Name: SlashFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2060,7 +2153,7 @@ GameObject:
   - component: {fileID: 6476161396634251603}
   - component: {fileID: 6476161396634251600}
   m_Layer: 5
-  m_Name: HewBack
+  m_Name: TakedownBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2680,7 +2773,7 @@ GameObject:
   - component: {fileID: 6476161397073762093}
   - component: {fileID: 6476161397073762095}
   m_Layer: 5
-  m_Name: Stab
+  m_Name: Stabing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2856,7 +2949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6476161397098933024
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2871,6 +2964,7 @@ RectTransform:
   m_Children:
   - {fileID: 6476161396199856486}
   - {fileID: 6476161396428697287}
+  - {fileID: 341397314}
   m_Father: {fileID: 6898355763862059810}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3033,7 +3127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6898355763862059810
 RectTransform:
   m_ObjectHideFlags: 0

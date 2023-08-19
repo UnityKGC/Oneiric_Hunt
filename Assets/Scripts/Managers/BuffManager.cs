@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class BuffManager : MonoBehaviour
 {
+    public enum BuffType
+    {
+        None = -1,
+
+        AtkUp,
+        AtkDown,
+
+        DefUp,
+        DefDown,
+
+        MovSpdUp,
+        MovSpdDown,
+    }
     public static BuffManager _instance;
 
     public GameObject _buff;
     public GameObject _deBuff;
-
-
     private void Awake()
     {
         _instance = this;
@@ -29,7 +40,7 @@ public class BuffManager : MonoBehaviour
 
         Buff buff = obj.GetComponent<Buff>();
 
-        UIManager._instacne._buffEvt.Invoke(time);
+        UIManager._instacne.StartBuffUI(BuffType.AtkUp, time);
         buff.StartAtkBuff(target, value, time);
     }
     public void StartDefBuff(GameObject target, float value, float time)
@@ -38,7 +49,7 @@ public class BuffManager : MonoBehaviour
 
         Buff buff = obj.GetComponent<Buff>();
 
-        UIManager._instacne._buffEvt.Invoke(time);
+        UIManager._instacne.StartBuffUI(BuffType.DefUp, time);
         buff.StartDefBuff(target, value, time);
 
     }
@@ -48,7 +59,7 @@ public class BuffManager : MonoBehaviour
 
         Buff buff = obj.GetComponent<Buff>();
 
-        UIManager._instacne._buffEvt.Invoke(time);
+        UIManager._instacne.StartBuffUI(BuffType.MovSpdUp, time);
         buff.StartMovSpdBuff(target, value, time);
     }
 
@@ -58,7 +69,7 @@ public class BuffManager : MonoBehaviour
 
         DeBuff debuff = obj.GetComponent<DeBuff>();
 
-        UIManager._instacne._buffEvt.Invoke(time);
+        UIManager._instacne.StartBuffUI(BuffType.AtkDown, time);
         debuff.StartAtkDeBuff(target, value, time);
     }
     
@@ -68,7 +79,7 @@ public class BuffManager : MonoBehaviour
 
         DeBuff debuff = obj.GetComponent<DeBuff>();
 
-        UIManager._instacne._buffEvt.Invoke(time);
+        UIManager._instacne.StartBuffUI(BuffType.DefDown, time);
         debuff.StartDefDeBuff(target, value, time);
     }
     
@@ -78,7 +89,7 @@ public class BuffManager : MonoBehaviour
 
         DeBuff debuff = obj.GetComponent<DeBuff>();
 
-        UIManager._instacne._buffEvt.Invoke(time);
+        UIManager._instacne.StartBuffUI(BuffType.MovSpdDown, time);
         debuff.StartMovSpdDeBuff(target, value, time);
     }
 }
