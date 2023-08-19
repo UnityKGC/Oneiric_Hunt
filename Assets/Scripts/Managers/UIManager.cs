@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     public Action<SkillScriptable, SkillManager.Skills> _skillEvt = null; // 스킬 스크립터블을 이용하여 스킬 쿨타임 확인
     
     public Action<BuffManager.BuffEffect, float> _buffEvt = null; // 지속 시간을 이용하여 버프 UI 구현.
-    public Action<BuffManager.BuffEffect, float> _enemyBuffEvt = null; // 적 버프 UI
+    public Action<Transform, BuffManager.BuffEffect, float> _enemyBuffEvt = null; // 적 버프 UI
 
     public Action<WeaponType> _weaponEvt = null; // 무기 변경 시 호출 => 현재 무기를 알려줌
     public Action _endBattleEvt = null; // 전투가 끝났을 시,
@@ -173,9 +173,9 @@ public class UIManager : MonoBehaviour
     {
         _buffEvt?.Invoke(type, durationTime);
     }
-    public void StartEnemyBuffUI(BuffManager.BuffEffect type, float durationTime)
+    public void StartEnemyBuffUI(Transform target, BuffManager.BuffEffect type, float durationTime)
     {
-        _enemyBuffEvt?.Invoke(type, durationTime);
+        _enemyBuffEvt?.Invoke(target, type, durationTime);
     }
     #endregion
 

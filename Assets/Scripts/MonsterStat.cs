@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterStat : Stat
 {
+    public EnemyCanvas _canvas;
 
     private bool _isDead;
 
@@ -32,7 +33,9 @@ public class MonsterStat : Stat
 
         HP -= dmg;
 
-        if(HP <= 0)
+        _canvas.SetHPAmount(HP / MaxHp);
+
+        if (HP <= 0)
         {
             _isDead = true;
 

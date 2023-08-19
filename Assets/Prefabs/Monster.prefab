@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1497477463}
   - component: {fileID: 1497477462}
   - component: {fileID: 1497477461}
-  - component: {fileID: 1497477464}
+  - component: {fileID: 2960858608752901860}
   m_Layer: 5
   m_Name: UIs
   m_TagString: Untagged
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1497477464
+--- !u!114 &2960858608752901860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,7 +191,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629c1faa9bd0eee44b06ac468186aca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _buffGridLayout: {fileID: 59059283053763153}
   _frontImg: {fileID: 660751511}
+  _buffList:
+  - {fileID: 2225360887247622498, guid: 01ee5269dcc36464e8411c096b7e25cc, type: 3}
+  - {fileID: 2225360887247622498, guid: bd4e203c4c9d05a4cba8b5fe69e18228, type: 3}
+  - {fileID: 2225360887247622498, guid: 04f3ae56450d34e49a9a6be5d38860a6, type: 3}
+  - {fileID: 2225360887247622498, guid: 895abdc3fb24b794ba4c9dc8b5ab40c8, type: 3}
+  - {fileID: 2225360887247622498, guid: cdf4e390ba64c2e40b30db8a44322d71, type: 3}
+  - {fileID: 2225360887247622498, guid: e2654c70b3f99784c95b74ca6545995e, type: 3}
 --- !u!1 &2047444746
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,7 +528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cda82cead7b0e41b2e0c97d3e49ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 0}
   _state: 0
   _hand: {fileID: 2611737001504727086}
   _dist: 0
@@ -544,6 +551,7 @@ MonoBehaviour:
   _maxAtk: 10
   _defense: 3
   _moveSpd: 3
+  _canvas: {fileID: 2960858608752901860}
   _id: 100
 --- !u!1 &3203560896457641558
 GameObject:
@@ -595,7 +603,6 @@ GameObject:
   - component: {fileID: 59059283053763153}
   - component: {fileID: 1080229831760026165}
   - component: {fileID: 1453320388668124454}
-  - component: {fileID: 9042010353843527790}
   m_Layer: 5
   m_Name: Buffs
   m_TagString: Untagged
@@ -640,8 +647,8 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 6
-  m_StartCorner: 2
+  m_ChildAlignment: 2
+  m_StartCorner: 1
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
   m_Spacing: {x: 0, y: 0}
@@ -655,22 +662,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8622717817626278588}
   m_CullTransparentMesh: 1
---- !u!114 &9042010353843527790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8622717817626278588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cbf8454b11eeb345b84a3e6510c65be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _buffList:
-  - {fileID: 2225360887247622498, guid: 01ee5269dcc36464e8411c096b7e25cc, type: 3}
-  - {fileID: 2225360887247622498, guid: bd4e203c4c9d05a4cba8b5fe69e18228, type: 3}
-  - {fileID: 2225360887247622498, guid: 04f3ae56450d34e49a9a6be5d38860a6, type: 3}
-  - {fileID: 2225360887247622498, guid: 895abdc3fb24b794ba4c9dc8b5ab40c8, type: 3}
-  - {fileID: 2225360887247622498, guid: cdf4e390ba64c2e40b30db8a44322d71, type: 3}
-  - {fileID: 2225360887247622498, guid: e2654c70b3f99784c95b74ca6545995e, type: 3}

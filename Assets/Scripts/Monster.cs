@@ -12,7 +12,6 @@ public class Monster : MonoBehaviour
         Hit, // 공격 받음
         Die,
     }
-    public EnemyCanvas _canvas;
     public MonsterState State { get { return _state; } set { _state = value; } }
 
     [SerializeField]
@@ -129,7 +128,7 @@ public class Monster : MonoBehaviour
         if(other.gameObject.CompareTag("PlayerAtk"))
         {
             _stat.SetDamage(other.GetComponentInParent<PlayerStat>().GetDamage());
-            _canvas.SetHPAmount(_stat.HP / _stat.MaxHp);
+            
         }
     }
 }

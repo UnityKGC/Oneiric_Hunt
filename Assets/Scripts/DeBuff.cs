@@ -69,7 +69,7 @@ public class DeBuff : MonoBehaviour
                 UIManager._instacne.StartPlayerBuffUI(type, time);
                 break;
             case Stat.TypeEnum.Enemy:
-                UIManager._instacne.StartEnemyBuffUI(type, time);
+                UIManager._instacne.StartEnemyBuffUI(transform.parent, type, time);
                 break;
         }
 
