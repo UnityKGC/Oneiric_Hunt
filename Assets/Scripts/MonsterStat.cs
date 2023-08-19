@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterStat : Stat
 {
+
     private bool _isDead;
 
     [SerializeField] int _id; // 몬스터 id
@@ -28,6 +29,7 @@ public class MonsterStat : Stat
         if (_isDead) return; // 죽을 때 계속 2번 죽어서 조건 추가하여 버그 방지
 
         float dmg = value - Defense;
+
         HP -= dmg;
 
         if(HP <= 0)
