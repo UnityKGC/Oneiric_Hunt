@@ -166,9 +166,13 @@ public class UIManager : MonoBehaviour
         _catchUIEvt?.Invoke(value);
     }
 
-    public void StartBuffUI(BuffManager.BuffType type, float durationTime) // 버프 타입과 지속 시간을 인자로 받아, UI호출 => 이 함수는 버프 매니저에서 호출된다.
+    public void StartPlayerBuffUI(BuffManager.BuffType type, float durationTime) // 버프 타입과 지속 시간을 인자로 받아, UI호출 => 이 함수는 버프 매니저에서 호출된다.
     {
         _buffEvt?.Invoke(type, durationTime);
+    }
+    public void StartEnemyBuffUI(BuffManager.BuffType type, float durationTime)
+    {
+
     }
     #endregion
 

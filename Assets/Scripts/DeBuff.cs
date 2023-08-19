@@ -52,6 +52,7 @@ public class DeBuff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.AtkDown, time);
             StartCoroutine(StartPlayerAtkDeBuffCo(value));
         }
         else if(_monsterStat != null)
@@ -161,6 +162,7 @@ public class DeBuff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.DefDown, time);
             StartCoroutine(StartPlayerDefDeBuffCo(value));
         }
         else if (_monsterStat != null)
@@ -244,6 +246,7 @@ public class DeBuff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.MovSpdDown, time);
             StartCoroutine(StartPlayerMovSpdDeBuffCo(value));
         }
         else if (_monsterStat != null)

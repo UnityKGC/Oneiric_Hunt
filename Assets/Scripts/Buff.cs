@@ -47,6 +47,7 @@ public class Buff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.AtkUp, time);
             StartCoroutine(StartPlayerAtkBuffCo(value));
         }
         else if (_monsterStat != null)
@@ -95,6 +96,7 @@ public class Buff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.DefUp, time);
             StartCoroutine(StartPlayerDefBuffCo(value));
         }
         else if (_monsterStat != null)
@@ -144,6 +146,7 @@ public class Buff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.MovSpdUp, time);
             StartCoroutine(StartPlayerMovSpdBuffCo(value));
         }
         else if (_monsterStat != null)
@@ -301,7 +304,7 @@ public class Buff : MonoBehaviour
         _monsterStat.MoveSpd -= _upBossMoveSpd;
     }
 
-    void FindStat(GameObject target)
+    void FindStat(GameObject target) // 내가 누구에게 와 있는가 찾는 것.
     {
         _playerStat = target.GetComponent<PlayerStat>();
         _monsterStat = target.GetComponent<MonsterStat>();
