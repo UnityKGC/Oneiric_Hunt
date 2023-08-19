@@ -41,7 +41,8 @@ public class Stench : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             StatusManager._instance.StartPoison(other.gameObject, _statusDmgValue, _statusDuringTime);
-            BuffManager._instance.StartMovSpdDeBuff(other.gameObject, _deBuffValue, _deBuffDuringTime);
+
+            BuffManager._instance.StartDeBuff(BuffManager.BuffEffect.MovSpdDown, other.gameObject, _deBuffValue, _deBuffDuringTime);
         }
     }
 }

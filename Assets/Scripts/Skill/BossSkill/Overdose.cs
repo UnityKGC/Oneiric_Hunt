@@ -21,7 +21,9 @@ public class Overdose : MonoBehaviour
         _bossStat = GetComponentInParent<BossStat>();
         _downHp = _bossStat.HP * _downHpValue;
         StartCoroutine(StartDamage());
-        BuffManager._instance.StartAtkBuff(gameObject.transform.parent.gameObject, _upValue, _buffDuringTime);
+        
+        BuffManager._instance.StartBuff(BuffManager.BuffEffect.AtkUp, transform.parent.gameObject, _upValue, _buffDuringTime);
+
         BossSkillManager._instance._isSkilling = false;
         BossSkillManager._instance.EndSkill();
     }

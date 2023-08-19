@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     public Action<GameManager.PlayState> _playStateEvt = null; // 게임의 현재 진행 상태
 
     public Action<SkillScriptable, SkillManager.Skills> _skillEvt = null; // 스킬 스크립터블을 이용하여 스킬 쿨타임 확인
-    public Action<BuffManager.BuffType, float> _buffEvt = null; // 지속 시간을 이용하여 버프 UI 구현.
+    public Action<BuffManager.BuffEffect, float> _buffEvt = null; // 지속 시간을 이용하여 버프 UI 구현.
     public Action<WeaponType> _weaponEvt = null; // 무기 변경 시 호출 => 현재 무기를 알려줌
     public Action _endBattleEvt = null; // 전투가 끝났을 시,
 
@@ -166,11 +166,11 @@ public class UIManager : MonoBehaviour
         _catchUIEvt?.Invoke(value);
     }
 
-    public void StartPlayerBuffUI(BuffManager.BuffType type, float durationTime) // 버프 타입과 지속 시간을 인자로 받아, UI호출 => 이 함수는 버프 매니저에서 호출된다.
+    public void StartPlayerBuffUI(BuffManager.BuffEffect type, float durationTime) // 버프 타입과 지속 시간을 인자로 받아, UI호출 => 이 함수는 버프 매니저에서 호출된다.
     {
         _buffEvt?.Invoke(type, durationTime);
     }
-    public void StartEnemyBuffUI(BuffManager.BuffType type, float durationTime)
+    public void StartEnemyBuffUI(BuffManager.BuffEffect type, float durationTime)
     {
 
     }

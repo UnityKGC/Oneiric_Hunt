@@ -50,7 +50,7 @@ public class Guardian : MonoBehaviour
                 float hp = _monsterStat.HP * _upHpValue; // 체력 회복
                 _monsterStat.HP += hp;
 
-                BuffManager._instance.StartDefBuff(other.gameObject, _upDefValue, _buffDuringTime);
+                BuffManager._instance.StartBuff(BuffManager.BuffEffect.DefUp, other.gameObject, _upDefValue, _buffDuringTime);
             }
         }
     }

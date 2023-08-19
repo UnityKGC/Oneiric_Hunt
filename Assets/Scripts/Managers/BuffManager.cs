@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuffManager : MonoBehaviour
 {
-    public enum BuffType
+    public enum BuffEffect
     {
         None = -1,
 
@@ -34,6 +34,23 @@ public class BuffManager : MonoBehaviour
     {
 
     }
+    public void StartBuff(BuffEffect type, GameObject target, float value, float time)
+    {
+        GameObject obj = Instantiate(_buff, target.transform);
+
+        Buff buff = obj.GetComponent<Buff>();
+
+        buff.StartBuff(type, value, time);
+    }
+    public void StartDeBuff(BuffEffect type, GameObject target, float value, float time)
+    {
+        GameObject obj = Instantiate(_deBuff, target.transform);
+
+        DeBuff debuff = obj.GetComponent<DeBuff>();
+
+        debuff.StartDeBuff(type, value, time);
+    }
+    /*
     public void StartAtkBuff(GameObject target, float value, float time)
     {
         GameObject obj = Instantiate(_buff, target.transform);
@@ -85,5 +102,5 @@ public class BuffManager : MonoBehaviour
         DeBuff debuff = obj.GetComponent<DeBuff>();
 
         debuff.StartMovSpdDeBuff(target, value, time);
-    }
+    }*/
 }

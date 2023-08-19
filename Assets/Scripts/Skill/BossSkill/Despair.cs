@@ -62,8 +62,8 @@ public class Despair : MonoBehaviour
             {
                 // 버프매니저에게 버프를 사용한다고 알림
                 // BuffManager._instance.StartDeBuff(버프받을 대상, 버프 종류, 증감 비율값, );
-                BuffManager._instance.StartAtkDeBuff(GameManager._instance.Player, _downValue, _deBuffDuringTime);
-                BuffManager._instance.StartDefDeBuff(GameManager._instance.Player, _downValue, _deBuffDuringTime);
+                BuffManager._instance.StartDeBuff(BuffManager.BuffEffect.AtkDown, GameManager._instance.Player, _downValue, _deBuffDuringTime);
+                BuffManager._instance.StartDeBuff(BuffManager.BuffEffect.DefDown, GameManager._instance.Player, _downValue, _deBuffDuringTime);
             }
         }
     }

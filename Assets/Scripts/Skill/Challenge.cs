@@ -53,8 +53,8 @@ public class Challenge : MonoBehaviour
 
         GameObject player = GameManager._instance.Player;
 
-        BuffManager._instance.StartAtkBuff(player, _upAtkValue, _buffDuringTime);
-        BuffManager._instance.StartDefBuff(player, _upDefValue, _buffDuringTime);
+        BuffManager._instance.StartBuff(BuffManager.BuffEffect.AtkUp, player, _upAtkValue, _buffDuringTime);
+        BuffManager._instance.StartBuff(BuffManager.BuffEffect.DefUp, player, _upDefValue, _buffDuringTime);
 
         _colls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
 
@@ -68,8 +68,8 @@ public class Challenge : MonoBehaviour
             else
                 bossStat.SetDamage(_atk);
 
-            BuffManager._instance.StartAtkDeBuff(coll.gameObject, _downAtkValue, _buffDuringTime);
-            BuffManager._instance.StartDefDeBuff(coll.gameObject, _downDefValue, _buffDuringTime);
+            BuffManager._instance.StartDeBuff(BuffManager.BuffEffect.AtkDown, coll.gameObject, _downAtkValue, _buffDuringTime);
+            BuffManager._instance.StartDeBuff(BuffManager.BuffEffect.DefDown, coll.gameObject, _downDefValue, _buffDuringTime);
         }
     }
     void Update()

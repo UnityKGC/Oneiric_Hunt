@@ -13,7 +13,7 @@ public class BuffUI : MonoBehaviour
         UIManager._instacne._buffEvt += StartBuffUI;
     }
 
-    void StartBuffUI(BuffManager.BuffType type, float time) // 버프 지속 시간을 인자로 받아, UI 구현.
+    void StartBuffUI(BuffManager.BuffEffect type, float time) // 버프 지속 시간을 인자로 받아, UI 구현.
     {
         BuffUIDuration ui = Instantiate(_buffList[(int)type], transform).GetComponent<BuffUIDuration>(); // BuffUI 스크립트를 지닌 본인이 GridLayOutGroup을 지니고 있기에 본인을 부모로 설정
         
@@ -21,17 +21,17 @@ public class BuffUI : MonoBehaviour
         /* 혹시나 리팩토링 하고 나서 필요할 수 있으니까 ㅎㅎ
         switch (type)
         {
-            case BuffManager.BuffType.AtkUp:
+            case BuffManager.BuffEffect.AtkUp:
                 break;
-            case BuffManager.BuffType.AtkDown:
+            case BuffManager.BuffEffect.AtkDown:
                 break;
-            case BuffManager.BuffType.DefUp:
+            case BuffManager.BuffEffect.DefUp:
                 break;
-            case BuffManager.BuffType.DefDown:
+            case BuffManager.BuffEffect.DefDown:
                 break;
-            case BuffManager.BuffType.MovSpdUp:
+            case BuffManager.BuffEffect.MovSpdUp:
                 break;
-            case BuffManager.BuffType.MovSpdDown:
+            case BuffManager.BuffEffect.MovSpdDown:
                 break;
         }
         */

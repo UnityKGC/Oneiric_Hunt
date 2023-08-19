@@ -4,42 +4,91 @@ using UnityEngine;
 
 public class Buff : MonoBehaviour
 {
-    float _upSwordMinAtk; // 상승된 검 최소공격력
-    float _upSwordMaxAtk; // 상승된 검 최소공격력
+    float _upMinValue; // 따로 만든 이유 => Min Max가 증가한 수치를 저장하고 시간이 지난 후 그 수치만큼 감소해야함.
+    float _upMaxValue;
 
-    float _upSpearMinAtk;
-    float _upSpearMaxAtk;
+    float _upValue;
+    float _value;
 
-    float _upAxeMinAtk;
-    float _upAxeMaxAtk;
-
-    float _upDefense; // 상승된 방어력
-
-    float _upMonsterMinAtk;
-    float _upMonsterMaxAtk;
-
-    float _upBossMinAtk;
-    float _upBossMaxAtk;
-
-    float _upMonsterDefense;
-
-    float _upBossDefense;
-
-    float _upPlayerMoveSpd;
-    float _upMonsterMoveSpd;
-    float _upBossMoveSpd;
-
-    float _value; // 적용해야할 비율
-
-    private PlayerStat _playerStat;
-    private MonsterStat _monsterStat;
-    private BossStat _bossStat;
-
+    private Stat _stat;
     private float _duration;
     void Start()
     {
 
     }
+    public void StartBuff(BuffManager.BuffEffect type, float value, float time)
+    {
+       _stat = GetComponentInParent<Stat>(); // 자신이 속한 객체의 Stat을 찾는다.
+
+        gameObject.name = type.ToString(); // 버프 오브젝트의 이름은 버프 타입의 이름과 동일하게 한다.
+
+        _duration = time; // 버프 지속 시간
+
+        _value = value; // 증가하는 배율 설정.
+
+        switch(_stat.Type) // 타입에 따라서 생성하는 UI가 다르다.
+        {
+            case Stat.TypeEnum.Player:
+                UIManager._instacne.StartPlayerBuffUI(type, time);
+                break;
+            case Stat.TypeEnum.Enemy:
+                UIManager._instacne.StartEnemyBuffUI(type, time);
+                break;
+        }
+        
+        switch (type)
+        {
+            case BuffManager.BuffEffect.AtkUp:
+                StartCoroutine(StartAtkBuffCo());
+                break;
+            case BuffManager.BuffEffect.DefUp:
+                StartCoroutine(StartDefBuffCo());
+                break;
+            case BuffManager.BuffEffect.MovSpdUp:
+                StartCoroutine(StartMovSpdBuffCo());
+                break;
+        }
+    }
+    IEnumerator StartAtkBuffCo()
+    {
+        _upMinValue = _stat.MinAtk * _value;
+        _upMaxValue = _stat.MaxAtk * _value;
+
+        _stat.MinAtk += _upMinValue;
+        _stat.MaxAtk += _upMaxValue;
+
+        yield return new WaitForSeconds(_duration);
+
+        _stat.MinAtk -= _upMinValue;
+        _stat.MaxAtk -= _upMaxValue;
+
+        Destroy(gameObject);
+    }
+    IEnumerator StartDefBuffCo()
+    {
+        _upValue = _stat.Defense * _value;
+
+        _stat.Defense += _upValue;
+
+        yield return new WaitForSeconds(_duration);
+
+        _stat.Defense -= _upValue;
+
+        Destroy(gameObject);
+    }
+    IEnumerator StartMovSpdBuffCo()
+    {
+        _upValue = _stat.MoveSpd * _value;
+
+        _stat.MoveSpd += _upValue;
+
+        yield return new WaitForSeconds(_duration);
+
+        _stat.MoveSpd -= _upValue;
+
+        Destroy(gameObject);
+    }
+    /*
     public void StartAtkBuff(GameObject target, float value, float time)
     {
         FindStat(target);
@@ -47,7 +96,7 @@ public class Buff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
-            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.AtkUp, time);
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffEffect.AtkUp, time);
             StartCoroutine(StartPlayerAtkBuffCo(value));
         }
         else if (_monsterStat != null)
@@ -96,7 +145,7 @@ public class Buff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
-            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.DefUp, time);
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffEffect.DefUp, time);
             StartCoroutine(StartPlayerDefBuffCo(value));
         }
         else if (_monsterStat != null)
@@ -146,7 +195,7 @@ public class Buff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
-            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.MovSpdUp, time);
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffEffect.MovSpdUp, time);
             StartCoroutine(StartPlayerMovSpdBuffCo(value));
         }
         else if (_monsterStat != null)
@@ -190,8 +239,15 @@ public class Buff : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void UpAtk(float value)
+    {
+
+    }
     void UpPlayerAtk(float value)
     {
+        _upMinAtk = _playerStat.MinAtk * value;
+        _upMaxAtk = _playerStat.MaxAtk * value;
+
         _upSwordMinAtk = _playerStat.SwordMinAtk * value;
         _upSwordMaxAtk = _playerStat.SwordMaxAtk * value;
 
@@ -201,6 +257,7 @@ public class Buff : MonoBehaviour
         _upAxeMinAtk = _playerStat.AxeMinAtk * value;
         _upAxeMaxAtk = _playerStat.AxeMaxAtk * value;
 
+        /*
         _playerStat.SwordMinAtk += _upSwordMinAtk;
         _playerStat.SwordMaxAtk += _upSwordMaxAtk;
 
@@ -304,10 +361,11 @@ public class Buff : MonoBehaviour
         _monsterStat.MoveSpd -= _upBossMoveSpd;
     }
 
-    void FindStat(GameObject target) // 내가 누구에게 와 있는가 찾는 것.
+    void FindStat(GameObject target)
     {
         _playerStat = target.GetComponent<PlayerStat>();
         _monsterStat = target.GetComponent<MonsterStat>();
         _bossStat = target.GetComponent<BossStat>();
     }
+    */
 }

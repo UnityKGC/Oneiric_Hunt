@@ -24,9 +24,6 @@ public class WindMill : MonoBehaviour
 
     float _atk; // 최종 스킬 공격력
 
-    float _buffDuringTime; // 이속감소 디버프 지속 시간
-    float _downMovSpdValue; // 이속감소 디버프 배율
-
     int _layerMask = (1 << 7) | (1 << 10); // 몬스터와 보스의 Layer만 체크
     public void Init(SkillScriptable scriptable, float playerAtk, Transform parent = null)
     {
@@ -43,16 +40,11 @@ public class WindMill : MonoBehaviour
         _dmgDelay = _scriptable._damageDelay;
 
         _duringTime = _scriptable._durationTime;
-
-        _buffDuringTime = _scriptable._buffDurationTime;
-        _downMovSpdValue = _scriptable._movSpdDeBuffValue;
     }
     void Start()
     {
         _startTime = Time.time; // 스킬 사용하자마자 소환되므로, 바로 시간체크
         _dmgStart = Time.time;
-
-        BuffManager._instance.StartMovSpdDeBuff(_player, _downMovSpdValue, _buffDuringTime); // 이속 감소 시작
     }
     void FixedUpdate()
     {

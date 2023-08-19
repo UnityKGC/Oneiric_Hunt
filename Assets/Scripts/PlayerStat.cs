@@ -2,61 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStat : MonoBehaviour
+public class PlayerStat : Stat
 {
-    public float MaxHp { get { return _maxHp; }set { _maxHp = value; } }
+    
+    public float SwordMinAtk { get { return MinAtk * _swordMinAtk; } }
     [SerializeField]
-    private float _maxHp;
-    public float HP { get { return _hp; } set { _hp = value; } }
-    [SerializeField]
-    private float _hp;
+    private float _swordMinAtk = 1f;
 
-    public float MaxMp { get { return _maxMp; } set { _maxMp = value; } }
+    public float SwordMaxAtk { get { return MaxAtk * _swordMaxAtk; } }
     [SerializeField]
-    private float _maxMp;
+    private float _swordMaxAtk = 1.25f;
 
-    public float MP { get { return _mp; } set { _mp = value; } }
+    public float SpearMinAtk { get { return MinAtk * _spearMinAtk; } }
     [SerializeField]
-    private float _mp;
+    private float _spearMinAtk = 0.7f;
 
-    public float SwordMinAtk { get { return _swordMinAtk; } set { _swordMinAtk = value; } }
+    public float SpearMaxAtk { get { return MaxAtk * _spearMaxAtk; } }
     [SerializeField]
-    private float _swordMinAtk;
+    private float _spearMaxAtk = 1.33f;
 
-    public float SwordMaxAtk { get { return _swordMaxAtk; } set { _swordMaxAtk = value; } }
+    public float AxeMinAtk { get { return MinAtk * _axeMinAtk; } }
     [SerializeField]
-    private float _swordMaxAtk;
+    private float _axeMinAtk = 1.5f;
 
-    public float SpearMinAtk { get { return _spearMinAtk; } set { _spearMinAtk = value; } }
+    public float AxeMaxAtk { get { return MaxAtk * _axeMaxAtk; } }
     [SerializeField]
-    private float _spearMinAtk;
+    private float _axeMaxAtk = 1.75f;
 
-    public float SpearMaxAtk { get { return _spearMaxAtk; } set { _spearMaxAtk = value; } }
-    [SerializeField]
-    private float _spearMaxAtk;
-
-    public float AxeMinAtk { get { return _axeMinAtk; } set { _axeMinAtk = value; } }
-    [SerializeField]
-    private float _axeMinAtk;
-
-    public float AxeMaxAtk { get { return _axeMaxAtk; } set { _axeMaxAtk = value; } }
-    [SerializeField]
-    private float _axeMaxAtk;
-
-    public float Defense { get { return _defense; } set { _defense = value; } }
-    [SerializeField]
-    private float _defense;
-
-    public float MoveSpd { get { return _moveSpd; } set { _moveSpd = value; } }
-    [SerializeField]
-    private float _moveSpd;
-
-    //private PlayerSkill _player;
     private Player_DB_Skill _player;
     private void Start()
     {
-        //_player = gameObject.GetComponent<PlayerSkill>();
         _player = gameObject.GetComponent<Player_DB_Skill>();
+
+        Type = TypeEnum.Player;
 
         UIManager._instacne.SetPlayerHP(HP); // 현재 HP를 UI매니저에게 전달
     }
@@ -69,13 +47,13 @@ public class PlayerStat : MonoBehaviour
         switch (_player.Weapon)
         {
             case WeaponType.Sword:
-                dmg = Random.Range(_swordMinAtk, _swordMaxAtk);
+                dmg = Random.Range(SwordMinAtk, SwordMaxAtk);
                 break;
             case WeaponType.Spear:
-                dmg = Random.Range(_spearMinAtk, _spearMaxAtk);
+                dmg = Random.Range(SpearMinAtk, SpearMaxAtk);
                 break;
             case WeaponType.Axe:
-                dmg = Random.Range(_axeMinAtk, _axeMaxAtk);
+                dmg = Random.Range(AxeMinAtk, AxeMaxAtk);
                 break;
         }
         return dmg;
@@ -95,13 +73,5 @@ public class PlayerStat : MonoBehaviour
 
             Debug.Log("플레이어 사망");
         }
-    }
-    public void AddBuff()
-    {
-
-    }
-    public void AddDeBuff()
-    {
-
     }
 }

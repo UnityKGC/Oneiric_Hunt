@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DeBuff : MonoBehaviour
 {
+    /*
     float _downSwordMinAtk; // 감소된 검 최소공격력
     float _downSwordMaxAtk; // 감소된 검 최소공격력
 
@@ -33,7 +34,16 @@ public class DeBuff : MonoBehaviour
     private MonsterStat _monsterStat;
     private BossStat _bossStat;
 
+    */
+    float _downMinValue; // 따로 만든 이유 => Min Max가 증가한 수치를 저장하고 시간이 지난 후 그 수치만큼 감소해야함.
+    float _downMaxValue;
+
+    float _downValue;
+    float _value;
+
+    private Stat _stat;
     private float _duration;
+
     void Start()
     {
         
@@ -43,7 +53,79 @@ public class DeBuff : MonoBehaviour
     {
         
     }
+    public void StartDeBuff(BuffManager.BuffEffect type, float value, float time)
+    {
+        _stat = GetComponentInParent<Stat>(); // 자신이 속한 객체의 Stat을 찾는다.
 
+        gameObject.name = type.ToString(); // 버프 오브젝트의 이름은 버프 타입의 이름과 동일하게 한다.
+
+        _duration = time; // 버프 지속 시간
+
+        _value = value; // 감소하는 배율 설정.
+
+        switch (_stat.Type) // 타입에 따라서 생성하는 UI가 다르다.
+        {
+            case Stat.TypeEnum.Player:
+                UIManager._instacne.StartPlayerBuffUI(type, time);
+                break;
+            case Stat.TypeEnum.Enemy:
+                UIManager._instacne.StartEnemyBuffUI(type, time);
+                break;
+        }
+
+        switch (type)
+        {
+            case BuffManager.BuffEffect.AtkDown:
+                StartCoroutine(StartAtkDeBuffCo());
+                break;
+            case BuffManager.BuffEffect.DefDown:
+                StartCoroutine(StartDefDeBuffCo());
+                break;
+            case BuffManager.BuffEffect.MovSpdDown:
+                StartCoroutine(StartMovSpdDeBuffCo());
+                break;
+        }
+    }
+    IEnumerator StartAtkDeBuffCo()
+    {
+        _downMinValue = _stat.MinAtk * _value;
+        _downMaxValue = _stat.MaxAtk * _value;
+
+        _stat.MinAtk -= _downMinValue;
+        _stat.MaxAtk -= _downMaxValue;
+
+        yield return new WaitForSeconds(_duration);
+
+        _stat.MinAtk += _downMinValue;
+        _stat.MaxAtk += _downMaxValue;
+
+        Destroy(gameObject);
+    }
+    IEnumerator StartDefDeBuffCo()
+    {
+        _downValue = _stat.Defense * _value;
+
+        _stat.Defense -= _downValue;
+
+        yield return new WaitForSeconds(_duration);
+
+        _stat.Defense += _downValue;
+
+        Destroy(gameObject);
+    }
+    IEnumerator StartMovSpdDeBuffCo()
+    {
+        _downValue = _stat.MoveSpd * _value;
+
+        _stat.MoveSpd -= _downValue;
+
+        yield return new WaitForSeconds(_duration);
+
+        _stat.MoveSpd += _downValue;
+
+        Destroy(gameObject);
+    }
+    /*
     #region 공격력
     public void StartAtkDeBuff(GameObject target, float value, float time)
     {
@@ -52,7 +134,7 @@ public class DeBuff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
-            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.AtkDown, time);
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffEffect.AtkDown, time);
             StartCoroutine(StartPlayerAtkDeBuffCo(value));
         }
         else if(_monsterStat != null)
@@ -105,7 +187,7 @@ public class DeBuff : MonoBehaviour
 
         _downAxeMinAtk = _playerStat.AxeMinAtk * value;
         _downAxeMaxAtk = _playerStat.AxeMaxAtk * value;
-
+        /*
         _playerStat.SwordMinAtk -= _downSwordMinAtk;
         _playerStat.SwordMaxAtk -= _downSwordMaxAtk;
 
@@ -133,6 +215,7 @@ public class DeBuff : MonoBehaviour
     }
     void ReturnPlayerAtk()
     {
+        /*
         _playerStat.SwordMinAtk += _downSwordMinAtk;
         _playerStat.SwordMaxAtk += _downSwordMaxAtk;
 
@@ -162,7 +245,7 @@ public class DeBuff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
-            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.DefDown, time);
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffEffect.DefDown, time);
             StartCoroutine(StartPlayerDefDeBuffCo(value));
         }
         else if (_monsterStat != null)
@@ -246,7 +329,7 @@ public class DeBuff : MonoBehaviour
         _duration = time;
         if (_playerStat != null)
         {
-            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffType.MovSpdDown, time);
+            UIManager._instacne.StartPlayerBuffUI(BuffManager.BuffEffect.MovSpdDown, time);
             StartCoroutine(StartPlayerMovSpdDeBuffCo(value));
         }
         else if (_monsterStat != null)
@@ -320,11 +403,11 @@ public class DeBuff : MonoBehaviour
         _bossStat.MoveSpd += _downBossMovSpd;
     }
     #endregion
-
     void FindStat(GameObject target) // Stat찾기
     {
         _playerStat = target.GetComponent<PlayerStat>();
         _monsterStat = target.GetComponent<MonsterStat>();
         _bossStat = target.GetComponent<BossStat>();
     }
+    */
 }

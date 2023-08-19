@@ -3597,14 +3597,16 @@ MonoBehaviour:
   _hp: 100
   _maxMp: 100
   _mp: 100
+  _minAtk: 0
+  _maxAtk: 0
+  _defense: 5
+  _moveSpd: 10
   _swordMinAtk: 10
   _swordMaxAtk: 20
   _spearMinAtk: 10
   _spearMaxAtk: 25
   _axeMinAtk: 15
   _axeMaxAtk: 30
-  _defense: 5
-  _moveSpd: 10
 --- !u!114 &1506116284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4617,7 +4619,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701176352}
-  m_LocalRotation: {x: 0.3137881, y: 0.000000016337344, z: -0.0000000053991585, w: 0.94949305}
+  m_LocalRotation: {x: 0.31378806, y: -0.000000016337344, z: 0.0000000053991576, w: 0.94949305}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9108,14 +9110,16 @@ MonoBehaviour:
   _hp: 50000
   _maxMp: 100
   _mp: 100
-  _swordMinAtk: 10
-  _swordMaxAtk: 20
-  _spearMinAtk: 10
-  _spearMaxAtk: 25
-  _axeMinAtk: 15
-  _axeMaxAtk: 30
+  _minAtk: 10
+  _maxAtk: 20
   _defense: 5
   _moveSpd: 10
+  _swordMinAtk: 1
+  _swordMaxAtk: 1.25
+  _spearMinAtk: 0.7
+  _spearMaxAtk: 1.33
+  _axeMinAtk: 1.5
+  _axeMaxAtk: 1.75
 --- !u!136 &5866666021565027871
 CapsuleCollider:
   m_ObjectHideFlags: 0

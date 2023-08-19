@@ -37,9 +37,9 @@ public class Berserk : MonoBehaviour
 
         GameObject player = GameManager._instance.Player;
 
-        BuffManager._instance.StartAtkBuff(player, _upAtkValue, _buffDuringTime);
-        BuffManager._instance.StartDefBuff(player, _upDefValue, _buffDuringTime);
-        BuffManager._instance.StartMovSpdBuff(player, _upMovSpdValue, _buffDuringTime);
+        BuffManager._instance.StartBuff(BuffManager.BuffEffect.AtkUp, player, _upAtkValue, _buffDuringTime);
+        BuffManager._instance.StartBuff(BuffManager.BuffEffect.DefUp, player, _upDefValue, _buffDuringTime);
+        BuffManager._instance.StartBuff(BuffManager.BuffEffect.MovSpdUp, player, _upMovSpdValue, _buffDuringTime);
     }
 
     void Update()
