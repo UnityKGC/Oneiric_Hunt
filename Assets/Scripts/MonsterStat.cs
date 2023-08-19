@@ -20,12 +20,12 @@ public class MonsterStat : Stat
         
     }
 
-    public float GetDamage() // 누군가에게 데미지를 줄 때
+    public override float GetDamage() // 누군가에게 데미지를 줄 때
     {
         float dmg = Random.Range(MinAtk, MaxAtk);
         return dmg;
     }
-    public void SetDamage(float value)
+    public override void SetDamage(float value)
     {
         if (_isDead) return; // 죽을 때 계속 2번 죽어서 조건 추가하여 버그 방지
 

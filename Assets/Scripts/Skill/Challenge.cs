@@ -60,13 +60,10 @@ public class Challenge : MonoBehaviour
 
         foreach(Collider coll in _colls)
         {
-            MonsterStat monsterStat = coll.GetComponent<MonsterStat>();
-            BossStat bossStat = coll.GetComponent<BossStat>();
-            
-            if (monsterStat != null)
-                monsterStat.SetDamage(_atk);
-            else
-                bossStat.SetDamage(_atk);
+            Stat stat = coll.GetComponent<Stat>();
+
+            if (stat != null)
+                stat.SetDamage(_atk);
 
             BuffManager._instance.StartDeBuff(BuffManager.BuffEffect.AtkDown, coll.gameObject, _downAtkValue, _buffDuringTime);
             BuffManager._instance.StartDeBuff(BuffManager.BuffEffect.DefDown, coll.gameObject, _downDefValue, _buffDuringTime);

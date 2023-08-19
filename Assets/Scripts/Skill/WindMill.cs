@@ -63,13 +63,10 @@ public class WindMill : MonoBehaviour
             {
                 if (!_damagedTargets.Contains(coll.gameObject))
                 {
-                    MonsterStat monsterStat = coll.GetComponent<MonsterStat>();
-                    BossStat bossStat = coll.GetComponent<BossStat>();
+                    Stat stat = coll.GetComponent<Stat>();
 
-                    if (monsterStat != null)
-                        monsterStat.SetDamage(_atk);
-                    else
-                        bossStat.SetDamage(_atk);
+                    if (stat != null)
+                        stat.SetDamage(_atk);
 
                     _damagedTargets.Add(coll.gameObject);
                 }

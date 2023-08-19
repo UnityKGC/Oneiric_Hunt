@@ -28,13 +28,10 @@ public class Sweep : MonoBehaviour
         colls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
         foreach(Collider coll in colls)
         {
-            MonsterStat monsterStat = coll.GetComponent<MonsterStat>();
-            BossStat bossStat = coll.GetComponent<BossStat>();
+            Stat stat = coll.GetComponent<Stat>();
 
-            if (monsterStat != null)
-                monsterStat.SetDamage(_atk);
-            else
-                bossStat.SetDamage(_atk);
+            if (stat != null)
+                stat.SetDamage(_atk);
         }
         Destroy(gameObject, 1f);
     }

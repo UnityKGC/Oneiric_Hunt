@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stat : MonoBehaviour
+public abstract class Stat : MonoBehaviour
 {
     public enum TypeEnum
     {
@@ -50,14 +50,8 @@ public class Stat : MonoBehaviour
     [SerializeField]
     private float _moveSpd;
 
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract float GetDamage(); // 누군가에게 데미지를 줄 때
+
+    public abstract void SetDamage(float value);
 }

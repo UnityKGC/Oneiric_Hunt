@@ -38,7 +38,7 @@ public class PlayerStat : Stat
 
         UIManager._instacne.SetPlayerHP(HP); // 현재 HP를 UI매니저에게 전달
     }
-    public float GetDamage() // 누군가에게 데미지를 줄 때
+    public override float GetDamage() // 누군가에게 데미지를 줄 때
     {
         if (_player == null)
             return 0f;
@@ -58,7 +58,7 @@ public class PlayerStat : Stat
         }
         return dmg;
     }
-    public void SetDamage(float value)
+    public override void SetDamage(float value)
     {
         float dmg = value - Defense;
         HP -= dmg;
