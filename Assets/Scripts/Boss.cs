@@ -74,6 +74,7 @@ public class Boss : MonoBehaviour
 
     private void Awake()
     {
+        
         _stat = GetComponent<BossStat>();
         //_ctrl = GetComponent<CharacterController>();
         _skill = GetComponent<BossSkill>();

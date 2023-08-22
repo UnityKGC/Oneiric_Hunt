@@ -45,4 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneUIState: -1
-  _sceneUILst: []
+  _sceneUILst:
+  - {fileID: 3075356402958447553, guid: b5eca9d0caf6c1b42aa3dac7511cb019, type: 3}
+  - {fileID: 9098502728258045280, guid: abb42912a153e374f92839b99b969ae3, type: 3}
+  - {fileID: 2480804719144422166, guid: 184c346f5e235f748b0039f6679818d3, type: 3}
+  - {fileID: 858590265809731134, guid: 9ce50e3b1dd2f29429419e0848e40362, type: 3}

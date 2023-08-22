@@ -12,6 +12,7 @@ public class SceneManagerEX : MonoBehaviour
         None = -1,
         Title,
         FirstHouseScene,
+        PlayerOfficeScene,
         FirstDreamScene,
         MiniGame,
         Chase,

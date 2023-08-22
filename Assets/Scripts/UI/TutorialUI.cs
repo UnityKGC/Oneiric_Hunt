@@ -15,7 +15,7 @@ public class TutorialUI : MonoBehaviour
         Chase,
     }
 
-    SceneType _sceneType = SceneType.None;
+    [SerializeField] SceneType _sceneType = SceneType.None;
 
     public List<GameObject> _tutorialUILst;
     
@@ -30,8 +30,6 @@ public class TutorialUI : MonoBehaviour
 
     void SetTutorial()
     {
-        _sceneType = (SceneType)(int)SceneManagerEX._instance.NowScene - 1;
-
         for(int i = 0; i < _tutorialUILst.Count; i++)
         {
             if(i == (int)_sceneType)

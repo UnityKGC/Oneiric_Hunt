@@ -18,7 +18,6 @@ public class UIManager : MonoBehaviour
         Tutorial,
     }
 
-
     public Action<QuestData> _questDataEvt = null; // 퀘스트 UI를 등록시키기 위해 사용하는 콜백
     public Action<QuestData> _questContentEvt = null; // 퀘스트 내용을 갱신시키기 위해 사용하는 콜백
     public Action<QuestData> _questFinishEvt = null; // 퀘스트 내용을 완료시키기 위해 사용하는 콜백

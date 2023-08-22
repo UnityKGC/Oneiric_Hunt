@@ -81,6 +81,7 @@ public class Object : MonoBehaviour
                 
                 if(Input.GetKeyDown(KeyCode.Space)) // Sapce를 누를때
                 {
+
                     QuestManager._instance.QuestTrigger(_objID);
                 }
                 
