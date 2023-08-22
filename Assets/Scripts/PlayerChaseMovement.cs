@@ -32,7 +32,7 @@ public class PlayerChaseMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (GameManager._instance.ChasePlayerDie) return;
+        if (ChaseManager._instance.ChasePlayerDie) return;
 
         Move();
         Rotate();

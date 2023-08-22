@@ -48,7 +48,7 @@ public class CatchManager : MonoBehaviour
     }
     public void StartCatchEvt(CatchEvent evt)
     {
-        GameManager._instance.Playstate = GameManager.PlayState.Real_Catch; // 게임매니저의 상태를 변경시킨다.
+        ChaseManager._instance.Chasestate = ChaseManager.ChaseState.Catch; // 상태를 변화시킨다.
 
         _eventData = evt;
 
@@ -92,7 +92,7 @@ public class CatchManager : MonoBehaviour
     {
         if(_isSuccess)
         {
-            GameManager._instance.Playstate = GameManager.PlayState.Real_Normal; // 게임상태를 평상시로,
+            ChaseManager._instance.Chasestate = ChaseManager.ChaseState.Normal; // 게임상태를 평상시로,
             _isStart = false;
             _isEnd = true;
             _eventData = null;

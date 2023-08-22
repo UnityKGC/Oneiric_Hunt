@@ -43,7 +43,7 @@ public class CatchPolice : MonoBehaviour
     
     void Update()
     {
-        if (GameManager._instance.ChasePlayerDie) return;
+        if (ChaseManager._instance.ChasePlayerDie) return;
 
         switch (State)
         {

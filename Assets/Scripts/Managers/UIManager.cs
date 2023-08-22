@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour
     public Action<WeaponType> _weaponEvt = null; // 무기 변경 시 호출 => 현재 무기를 알려줌
     public Action _endBattleEvt = null; // 전투가 끝났을 시,
 
+    public Action<ChaseManager.ChaseState> _chaseStateEvt = null; // 추적 이벤트의 현재 진행 상태
+
     public Action<Vector2> _qtePosEvt = null; // QTE의 위치를 설정한다.
 
     public Action<float> _catchUIEvt = null; // CatchEvt의 게이지 UI
@@ -140,6 +142,7 @@ public class UIManager : MonoBehaviour
     {
         _playStateEvt?.Invoke(playState); // 뿌린다.
     }
+    
 
     public void SetPlayerHP(float value) // 굳이 함수를 만든 이유가 무엇인가? => 누가 이 함수를 참조하고 있는지 한번에 확인할 수 있어 찾아가기 편하다.
     {
@@ -158,6 +161,10 @@ public class UIManager : MonoBehaviour
         _endBattleEvt?.Invoke();
     }
 
+    public void SetChaseState(ChaseManager.ChaseState chaseState) // Chase매니저로 부터 상태변화 시, 변화한 상태를 받는다.
+    {
+        _chaseStateEvt?.Invoke(chaseState);
+    }
     public void SetQTEPosEvt(Vector2 vec) // QTE이벤트가 실행될 시, QTE매니저가 Trigger들의 QTEUI가 배치될 위치를 보낸다.
     {
         _qtePosEvt?.Invoke(vec);

@@ -47,7 +47,7 @@ public class QTEManager : MonoBehaviour
     }
     public void StartEvent(QTEEvent evt) // 이벤트 시작
     {
-        GameManager._instance.Playstate = GameManager.PlayState.Real_QTE; // 게임매니저의 상태를 변경시킨다.
+        ChaseManager._instance.Chasestate = ChaseManager.ChaseState.QTE; // 상태를 변경시킨다.
 
         _eventData = evt; // 매니저에 인자로 전달받은 이벤트 등록
 
@@ -89,7 +89,7 @@ public class QTEManager : MonoBehaviour
         if(_keys.Count == 0) // 모두 눌렀다면
         {
             _isSuccess = true; // 성공 확인 변수를 true로
-            GameManager._instance.Playstate = GameManager.PlayState.Real_Normal; // 게임 상태를 평상시 로,
+            ChaseManager._instance.Chasestate = ChaseManager.ChaseState.Normal; // 게임 상태를 평상시 로,
         }
 
         _isEnd = true; // 변수 갱신

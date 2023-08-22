@@ -32,7 +32,7 @@ public class ChasePolice : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (GameManager._instance.ChasePlayerDie) return; // Update에서 GameManager를 계속 불러오는 게 맘에 안듬
+        if (ChaseManager._instance.ChasePlayerDie) return; // Update에서 GameManager를 계속 불러오는 게 맘에 안듬
 
         switch(State)
         {
@@ -60,7 +60,7 @@ public class ChasePolice : MonoBehaviour
     }
     void UpdateCatch()
     {
-        GameManager._instance.ChasePlayerDie = true;
+        ChaseManager._instance.ChasePlayerDie = true;
         Debug.Log("끗");
     }
 }

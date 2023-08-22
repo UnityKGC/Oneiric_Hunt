@@ -20,21 +20,21 @@ public class ChasePlayUI : MonoBehaviour
     {
         _state = ChasePlayState.Normal;
 
-        UIManager._instacne._playStateEvt -= SetChaseUIState;
-        UIManager._instacne._playStateEvt += SetChaseUIState;
+        UIManager._instacne._chaseStateEvt -= SetChaseUIState;
+        UIManager._instacne._chaseStateEvt += SetChaseUIState;
     }
 
-    void SetChaseUIState(GameManager.PlayState playState)
+    void SetChaseUIState(ChaseManager.ChaseState state)
     {
-        switch (playState)
+        switch (state)
         {
-            case GameManager.PlayState.Real_Normal:
+            case ChaseManager.ChaseState.Normal:
                 _state = ChasePlayState.Normal;
                 break;
-            case GameManager.PlayState.Real_QTE:
+            case ChaseManager.ChaseState.QTE:
                 _state = ChasePlayState.QTE;
                 break;
-            case GameManager.PlayState.Real_Catch:
+            case ChaseManager.ChaseState.Catch:
                 _state = ChasePlayState.Catch;
                 break;
         }
@@ -53,6 +53,6 @@ public class ChasePlayUI : MonoBehaviour
     }
     private void OnDestroy()
     {
-        UIManager._instacne._playStateEvt -= SetChaseUIState;
+        UIManager._instacne._chaseStateEvt -= SetChaseUIState;
     }
 }

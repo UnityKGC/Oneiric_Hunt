@@ -14,8 +14,9 @@ public class GameManager : MonoBehaviour
         Dream_Normal,
         Dream_Battle,
         Real_Normal,
-        Real_QTE,
-        Real_Catch,
+        Real_Event,
+        //Real_QTE,
+        //Real_Catch,
         MiniGame,
     }
 
@@ -39,12 +40,12 @@ public class GameManager : MonoBehaviour
 
     private Transform _playeFocus;
 
-    public bool ChasePlayerDie { get { return _isChasePlayerDie; } set { _isChasePlayerDie = value; } }
+    
     public bool PlayerDie { get { return _isPlayerDie; } set { _isPlayerDie = value; } }
     
     private bool _isPlayerDie= false;
 
-    private bool _isChasePlayerDie = false;
+    
 
     private void Awake()
     {
@@ -75,6 +76,5 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         _isPlayerDie = false;
-        _isChasePlayerDie = false;
     }
 }
