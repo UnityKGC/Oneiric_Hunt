@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_DB_Anim : MonoBehaviour
+public class Player_DB_Anim : BasePlayerAnim
 {
     enum WeaponAnim
     {
@@ -14,49 +14,19 @@ public class Player_DB_Anim : MonoBehaviour
     
     [SerializeField] List<RuntimeAnimatorController> _animLst;
     [SerializeField] List<GameObject> _weaponLst;
-    private Animator _anim;
-
-    Player_DB_State.DB_State _animState;
 
     void Start()
     {
         _anim = GetComponent<Animator>();
     }
 
-    public void CrossFade(Player_DB_State.DB_State state, SkillManager.Skills type = SkillManager.Skills.None) // 무기 종류의 인자?
+    public override void CrossFade(BasePlayerState.EPlayerState state, SkillManager.Skills type = SkillManager.Skills.None) // 무기 종류의 인자?
     {
-        
-        if (_animState == state)
-            return;
+        base.CrossFade(state, type); // 기본적인 Anim동작 확인
 
-        _animState = state;
-
-        switch (_animState)
+        if (state == BasePlayerState.EPlayerState.Skill)
         {
-            case Player_DB_State.DB_State.Idle:
-                _anim.CrossFade("Idle", 0.1f);
-                break;
-            case Player_DB_State.DB_State.Run:
-                _anim.CrossFade("Run", 0.1f);
-                break;
-            case Player_DB_State.DB_State.Attack_1:
-                _anim.CrossFade("Attack_1", 0.1f);
-                break;
-            case Player_DB_State.DB_State.Attack_2:
-                _anim.CrossFade("Attack_2", 0.1f);
-                break;
-            case Player_DB_State.DB_State.Attack_3:
-                _anim.CrossFade("Attack_3", 0.1f);
-                break;
-            case Player_DB_State.DB_State.Attack_4:
-                _anim.CrossFade("Attack_4", 0.1f);
-                break;
-            case Player_DB_State.DB_State.Skill:
-                StartSkillAnim(type);
-                break;
-            case Player_DB_State.DB_State.Die:
-
-                break;
+            StartSkillAnim(type);
         }
     }
 

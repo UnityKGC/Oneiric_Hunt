@@ -39,7 +39,7 @@ public class Player_DB_Attack : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || _move._isMove || SkillManager._instance._isSkilling) return;
+        if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || PlayerManager._instance.IsMove || SkillManager._instance._isSkilling) return;
 
         if (Input.GetMouseButton(0))
         {
@@ -55,28 +55,28 @@ public class Player_DB_Attack : MonoBehaviour
             {
                 Debug.Log("첫번째 공격 시작");
 
-                _anim.CrossFade(Player_DB_State.DB_State.Attack_1);
+                _anim.CrossFade(BasePlayerState.EPlayerState.Attack_1);
                 _isFirstAttack = true;
             }
             else if (Input.GetMouseButton(0) && _isSecondAtk == false)
             {
                 Debug.Log("두번째 공격 시작");
 
-                _anim.CrossFade(Player_DB_State.DB_State.Attack_2);
+                _anim.CrossFade(BasePlayerState.EPlayerState.Attack_2);
                 _isSecondAtk = true;
             }
             else if (Input.GetMouseButton(0) && _isThirdAtk == false)
             {
                 Debug.Log("세번째 공격 시작");
 
-                _anim.CrossFade(Player_DB_State.DB_State.Attack_3);
+                _anim.CrossFade(BasePlayerState.EPlayerState.Attack_3);
                 _isThirdAtk = true;
             }
             else if (Input.GetMouseButton(0))
             {
                 Debug.Log("네번째 공격 시작");
 
-                _anim.CrossFade(Player_DB_State.DB_State.Attack_4);
+                _anim.CrossFade(BasePlayerState.EPlayerState.Attack_4);
                 _isFirstAttack = _isSecondAtk = _isThirdAtk = false; // 다시 첫번째 공격으로
             }
 

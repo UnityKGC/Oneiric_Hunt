@@ -35,7 +35,7 @@ public class SkillManager : MonoBehaviour
     [SerializeField]
     List<GameObject> _useSkill = new List<GameObject>();
 
-    [SerializeField] private Player_DB_State _playerState;
+    [SerializeField] private BasePlayerState _playerState;
 
     public bool _isSkilling = false; // 스킬을 사용 중 인가
     //public bool _isMoveSkill = false; // 이동하는 스킬(Dodge)을 사용 중 인가 => 현재는 딱히 없음
@@ -57,7 +57,7 @@ public class SkillManager : MonoBehaviour
     {
         if (!CheckCoolTime(skill)) return;
 
-        _playerState.PlayerState = Player_DB_State.DB_State.Skill;
+        _playerState.PlayerState = BasePlayerState.EPlayerState.Skill;
 
         switch (skill)
         {
@@ -337,7 +337,7 @@ public class SkillManager : MonoBehaviour
 
         if (_isSkilling || !_playerState.gameObject.activeSelf) return;
 
-        _playerState.PlayerState = Player_DB_State.DB_State.Idle;
+        _playerState.PlayerState = BasePlayerState.EPlayerState.Idle;
         // PlayerManager._instance.ChangeState() 변환시키기.
     }
 
