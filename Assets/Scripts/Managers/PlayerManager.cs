@@ -23,10 +23,19 @@ public class PlayerManager : MonoBehaviour
 
     public EPlayerState PlayerState { get { return _playerState; } set { _playerState = value; } }
 
+    public bool IsMove { get { return _isMove; } set { _isMove = value; } } // 이동 중인가
+
+    private bool _isMove;
+
+    public bool IsAttack { get { return _isAttack; } set { _isAttack = value; } } // 공격 중인가
+    private bool _isAttack;
+
+    public bool IsSkill { get { return _isSkill; } set { _isSkill = value; } } // 스킬 사용 중인가
+    private bool _isSkill;
+
     private EPlayerState _playerState;
 
-
-    [SerializeField] List<GameObject> _playerLst; // 플레이어 리스트 (꿈 기본, 꿈 전투, 현실기본, 현실 이벤트,  미니게임, )
+    [SerializeField] List<GameObject> _playerLst; // 플레이어 리스트 (순서는 게임 상태 Enum의 순서와 매치)
     private void Awake()
     {
         _instance = this;
@@ -40,17 +49,26 @@ public class PlayerManager : MonoBehaviour
     {
         
     }
-    public void ChangePlayer(GameManager.PlayState playState)
+    public void ChangePlayer(GameManager.PlayState playState, Vector3 pos, Quaternion rot) // 게임의 상태에 따라 소환되는 플레이어가 각자 다르다.
     {
-        switch(playState)
+        //Instantiate(_playerLst[(int)playState], pos, rot);
+
+        switch (playState)
         {
             case GameManager.PlayState.Dream_Normal:
+                
                 break;
             case GameManager.PlayState.Dream_Battle:
+
                 break;
             case GameManager.PlayState.Real_Normal:
+
+                break;
+            case GameManager.PlayState.Real_Event:
+
                 break;
             case GameManager.PlayState.MiniGame:
+
                 break;
         }
     }

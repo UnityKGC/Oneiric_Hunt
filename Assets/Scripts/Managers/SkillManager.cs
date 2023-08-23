@@ -38,7 +38,7 @@ public class SkillManager : MonoBehaviour
     [SerializeField] private Player_DB_State _playerState;
 
     public bool _isSkilling = false; // 스킬을 사용 중 인가
-    public bool _isMoveSkill = false; // 이동하는 스킬(Dodge, Windmill)을 사용 중 인가
+    //public bool _isMoveSkill = false; // 이동하는 스킬(Dodge)을 사용 중 인가 => 현재는 딱히 없음
     private void Awake()
     {
         _instance = this;
@@ -111,6 +111,7 @@ public class SkillManager : MonoBehaviour
     
     IEnumerator StartWeaponSwap(SkillScriptable scriptable, Transform parent)
     {
+        PlayerManager._instance.IsSkill = true;
         _isSkilling = true;
 
         yield return new WaitForSeconds(scriptable._castTime);
@@ -127,7 +128,8 @@ public class SkillManager : MonoBehaviour
     }
     IEnumerator StartDodge(SkillScriptable scriptable, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
-        _isMoveSkill = true;
+        PlayerManager._instance.IsSkill = true;
+        _isSkilling = true;
 
         yield return new WaitForSeconds(scriptable._castTime);
 
@@ -141,6 +143,7 @@ public class SkillManager : MonoBehaviour
     }
     IEnumerator StartSlash(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
+        PlayerManager._instance.IsSkill = true;
         _isSkilling = true; // 스킬 사용 중
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
@@ -158,6 +161,7 @@ public class SkillManager : MonoBehaviour
 
     IEnumerator StartSwordForce(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
+        PlayerManager._instance.IsSkill = true;
         _isSkilling = true; // 스킬 사용 중
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
@@ -175,6 +179,7 @@ public class SkillManager : MonoBehaviour
 
     IEnumerator StartSpaceCut(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
+        PlayerManager._instance.IsSkill = true;
         _isSkilling = true; // 스킬 사용 중
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
@@ -193,6 +198,7 @@ public class SkillManager : MonoBehaviour
 
     IEnumerator StartStabing(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
+        PlayerManager._instance.IsSkill = true;
         _isSkilling = true; // 스킬 사용 중
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
@@ -208,6 +214,7 @@ public class SkillManager : MonoBehaviour
 
     IEnumerator StartSweep(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
+        PlayerManager._instance.IsSkill = true;
         _isSkilling = true; // 스킬 사용 중
 
         yield return new WaitForSeconds(scriptable._castTime);
@@ -222,6 +229,7 @@ public class SkillManager : MonoBehaviour
     }
     IEnumerator StartChallenge(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
+        PlayerManager._instance.IsSkill = true;
         _isSkilling = true; // 스킬 사용 중
 
         yield return new WaitForSeconds(scriptable._castTime);
@@ -237,6 +245,7 @@ public class SkillManager : MonoBehaviour
 
     IEnumerator StartTakedown(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
+        PlayerManager._instance.IsSkill = true;
         _isSkilling = true; // 스킬 사용 중
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
@@ -253,6 +262,7 @@ public class SkillManager : MonoBehaviour
     }
     IEnumerator StartWindMill(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
+        PlayerManager._instance.IsSkill = true;
         _isSkilling = true; // 스킬 사용 중
 
         yield return new WaitForSeconds(scriptable._castTime);
@@ -265,6 +275,7 @@ public class SkillManager : MonoBehaviour
     }
     IEnumerator StartBerserk(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
+        PlayerManager._instance.IsSkill = true;
         _isSkilling = true; // 스킬 사용 중
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
@@ -322,7 +333,7 @@ public class SkillManager : MonoBehaviour
 
     public void EndSkill()
     {
-        _isMoveSkill = _isSkilling = false;
+        _isSkilling = false;
 
         if (_isSkilling || !_playerState.gameObject.activeSelf) return;
 

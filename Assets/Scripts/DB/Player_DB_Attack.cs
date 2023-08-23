@@ -41,18 +41,6 @@ public class Player_DB_Attack : MonoBehaviour
     {
         if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || _move._isMove || SkillManager._instance._isSkilling) return;
 
-        /*
-        if (_isStopAtk)
-        {
-            // 2초 동안 계속 가만히 있었으면
-            if (Time.time - _stopAtkTime >= _idleTime)
-            {
-                Debug.Log("공격 초기화");
-                _isFirstAttack = _isSecondAtk = _isThirdAtk = false;
-            }
-        }
-        */
-
         if (Input.GetMouseButton(0))
         {
             _isAttack = true;
