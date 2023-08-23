@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     }
     private void Update()
     {
-        if (_nowData == null) return; //현재 등록된 대하가 없으면 바로 리턴때림
+        if (_nowData == null) return; // 현재 등록된 대화가 없으면 바로 리턴때림
 
         if(_clickNext != null && _nowData._isStart)
         {
@@ -31,6 +31,16 @@ public class DialogueManager : MonoBehaviour
         }
     }
     
+    public void GetQuestDialogue(QuestData quest, DialogueData data) // 퀘스트를 받고, 그 퀘스트의 상태에 따라 다른 대사를 받는다.
+    {
+        _quest = quest;
+        _nowData = data;
+        if (_dialogueEvt != null)
+        {
+            _dialogueEvt.Invoke(data); // 보낸다.
+        }
+    }
+    /*
     public void GetDialogueLine(DialogueData data, QuestData quest = null) // 다이얼로그 데이터를 가져온다.
     {
         _nowData = data;
@@ -40,15 +50,19 @@ public class DialogueManager : MonoBehaviour
         {
             _dialogueEvt.Invoke(data); // 보낸다.
         }
-    }
-    public void EndDialogue()
+    }*/
+    public void EndDialogue() // 마지막 대사가 출력되고 대화 타입에 따라 퀘스트 시작인지 끝인지를 전달함.
     {
         switch (_nowData._dialogueType)
         {
             case DialogueType.QuestStart:
                 QuestManager._instance.StartQuest(_quest);
                 break;
+            case DialogueType.QuestProgress:
+
+                break;
             case DialogueType.QuestEnd:
+                _quest._isFinish = true;
                 QuestManager._instance.FinishQuest(_quest);
                 break;
         }

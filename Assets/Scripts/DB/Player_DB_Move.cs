@@ -27,6 +27,10 @@ public class Player_DB_Move : BasePlayerMove
     }
     private void FixedUpdate()
     {
+
+        if (GameManager._instance.PlayerDie || SkillManager._instance._isSkilling)
+            return;
+
         base.MoveLogic();
 
         if (_attack._isAttack) return; // 공격중이면 이동은 불가능하게

@@ -29,7 +29,7 @@ public class DialoguePanel : MonoBehaviour
         _data._isStart = true;
 
         _name.text = _data._name; // NPC 이름 등록
-
+        _content.text = _data._dialogueLines[0]; // _lineCount 대사 출력.
         StartDialogue(); // 대화 시작
     }
     void StartDialogue() // 대화 시작

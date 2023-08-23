@@ -23,6 +23,8 @@ public class Player_RN_Move : BasePlayerMove
     }
     private void FixedUpdate()
     {
+        if (GameManager._instance.PlayerDie)
+            return;
         MoveLogic();
         UpdateState();
     }

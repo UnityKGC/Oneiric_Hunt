@@ -19,6 +19,8 @@ public class Player_DN_Move : BasePlayerMove
     }
     private void FixedUpdate()
     {
+        if (GameManager._instance.PlayerDie || SkillManager._instance._isSkilling)
+            return;
         base.MoveLogic();
         base.UpdateState();
     }

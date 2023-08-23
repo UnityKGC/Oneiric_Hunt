@@ -1079,7 +1079,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238691865}
-  m_LocalRotation: {x: 0.09226262, y: 0.7532109, z: -0.10820705, w: 0.6422245}
+  m_LocalRotation: {x: 0.09226261, y: 0.75321096, z: -0.10820705, w: 0.6422244}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4053,7 +4053,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 11400000, guid: 57ac2a13dd1039045a1a2cdb752d0837, type: 2}
+  m_CustomBlends: {fileID: 0}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -4856,7 +4856,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101966308}
-  m_LocalRotation: {x: 0.103929095, y: 0.75111806, z: -0.12188968, w: 0.6404399}
+  m_LocalRotation: {x: 0.10392908, y: 0.7511181, z: -0.12188966, w: 0.6404399}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7241,8 +7241,8 @@ GameObject:
   - component: {fileID: 1601155048}
   - component: {fileID: 1601155047}
   - component: {fileID: 1601155051}
-  - component: {fileID: 1601155052}
   - component: {fileID: 1601155053}
+  - component: {fileID: 1601155054}
   m_Layer: 0
   m_Name: TestNPC
   m_TagString: Untagged
@@ -7344,73 +7344,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1601155052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601155046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99d5120d17e083d4692ba905a8c86d26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _questList:
-  - _questID: 10
-    _questType: 1
-    _questName: "\uBB3C\uAC74 \uAC00\uC838\uC624\uAE30"
-    _questContentText: "\uBC29 \uC548\uC5D0\uC11C \uBB3C\uAC74\uC744 \uAC00\uC838\uB2E4\uC8FC\uC790."
-    _objLst:
-    - _objID: 10000
-      _objName: "\uD050\uBE0C"
-      _totalCount: 1
-      _nowCount: 0
-      _isFull: 0
-    _reward:
-      _gold: 0
-      _exp: 0
-    _isStart: 0
-    _isAchieve: 0
-    _isFinish: 0
-  - _questID: 20
-    _questType: 0
-    _questName: "\uCC28\uB85C \uAC00\uAE30"
-    _questContentText: "\uCC28\uC5D0 \uAC00\uC11C Space\uB97C \uB204\uB974\uC790."
-    _objLst: []
-    _reward:
-      _gold: 0
-      _exp: 0
-    _isStart: 0
-    _isAchieve: 0
-    _isFinish: 0
-  _dialogueLst:
-  - _name: TestNPC
-    _dialogueType: 1
-    _dialogueLines:
-    - "\uC77C\uB0A8?"
-    - "\uBC29 \uC548\uC5D0 \uBB3C\uAC74 \uC880 \uAC00\uC838\uC640 \uC918"
-    _index: 0
-    _isStart: 0
-    _isLast: 0
-    _isFinish: 0
-  - _name: TestNPC
-    _dialogueType: 2
-    _dialogueLines:
-    - "\uB561\uD050"
-    _index: 0
-    _isStart: 0
-    _isLast: 0
-    _isFinish: 0
-  - _name: TestNPC
-    _dialogueType: 1
-    _dialogueLines:
-    - "\uC5EC\uAE30\uC11C \uB2F9\uC7A5 \uB098\uAC00!!!"
-    _index: 0
-    _isStart: 0
-    _isLast: 0
-    _isFinish: 0
-  _doorCol: {fileID: 1343685762}
 --- !u!114 &1601155053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7426,7 +7359,89 @@ MonoBehaviour:
   _objType: 0
   _selectOutLine: {fileID: 1200895271}
   _interactionUI: {fileID: 1638260730}
-  _objID: 10000
+  _objID: 10
+--- !u!114 &1601155054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601155046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f749de2552ab340afe3d4d1047405c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questList:
+  - _questID: 10
+    _questType: 1
+    _questName: "\uBB3C\uAC74 \uAC00\uC838\uC624\uAE30"
+    _questContentText: "\uBC29 \uC548\uC5D0\uC11C \uBB3C\uAC74\uC744 \uAC00\uC838\uB2E4\uC8FC\uC790."
+    _dialogueData:
+    - _name: "\uC544\uB0B4"
+      _dialogueType: 0
+      _dialogueLines:
+      - "\uC77C\uB0A8?"
+      - "\uBC29 \uC548\uC5D0 \uAC00\uC11C \uBB3C\uAC74 \uC880 \uAC00\uC838\uC640
+        \uC918."
+      _index: 0
+      _isStart: 0
+      _isLast: 0
+      _isFinish: 0
+    - _name: "\uC544\uB0B4"
+      _dialogueType: 1
+      _dialogueLines:
+      - "\uBB50\uD574 \uBE68\uB9AC \uAC00\uC838\uC640 \uC918."
+      _index: 0
+      _isStart: 0
+      _isLast: 0
+      _isFinish: 0
+    - _name: "\uC544\uB0B4"
+      _dialogueType: 2
+      _dialogueLines:
+      - "\uB561\uD050"
+      _index: 0
+      _isStart: 0
+      _isLast: 0
+      _isFinish: 0
+    _objLst:
+    - _objID: 10000
+      _objName: "\uD050\uBE0C"
+      _totalCount: 1
+      _nowCount: 0
+      _isFull: 0
+    _reward:
+      _type: 8
+      _obj: {fileID: 0}
+      _coll: {fileID: 1343685762}
+      _gold: 0
+      _exp: 0
+    _isStart: 0
+    _isAchieve: 0
+    _isFinish: 0
+  - _questID: 20
+    _questType: 0
+    _questName: "\uCC28\uB85C \uAC00\uAE30"
+    _questContentText: "\uCC28\uC5D0 \uAC00\uC11C Space\uB97C \uB204\uB974\uC790."
+    _dialogueData:
+    - _name: "\uC544\uB0B4"
+      _dialogueType: 0
+      _dialogueLines:
+      - "\uC5F0\uAD6C\uC2E4\uC5D0\uC11C \uC640\uB2EC\uB798"
+      _index: 0
+      _isStart: 0
+      _isLast: 0
+      _isFinish: 0
+    _objLst: []
+    _reward:
+      _type: 0
+      _obj: {fileID: 0}
+      _coll: {fileID: 0}
+      _gold: 0
+      _exp: 0
+    _isStart: 0
+    _isAchieve: 0
+    _isFinish: 0
 --- !u!1 &1614502757
 GameObject:
   m_ObjectHideFlags: 0
@@ -7453,7 +7468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614502757}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.2233, y: -14.048548, z: -7.110366}
+  m_LocalPosition: {x: 15.2233, y: -14.048548, z: -7.110365}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8610,7 +8625,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797230607}
-  m_LocalRotation: {x: 0.08059656, y: 0.75504994, z: -0.094524905, w: 0.6437925}
+  m_LocalRotation: {x: 0.08059654, y: 0.75505006, z: -0.09452492, w: 0.64379245}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10390,6 +10405,10 @@ PrefabInstance:
     - target: {fileID: 2764779184954940315, guid: 3512fe2edeb259c4dae76a589d4fb244, type: 3}
       propertyPath: m_Name
       value: House
+      objectReference: {fileID: 0}
+    - target: {fileID: 2764779185418150819, guid: 3512fe2edeb259c4dae76a589d4fb244, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2764779185836724822, guid: 3512fe2edeb259c4dae76a589d4fb244, type: 3}
       propertyPath: m_Enabled

@@ -6,23 +6,6 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager _instance;
 
-    public enum EPlayerState
-    {
-        None = -1,
-        Idle,
-        Walk,
-        Run,
-        Check,
-        Attack_1,
-        Attack_2,
-        Attack_3,
-        Attack_4,
-        Skill,
-        Die,
-    }
-
-    public EPlayerState PlayerState { get { return _playerState; } set { _playerState = value; } }
-
     public bool IsMove { get { return _isMove; } set { _isMove = value; } } // 이동 중인가
 
     private bool _isMove;
@@ -32,8 +15,6 @@ public class PlayerManager : MonoBehaviour
 
     public bool IsSkill { get { return _isSkill; } set { _isSkill = value; } } // 스킬 사용 중인가
     private bool _isSkill;
-
-    private EPlayerState _playerState;
 
     [SerializeField] List<GameObject> _playerLst; // 플레이어 리스트 (순서는 게임 상태 Enum의 순서와 매치)
     private void Awake()

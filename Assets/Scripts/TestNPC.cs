@@ -30,7 +30,7 @@ public class TestNPC : MonoBehaviour
                 {
                     QuestData quest = _questList[0];
 
-                    DialogueManager._instance.GetDialogueLine(_dialogueLst[0], quest);
+                   // DialogueManager._instance.GetDialogueLine(_dialogueLst[0], quest);
 
                     //QuestManager._instance.StartQuest(_questList[0]); // 퀘스트 시작 => 지금은 다이얼로그에서 관리
 
@@ -40,7 +40,7 @@ public class TestNPC : MonoBehaviour
                     QuestData quest = _questList[0];
                     quest._isFinish = true;
 
-                    DialogueManager._instance.GetDialogueLine(_dialogueLst[1], quest);
+                    //DialogueManager._instance.GetDialogueLine(_dialogueLst[1], quest);
 
                     //QuestManager._instance.FinishQuest(_questList[0]); // 퀘스트 시작 => 지금은 다이얼로그에서 관리
 
@@ -50,7 +50,7 @@ public class TestNPC : MonoBehaviour
                 else if(_questList[0]._isFinish && !_questList[1]._isStart) // 테스트테스트
                 {
                     QuestData quest = _questList[1];
-                    DialogueManager._instance.GetDialogueLine(_dialogueLst[2], quest);
+                    //DialogueManager._instance.GetDialogueLine(_dialogueLst[2], quest);
                 }
             }
         }

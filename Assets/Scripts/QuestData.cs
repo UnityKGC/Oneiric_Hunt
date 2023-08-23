@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public enum QuestType
 {
-    None,
+    None = -1,
     BringObject, // 물건 가져오기
     FindClue, // 단서 찾기
     KillMonster, // 몬스터 퇴치
     Max,
 }
+
 
 [System.Serializable]
 public class ObjectData
@@ -34,6 +36,8 @@ public class QuestData
 
     public string _questContentText;
 
+    public List<DialogueData> _dialogueData; // 이 퀘스트의 다이얼로그 대사
+
     public List<ObjectData> _objLst; // 수행해야 할 퀘스트의 오브젝트 리스트
 
     public QuestRewards _reward; // 퀘스트 보상
@@ -46,11 +50,22 @@ public class QuestData
 
 }
 
-
+[Flags]
+public enum RewardType
+{
+    None = -1,
+    Exp = 1 << 0,
+    Gold = 1 << 1,
+    Object = 1 << 2,
+    Collider = 1 << 3,
+}
 
 [System.Serializable]
 public class QuestRewards
 {
+    public RewardType _type;
+    public GameObject _obj; // 퀘스트 완료 시 특정 오브젝트 활성화
+    public Collider _coll; // 퀘스트 완료 시 콜라이더 활성화 => 이건 임시 => 플레이어 집에서 문 열때 필요
     public int _gold;
     public float _exp;
 }

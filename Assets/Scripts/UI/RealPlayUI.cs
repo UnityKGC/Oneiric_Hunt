@@ -14,11 +14,5 @@ public class RealPlayUI : MonoBehaviour
     public RealPlayUIState _uiState = RealPlayUIState.None;
 
     public List<GameObject> _sceneUILst;
-
-    void Start()
-    {
-        
-    }
-
     
 }

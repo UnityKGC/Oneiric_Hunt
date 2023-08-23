@@ -18,9 +18,6 @@ public class BasePlayerMove : MonoBehaviour
 
     protected void MoveLogic()
     {
-        if (GameManager._instance.PlayerDie || SkillManager._instance._isSkilling)
-            return;
-
         GetDir();
         Rotate();
     }

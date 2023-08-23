@@ -133,6 +133,9 @@ public class QuestManager : MonoBehaviour
             }
         }
 
+        // 퀘스트 보상
+        GetQuestReward(questData);
+
         if (_processQuestDict.ContainsKey(questData._questID)) // 진행중인 퀘스트 Dict에 퀘스트가 존재한다면,
             _processQuestDict.Remove(questData._questID); // Dict에 해당 퀘스트를 지워준다.
 
@@ -141,6 +144,29 @@ public class QuestManager : MonoBehaviour
     // ID의 알맞는 퀘스트가 현재 진행중인지 확인
     public bool CheckQuest(int questID) {   return _processQuestDict.ContainsKey(questID);  }
     
+
+    void GetQuestReward(QuestData questData)
+    {
+        RewardType type = questData._reward._type;
+
+        if(type.HasFlag(RewardType.Exp))
+        {
+
+        }
+        if (type.HasFlag(RewardType.Gold))
+        {
+
+        }
+        if (type.HasFlag(RewardType.Object))
+        {
+            questData._reward._obj.SetActive(true);
+        }
+        if (type.HasFlag(RewardType.Collider))
+        {
+            questData._reward._coll.enabled = true;
+        }
+
+    }
     private void OnDestroy()
     {
         _quests = null; // 차피 한 Scene에는 한 종류의 퀘스트만 존재하므로 그냥 바로 파괴시킨다.
