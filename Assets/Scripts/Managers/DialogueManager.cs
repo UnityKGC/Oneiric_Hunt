@@ -40,17 +40,7 @@ public class DialogueManager : MonoBehaviour
             _dialogueEvt.Invoke(data); // 보낸다.
         }
     }
-    /*
-    public void GetDialogueLine(DialogueData data, QuestData quest = null) // 다이얼로그 데이터를 가져온다.
-    {
-        _nowData = data;
-        _quest = quest;
 
-        if (_dialogueEvt != null)
-        {
-            _dialogueEvt.Invoke(data); // 보낸다.
-        }
-    }*/
     public void EndDialogue() // 마지막 대사가 출력되고 대화 타입에 따라 퀘스트 시작인지 끝인지를 전달함.
     {
         switch (_nowData._dialogueType)
@@ -59,7 +49,8 @@ public class DialogueManager : MonoBehaviour
                 QuestManager._instance.StartQuest(_quest);
                 break;
             case DialogueType.QuestProgress:
-
+                _nowData._isStart = _nowData._isFinish = false;
+                _nowData._index = 0;
                 break;
             case DialogueType.QuestEnd:
                 _quest._isFinish = true;

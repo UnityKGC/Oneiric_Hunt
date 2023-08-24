@@ -40,6 +40,7 @@ public class QuestData
 
     public List<ObjectData> _objLst; // 수행해야 할 퀘스트의 오브젝트 리스트
 
+    public QuestPreceds _preced; // 퀘스트 시작 시, 선행 보상.
     public QuestRewards _reward; // 퀘스트 보상
 
     public bool _isStart; // 퀘스트를 시작했는지,
@@ -64,6 +65,26 @@ public enum RewardType
 public class QuestRewards
 {
     public RewardType _type;
+    public GameObject _obj; // 퀘스트 완료 시 특정 오브젝트 활성화
+    public Collider _coll; // 퀘스트 완료 시 콜라이더 활성화 => 이건 임시 => 플레이어 집에서 문 열때 필요
+    public int _gold;
+    public float _exp;
+}
+
+[Flags]
+public enum PrecedType
+{
+    None = -1,
+    Exp = 1 << 0,
+    Gold = 1 << 1,
+    Object = 1 << 2,
+    Collider = 1 << 3,
+}
+
+[System.Serializable]
+public class QuestPreceds
+{
+    public PrecedType _type;
     public GameObject _obj; // 퀘스트 완료 시 특정 오브젝트 활성화
     public Collider _coll; // 퀘스트 완료 시 콜라이더 활성화 => 이건 임시 => 플레이어 집에서 문 열때 필요
     public int _gold;

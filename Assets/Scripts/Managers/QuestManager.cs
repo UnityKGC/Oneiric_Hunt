@@ -50,7 +50,9 @@ public class QuestManager : MonoBehaviour
         _processQeustLst.Add(questData);
 
         UIManager._instacne.StartQuest(questData);
-        
+
+        GetQuestPreced(questData); // 퀘스트 선행보상 획득
+
         // 해당 퀘스트의 타입을 확인 후, => 알맞는 퀘스트를 시작하게 만듬 => 일단 전부 다 같이 받도록 하자.
     }
 
@@ -165,6 +167,31 @@ public class QuestManager : MonoBehaviour
         {
             questData._reward._coll.enabled = true;
         }
+
+    }
+
+    void GetQuestPreced(QuestData questData)
+    {
+        PrecedType type = questData._preced._type;
+
+        if (type.HasFlag(PrecedType.Exp))
+        {
+
+        }
+        if (type.HasFlag(PrecedType.Gold))
+        {
+
+        }
+        if (type.HasFlag(PrecedType.Object))
+        {
+            questData._preced._obj.SetActive(true);
+        }
+        if (type.HasFlag(PrecedType.Collider))
+        {
+            questData._preced._coll.enabled = true;
+        }
+
+
 
     }
     private void OnDestroy()
