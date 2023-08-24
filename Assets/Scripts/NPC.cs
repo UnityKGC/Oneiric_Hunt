@@ -18,6 +18,7 @@ public class NPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 QuestData quest = null;
