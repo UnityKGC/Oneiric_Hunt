@@ -19,6 +19,8 @@ public class TriggerData
     public int _objID; // 수행해야 할 objID
 
     public string _objName; // 원래는 매니저 같은 곳에서 _objID를 토대로 오브젝트 정보를 가져오게 해야하나
+
+    public bool _isFinish; // 해당 오브젝트에 Trigger했는지,
 }
 [System.Serializable]
 public class ObjectData
@@ -81,6 +83,7 @@ public class QuestRewards
     public DialogueData _dialogue;
     public int _gold;
     public float _exp;
+
 }
 
 [Flags]

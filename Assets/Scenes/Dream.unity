@@ -303,7 +303,7 @@ MonoBehaviour:
     _pos: {fileID: 1968849081}
   _questData:
     _questID: 50
-    _questType: -1
+    _questType: 4
     _questName: "\uCCAB\uBC88\uC9F8 \uC870\uC815"
     _questContentText: "\uC9C0\uC815\uB41C \uC704\uCE58\uB85C \uC774\uB3D9\uD558\uC138\uC694"
     _dialogueData:
@@ -321,13 +321,17 @@ MonoBehaviour:
       _isLast: 0
       _isFinish: 0
     _objLst: []
+    _triggerDatas:
+    - _objID: 11000
+      _objName: "\uBE5B\uB09C\uB2E4!"
+      _isFinish: 0
     _preced:
-      _type: 0
-      _obj: {fileID: 0}
+      _type: 4
+      _obj: {fileID: 1290537354}
       _coll: {fileID: 0}
       _dialogue:
         _name: 
-        _dialogueType: 0
+        _dialogueType: -1
         _dialogueLines: []
         _index: 0
         _isStart: 0
@@ -336,19 +340,182 @@ MonoBehaviour:
       _gold: 0
       _exp: 0
     _reward:
-      _type: 0
+      _type: 4
       _obj: {fileID: 0}
       _coll: {fileID: 0}
       _dialogue:
-        _name: 
-        _dialogueType: 0
-        _dialogueLines: []
+        _name: "\uB3D9\uB8CC"
+        _dialogueType: 2
+        _dialogueLines:
+        - "\uC88B\uC544 \uC774\uB3D9\uC740 \uC5BC\uCD94 \uB41C \uAC83 \uAC19\uB124."
         _index: 0
         _isStart: 0
         _isLast: 0
         _isFinish: 0
       _gold: 0
       _exp: 0
+      _quest:
+        _questID: 0
+        _questType: 0
+        _questName: 
+        _questContentText: 
+        _dialogueData: []
+        _objLst: []
+        _triggerDatas: []
+        _preced:
+          _type: 0
+          _obj: {fileID: 0}
+          _coll: {fileID: 0}
+          _dialogue:
+            _name: 
+            _dialogueType: 0
+            _dialogueLines: []
+            _index: 0
+            _isStart: 0
+            _isLast: 0
+            _isFinish: 0
+          _gold: 0
+          _exp: 0
+        _reward:
+          _type: 0
+          _obj: {fileID: 0}
+          _coll: {fileID: 0}
+          _dialogue:
+            _name: 
+            _dialogueType: 0
+            _dialogueLines: []
+            _index: 0
+            _isStart: 0
+            _isLast: 0
+            _isFinish: 0
+          _gold: 0
+          _exp: 0
+          _quest:
+            _questID: 0
+            _questType: 0
+            _questName: 
+            _questContentText: 
+            _dialogueData: []
+            _objLst: []
+            _triggerDatas: []
+            _preced:
+              _type: 0
+              _obj: {fileID: 0}
+              _coll: {fileID: 0}
+              _dialogue:
+                _name: 
+                _dialogueType: 0
+                _dialogueLines: []
+                _index: 0
+                _isStart: 0
+                _isLast: 0
+                _isFinish: 0
+              _gold: 0
+              _exp: 0
+            _reward:
+              _type: 0
+              _obj: {fileID: 0}
+              _coll: {fileID: 0}
+              _dialogue:
+                _name: 
+                _dialogueType: 0
+                _dialogueLines: []
+                _index: 0
+                _isStart: 0
+                _isLast: 0
+                _isFinish: 0
+              _gold: 0
+              _exp: 0
+              _quest:
+                _questID: 0
+                _questType: 0
+                _questName: 
+                _questContentText: 
+                _dialogueData: []
+                _objLst: []
+                _triggerDatas: []
+                _preced:
+                  _type: 0
+                  _obj: {fileID: 0}
+                  _coll: {fileID: 0}
+                  _dialogue:
+                    _name: 
+                    _dialogueType: 0
+                    _dialogueLines: []
+                    _index: 0
+                    _isStart: 0
+                    _isLast: 0
+                    _isFinish: 0
+                  _gold: 0
+                  _exp: 0
+                _reward:
+                  _type: 0
+                  _obj: {fileID: 0}
+                  _coll: {fileID: 0}
+                  _dialogue:
+                    _name: 
+                    _dialogueType: 0
+                    _dialogueLines: []
+                    _index: 0
+                    _isStart: 0
+                    _isLast: 0
+                    _isFinish: 0
+                  _gold: 0
+                  _exp: 0
+                  _quest:
+                    _questID: 0
+                    _questType: 0
+                    _questName: 
+                    _questContentText: 
+                    _dialogueData: []
+                    _objLst: []
+                    _triggerDatas: []
+                    _preced:
+                      _type: 0
+                      _obj: {fileID: 0}
+                      _coll: {fileID: 0}
+                      _dialogue:
+                        _name: 
+                        _dialogueType: 0
+                        _index: 0
+                        _isStart: 0
+                        _isLast: 0
+                        _isFinish: 0
+                      _gold: 0
+                      _exp: 0
+                    _reward:
+                      _type: 0
+                      _obj: {fileID: 0}
+                      _coll: {fileID: 0}
+                      _dialogue:
+                        _name: 
+                        _dialogueType: 0
+                        _index: 0
+                        _isStart: 0
+                        _isLast: 0
+                        _isFinish: 0
+                      _gold: 0
+                      _exp: 0
+                      _quest:
+                        _questID: 0
+                        _questType: 0
+                        _questName: 
+                        _questContentText: 
+                        _isStart: 0
+                        _isAchieve: 0
+                        _isFinish: 0
+                    _isStart: 0
+                    _isAchieve: 0
+                    _isFinish: 0
+                _isStart: 0
+                _isAchieve: 0
+                _isFinish: 0
+            _isStart: 0
+            _isAchieve: 0
+            _isFinish: 0
+        _isStart: 0
+        _isAchieve: 0
+        _isFinish: 0
     _isStart: 0
     _isAchieve: 0
     _isFinish: 0
@@ -973,6 +1140,39 @@ Transform:
   m_Father: {fileID: 248425875}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &236480429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 236480430}
+  m_Layer: 0
+  m_Name: Map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &236480430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236480429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1251069014}
+  - {fileID: 1290537355}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &246187379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,6 +1237,7 @@ MonoBehaviour:
       _totalCount: 1
       _nowCount: 0
       _isFull: 0
+    _triggerDatas: []
     _preced:
       _type: 0
       _obj: {fileID: 0}
@@ -1065,6 +1266,168 @@ MonoBehaviour:
         _isFinish: 0
       _gold: 0
       _exp: 0
+      _quest:
+        _questID: 0
+        _questType: 0
+        _questName: 
+        _questContentText: 
+        _dialogueData: []
+        _objLst: []
+        _triggerDatas: []
+        _preced:
+          _type: 0
+          _obj: {fileID: 0}
+          _coll: {fileID: 0}
+          _dialogue:
+            _name: 
+            _dialogueType: 0
+            _dialogueLines: []
+            _index: 0
+            _isStart: 0
+            _isLast: 0
+            _isFinish: 0
+          _gold: 0
+          _exp: 0
+        _reward:
+          _type: 0
+          _obj: {fileID: 0}
+          _coll: {fileID: 0}
+          _dialogue:
+            _name: 
+            _dialogueType: 0
+            _dialogueLines: []
+            _index: 0
+            _isStart: 0
+            _isLast: 0
+            _isFinish: 0
+          _gold: 0
+          _exp: 0
+          _quest:
+            _questID: 0
+            _questType: 0
+            _questName: 
+            _questContentText: 
+            _dialogueData: []
+            _objLst: []
+            _triggerDatas: []
+            _preced:
+              _type: 0
+              _obj: {fileID: 0}
+              _coll: {fileID: 0}
+              _dialogue:
+                _name: 
+                _dialogueType: 0
+                _dialogueLines: []
+                _index: 0
+                _isStart: 0
+                _isLast: 0
+                _isFinish: 0
+              _gold: 0
+              _exp: 0
+            _reward:
+              _type: 0
+              _obj: {fileID: 0}
+              _coll: {fileID: 0}
+              _dialogue:
+                _name: 
+                _dialogueType: 0
+                _dialogueLines: []
+                _index: 0
+                _isStart: 0
+                _isLast: 0
+                _isFinish: 0
+              _gold: 0
+              _exp: 0
+              _quest:
+                _questID: 0
+                _questType: 0
+                _questName: 
+                _questContentText: 
+                _dialogueData: []
+                _objLst: []
+                _triggerDatas: []
+                _preced:
+                  _type: 0
+                  _obj: {fileID: 0}
+                  _coll: {fileID: 0}
+                  _dialogue:
+                    _name: 
+                    _dialogueType: 0
+                    _dialogueLines: []
+                    _index: 0
+                    _isStart: 0
+                    _isLast: 0
+                    _isFinish: 0
+                  _gold: 0
+                  _exp: 0
+                _reward:
+                  _type: 0
+                  _obj: {fileID: 0}
+                  _coll: {fileID: 0}
+                  _dialogue:
+                    _name: 
+                    _dialogueType: 0
+                    _dialogueLines: []
+                    _index: 0
+                    _isStart: 0
+                    _isLast: 0
+                    _isFinish: 0
+                  _gold: 0
+                  _exp: 0
+                  _quest:
+                    _questID: 0
+                    _questType: 0
+                    _questName: 
+                    _questContentText: 
+                    _dialogueData: []
+                    _objLst: []
+                    _triggerDatas: []
+                    _preced:
+                      _type: 0
+                      _obj: {fileID: 0}
+                      _coll: {fileID: 0}
+                      _dialogue:
+                        _name: 
+                        _dialogueType: 0
+                        _index: 0
+                        _isStart: 0
+                        _isLast: 0
+                        _isFinish: 0
+                      _gold: 0
+                      _exp: 0
+                    _reward:
+                      _type: 0
+                      _obj: {fileID: 0}
+                      _coll: {fileID: 0}
+                      _dialogue:
+                        _name: 
+                        _dialogueType: 0
+                        _index: 0
+                        _isStart: 0
+                        _isLast: 0
+                        _isFinish: 0
+                      _gold: 0
+                      _exp: 0
+                      _quest:
+                        _questID: 0
+                        _questType: 0
+                        _questName: 
+                        _questContentText: 
+                        _isStart: 0
+                        _isAchieve: 0
+                        _isFinish: 0
+                    _isStart: 0
+                    _isAchieve: 0
+                    _isFinish: 0
+                _isStart: 0
+                _isAchieve: 0
+                _isFinish: 0
+            _isStart: 0
+            _isAchieve: 0
+            _isFinish: 0
+        _isStart: 0
+        _isAchieve: 0
+        _isFinish: 0
     _isStart: 0
     _isAchieve: 0
     _isFinish: 0
@@ -1833,7 +2196,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378461752}
-  m_LocalRotation: {x: 0.0016938094, y: 0.98811734, z: -0.15330385, w: 0.0109174205}
+  m_LocalRotation: {x: 0.0016939271, y: 0.98811734, z: -0.15330383, w: 0.010918178}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3155,7 +3518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2443084872924781365, guid: d2d6eef92ef4138438de9fdf726507fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -342.3819
+      value: -342.38193
       objectReference: {fileID: 0}
     - target: {fileID: 2443084872924781365, guid: d2d6eef92ef4138438de9fdf726507fa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3167,11 +3530,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2443084872924781365, guid: d2d6eef92ef4138438de9fdf726507fa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.010884901
+      value: 0.010885633
       objectReference: {fileID: 0}
     - target: {fileID: 2443084872924781365, guid: d2d6eef92ef4138438de9fdf726507fa, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0018915896
+      value: 0.0018917164
       objectReference: {fileID: 0}
     - target: {fileID: 2443084872924781365, guid: d2d6eef92ef4138438de9fdf726507fa, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3179,7 +3542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2443084872924781365, guid: d2d6eef92ef4138438de9fdf726507fa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.17120452
+      value: -0.1712045
       objectReference: {fileID: 0}
     - target: {fileID: 2443084872924781365, guid: d2d6eef92ef4138438de9fdf726507fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3837,6 +4200,7 @@ MonoBehaviour:
       _totalCount: 3
       _nowCount: 0
       _isFull: 0
+    _triggerDatas: []
     _preced:
       _type: 0
       _obj: {fileID: 0}
@@ -3865,6 +4229,168 @@ MonoBehaviour:
         _isFinish: 0
       _gold: 0
       _exp: 0
+      _quest:
+        _questID: 0
+        _questType: 0
+        _questName: 
+        _questContentText: 
+        _dialogueData: []
+        _objLst: []
+        _triggerDatas: []
+        _preced:
+          _type: 0
+          _obj: {fileID: 0}
+          _coll: {fileID: 0}
+          _dialogue:
+            _name: 
+            _dialogueType: 0
+            _dialogueLines: []
+            _index: 0
+            _isStart: 0
+            _isLast: 0
+            _isFinish: 0
+          _gold: 0
+          _exp: 0
+        _reward:
+          _type: 0
+          _obj: {fileID: 0}
+          _coll: {fileID: 0}
+          _dialogue:
+            _name: 
+            _dialogueType: 0
+            _dialogueLines: []
+            _index: 0
+            _isStart: 0
+            _isLast: 0
+            _isFinish: 0
+          _gold: 0
+          _exp: 0
+          _quest:
+            _questID: 0
+            _questType: 0
+            _questName: 
+            _questContentText: 
+            _dialogueData: []
+            _objLst: []
+            _triggerDatas: []
+            _preced:
+              _type: 0
+              _obj: {fileID: 0}
+              _coll: {fileID: 0}
+              _dialogue:
+                _name: 
+                _dialogueType: 0
+                _dialogueLines: []
+                _index: 0
+                _isStart: 0
+                _isLast: 0
+                _isFinish: 0
+              _gold: 0
+              _exp: 0
+            _reward:
+              _type: 0
+              _obj: {fileID: 0}
+              _coll: {fileID: 0}
+              _dialogue:
+                _name: 
+                _dialogueType: 0
+                _dialogueLines: []
+                _index: 0
+                _isStart: 0
+                _isLast: 0
+                _isFinish: 0
+              _gold: 0
+              _exp: 0
+              _quest:
+                _questID: 0
+                _questType: 0
+                _questName: 
+                _questContentText: 
+                _dialogueData: []
+                _objLst: []
+                _triggerDatas: []
+                _preced:
+                  _type: 0
+                  _obj: {fileID: 0}
+                  _coll: {fileID: 0}
+                  _dialogue:
+                    _name: 
+                    _dialogueType: 0
+                    _dialogueLines: []
+                    _index: 0
+                    _isStart: 0
+                    _isLast: 0
+                    _isFinish: 0
+                  _gold: 0
+                  _exp: 0
+                _reward:
+                  _type: 0
+                  _obj: {fileID: 0}
+                  _coll: {fileID: 0}
+                  _dialogue:
+                    _name: 
+                    _dialogueType: 0
+                    _dialogueLines: []
+                    _index: 0
+                    _isStart: 0
+                    _isLast: 0
+                    _isFinish: 0
+                  _gold: 0
+                  _exp: 0
+                  _quest:
+                    _questID: 0
+                    _questType: 0
+                    _questName: 
+                    _questContentText: 
+                    _dialogueData: []
+                    _objLst: []
+                    _triggerDatas: []
+                    _preced:
+                      _type: 0
+                      _obj: {fileID: 0}
+                      _coll: {fileID: 0}
+                      _dialogue:
+                        _name: 
+                        _dialogueType: 0
+                        _index: 0
+                        _isStart: 0
+                        _isLast: 0
+                        _isFinish: 0
+                      _gold: 0
+                      _exp: 0
+                    _reward:
+                      _type: 0
+                      _obj: {fileID: 0}
+                      _coll: {fileID: 0}
+                      _dialogue:
+                        _name: 
+                        _dialogueType: 0
+                        _index: 0
+                        _isStart: 0
+                        _isLast: 0
+                        _isFinish: 0
+                      _gold: 0
+                      _exp: 0
+                      _quest:
+                        _questID: 0
+                        _questType: 0
+                        _questName: 
+                        _questContentText: 
+                        _isStart: 0
+                        _isAchieve: 0
+                        _isFinish: 0
+                    _isStart: 0
+                    _isAchieve: 0
+                    _isFinish: 0
+                _isStart: 0
+                _isAchieve: 0
+                _isFinish: 0
+            _isStart: 0
+            _isAchieve: 0
+            _isFinish: 0
+        _isStart: 0
+        _isAchieve: 0
+        _isFinish: 0
     _isStart: 0
     _isAchieve: 0
     _isFinish: 0
@@ -4659,13 +5185,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251069011}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -500, y: 0, z: -500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 236480430}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1257461408
 GameObject:
@@ -4817,6 +5343,117 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1290537354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1290537355}
+  - component: {fileID: 1290537358}
+  - component: {fileID: 1290537357}
+  - component: {fileID: 1290537356}
+  - component: {fileID: 1290537359}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1290537355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290537354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -340.79, y: 1.27, z: -451.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 236480430}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1290537356
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290537354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1290537357
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290537354}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1290537358
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290537354}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1290537359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290537354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be33a082d737013479e33d31e40d9ee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objID: 11000
 --- !u!1 &1295390273
 GameObject:
   m_ObjectHideFlags: 0
@@ -6519,6 +7156,7 @@ MonoBehaviour:
       _totalCount: 5
       _nowCount: 0
       _isFull: 0
+    _triggerDatas: []
     _preced:
       _type: 0
       _obj: {fileID: 0}
@@ -6547,6 +7185,168 @@ MonoBehaviour:
         _isFinish: 0
       _gold: 0
       _exp: 0
+      _quest:
+        _questID: 0
+        _questType: 0
+        _questName: 
+        _questContentText: 
+        _dialogueData: []
+        _objLst: []
+        _triggerDatas: []
+        _preced:
+          _type: 0
+          _obj: {fileID: 0}
+          _coll: {fileID: 0}
+          _dialogue:
+            _name: 
+            _dialogueType: 0
+            _dialogueLines: []
+            _index: 0
+            _isStart: 0
+            _isLast: 0
+            _isFinish: 0
+          _gold: 0
+          _exp: 0
+        _reward:
+          _type: 0
+          _obj: {fileID: 0}
+          _coll: {fileID: 0}
+          _dialogue:
+            _name: 
+            _dialogueType: 0
+            _dialogueLines: []
+            _index: 0
+            _isStart: 0
+            _isLast: 0
+            _isFinish: 0
+          _gold: 0
+          _exp: 0
+          _quest:
+            _questID: 0
+            _questType: 0
+            _questName: 
+            _questContentText: 
+            _dialogueData: []
+            _objLst: []
+            _triggerDatas: []
+            _preced:
+              _type: 0
+              _obj: {fileID: 0}
+              _coll: {fileID: 0}
+              _dialogue:
+                _name: 
+                _dialogueType: 0
+                _dialogueLines: []
+                _index: 0
+                _isStart: 0
+                _isLast: 0
+                _isFinish: 0
+              _gold: 0
+              _exp: 0
+            _reward:
+              _type: 0
+              _obj: {fileID: 0}
+              _coll: {fileID: 0}
+              _dialogue:
+                _name: 
+                _dialogueType: 0
+                _dialogueLines: []
+                _index: 0
+                _isStart: 0
+                _isLast: 0
+                _isFinish: 0
+              _gold: 0
+              _exp: 0
+              _quest:
+                _questID: 0
+                _questType: 0
+                _questName: 
+                _questContentText: 
+                _dialogueData: []
+                _objLst: []
+                _triggerDatas: []
+                _preced:
+                  _type: 0
+                  _obj: {fileID: 0}
+                  _coll: {fileID: 0}
+                  _dialogue:
+                    _name: 
+                    _dialogueType: 0
+                    _dialogueLines: []
+                    _index: 0
+                    _isStart: 0
+                    _isLast: 0
+                    _isFinish: 0
+                  _gold: 0
+                  _exp: 0
+                _reward:
+                  _type: 0
+                  _obj: {fileID: 0}
+                  _coll: {fileID: 0}
+                  _dialogue:
+                    _name: 
+                    _dialogueType: 0
+                    _dialogueLines: []
+                    _index: 0
+                    _isStart: 0
+                    _isLast: 0
+                    _isFinish: 0
+                  _gold: 0
+                  _exp: 0
+                  _quest:
+                    _questID: 0
+                    _questType: 0
+                    _questName: 
+                    _questContentText: 
+                    _dialogueData: []
+                    _objLst: []
+                    _triggerDatas: []
+                    _preced:
+                      _type: 0
+                      _obj: {fileID: 0}
+                      _coll: {fileID: 0}
+                      _dialogue:
+                        _name: 
+                        _dialogueType: 0
+                        _index: 0
+                        _isStart: 0
+                        _isLast: 0
+                        _isFinish: 0
+                      _gold: 0
+                      _exp: 0
+                    _reward:
+                      _type: 0
+                      _obj: {fileID: 0}
+                      _coll: {fileID: 0}
+                      _dialogue:
+                        _name: 
+                        _dialogueType: 0
+                        _index: 0
+                        _isStart: 0
+                        _isLast: 0
+                        _isFinish: 0
+                      _gold: 0
+                      _exp: 0
+                      _quest:
+                        _questID: 0
+                        _questType: 0
+                        _questName: 
+                        _questContentText: 
+                        _isStart: 0
+                        _isAchieve: 0
+                        _isFinish: 0
+                    _isStart: 0
+                    _isAchieve: 0
+                    _isFinish: 0
+                _isStart: 0
+                _isAchieve: 0
+                _isFinish: 0
+            _isStart: 0
+            _isAchieve: 0
+            _isFinish: 0
+        _isStart: 0
+        _isAchieve: 0
+        _isFinish: 0
     _isStart: 0
     _isAchieve: 0
     _isFinish: 0
@@ -6914,7 +7714,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701176352}
-  m_LocalRotation: {x: 0.0018915895, y: 0.9851736, z: -0.1712045, w: 0.0108849}
+  m_LocalRotation: {x: 0.0018917184, y: 0.9851736, z: -0.17120449, w: 0.010885642}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7419,7 +8219,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761433997}
-  m_LocalRotation: {x: 0.0020892718, y: 0.98189646, z: -0.18909596, w: 0.010848716}
+  m_LocalRotation: {x: 0.0020894117, y: 0.98189646, z: -0.18909597, w: 0.010849445}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10785,7 +11585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537640185177772522}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -342.3819, y: 10.13, z: -456.25488}
+  m_LocalPosition: {x: -342.38193, y: 10.13, z: -456.25488}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

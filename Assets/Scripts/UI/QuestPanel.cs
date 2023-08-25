@@ -4,7 +4,8 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-public class QuestPanel : MonoBehaviour
+
+public class QuestPanel : MonoBehaviour, ISetEvt
 {
     public TextMeshProUGUI _questTitle;
     public TextMeshProUGUI _questContentText;
@@ -12,7 +13,7 @@ public class QuestPanel : MonoBehaviour
 
     StringBuilder sb = new StringBuilder();
 
-    void Start()
+    public void SetEvent()
     {
         UIManager._instacne._questDataEvt -= GetQuestData;
         UIManager._instacne._questDataEvt += GetQuestData;
@@ -20,8 +21,22 @@ public class QuestPanel : MonoBehaviour
         UIManager._instacne._questContentEvt -= UpdateContent;
         UIManager._instacne._questContentEvt += UpdateContent;
 
+
         UIManager._instacne._questFinishEvt -= FinishQuest;
         UIManager._instacne._questFinishEvt += FinishQuest;
+    }
+    void Start()
+    {
+        /*
+        UIManager._instacne._questDataEvt -= GetQuestData;
+        UIManager._instacne._questDataEvt += GetQuestData;
+
+        UIManager._instacne._questContentEvt -= UpdateContent;
+        UIManager._instacne._questContentEvt += UpdateContent;
+
+        
+        UIManager._instacne._questFinishEvt -= FinishQuest;
+        UIManager._instacne._questFinishEvt += FinishQuest;*/
 
         gameObject.SetActive(false); // 자기자신을 비활성화 함
     }

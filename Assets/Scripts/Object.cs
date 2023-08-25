@@ -12,7 +12,7 @@ public enum ObjectType
 
 public class Object : MonoBehaviour
 {
-    public int _objID = 10000; // 본인의 ID
+    public int _objID; // 본인의 ID
 
     private void Awake()
     {
@@ -27,7 +27,14 @@ public class Object : MonoBehaviour
     {
         
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            QuestManager._instance.QuestTrigger(_objID);
+        }
+    }
     private void OnTriggerStay(Collider other) // 2. 들어오고 있을 때
     {
         if (other.gameObject.tag == "Player")

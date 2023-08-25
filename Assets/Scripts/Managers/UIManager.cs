@@ -5,6 +5,10 @@ using UnityEngine;
 using System.Linq;
 using DG.Tweening;
 
+public interface ISetEvt
+{
+    public void SetEvent();
+}
 public class UIManager : MonoBehaviour
 {
     public static UIManager _instacne;
@@ -52,6 +56,14 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         _instacne = this;
+
+        foreach(GameObject obj in _sceneUILst)
+        {
+            if(obj.GetComponentInChildren<ISetEvt>() != null)
+            {
+
+            }
+        }
     }
     private void Start()
     {
