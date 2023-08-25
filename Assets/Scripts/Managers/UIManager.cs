@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
         Play,
         GameOver,
         Tutorial,
+        Dialogue,
     }
 
     public Action<QuestData> _questDataEvt = null; // 퀘스트 UI를 등록시키기 위해 사용하는 콜백
@@ -52,11 +53,10 @@ public class UIManager : MonoBehaviour
     {
         _instacne = this;
     }
-    void Start()
+    private void Start()
     {
         
     }
-
     void Update()
     {
         Debug.Log("Stack 크기 : "+_popupUIStack.Count);
@@ -97,6 +97,7 @@ public class UIManager : MonoBehaviour
                 break;
             case SceneUIState.Play: // 미니맵, 등등 호출
             case SceneUIState.None: // 미니맵, 등등 호출
+            case SceneUIState.Dialogue:
                 Time.timeScale = 1f;
                 break;
             case SceneUIState.GameOver: // 게임 오버 호출
@@ -142,7 +143,6 @@ public class UIManager : MonoBehaviour
     {
         _playStateEvt?.Invoke(playState); // 뿌린다.
     }
-    
 
     public void SetPlayerHP(float value) // 굳이 함수를 만든 이유가 무엇인가? => 누가 이 함수를 참조하고 있는지 한번에 확인할 수 있어 찾아가기 편하다.
     {
@@ -220,6 +220,7 @@ public class UIManager : MonoBehaviour
             case SceneUIState.Pause:
             case SceneUIState.GameOver:
             case SceneUIState.Tutorial:
+            case SceneUIState.Dialogue:
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 break;

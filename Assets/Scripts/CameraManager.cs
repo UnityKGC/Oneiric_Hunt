@@ -12,6 +12,8 @@ public class CameraManager : MonoBehaviour
     [SerializeField] CinemachineBrain _brain;
 
     [SerializeField] CameraBlendCtrl _ctrl;
+
+    public GameObject _playerFocus;
     private void Awake()
     {
         _instance = this;
@@ -20,8 +22,21 @@ public class CameraManager : MonoBehaviour
     {
         
     }
+    void FindPlayerFocus()
+    {
+        GameObject[] obj = GameObject.FindGameObjectsWithTag("CamFocus");
+        foreach(GameObject o in obj)
+        {
+            if(o.activeSelf)
+            {
+                _playerFocus = o;
+                break;
+            }
+        }
+    }
     public void SetFreeLookCam()
     {
+        FindPlayerFocus();
         _ctrl.SetFreeLookCam();
     }
     public void SetVirtualCam()

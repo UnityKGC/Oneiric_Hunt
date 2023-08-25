@@ -17,8 +17,6 @@ public class DreamPlayUI : MonoBehaviour
     public List<GameObject> _sceneUILst;
     void Start()
     {
-        _state = PlayStateUI.Normal;
-
         UIManager._instacne._playStateEvt -= SetPlayState;
         UIManager._instacne._playStateEvt += SetPlayState;
     }

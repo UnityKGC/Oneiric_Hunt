@@ -10,7 +10,7 @@ public class DialoguePanel : MonoBehaviour
 
     DialogueData _data;
 
-    void Start()
+    private void Start()
     {
         DialogueManager._instance._dialogueEvt -= SetDialogueData;
         DialogueManager._instance._dialogueEvt += SetDialogueData;
@@ -52,5 +52,9 @@ public class DialoguePanel : MonoBehaviour
             _content.text = _data._dialogueLines[_data._index++]; // _lineCount 대사 출력.
         }
     }
-    
+    private void OnDestroy()
+    {
+        DialogueManager._instance._dialogueEvt -= SetDialogueData;
+        DialogueManager._instance._clickNext -= NextDialogue;
+    }
 }

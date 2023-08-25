@@ -1216,12 +1216,28 @@ MonoBehaviour:
       _type: 0
       _obj: {fileID: 0}
       _coll: {fileID: 0}
+      _dialogue:
+        _name: 
+        _dialogueType: 0
+        _dialogueLines: []
+        _index: 0
+        _isStart: 0
+        _isLast: 0
+        _isFinish: 0
       _gold: 0
       _exp: 0
     _reward:
       _type: 0
       _obj: {fileID: 0}
       _coll: {fileID: 0}
+      _dialogue:
+        _name: 
+        _dialogueType: 0
+        _dialogueLines: []
+        _index: 0
+        _isStart: 0
+        _isLast: 0
+        _isFinish: 0
       _gold: 0
       _exp: 0
     _isStart: 0
@@ -1805,7 +1821,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440280602}
-  m_LocalRotation: {x: 0.19151324, y: -0.6675199, z: 0.18376087, w: 0.6956808}
+  m_LocalRotation: {x: 0.1915123, y: -0.66752374, z: 0.183762, w: 0.6956771}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3573,7 +3589,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828401245}
-  m_LocalRotation: {x: 0.2041024, y: -0.6640764, z: 0.19584042, w: 0.69209206}
+  m_LocalRotation: {x: 0.20410134, y: -0.6640802, z: 0.1958416, w: 0.6920883}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3659,8 +3675,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837129830}
-  m_LocalRotation: {x: 0.20410241, y: -0.6640764, z: 0.19584045, w: 0.692092}
-  m_LocalPosition: {x: 13.435779, y: 3.2710493, z: 46.169083}
+  m_LocalRotation: {x: 0.20410138, y: -0.66408026, z: 0.19584163, w: 0.69208825}
+  m_LocalPosition: {x: 13.435779, y: 3.271049, z: 46.1691}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3925,19 +3941,35 @@ MonoBehaviour:
       _type: 0
       _obj: {fileID: 0}
       _coll: {fileID: 0}
+      _dialogue:
+        _name: 
+        _dialogueType: 0
+        _dialogueLines: []
+        _index: 0
+        _isStart: 0
+        _isLast: 0
+        _isFinish: 0
       _gold: 0
       _exp: 0
     _reward:
       _type: 0
       _obj: {fileID: 0}
       _coll: {fileID: 0}
+      _dialogue:
+        _name: 
+        _dialogueType: 0
+        _dialogueLines: []
+        _index: 0
+        _isStart: 0
+        _isLast: 0
+        _isFinish: 0
       _gold: 0
       _exp: 0
     _isStart: 0
     _isAchieve: 0
     _isFinish: 0
   - _questID: 40
-    _questType: 0
+    _questType: 3
     _questName: "\uC811\uC18D\uD558\uAE30"
     _questContentText: "\uD5E4\uB4DC\uAE30\uC5B4\uB97C \uC7A5\uCC29\uD574 \uB370\uC774\uD130\uB97C
       \uCD08\uAE30\uD654\uC2DC\uD0A4\uC790"
@@ -3954,17 +3986,39 @@ MonoBehaviour:
       _isStart: 0
       _isLast: 0
       _isFinish: 0
-    _objLst: []
+    _objLst:
+    - _objID: 10001
+      _objName: "\uD5E4\uB4DC\uAE30\uC5B4(\uC784\uC2DC)"
+      _totalCount: 0
+      _nowCount: 0
+      _isFull: 0
     _preced:
       _type: 8
       _obj: {fileID: 0}
       _coll: {fileID: 9025948050247464343}
+      _dialogue:
+        _name: 
+        _dialogueType: -1
+        _dialogueLines: []
+        _index: 0
+        _isStart: 0
+        _isLast: 0
+        _isFinish: 0
       _gold: 0
       _exp: 0
     _reward:
-      _type: 0
+      _type: 16
       _obj: {fileID: 0}
       _coll: {fileID: 0}
+      _dialogue:
+        _name: "\uB3D9\uB8CC"
+        _dialogueType: 3
+        _dialogueLines:
+        - "\uC811\uC18D\uD55C\uB2E4!"
+        _index: 0
+        _isStart: 0
+        _isLast: 0
+        _isFinish: 0
       _gold: 0
       _exp: 0
     _isStart: 0
@@ -4587,7 +4641,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019396754}
-  m_LocalRotation: {x: 0.21665743, y: -0.6604043, z: 0.20788729, w: 0.68826497}
+  m_LocalRotation: {x: 0.21665633, y: -0.6604081, z: 0.20788845, w: 0.68826133}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5905,6 +5959,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3666778389695627665, guid: 4a0002c368c889f4ca9781e3d7db16d3, type: 3}
   m_PrefabInstance: {fileID: 1420473765}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1420473767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3666778389695627669, guid: 4a0002c368c889f4ca9781e3d7db16d3, type: 3}
+  m_PrefabInstance: {fileID: 1420473765}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 166a1c5c827996d45999a257b92b744e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1434321373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8036,7 +8101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883890871}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.719498, y: 3.2710001, z: 46.169086}
+  m_LocalPosition: {x: 16.719498, y: 3.2710001, z: 46.169094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20299,6 +20364,7 @@ GameObject:
   - component: {fileID: 9025948050247464341}
   - component: {fileID: 9025948050247464343}
   - component: {fileID: 9025948050247464342}
+  - component: {fileID: 9025948050247464344}
   m_Layer: 0
   m_Name: Tv 32 Inch
   m_TagString: Untagged
@@ -27483,6 +27549,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9025948050247464344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5411569967931312006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a8092e17a07ce40b8a863ca74edc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionUI: {fileID: 1420473767}
+  _objType: 2
 --- !u!33 &9032951446763716443
 MeshFilter:
   m_ObjectHideFlags: 0

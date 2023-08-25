@@ -21,36 +21,31 @@ public class GameManager : MonoBehaviour
     public PlayState Playstate 
     { 
         get { return _playState; } 
-        set 
+        set
         { 
             _playState = value;
             UIManager._instacne.SetPlayState(_playState); // UI에게 게임상태 변화했다고 알림.
-        } 
+            PlayerManager._instance.ChangePlayer(_playState, Player.transform.position, Player.transform.rotation);
+        }
     }
 
     private PlayState _playState;
 
-    public GameObject Player { get { return _player; } }
+    public GameObject Player { get { return _player; } set { _player = value; } }
 
     private GameObject _player;
 
-    public Transform PlayerFocus { get { return _playeFocus; } }
+    public Transform PlayerFocus { get { return GameObject.FindGameObjectWithTag("CamFocus").transform; } }
 
-    private Transform _playeFocus;
-
-    
     public bool PlayerDie { get { return _isPlayerDie; } set { _isPlayerDie = value; } }
     
     private bool _isPlayerDie= false;
-
-    
 
     private void Awake()
     {
         _instance = this;
 
         _player = GameObject.FindGameObjectWithTag("Player"); // Scene 전환 후, Player 태그를 찾아, 변수에 등록한다.
-        _playeFocus = GameObject.FindGameObjectWithTag("CamFocus").transform;
     }
     void Start()
     {

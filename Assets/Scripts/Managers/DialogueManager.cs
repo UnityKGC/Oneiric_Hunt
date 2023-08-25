@@ -48,13 +48,18 @@ public class DialogueManager : MonoBehaviour
             case DialogueType.QuestStart:
                 QuestManager._instance.StartQuest(_quest);
                 break;
+
             case DialogueType.QuestProgress:
                 _nowData._isStart = _nowData._isFinish = false;
                 _nowData._index = 0;
                 break;
+
             case DialogueType.QuestEnd:
                 _quest._isFinish = true;
                 QuestManager._instance.FinishQuest(_quest);
+                break;
+            case DialogueType.ChangeScene:
+                SceneManagerEX._instance.LoadScene(SceneManagerEX.SceneType.FirstDreamScene);
                 break;
         }
         _nowData = null;

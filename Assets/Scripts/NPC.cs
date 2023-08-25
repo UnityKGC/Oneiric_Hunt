@@ -18,7 +18,6 @@ public class NPC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 QuestData quest = null;
@@ -30,6 +29,7 @@ public class NPC : MonoBehaviour
 
                 // 퀘스트 시작, 진행, 종료에 따라 전달하는 퀘스트 다이얼로그가 다르다.
                 // 이건 퀘스트 매니저에 함수로 만드는게 좋을듯? 리턴값이 DialogueData인거지.
+
                 if (!quest._isStart)
                     data = quest._dialogueData[(int)DialogueType.QuestStart];
                 else if(!quest._isAchieve)

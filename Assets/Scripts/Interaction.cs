@@ -5,7 +5,6 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     public ObjectInteractUI _interactionUI; // 상호작용 UI
-
     public ObjectType ObjType { get { return _objType; } set { _objType = value; } }
 
     [SerializeField] private ObjectType _objType = ObjectType.None;
@@ -45,7 +44,6 @@ public class Interaction : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             _interactionUI.gameObject.SetActive(false);
-
             InteractionManager._instance.ExitClosestInteractObj(this);
         }
     }

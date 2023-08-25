@@ -37,6 +37,7 @@ public class QuestManager : MonoBehaviour
     {
 
     }
+
     public void StartQuest(QuestData questData) // 플레이어가 해당 퀘스트 시작함. => 퀘스트 시작은 Inspctor에서 기입한 데이터를 가져와야 하므로, QuestData를 가져온다.
     {
         if (questData._isStart || questData._isFinish) return; // 이미 시작된 퀘스트 혹은 이미 끝난 퀘스트라면 리턴
@@ -46,7 +47,6 @@ public class QuestManager : MonoBehaviour
         InitQuestObjDict(questData);
 
         _processQuestDict.Add(questData._questID, questData);
-
         _processQeustLst.Add(questData);
 
         UIManager._instacne.StartQuest(questData);
@@ -105,7 +105,7 @@ public class QuestManager : MonoBehaviour
             if (isAchieve)
             {
                 data._isAchieve = true; // Object리스트의 isFull이 모두 true라면, 퀘스트 완료조건이 만족하므로, isAchieve를 true;
-                if (data._questType == QuestType.KillMonster) // 만약 몬스터 퇴치 퀘스트라면
+                if (data._questType == QuestType.KillMonster || data._questType == QuestType.InteractionObject) // 만약 몬스터 퇴치 퀘스트라면
                 {
                     data._isFinish = true; // 바로 퀘스트 끝내기
                     FinishQuest(data);
@@ -115,7 +115,7 @@ public class QuestManager : MonoBehaviour
             if (dataLst.Count <= 0) // dataLst에 더 이상 데이터가 없다면 => 몬스터 퇴치 퀘스트만 있었는데 끝났다면 => foreach종료
                 break;
         }
-    }
+    }zz
     public void FinishQuest(QuestData questData) // 퀘스트 끝냄
     {
         if (!questData._isFinish) return; // isFinish가 false라면 아직 끝난게 아니니까 리턴
@@ -130,7 +130,6 @@ public class QuestManager : MonoBehaviour
             if (_questObjDict.TryGetValue(objData._objID, out List<QuestData> objLst))
             {
                 objLst.Remove(questData);
-
                 break;
             }
         }
@@ -167,7 +166,10 @@ public class QuestManager : MonoBehaviour
         {
             questData._reward._coll.enabled = true;
         }
-
+        if (type.HasFlag(RewardType.Dialogue))
+        {
+            DialogueManager._instance.GetQuestDialogue(questData, questData._reward._dialogue);
+        }
     }
 
     void GetQuestPreced(QuestData questData)
@@ -190,8 +192,10 @@ public class QuestManager : MonoBehaviour
         {
             questData._preced._coll.enabled = true;
         }
-
-
+        if (type.HasFlag(PrecedType.Dialogue))
+        {
+            DialogueManager._instance.GetQuestDialogue(questData, questData._preced._dialogue);
+        }
 
     }
     private void OnDestroy()

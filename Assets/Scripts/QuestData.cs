@@ -8,10 +8,18 @@ public enum QuestType
     BringObject, // 물건 가져오기
     FindClue, // 단서 찾기
     KillMonster, // 몬스터 퇴치
+    InteractionObject, // 상호작용 하기.(NPC와 대화하기, 오브젝트 들고, 밀기, 등등등)
+    GoToPosition, // 해당 위치로 이동하기.
     Max,
 }
 
+[System.Serializable]
+public class TriggerData
+{
+    public int _objID; // 수행해야 할 objID
 
+    public string _objName; // 원래는 매니저 같은 곳에서 _objID를 토대로 오브젝트 정보를 가져오게 해야하나
+}
 [System.Serializable]
 public class ObjectData
 {
@@ -26,7 +34,7 @@ public class ObjectData
 }
 
 [System.Serializable]
-public class QuestData
+public class QuestData // 후에, ObjectData나 TriggerData는 QuestData를 상속받게 하는것도 괜찮을 듯?
 {
     public int _questID; // 퀘스트 ID
 
@@ -39,6 +47,8 @@ public class QuestData
     public List<DialogueData> _dialogueData; // 이 퀘스트의 다이얼로그 대사
 
     public List<ObjectData> _objLst; // 수행해야 할 퀘스트의 오브젝트 리스트
+
+    public List<TriggerData> _triggerDatas; // 특별한 조건없이 클리어 되는 퀘스트 데이터.
 
     public QuestPreceds _preced; // 퀘스트 시작 시, 선행 보상.
     public QuestRewards _reward; // 퀘스트 보상
@@ -59,6 +69,7 @@ public enum RewardType
     Gold = 1 << 1,
     Object = 1 << 2,
     Collider = 1 << 3,
+    Dialogue = 1 << 4,
 }
 
 [System.Serializable]
@@ -67,6 +78,7 @@ public class QuestRewards
     public RewardType _type;
     public GameObject _obj; // 퀘스트 완료 시 특정 오브젝트 활성화
     public Collider _coll; // 퀘스트 완료 시 콜라이더 활성화 => 이건 임시 => 플레이어 집에서 문 열때 필요
+    public DialogueData _dialogue;
     public int _gold;
     public float _exp;
 }
@@ -79,6 +91,7 @@ public enum PrecedType
     Gold = 1 << 1,
     Object = 1 << 2,
     Collider = 1 << 3,
+    Dialogue = 1 << 4,
 }
 
 [System.Serializable]
@@ -87,6 +100,8 @@ public class QuestPreceds
     public PrecedType _type;
     public GameObject _obj; // 퀘스트 완료 시 특정 오브젝트 활성화
     public Collider _coll; // 퀘스트 완료 시 콜라이더 활성화 => 이건 임시 => 플레이어 집에서 문 열때 필요
+    public DialogueData _dialogue; // 퀘스트 시작 시, 다이얼로그가 필요할 때
     public int _gold;
     public float _exp;
+    
 }
