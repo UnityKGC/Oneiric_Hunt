@@ -5,10 +5,6 @@ using UnityEngine;
 using System.Linq;
 using DG.Tweening;
 
-public interface ISetEvt
-{
-    public void SetEvent();
-}
 public class UIManager : MonoBehaviour
 {
     public static UIManager _instacne;
@@ -20,7 +16,6 @@ public class UIManager : MonoBehaviour
         Play,
         GameOver,
         Tutorial,
-        Dialogue,
     }
 
     public Action<QuestData> _questDataEvt = null; // 퀘스트 UI를 등록시키기 위해 사용하는 콜백
@@ -57,13 +52,6 @@ public class UIManager : MonoBehaviour
     {
         _instacne = this;
 
-        foreach(GameObject obj in _sceneUILst)
-        {
-            if(obj.GetComponentInChildren<ISetEvt>() != null)
-            {
-
-            }
-        }
     }
     private void Start()
     {
@@ -109,7 +97,6 @@ public class UIManager : MonoBehaviour
                 break;
             case SceneUIState.Play: // 미니맵, 등등 호출
             case SceneUIState.None: // 미니맵, 등등 호출
-            case SceneUIState.Dialogue:
                 Time.timeScale = 1f;
                 break;
             case SceneUIState.GameOver: // 게임 오버 호출
@@ -232,7 +219,6 @@ public class UIManager : MonoBehaviour
             case SceneUIState.Pause:
             case SceneUIState.GameOver:
             case SceneUIState.Tutorial:
-            case SceneUIState.Dialogue:
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 break;

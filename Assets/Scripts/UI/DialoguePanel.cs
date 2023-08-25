@@ -3,29 +3,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DialoguePanel : MonoBehaviour, ISetEvt
+public class DialoguePanel : MonoBehaviour
 {
     public TextMeshProUGUI _name; // NPC이름
     public TextMeshProUGUI _content; // 대화 내용
 
     DialogueData _data;
 
-    public void SetEvent()
+    private void Start()
     {
+        
         DialogueManager._instance._dialogueEvt -= SetDialogueData;
         DialogueManager._instance._dialogueEvt += SetDialogueData;
 
         DialogueManager._instance._clickNext -= NextDialogue;
         DialogueManager._instance._clickNext += NextDialogue;
-    }
-    private void Start()
-    {
-        /*
-        DialogueManager._instance._dialogueEvt -= SetDialogueData;
-        DialogueManager._instance._dialogueEvt += SetDialogueData;
-
-        DialogueManager._instance._clickNext -= NextDialogue;
-        DialogueManager._instance._clickNext += NextDialogue;*/
 
         gameObject.SetActive(false);
     }

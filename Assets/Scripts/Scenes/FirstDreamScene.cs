@@ -35,9 +35,8 @@ public class FirstDreamScene : MonoBehaviour
 
         CameraManager._instance.SetFreeLookCam(); // 시작 시 플레이어 카메라로 이동하게끔
 
+        UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Play); // ㅋㅋ 이걸 안해서 그런거였네ㅋㅋㅋㅋㅋ
         GameManager._instance.Playstate = GameManager.PlayState.Dream_Normal;
-
-        UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Dialogue);
 
         Invoke("StartQuest", 1f);
     }

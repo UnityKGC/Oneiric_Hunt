@@ -9,12 +9,14 @@ public class DreamPlayUI : MonoBehaviour
         None = -1,
         Normal,
         Battle,
+        Dialogue,
         Max,
     }
 
     PlayStateUI _state = PlayStateUI.None;
 
     public List<GameObject> _sceneUILst;
+
     void Start()
     {
         UIManager._instacne._playStateEvt -= SetPlayState;
@@ -44,8 +46,12 @@ public class DreamPlayUI : MonoBehaviour
                 _sceneUILst[i].SetActive(false);
         }
     }
+
+    
     private void OnDestroy()
     {
         UIManager._instacne._playStateEvt -= SetPlayState;
     }
+
+    
 }
