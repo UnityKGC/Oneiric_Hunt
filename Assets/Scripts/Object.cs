@@ -28,13 +28,7 @@ public class Object : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            QuestManager._instance.QuestTrigger(_objID);
-        }
-    }
+    
     private void OnTriggerStay(Collider other) // 2. 들어오고 있을 때
     {
         if (other.gameObject.tag == "Player")

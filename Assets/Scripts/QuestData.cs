@@ -72,15 +72,21 @@ public enum RewardType
     Object = 1 << 2,
     Collider = 1 << 3,
     Dialogue = 1 << 4,
+    PlayType = 1<< 5,
+    DisableObj = 1 << 6,
+    ChangeScene = 1 << 7,
 }
 
 [System.Serializable]
 public class QuestRewards
 {
     public RewardType _type;
-    public GameObject _obj; // 퀘스트 완료 시 특정 오브젝트 활성화
+    public List<GameObject> _objLst; // 퀘스트 완료 시 특정 오브젝트 활성화
+    public List<GameObject> _disAbleObjLst;
     public Collider _coll; // 퀘스트 완료 시 콜라이더 활성화 => 이건 임시 => 플레이어 집에서 문 열때 필요
     public DialogueData _dialogue;
+    public SceneManagerEX.SceneType _ToScene; // 이동하고자 하는 Scene
+    public GameManager.PlayState _playerState;
     public int _gold;
     public float _exp;
 
@@ -95,15 +101,21 @@ public enum PrecedType
     Object = 1 << 2,
     Collider = 1 << 3,
     Dialogue = 1 << 4,
+    PlayType = 1 << 5,
+    DisableObj = 1 << 6,
+    ChangeScene = 1 << 7,
 }
 
 [System.Serializable]
 public class QuestPreceds
 {
     public PrecedType _type;
-    public GameObject _obj; // 퀘스트 완료 시 특정 오브젝트 활성화
+    public List<GameObject> _objLst; // 퀘스트 완료 시 특정 오브젝트 활성화
+    public List<GameObject> _disAbleObjLst;
     public Collider _coll; // 퀘스트 완료 시 콜라이더 활성화 => 이건 임시 => 플레이어 집에서 문 열때 필요
     public DialogueData _dialogue; // 퀘스트 시작 시, 다이얼로그가 필요할 때
+    public SceneManagerEX.SceneType _ToScene; // 이동하고자 하는 Scene
+    public GameManager.PlayState _playerState;
     public int _gold;
     public float _exp;
     

@@ -104,7 +104,6 @@ public class QuestManager : MonoBehaviour
 
         foreach (QuestData data in dataLst)
         {
-            if (dataLst.Count <= 0) break; // 한바퀴 돌고 dataLst에 데이터가 없으면 멈춤 => break안하면 에러발생
             switch (data._questType)
             {
                 case QuestType.BringObject:
@@ -117,6 +116,7 @@ public class QuestManager : MonoBehaviour
                     TriggerQuest(data, id);
                     break;
             }
+            if (dataLst.Count <= 0) break; // 한바퀴 돌고 dataLst에 데이터가 없으면 멈춤 => break안하면 에러발생
         }
     }
     void ObjectQuest(List<QuestData> dataLst, QuestData data, int id) // 퀘스트 데이터와 오브젝트 id를 확인하여 trigger확인
@@ -181,11 +181,8 @@ public class QuestManager : MonoBehaviour
         if (isAchieve)
         {
             data._isAchieve = true; // Object리스트의 isFull이 모두 true라면, 퀘스트 완료조건이 만족하므로, isAchieve를 true;
-            if (data._questType == QuestType.KillMonster || data._questType == QuestType.InteractionObject) // 만약 몬스터 퇴치 퀘스트라면
-            {
-                data._isFinish = true; // 바로 퀘스트 끝내기
-                FinishQuest(data);
-            }
+            data._isFinish = true; // 바로 퀘스트 끝내기
+            FinishQuest(data);
         }
     }
     public void FinishQuest(QuestData questData) // 퀘스트 끝냄
@@ -268,15 +265,34 @@ public class QuestManager : MonoBehaviour
         }
         if (type.HasFlag(RewardType.Object))
         {
-            questData._reward._obj.SetActive(true);
+            foreach(GameObject obj in questData._reward._objLst)
+            {
+                obj.SetActive(true);
+            }
+        }
+        if (type.HasFlag(RewardType.DisableObj))
+        {
+            foreach (GameObject obj in questData._reward._disAbleObjLst)
+            {
+                obj.SetActive(false);
+            }
         }
         if (type.HasFlag(RewardType.Collider))
         {
             questData._reward._coll.enabled = true;
         }
+        
+        if(type.HasFlag(RewardType.PlayType))
+        {
+            GameManager._instance.Playstate = questData._reward._playerState;
+        }
         if (type.HasFlag(RewardType.Dialogue))
         {
             DialogueManager._instance.GetQuestDialogue(questData, questData._reward._dialogue);
+        }
+        if(type.HasFlag(RewardType.ChangeScene))
+        {
+            SceneManagerEX._instance.LoadScene(questData._reward._ToScene);
         }
     }
 
@@ -294,17 +310,35 @@ public class QuestManager : MonoBehaviour
         }
         if (type.HasFlag(PrecedType.Object))
         {
-            questData._preced._obj.SetActive(true);
+            foreach (GameObject obj in questData._preced._objLst)
+            {
+                obj.SetActive(true);
+            }
+        }
+        if (type.HasFlag(PrecedType.DisableObj))
+        {
+            foreach (GameObject obj in questData._preced._disAbleObjLst)
+            {
+                obj.SetActive(false);
+            }
         }
         if (type.HasFlag(PrecedType.Collider))
         {
             questData._preced._coll.enabled = true;
         }
+        
+        if (type.HasFlag(PrecedType.PlayType))
+        {
+            GameManager._instance.Playstate = questData._preced._playerState;
+        }
         if (type.HasFlag(PrecedType.Dialogue))
         {
             DialogueManager._instance.GetQuestDialogue(questData, questData._preced._dialogue);
         }
-
+        if (type.HasFlag(PrecedType.ChangeScene))
+        {
+            SceneManagerEX._instance.LoadScene(questData._preced._ToScene);
+        }
     }
     private void OnDestroy()
     {

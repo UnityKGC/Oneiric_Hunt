@@ -14,6 +14,8 @@ TagManager:
   - MiniGameCheckPoint
   - Car
   - CamFocus
+  - Tutorial_1
+  - Tutorial_2
   layers:
   - Default
   - TransparentFX

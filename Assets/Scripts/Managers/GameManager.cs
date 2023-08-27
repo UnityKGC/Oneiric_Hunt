@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     { 
         get { return _playState; } 
         set
-        { 
+        {
             _playState = value;
             UIManager._instacne.SetPlayState(_playState); // UI에게 게임상태 변화했다고 알림.
             PlayerManager._instance.ChangePlayer(_playState, Player.transform.position, Player.transform.rotation);
@@ -41,6 +41,11 @@ public class GameManager : MonoBehaviour
     
     private bool _isPlayerDie= false;
 
+    public bool FirstTuto { get { return _isFirst; } set { _isFirst = value; } }
+    public bool SecondTuto { get { return _isSecond; } set { _isSecond = value; } }
+
+    private bool _isFirst = false;
+    private bool _isSecond = false;
     private void Awake()
     {
         _instance = this;
