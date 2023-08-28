@@ -14,7 +14,7 @@ public class TestTestTEst : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space"))
             {
                 CameraManager._instance.SetVirtualCam();
                 other.gameObject.SetActive(false);

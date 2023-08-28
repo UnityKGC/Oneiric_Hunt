@@ -33,7 +33,7 @@ public class Object : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (Input.GetKeyDown(KeyCode.Space)) // Sapce를 누를때
+            if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space")) // Sapce를 누를때
             {
                 QuestManager._instance.QuestTrigger(_objID);
             }

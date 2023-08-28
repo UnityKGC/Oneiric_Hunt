@@ -25,7 +25,7 @@ public class Door : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space"))
             {
                 if(!_isOpen)
                 {

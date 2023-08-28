@@ -22,7 +22,7 @@ public class TestExit : MonoBehaviour
             switch (SceneManagerEX._instance.NowScene)
             {
                 case SceneManagerEX.SceneType.FirstHouseScene:
-                    SceneManagerEX._instance.LoadScene(SceneManagerEX.SceneType.FirstDreamScene);
+                    SceneManagerEX._instance.LoadScene(SceneManagerEX.SceneType.PlayerOfficeScene);
                     break;
                 case SceneManagerEX.SceneType.FirstDreamScene:
                     SceneManagerEX._instance.LoadScene(SceneManagerEX.SceneType.Chase);

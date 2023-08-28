@@ -16,6 +16,7 @@ public class BasePlayerMove : MonoBehaviour
 
     protected float _magnitude;
 
+    [SerializeField] private bool _isMobile = false;
     protected void MoveLogic()
     {
         GetDir();
@@ -38,9 +39,17 @@ public class BasePlayerMove : MonoBehaviour
 
     void GetDir()
     {
-        _h = Input.GetAxis("Horizontal");
-        _v = Input.GetAxis("Vertical");
-
+        if(_isMobile)
+        {
+            _h = SimpleInput.GetAxis("Horizontal");
+            _v = SimpleInput.GetAxis("Vertical");
+        } 
+        else
+        {
+            _h = Input.GetAxis("Horizontal");
+            _v = Input.GetAxis("Vertical");
+        }
+            
         _dir = new Vector3(_h, 0, _v);
         _dir = Quaternion.AngleAxis(_cameTrans.rotation.eulerAngles.y, Vector3.up) * _dir; // 기존 _dir * y축 기준으로 카메라의 rotation.y값만큼 Quaternion을 리턴한다.
 

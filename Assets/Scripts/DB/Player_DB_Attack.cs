@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player_DB_Attack : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class Player_DB_Attack : MonoBehaviour
     private bool _isSecondAtk = false;
     private bool _isThirdAtk = false;
 
+    [SerializeField] private bool _isMobile;
     void Awake()
     {
         _stat = GetComponent<PlayerStat>();
@@ -41,6 +43,29 @@ public class Player_DB_Attack : MonoBehaviour
     {
         if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || PlayerManager._instance.IsMove || SkillManager._instance._isSkilling) return;
 
+        if (!_isMobile)
+            PCCtrl();
+        else
+            MobileCtrl();
+        
+    }
+    
+    IEnumerator StartAttackDelayTime() // 공격 딜레이
+    {
+        _ischeckAttack = true;
+        AttackStart();
+
+        yield return new WaitForSeconds(_atkDelay);
+        
+        AttackEnd();
+        _ischeckAttack = false;
+    }
+    void FixedUpdate()
+    {
+
+    }
+    void PCCtrl()
+    {
         if (Input.GetMouseButton(0))
         {
             _isAttack = true;
@@ -109,20 +134,75 @@ public class Player_DB_Attack : MonoBehaviour
             }*/
         }
     }
-    
-    IEnumerator StartAttackDelayTime() // 공격 딜레이
+    void MobileCtrl()
     {
-        _ischeckAttack = true;
-        AttackStart();
+        if (SimpleInput.GetButton("Attack"))
+        {
+            _isAttack = true;
 
-        yield return new WaitForSeconds(_atkDelay);
-        
-        AttackEnd();
-        _ischeckAttack = false;
-    }
-    void FixedUpdate()
-    {
+            if (_ischeckAttack) return;
 
+            //_isStopAtk = false;
+
+            _startStopAtkTime = 0f;
+
+            if (SimpleInput.GetButton("Attack") && _isFirstAttack == false)
+            {
+                Debug.Log("첫번째 공격 시작");
+
+                _anim.CrossFade(BasePlayerState.EPlayerState.Attack_1);
+                _isFirstAttack = true;
+            }
+            else if (SimpleInput.GetButton("Attack") && _isSecondAtk == false)
+            {
+                Debug.Log("두번째 공격 시작");
+
+                _anim.CrossFade(BasePlayerState.EPlayerState.Attack_2);
+                _isSecondAtk = true;
+            }
+            else if (SimpleInput.GetButton("Attack") && _isThirdAtk == false)
+            {
+                Debug.Log("세번째 공격 시작");
+
+                _anim.CrossFade(BasePlayerState.EPlayerState.Attack_3);
+                _isThirdAtk = true;
+            }
+            else if (SimpleInput.GetButton("Attack"))
+            {
+                Debug.Log("네번째 공격 시작");
+
+                _anim.CrossFade(BasePlayerState.EPlayerState.Attack_4);
+                _isFirstAttack = _isSecondAtk = _isThirdAtk = false; // 다시 첫번째 공격으로
+            }
+
+            /*
+            if (_atkCo != null) // 사실 할 필요 없는 듯 한데 혹시나 모를 변수를 막기위해
+                StopCoroutine(StartAttackDelayTime());*/
+            StartCoroutine(StartAttackDelayTime());
+        }
+        else// if (_isStopAtk == false) // 공격을 하지 않으면, 대기상태 시간측정 시작
+        {
+            /*
+            if (_startStopAtkTime == 0) // 시간재기
+                _startStopAtkTime = Time.time;*/
+            StopAllCoroutines();
+            _isAttack = false;
+            _weaponColl.enabled = false;
+            _ischeckAttack = false;
+            _isFirstAttack = _isSecondAtk = _isThirdAtk = false;
+            /*
+            if (Time.time - _startStopAtkTime > _atkAgreeTime) // 좌클릭을 0.8초 동안 하지 않으면
+            {
+                //_isAttack = false;  // 변수들 초기화
+                
+
+                //_stopAtkTime = Time.time;
+                //_isStopAtk = true;
+
+                
+                _startStopAtkTime = 0f; // 시간도 초기화
+            }*/
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

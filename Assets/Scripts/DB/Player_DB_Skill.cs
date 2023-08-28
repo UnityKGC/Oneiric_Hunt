@@ -37,13 +37,13 @@ public class Player_DB_Skill : MonoBehaviour
 
         if (!GameManager._instance.FirstTuto) return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButtonDown("Space"))
         {
             SkillManager._instance.StartSkill(SkillManager.Skills.Dodge, 0f, transform.position, transform.rotation, transform);
             _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.Dodge);
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) || SimpleInput.GetButtonDown("Tab"))
         {
             SkillManager._instance.StartSkill(SkillManager.Skills.WeaponSwap, 0f, transform.position, transform.rotation, transform);
             _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.WeaponSwap);
@@ -51,7 +51,7 @@ public class Player_DB_Skill : MonoBehaviour
 
         if (!GameManager._instance.SecondTuto) return;
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) || SimpleInput.GetButtonDown("Z"))
         {
             float dmg;
             switch (Weapon)
@@ -74,7 +74,7 @@ public class Player_DB_Skill : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) || SimpleInput.GetButtonDown("X"))
         {
             float dmg;
             switch (Weapon)
@@ -99,7 +99,7 @@ public class Player_DB_Skill : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) || SimpleInput.GetButtonDown("C"))
         {
             float dmg;
             switch (Weapon)

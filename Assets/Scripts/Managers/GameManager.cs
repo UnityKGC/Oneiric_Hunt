@@ -44,8 +44,11 @@ public class GameManager : MonoBehaviour
     public bool FirstTuto { get { return _isFirst; } set { _isFirst = value; } }
     public bool SecondTuto { get { return _isSecond; } set { _isSecond = value; } }
 
+    
     private bool _isFirst = false;
     private bool _isSecond = false;
+
+    public bool _isUsingJoyStick = false;
     private void Awake()
     {
         _instance = this;

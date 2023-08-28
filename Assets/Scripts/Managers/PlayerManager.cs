@@ -5,6 +5,7 @@ using UnityEngine;
 public enum PlayerOrder
 {
     None = -1,
+    PlayerRN,
     PlayerDN,
     PlayerDB,
 }
@@ -65,7 +66,11 @@ public class PlayerManager : MonoBehaviour
                 break;
 
             case GameManager.PlayState.Real_Normal:
-
+                player = _playerLst[(int)PlayerOrder.PlayerRN];
+                player.transform.position = pos;
+                player.transform.rotation = rot;
+                player.SetActive(true);
+                GameManager._instance.Player = _nowPlayer = player;
                 break;
             case GameManager.PlayState.Real_Event:
 

@@ -1672,6 +1672,7 @@ MonoBehaviour:
   _rotSpd: 720
   _h: 0
   _v: 0
+  _isMobile: 1
 --- !u!114 &1984878443982683083
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,15 +28,13 @@ public class FirstDreamScene : MonoBehaviour
     [SerializeField] private GameObject _exitPortal;
     void Start()
     {
+        GameManager._instance.Playstate = GameManager.PlayState.Dream_Normal;
         SceneManagerEX._instance.NowScene = SceneManagerEX.SceneType.FirstDreamScene;
 
         InitSpawnList();
         InitDict();
 
-        CameraManager._instance.SetFreeLookCam(); // 시작 시 플레이어 카메라로 이동하게끔
-
         UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Play); // ㅋㅋ 이걸 안해서 그런거였네ㅋㅋㅋㅋㅋ
-        GameManager._instance.Playstate = GameManager.PlayState.Dream_Normal;
 
         Invoke("StartQuest", 1f);
     }

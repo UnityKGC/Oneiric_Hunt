@@ -26,7 +26,6 @@ public class BattleManager : MonoBehaviour
     public void StartBattle(bool isLastBattle = false) // Scene으로 부터 전투 시작 메시지를 받음
     {
         // 플레이어 상태 변경 등등
-        
         _isBattle = true;
 
         _isLastBattle = isLastBattle;

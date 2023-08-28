@@ -48,6 +48,8 @@ public class UIManager : MonoBehaviour
     public Stack<GameObject> _popupUIStack = new Stack<GameObject>();
 
     bool _isGameOver = false; // 게임오버인지 아닌지
+
+    [SerializeField] bool _isMobile = false; 
     private void Awake()
     {
         _instacne = this;
@@ -213,6 +215,8 @@ public class UIManager : MonoBehaviour
 
     void SetCursor(SceneUIState state) // UIScene 상태에 따라 커서 조정
     {
+        if (_isMobile) return;
+
         switch (state)
         {
             case SceneUIState.None:

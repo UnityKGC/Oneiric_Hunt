@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DialoguePanel : MonoBehaviour
+public class DialoguePanel : MonoBehaviour, IPointerDownHandler
 {
     public TextMeshProUGUI _name; // NPC이름
     public TextMeshProUGUI _content; // 대화 내용
@@ -57,5 +58,13 @@ public class DialoguePanel : MonoBehaviour
     {
         DialogueManager._instance._dialogueEvt -= SetDialogueData;
         DialogueManager._instance._clickNext -= NextDialogue;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if(gameObject.activeSelf)
+        {
+            NextDialogue();
+        }
     }
 }

@@ -223,11 +223,15 @@ public class QuestManager : MonoBehaviour
             }
         }
 
+        if(BattleManager._instance != null)
+            BattleManager._instance.EndBattle(); // 어차피 모든 전투 퀘스트는 바로 끝내므로,전투 종료
+
         // 퀘스트 보상
         GetQuestReward(questData);
 
         if (_processQuestDict.ContainsKey(questData._questID)) // 진행중인 퀘스트 Dict에 퀘스트가 존재한다면,
             _processQuestDict.Remove(questData._questID); // Dict에 해당 퀘스트를 지워준다.
+
     }
     void FinishTriggerQuest(QuestData questData)
     {
