@@ -33,7 +33,6 @@ public class DreamPlayUI : MonoBehaviour
                 _state = PlayStateUI.Battle;
                 break;
         }
-
         ActiveUI();
     }
     void ActiveUI()
@@ -47,11 +46,9 @@ public class DreamPlayUI : MonoBehaviour
         }
     }
 
-    
     private void OnDestroy()
     {
         UIManager._instacne._playStateEvt -= SetPlayState;
     }
 
-    
 }

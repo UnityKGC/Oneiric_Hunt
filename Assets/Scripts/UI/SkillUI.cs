@@ -26,7 +26,7 @@ public class SkillUI : MonoBehaviour
     }
     void StartCoolTime(SkillScriptable scriptable, SkillManager.Skills skill) // 스크립터블 객체와, Skill Enum을 이용하여 스킬UI 쿨타임 구현
     {
-        if (scriptable == null) return;
+        if (scriptable == null || !gameObject.activeSelf) return; // 게임오브젝트가 꺼져있는지 판단하여 PC버전UI와 모바일UI를 동시에 실행하지 않게 구현.
 
         SkillScriptable temp = null;
 
@@ -52,6 +52,8 @@ public class SkillUI : MonoBehaviour
 
     void ChangeWeapon(WeaponType weapon)
     {
+        if (!gameObject.activeSelf) return;
+
         for(int i = 0; i < (int)WeaponType.Max; i++)
         {
             if(i == (int)weapon)
@@ -63,7 +65,9 @@ public class SkillUI : MonoBehaviour
 
     void ResetSkillUI() // 스킬 UI 초기화
     {
-        foreach(Image img in _skillFrontImgLst)
+        if (!gameObject.activeSelf) return;
+
+        foreach (Image img in _skillFrontImgLst)
         {
             img.fillAmount = 0f;
         }

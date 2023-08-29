@@ -2697,7 +2697,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1425527736308290956}
-  - component: {fileID: 1437402222255272772}
   - component: {fileID: 541288898}
   m_Layer: 5
   m_Name: MobileSkillUI
@@ -2728,34 +2727,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1437402222255272772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5465886232949905417}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70b726e7ddee3834f9549e3eaba72af4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _skillFrontImgLst:
-  - {fileID: 8157460579779171958}
-  - {fileID: 2020398369878353180}
-  - {fileID: 4831916365773461005}
-  - {fileID: 2356306270951288930}
-  - {fileID: 1897780610916239644}
-  - {fileID: 529484409498679558}
-  - {fileID: 6088778089386189127}
-  - {fileID: 64958735826336017}
-  - {fileID: 5509455704924939229}
-  - {fileID: 7571385581715297379}
-  - {fileID: 1922158177399233803}
-  _weaponSkillLst:
-  - {fileID: 761981221135286503}
-  - {fileID: 1183417045843809274}
-  - {fileID: 6821658374012693985}
 --- !u!114 &541288898
 MonoBehaviour:
   m_ObjectHideFlags: 0
