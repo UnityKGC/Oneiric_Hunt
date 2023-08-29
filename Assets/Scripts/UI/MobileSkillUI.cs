@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillUI : MonoBehaviour
+public class MobileSkillUI : MonoBehaviour
 {
     public List<Image> _skillFrontImgLst; // Amount를 1 => 0으로 수정시켜 쿨타임처럼 만든다.
 
@@ -22,7 +22,7 @@ public class SkillUI : MonoBehaviour
 
     void Update()
     {
-        
+
     }
     void StartCoolTime(SkillScriptable scriptable, SkillManager.Skills skill) // 스크립터블 객체와, Skill Enum을 이용하여 스킬UI 쿨타임 구현
     {
@@ -52,9 +52,9 @@ public class SkillUI : MonoBehaviour
 
     void ChangeWeapon(WeaponType weapon)
     {
-        for(int i = 0; i < (int)WeaponType.Max; i++)
+        for (int i = 0; i < (int)WeaponType.Max; i++)
         {
-            if(i == (int)weapon)
+            if (i == (int)weapon)
                 _weaponSkillLst[i].SetActive(true);
             else
                 _weaponSkillLst[i].SetActive(false);
@@ -63,7 +63,7 @@ public class SkillUI : MonoBehaviour
 
     void ResetSkillUI() // 스킬 UI 초기화
     {
-        foreach(Image img in _skillFrontImgLst)
+        foreach (Image img in _skillFrontImgLst)
         {
             img.fillAmount = 0f;
         }
@@ -73,5 +73,6 @@ public class SkillUI : MonoBehaviour
         UIManager._instacne._skillEvt -= StartCoolTime;
         UIManager._instacne._weaponEvt -= ChangeWeapon;
         UIManager._instacne._endBattleEvt -= ResetSkillUI;
+
     }
 }

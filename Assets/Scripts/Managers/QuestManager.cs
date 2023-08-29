@@ -83,6 +83,9 @@ public class QuestManager : MonoBehaviour
             else
                 _questObjDict[data._objID].Add(questData);
         }
+
+        if (questData._questType == QuestType.KillMonster)
+            BattleManager._instance.StartBattle();
     }
     void InitTriggerQuest(QuestData questData)
     {
@@ -222,9 +225,9 @@ public class QuestManager : MonoBehaviour
                 break;
             }
         }
-
-        if(BattleManager._instance != null)
-            BattleManager._instance.EndBattle(); // 어차피 모든 전투 퀘스트는 바로 끝내므로,전투 종료
+        
+        if(questData._questType == QuestType.KillMonster)
+            BattleManager._instance.EndBattle(); // 어차피 모든 전투 퀘스트는 바로 끝내므로, 전투 종료
 
         // 퀘스트 보상
         GetQuestReward(questData);
