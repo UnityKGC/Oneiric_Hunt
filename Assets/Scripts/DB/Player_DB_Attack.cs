@@ -27,7 +27,6 @@ public class Player_DB_Attack : MonoBehaviour
     private bool _isSecondAtk = false;
     private bool _isThirdAtk = false;
 
-    [SerializeField] private bool _isMobile;
     void Awake()
     {
         _stat = GetComponent<PlayerStat>();
@@ -43,10 +42,10 @@ public class Player_DB_Attack : MonoBehaviour
     {
         if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || PlayerManager._instance.IsMove || SkillManager._instance._isSkilling) return;
 
-        if (!_isMobile)
-            PCCtrl();
-        else
+        if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
             MobileCtrl();
+        else
+            PCCtrl();
         
     }
     

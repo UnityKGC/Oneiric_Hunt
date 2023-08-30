@@ -11,16 +11,15 @@ public class CheckMobileUI : MonoBehaviour
         Mobile,
     }
     [SerializeField] GameObject[] _objs;
-    [SerializeField] private bool _isMobile = false;
+    
     void Start()
     {
-        //_isMobile = GameManager._instance.IsMobile;
         foreach(GameObject obj in _objs)
         {
             obj.SetActive(false);
         }
 
-        if (_isMobile)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
             _objs[1].SetActive(true);
         else
             _objs[0].SetActive(true);

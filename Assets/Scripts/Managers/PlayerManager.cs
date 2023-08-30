@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour
     }
     void Start()
     {
-        _nowPlayer = GameManager._instance.Player;
+        //_nowPlayer = GameManager._instance.Player;
     }
 
     void Update()
@@ -42,14 +42,23 @@ public class PlayerManager : MonoBehaviour
     public void ChangePlayer(GameManager.PlayState playState, Vector3 pos, Quaternion rot) // 게임의 상태에 따라 소환되는 플레이어가 각자 다르다.
     {
         //Instantiate(_playerLst[(int)playState], pos, rot);
-        if (_nowPlayer == null) return; // 처음에는 null이니까 리턴
 
-        _nowPlayer.SetActive(false);
+        // 처음 시작할 시, _nowPlayer가 null이기 때문에 비활성화 시키면 안됨..
+        if (_nowPlayer != null)
+        {
+            _nowPlayer.SetActive(false);
+        }
         GameObject player = null;
         switch (playState)
         {
             case GameManager.PlayState.Dream_Normal:
                 player = _playerLst[(int)PlayerOrder.PlayerDN];
+                if (_nowPlayer == player)
+                {
+                    _nowPlayer.SetActive(true);
+                    return;
+                }
+
                 player.transform.position = pos;
                 player.transform.rotation = rot;
                 player.SetActive(true);
@@ -59,6 +68,11 @@ public class PlayerManager : MonoBehaviour
 
             case GameManager.PlayState.Dream_Battle:
                 player = _playerLst[(int)PlayerOrder.PlayerDB];
+                if (_nowPlayer == player)
+                {
+                    _nowPlayer.SetActive(true);
+                    return;
+                }
                 player.transform.position = pos;
                 player.transform.rotation = rot;
                 player.SetActive(true);
@@ -67,6 +81,11 @@ public class PlayerManager : MonoBehaviour
 
             case GameManager.PlayState.Real_Normal:
                 player = _playerLst[(int)PlayerOrder.PlayerRN];
+                if (_nowPlayer == player)
+                {
+                    _nowPlayer.SetActive(true);
+                    return;
+                }
                 player.transform.position = pos;
                 player.transform.rotation = rot;
                 player.SetActive(true);

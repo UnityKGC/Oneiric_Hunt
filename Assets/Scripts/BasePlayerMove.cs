@@ -16,7 +16,6 @@ public class BasePlayerMove : MonoBehaviour
 
     protected float _magnitude;
 
-    [SerializeField] private bool _isMobile = false;
     protected void MoveLogic()
     {
         GetDir();
@@ -39,7 +38,7 @@ public class BasePlayerMove : MonoBehaviour
 
     void GetDir()
     {
-        if(_isMobile)
+        if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
         {
             _h = SimpleInput.GetAxis("Horizontal");
             _v = SimpleInput.GetAxis("Vertical");

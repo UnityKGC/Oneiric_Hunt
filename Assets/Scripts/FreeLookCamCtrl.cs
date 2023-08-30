@@ -7,7 +7,9 @@ using SimpleInputNamespace;
 public class FreeLookCamCtrl : MonoBehaviour
 {
     CinemachineFreeLook _freeLook;
+
     [SerializeField] Joystick _joyStick;
+
     [SerializeField] bool _isSetting = false;
 
     [SerializeField] float _saveXAxis;
@@ -18,7 +20,7 @@ public class FreeLookCamCtrl : MonoBehaviour
     }
     private void Update()
     {
-        if (_joyStick._isUsing)
+        if (Joystick._isUsing)
         {
             if (!_isSetting)
             {
@@ -27,7 +29,7 @@ public class FreeLookCamCtrl : MonoBehaviour
 
                 _isSetting = true;
             }
-            
+
             _freeLook.m_XAxis.Value = _saveXAxis;
             _freeLook.m_YAxis.Value = _saveYAxis;
         }

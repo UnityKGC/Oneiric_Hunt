@@ -49,7 +49,6 @@ public class UIManager : MonoBehaviour
 
     bool _isGameOver = false; // 게임오버인지 아닌지
 
-    [SerializeField] bool _isMobile = false; 
     private void Awake()
     {
         _instacne = this;
@@ -69,14 +68,21 @@ public class UIManager : MonoBehaviour
             // 혹시나 바로 게임으로 진행하면, Popup에 들어가있는 모든 데이터 초기화
             // 열려있는 Popup메뉴가 없으면 PauseUI를 키거나 껴준다.
             // Title은 
-            if (_popupUIStack.Count > 0)
+            if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
             {
-                ClosePopupUI();
+                PluginManager._instance.GetExitBox();
             }
-            else if (!_isGameOver && SceneUI == SceneUIState.Pause)
-                SetSceneUI(SceneUIState.Play);
-            else if (!_isGameOver && SceneUI == SceneUIState.Play)
-                SetSceneUI(SceneUIState.Pause);
+            else
+            {
+                if (_popupUIStack.Count > 0)
+                {
+                    ClosePopupUI();
+                }
+                else if (!_isGameOver && SceneUI == SceneUIState.Pause)
+                    SetSceneUI(SceneUIState.Play);
+                else if (!_isGameOver && SceneUI == SceneUIState.Play)
+                    SetSceneUI(SceneUIState.Pause);
+            }
         }
     }
 
@@ -215,7 +221,7 @@ public class UIManager : MonoBehaviour
 
     void SetCursor(SceneUIState state) // UIScene 상태에 따라 커서 조정
     {
-        if (_isMobile) return;
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor) return; // 플랫폼이 안드로이드라면 바로 리턴 => 커서가 필요 없음.
 
         switch (state)
         {
