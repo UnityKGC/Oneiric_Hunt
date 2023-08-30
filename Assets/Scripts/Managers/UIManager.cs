@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
             // 혹시나 바로 게임으로 진행하면, Popup에 들어가있는 모든 데이터 초기화
             // 열려있는 Popup메뉴가 없으면 PauseUI를 키거나 껴준다.
             // Title은 
-            if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
+            if(Application.platform == RuntimePlatform.Android)
             {
                 PluginManager._instance.GetExitBox();
             }

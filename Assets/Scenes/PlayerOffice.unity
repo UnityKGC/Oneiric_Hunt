@@ -1834,7 +1834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2214056961835948139, guid: ec29c3d9e3fe9404d892406f05e2fc5b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec29c3d9e3fe9404d892406f05e2fc5b, type: 3}
@@ -3709,7 +3709,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828401245}
-  m_LocalRotation: {x: 0.20410135, y: -0.6640802, z: 0.1958416, w: 0.69208837}
+  m_LocalRotation: {x: 0.20410135, y: -0.6640802, z: 0.19584158, w: 0.6920883}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3795,7 +3795,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837129830}
-  m_LocalRotation: {x: 0.2041014, y: -0.66408026, z: 0.19584163, w: 0.69208825}
+  m_LocalRotation: {x: 0.20410138, y: -0.66408026, z: 0.19584163, w: 0.69208825}
   m_LocalPosition: {x: 13.435779, y: 3.271049, z: 46.1691}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8550,6 +8550,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1973684171}
     m_Modifications:
+    - target: {fileID: 2617455720554750376, guid: b5eca9d0caf6c1b42aa3dac7511cb019, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3075356402114259876, guid: b5eca9d0caf6c1b42aa3dac7511cb019, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8817,6 +8821,10 @@ PrefabInstance:
     - target: {fileID: 3075356403480218804, guid: b5eca9d0caf6c1b42aa3dac7511cb019, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 654.0077
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075356403564884748, guid: b5eca9d0caf6c1b42aa3dac7511cb019, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3075356403691308863, guid: b5eca9d0caf6c1b42aa3dac7511cb019, type: 3}
       propertyPath: m_AnchorMax.y
