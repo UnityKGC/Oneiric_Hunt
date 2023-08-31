@@ -5,21 +5,39 @@ using UnityEngine;
 public class TestTestTEst : MonoBehaviour
 {
     [SerializeField] Animation _anim;
+    [SerializeField] GameObject _interactUI;
+    private bool _isActive = false;
     void Start()
     {
         
     }
 
-    private void OnTriggerStay(Collider other)
+    private void Update()
     {
-        if(other.CompareTag("Player"))
+        if (_isActive)
         {
-            if(Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space"))
+            if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space"))
             {
+                GameManager._instance.Player.SetActive(false);
+                _interactUI.SetActive(false);
+
                 CameraManager._instance.SetVirtualCam();
-                other.gameObject.SetActive(false);
                 _anim.Play();
             }
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _isActive = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _isActive = false;
         }
     }
 }

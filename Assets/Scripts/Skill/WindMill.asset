@@ -20,7 +20,7 @@ MonoBehaviour:
   _castTime: 0.2
   _skillCoolTime: 15
   _damageDelay: 0.5
-  _damageValue: 0.25
+  _damageValue: 0.5
   _damage: 0
   _moveSpd: 0
   _buffDurationTime: 5
@@ -29,5 +29,5 @@ MonoBehaviour:
   _movSpdBuffValue: 0
   _atkDeBuffValue: 0
   _defDeBuffValue: 0
-  _movSpdDeBuffValue: 0.2
+  _movSpdDeBuffValue: 0
   _isAble: 1

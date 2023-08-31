@@ -10,7 +10,7 @@ public class EndWarning : MonoBehaviour
         {
             PluginManager._instance.GetExitBox();
         }
-        else if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        else if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
             PluginManager._instance.GetExitWinMessageBox();
         }

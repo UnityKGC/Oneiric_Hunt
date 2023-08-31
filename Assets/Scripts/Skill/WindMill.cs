@@ -6,8 +6,6 @@ public class WindMill : MonoBehaviour
 {
     SkillScriptable _scriptable;
 
-    GameObject _player;
-
     Collider[] _monsterColls; // 끌어들이는 몬스터 들
     Collider[] _monsterDamageColls; // 데미지를 입히는 몬스터 들
 
@@ -31,8 +29,6 @@ public class WindMill : MonoBehaviour
 
         _scriptable._isAble = false;
 
-        _player = parent.gameObject;
-
         _atk = playerAtk * _scriptable._damageValue;
         _attractAmount = _scriptable._skillAmount;
         _dmgAmount = _scriptable._damageAmount;
@@ -53,13 +49,13 @@ public class WindMill : MonoBehaviour
             _monsterColls = Physics.OverlapSphere(transform.position, _attractAmount, _layerMask); // Layer가 Monster인 오브젝트들의 Collider를 _monsterColls에 담는다.
             _monsterDamageColls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
 
-            foreach (Collider coll in _monsterColls)
+            foreach (Collider coll in _monsterColls) // 빨려드는 범위
             {
                 Vector3 dir = transform.position - coll.transform.position;
                 coll.transform.position += dir * 1f * Time.deltaTime;
             }
 
-            foreach (Collider coll in _monsterDamageColls)
+            foreach (Collider coll in _monsterDamageColls) // 데미지 입히는 범위
             {
                 if (!_damagedTargets.Contains(coll.gameObject))
                 {

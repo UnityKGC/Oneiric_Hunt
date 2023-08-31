@@ -9051,6 +9051,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkUI: {fileID: 5426553290606282200}
+  _resolutionNum: 0
+  _screenNum: 0
+  _prevNum: 0
 --- !u!1 &643515618913380455
 GameObject:
   m_ObjectHideFlags: 0
@@ -18070,9 +18073,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 643515618889102242}
-        m_TargetAssemblyTypeName: SoundOption, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 643515618889102252}
+        m_TargetAssemblyTypeName: GraphicPanel, Assembly-CSharp
+        m_MethodName: ClickDisagreeBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18280,9 +18283,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 643515618889102242}
-        m_TargetAssemblyTypeName: SoundOption, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 643515618889102252}
+        m_TargetAssemblyTypeName: GraphicPanel, Assembly-CSharp
+        m_MethodName: ClickAgreeBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -42,7 +42,7 @@ public class Player_DB_Attack : MonoBehaviour
     {
         if (GameManager._instance.PlayerDie || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle || PlayerManager._instance.IsMove || SkillManager._instance._isSkilling) return;
 
-        if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
+        if(Application.platform == RuntimePlatform.Android)
             MobileCtrl();
         else
             PCCtrl();

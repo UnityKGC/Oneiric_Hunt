@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    private bool _isOpen = false;
-
     private Animator _anim;
 
+    private bool _isOpen = false;
+    private bool _isActive = false;
     private void Awake()
     {
         _anim = GetComponent<Animator>();
@@ -19,15 +19,11 @@ public class Door : MonoBehaviour
 
     void Update()
     {
-        
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
+        if (_isActive)
         {
-            if(Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space"))
+            if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space"))
             {
-                if(!_isOpen)
+                if (!_isOpen)
                 {
                     _anim.CrossFade("OpenDoor", 0.1f);
                     _isOpen = true;
@@ -38,6 +34,24 @@ public class Door : MonoBehaviour
                     _isOpen = false;
                 }
             }
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _isActive = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _isActive = false;
         }
     }
 }

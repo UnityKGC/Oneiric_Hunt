@@ -31,8 +31,8 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
         _data._isStart = true;
 
         _name.text = _data._name; // NPC 이름 등록
-        _content.text = _data._dialogueLines[0]; // _lineCount 대사 출력.
-        _data._index++; // 0번째가 표시됐으니, 1번 올림
+        _content.text = _data._dialogueLines[_data._index++]; // _lineCount 대사 출력.
+
         StartDialogue(); // 대화 시작
     }
     void StartDialogue() // 대화 시작

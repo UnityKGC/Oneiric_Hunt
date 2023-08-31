@@ -18,7 +18,7 @@ public class FreeLookCamCtrl : MonoBehaviour
     {
         _freeLook = GetComponent<CinemachineFreeLook>();
     }
-    private void Update()
+    private void LateUpdate()
     {
         if (Joystick._isUsing)
         {

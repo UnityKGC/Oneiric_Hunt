@@ -17,10 +17,10 @@ public class GraphicPanel : MonoBehaviour
 
     bool _isFullScreen = true;
 
-    int _resolutionNum = 0; // 해상도 변경 감지를 위해 사용하는 변수 => 현재 index
-    int _screenNum = 0; // 화면 변경 감지를 위해 사용하는 변수 => 현재 index
+    [SerializeField] int _resolutionNum = 0; // 해상도 변경 감지를 위해 사용하는 변수 => 현재 index
+    [SerializeField] int _screenNum = 0; // 화면 변경 감지를 위해 사용하는 변수 => 현재 index
 
-    int _prevNum; // 기존의 설정 Num
+    [SerializeField] int _prevNum; // 기존의 설정 Num
     public void ClickResolutionBtn(int idx) // 해상도 변경
     {
         _graphicState = ChangeState.Resolution;
@@ -41,8 +41,10 @@ public class GraphicPanel : MonoBehaviour
         if(_resolutionNum != idx)
         {
             _resolutionNum = idx;
+
             _checkUI.SetActive(true);
-            UIManager._instacne.SetPopupUI(_checkUI);
+            _checkUI.transform.localScale = Vector3.one; // Prefab화 한 후, 호출했다가 닫기를 누르면 Scale이 0이 되어버림... 그래서 1로 고정시킴
+            UIManager._instacne.SetPopupUI(_checkUI); // 재확인 Popup 호출
         }
     }
     void CheckScreen(int idx)
@@ -51,7 +53,9 @@ public class GraphicPanel : MonoBehaviour
         {
             _screenNum = idx;
             _checkUI.SetActive(true);
-            UIManager._instacne.SetPopupUI(_checkUI);
+
+            _checkUI.transform.localScale = Vector3.one;
+            UIManager._instacne.SetPopupUI(_checkUI); // 재확인 Popup 호출
         }
     }
     public void ClickAgreeBtn() // 예를 누르면 그대로 UI만 닫아, 변경한 설정을 유지한다

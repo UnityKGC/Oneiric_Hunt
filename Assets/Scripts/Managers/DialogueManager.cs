@@ -63,6 +63,7 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
         _nowData = null;
+        Input.ResetInputAxes();
         _npcEvt?.Invoke(); // NPC에게 대화가 끝났다고 알림.
     }
 }

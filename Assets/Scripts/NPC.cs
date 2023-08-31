@@ -66,6 +66,8 @@ public class NPC : MonoBehaviour
 
                 DialogueManager._instance.GetQuestDialogue(quest, data);
 
+                Input.ResetInputAxes();
+
                 _state = NPCState.Talk;
             }
         }
@@ -102,6 +104,5 @@ public class NPC : MonoBehaviour
     void EndDialogue()
     {
         _state = NPCState.Normal;
-        Input.ResetInputAxes(); // 이전에 Input값들이[예) Space]가 눌러져있을수도 있으니, 초기화 시켜준다.
     }
 }

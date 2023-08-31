@@ -13,7 +13,7 @@ public enum ObjectType
 public class Object : MonoBehaviour
 {
     public int _objID; // 본인의 ID
-
+    bool _isActive = false;
     private void Awake()
     {
         
@@ -25,18 +25,27 @@ public class Object : MonoBehaviour
 
     void Update()
     {
-        
-    }
-
-    
-    private void OnTriggerStay(Collider other) // 2. 들어오고 있을 때
-    {
-        if (other.gameObject.tag == "Player")
+        if(_isActive)
         {
             if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space")) // Sapce를 누를때
             {
                 QuestManager._instance.QuestTrigger(_objID);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _isActive = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _isActive = false;
         }
     }
 }

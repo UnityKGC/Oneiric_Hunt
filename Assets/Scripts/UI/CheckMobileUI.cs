@@ -19,7 +19,7 @@ public class CheckMobileUI : MonoBehaviour
             obj.SetActive(false);
         }
 
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.Android)
             _objs[1].SetActive(true);
         else
             _objs[0].SetActive(true);

@@ -52,13 +52,13 @@ public class SpaceCut : MonoBehaviour
             _monsterColls = Physics.OverlapSphere(transform.position, _attractAmount, _layerMask); // Layer가 Monster인 오브젝트들의 Collider를 _monsterColls에 담는다.
             _monsterDamageColls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
 
-            foreach (Collider coll in _monsterColls)
+            foreach (Collider coll in _monsterColls)  // 빨려드는 범위
             {
                 Vector3 dir = transform.position - coll.transform.position;
                 coll.transform.position += dir * 1f * Time.deltaTime;
             }
 
-            foreach(Collider coll in _monsterDamageColls)
+            foreach(Collider coll in _monsterDamageColls)  // 데미지 입히는 범위
             {
                 if (!_damagedTargets.Contains(coll.gameObject))
                 {

@@ -38,7 +38,7 @@ public class BasePlayerMove : MonoBehaviour
 
     void GetDir()
     {
-        if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
+        if(Application.platform == RuntimePlatform.Android)
         {
             _h = SimpleInput.GetAxis("Horizontal");
             _v = SimpleInput.GetAxis("Vertical");

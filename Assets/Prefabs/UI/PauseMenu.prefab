@@ -12736,6 +12736,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkUI: {fileID: 7569736400750813833}
+  _resolutionNum: 0
+  _screenNum: 0
+  _prevNum: 0
 --- !u!1 &3075356402846973304
 GameObject:
   m_ObjectHideFlags: 0
