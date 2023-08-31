@@ -4,21 +4,46 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
+    enum NPCState
+    {
+        None = -1,
+        Normal,
+        Talk,
+    }
+    
+    NPCState _state = NPCState.Normal;
     [SerializeField] List<QuestData> _questList = new List<QuestData>(); // 해당 NPC가 지니고 있는 퀘스트 목록 => 1. 이렇게 NPC가 퀘스트를 지니고 있는게 맞을까? 2. 아니면, 퀘스트 ID만 지니고, 퀘스트 매니저가 모든 퀘스트를 지니고 있는게 맞을가? => 일단 1로 진행한다.
+    
+    bool _isTalkAble; // 플레이어가 본인의 대화범위에 도달했는지
+
+    [SerializeField] bool _isSpace = false;
+    [SerializeField] bool _simpleSpace = false;
     void Start()
     {
-        
+        DialogueManager._instance._npcEvt -= EndDialogue;
+        DialogueManager._instance._npcEvt += EndDialogue;
     }
 
     void Update()
     {
-        
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        switch(_state)
         {
-            if(Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButtonDown("Space"))
+            case NPCState.Normal:
+                UpdateNormal();
+                break;
+            case NPCState.Talk:
+                UpdateTalk();
+                break;
+        }
+    }
+    void UpdateNormal()
+    {
+        if (_isTalkAble) // 대화가능하고, 대화중이 아니라면,
+        {
+            _isSpace = Input.GetKeyDown(KeyCode.Space);
+            _simpleSpace = SimpleInput.GetButtonDown("Space");
+            
+            if (_isSpace || _simpleSpace)
             {
                 QuestData quest = null;
                 DialogueData data = null;
@@ -32,15 +57,36 @@ public class NPC : MonoBehaviour
 
                 if (!quest._isStart)
                     data = quest._dialogueData[(int)DialogueType.QuestStart];
-                else if(!quest._isAchieve)
+                else if (!quest._isAchieve)
                     data = quest._dialogueData[(int)DialogueType.QuestProgress];
-                else if(quest._isAchieve)
+                else if (quest._isAchieve)
                     data = quest._dialogueData[(int)DialogueType.QuestEnd];
                 else
                     data = quest._dialogueData[(int)DialogueType.Normal];
 
                 DialogueManager._instance.GetQuestDialogue(quest, data);
+
+                _state = NPCState.Talk;
             }
+        }
+    }
+
+    void UpdateTalk()
+    {
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _isTalkAble = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _isTalkAble = false;
         }
     }
 
@@ -53,5 +99,9 @@ public class NPC : MonoBehaviour
         }
         return null; // 전부 완료라면 null 리턴.
     }
-    
+    void EndDialogue()
+    {
+        _state = NPCState.Normal;
+        Input.ResetInputAxes(); // 이전에 Input값들이[예) Space]가 눌러져있을수도 있으니, 초기화 시켜준다.
+    }
 }

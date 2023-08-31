@@ -6,7 +6,16 @@ public class EndWarning : MonoBehaviour
 {
     public void ClickAgreeBtn() // 예 버튼
     {
-        Application.Quit();
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            PluginManager._instance.GetExitBox();
+        }
+        else if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            PluginManager._instance.GetExitWinMessageBox();
+        }
+        else
+            Application.Quit();
     }
     public void ClickDisAgreeBtn() // 아니오 버튼
     {

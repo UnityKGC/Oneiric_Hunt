@@ -38,6 +38,10 @@ public class GameOverUI : MonoBehaviour
                     SceneManagerEX._instance.LoadScene(SceneManagerEX.SceneType.Title); // 타이틀로
                     break;
                 case ButtonType.End:
+                    if (Application.platform == RuntimePlatform.Android)
+                    {
+                        PluginManager._instance.GetExitBox();
+                    }
                     Application.Quit(); // 게임 종료
                     break;
             }

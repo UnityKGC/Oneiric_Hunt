@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
     public DialogueData _nowData; // 현재 대화 데이터 => 필요정보? 1. 대화참여하는 NPC리스트 2. 대사 리스트 3. NPC마다 지니는 대사 index 4. 마지막대사인지? 
 
     public Action<DialogueData> _dialogueEvt = null;
-
+    public Action _npcEvt = null; // 대화중인 NPC에게 알려줌.
     public Action _clickNext = null; // 다음 대사 출력해라.
 
     QuestData _quest;
@@ -63,5 +63,6 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
         _nowData = null;
+        _npcEvt?.Invoke(); // NPC에게 대화가 끝났다고 알림.
     }
 }

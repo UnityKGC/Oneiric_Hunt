@@ -211,8 +211,7 @@ public class QuestManager : MonoBehaviour
                 break;
         }
 
-        
-
+        PluginManager._instance.GetToastMessage("퀘스트 완료");
     }
 
     void FinishObjQuest(QuestData questData)
@@ -235,6 +234,7 @@ public class QuestManager : MonoBehaviour
         if (_processQuestDict.ContainsKey(questData._questID)) // 진행중인 퀘스트 Dict에 퀘스트가 존재한다면,
             _processQuestDict.Remove(questData._questID); // Dict에 해당 퀘스트를 지워준다.
 
+
     }
     void FinishTriggerQuest(QuestData questData)
     {
@@ -252,6 +252,8 @@ public class QuestManager : MonoBehaviour
 
         if (_processQuestDict.ContainsKey(questData._questID)) // 진행중인 퀘스트 Dict에 퀘스트가 존재한다면,
             _processQuestDict.Remove(questData._questID); // Dict에 해당 퀘스트를 지워준다.
+
+        
     }
 
     // ID의 알맞는 퀘스트가 현재 진행중인지 확인
