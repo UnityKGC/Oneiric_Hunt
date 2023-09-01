@@ -60,12 +60,12 @@ public class QuestManager : MonoBehaviour
     // 파이브라인으로 만들어, 0번째 제목, 1번째 퀘스트 내용 이런식으로 string 리스트로 만든 후 리턴해주는 게 좋을라나?
     void InitQuestObjDict(QuestData questData)
     {
-
         switch (questData._questType)
         {
             case QuestType.BringObject:
             case QuestType.FindClue:
             case QuestType.KillMonster:
+            case QuestType.KillBossMonster:
                 InitObjectQuest(questData);
                 break;
             case QuestType.InteractionObject:
@@ -86,6 +86,8 @@ public class QuestManager : MonoBehaviour
 
         if (questData._questType == QuestType.KillMonster)
             BattleManager._instance.StartBattle();
+        else if(questData._questType == QuestType.KillBossMonster)
+            BattleManager._instance.StartBattle(true); // 보스 몬스터는 이렇게.
     }
     void InitTriggerQuest(QuestData questData)
     {
@@ -112,6 +114,7 @@ public class QuestManager : MonoBehaviour
                 case QuestType.BringObject:
                 case QuestType.FindClue:
                 case QuestType.KillMonster:
+                case QuestType.KillBossMonster:
                     ObjectQuest(dataLst, data, id);
                     break;
                 case QuestType.InteractionObject:
@@ -151,7 +154,7 @@ public class QuestManager : MonoBehaviour
         if (isAchieve)
         {
             data._isAchieve = true; // Object리스트의 isFull이 모두 true라면, 퀘스트 완료조건이 만족하므로, isAchieve를 true;
-            if (data._questType == QuestType.KillMonster || data._questType == QuestType.InteractionObject) // 만약 몬스터 퇴치 퀘스트라면
+            if (data._questType == QuestType.KillMonster || data._questType == QuestType.KillBossMonster || data._questType == QuestType.InteractionObject) // 만약 몬스터 퇴치 퀘스트라면
             {
                 data._isFinish = true; // 바로 퀘스트 끝내기
                 FinishQuest(data);
@@ -203,6 +206,7 @@ public class QuestManager : MonoBehaviour
             case QuestType.BringObject:
             case QuestType.FindClue:
             case QuestType.KillMonster:
+            case QuestType.KillBossMonster:
                 FinishObjQuest(questData);
                 break;
             case QuestType.InteractionObject:

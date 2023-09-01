@@ -8,6 +8,7 @@ public enum QuestType
     BringObject, // 물건 가져오기
     FindClue, // 단서 찾기
     KillMonster, // 몬스터 퇴치
+    KillBossMonster,
     InteractionObject, // 상호작용 하기.(NPC와 대화하기, 오브젝트 들고, 밀기, 등등등)
     GoToPosition, // 해당 위치로 이동하기.
     Max,

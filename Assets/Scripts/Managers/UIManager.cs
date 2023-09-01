@@ -39,6 +39,9 @@ public class UIManager : MonoBehaviour
     public Action<Vector2> _qtePosEvt = null; // QTE의 위치를 설정한다.
 
     public Action<float> _catchUIEvt = null; // CatchEvt의 게이지 UI
+
+    public Action<bool> _setBossHPUI = null;
+    public Action<float> _bossHPEvt = null;
     public SceneUIState SceneUI { get { return _sceneUIState; } set { _sceneUIState = value; } }
 
     [SerializeField] private SceneUIState _sceneUIState = SceneUIState.None; // 이건 Scene이 시작할 때 Scene관리자가 설정해준다.
@@ -183,6 +186,15 @@ public class UIManager : MonoBehaviour
     public void StartEnemyBuffUI(Transform target, BuffManager.BuffEffect type, float durationTime)
     {
         _enemyBuffEvt?.Invoke(target, type, durationTime);
+    }
+
+    public void SetBossHP(bool value) // value값에 따라 키고 끄고를 달리 한다.
+    {
+        _setBossHPUI?.Invoke(value);
+    }
+    public void BossHPUIEvt(float value)
+    {
+        _bossHPEvt?.Invoke(value);
     }
     #endregion
 

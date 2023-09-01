@@ -12,6 +12,8 @@ public class BossStat : Stat
     void Start()
     {
         Type = TypeEnum.Enemy;
+
+        // UI 체력 이벤트 등록.
     }
 
     void Update()
@@ -31,7 +33,9 @@ public class BossStat : Stat
 
         HP -= dmg;
 
-        _canvas.SetHPAmount(HP / MaxHp);
+        //_canvas.SetHPAmount(HP / MaxHp);
+
+        UIManager._instacne.BossHPUIEvt(HP / MaxHp); // 현재 체력 비율을 이벤트로 전달 => BossHPUI가 받음.
 
         if (HP <= 0)
         {

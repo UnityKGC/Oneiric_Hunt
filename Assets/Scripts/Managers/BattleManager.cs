@@ -10,26 +10,29 @@ public class BattleManager : MonoBehaviour
     // 2. 전투가 끝나면, 다시 기본상태로 변경
 
     public bool _isBattle = false;
-    private bool _isLastBattle = false;
+    [SerializeField] private bool _isBossBattle = false;
     private void Awake()
     {
         _instance = this;
     }
     void Start()
     {
+
     }
 
     void Update()
     {
         
     }
-    public void StartBattle(bool isLastBattle = false) // Scene으로 부터 전투 시작 메시지를 받음
+    public void StartBattle(bool isBossBattle = false) // Scene으로 부터 전투 시작 메시지를 받음
     {
         // 플레이어 상태 변경 등등
         _isBattle = true;
-
-        _isLastBattle = isLastBattle;
-
+        _isBossBattle = isBossBattle;
+        if (_isBossBattle) // 보스 전투라면, 
+        {
+            UIManager._instacne.SetBossHP(true);// UI를 킨다.
+        }
         GameManager._instance.Playstate = GameManager.PlayState.Dream_Battle;
 
         Debug.Log("전투 시작");
@@ -41,21 +44,17 @@ public class BattleManager : MonoBehaviour
         SkillManager._instance.EndBattle(); // 스킬이 남아있으면 스킬 파괴 및 스킬 변수 초기화
         UIManager._instacne.EndBattle(); // 스킬 UI 초기화
 
-        GameManager._instance.Playstate = GameManager.PlayState.Dream_Normal;
-
-        if(_isLastBattle)
+        if(_isBossBattle) // 보스 전투라면
         {
-            // 포탈 활성화 => 포탈은 누가 관리하고 있지? => Scene이, 그럼 Scene에게 너가 지니고 있는 포탈을 활성화 시켜라! 라고 전달해야 하는데, 그걸 어떻게 구현할까?
-            // 사실, BattleManager에 Scene을 지니고 있으면 간단하게 되는 일이지만, 좀... 그렇다...!
-            // 그냥 SceneManager나 만들어 주자. 차피 포탈은 Scene마다 존재하는 오브젝트니까...!
-            SceneManagerEX._instance.EnablePotal(SceneManagerEX.SceneType.FirstDreamScene, SceneManagerEX.PortalType.ExitPortal);
+            UIManager._instacne.SetBossHP(false); // UI를 끈다.
+            _isBossBattle = false; // 보스 전투 분별 초기화
         }
-        Debug.Log("전투 끝");
+
+        GameManager._instance.Playstate = GameManager.PlayState.Dream_Normal;
     }
     private void OnDestroy()
     {
         _instance = null;
-        _isLastBattle = false;
         _isBattle = false;
     }
 }
