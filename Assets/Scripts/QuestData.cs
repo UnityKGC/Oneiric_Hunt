@@ -41,6 +41,8 @@ public class QuestData // 후에, ObjectData나 TriggerData는 QuestData를 상속받게 
 {
     public int _questID; // 퀘스트 ID
 
+    public int _npcID; // 퀘스트를 지니고 있는 NPC의 ID
+
     public QuestType _questType; // 퀘스트 타입
 
     public string _questName; // 퀘스트 이름

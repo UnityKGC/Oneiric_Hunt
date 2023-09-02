@@ -15,13 +15,15 @@ public class NPC : MonoBehaviour
 
     [SerializeField] List<QuestData> _questList = new List<QuestData>(); // 해당 NPC가 지니고 있는 퀘스트 목록 => 1. 이렇게 NPC가 퀘스트를 지니고 있는게 맞을까? 2. 아니면, 퀘스트 ID만 지니고, 퀘스트 매니저가 모든 퀘스트를 지니고 있는게 맞을가? => 일단 1로 진행한다.
     [SerializeField] private QuestMarkUI _questMarkUI; // 퀘스트 마크
+    [SerializeField] private TargetUIObj _targetObj;
 
     QuestData _quest = null; // 플레이어가 받고 있는 퀘스트, null이면 받고 있지 않음
 
+    
     bool _isTalkAble; // 플레이어가 본인의 대화범위에 도달했는지
     bool _activeMark; // 퀘스트 마크가 활성화 되어 있는지 확인
 
-
+    [SerializeField] int _npcID;
     [SerializeField] bool _isSpace = false;
     [SerializeField] bool _simpleSpace = false;
     void Start()
@@ -34,8 +36,9 @@ public class NPC : MonoBehaviour
 
         if (CheckQuest()) // 받야아 하는 퀘스트가 있다면s
             _questMarkUI.SetQuestMark(QuestMark.Start); // ! 마크 활성화
+
+        _targetObj.Init(_npcID);
     }
-    
     void Update()
     {
         switch(_state)

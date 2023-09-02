@@ -13,6 +13,7 @@ public class QuestManager : MonoBehaviour
     public Action<QuestData> _quests = null;
 
     public Action<int> _objEffectEvt = null; // 오브젝트들은 이 이벤트를 구독하고 있으며, 인자로는 ObjID를 뿌림 => 오브젝트들은 인자의 값과 본인의 ID값이 같으면, 이펙트 활성화. 
+    public Action<int> _npcIDEvt = null; // NPC에게로 돌아갈 경우 호출.
 
     public Action<QuestMark, QuestData> _questMarkEvt = null; // 플레이어가 무언가를 하여 퀘스트 마크를 변경해야한다면, => NPC에게 퀘스트 마크 변경해라고 전달.
 
@@ -171,6 +172,7 @@ public class QuestManager : MonoBehaviour
             data._isAchieve = true; // Object리스트의 isFull이 모두 true라면, 퀘스트 완료조건이 만족하므로, isAchieve를 true;
             
             _questMarkEvt?.Invoke(QuestMark.Finish, data); // 퀘스트 완료가능이라는 마크로 전환
+            _npcIDEvt.Invoke(data._npcID);
 
             if (data._questType == QuestType.KillMonster || data._questType == QuestType.KillBossMonster || data._questType == QuestType.InteractionObject) // 만약 몬스터 퇴치 퀘스트라면
             {

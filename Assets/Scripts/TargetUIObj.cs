@@ -12,6 +12,9 @@ public class TargetUIObj : MonoBehaviour
         QuestManager._instance._objEffectEvt -= SetQuest;
         QuestManager._instance._objEffectEvt += SetQuest;
 
+        QuestManager._instance._npcIDEvt -= SetNPC;
+        QuestManager._instance._npcIDEvt += SetNPC;
+
         _playerTrans = GameManager._instance.Player.transform; // 플레이어 Trans등록 => Init에서하면 플레이어가 null로 뜸
 
         _parentObjID = id;
@@ -19,17 +22,22 @@ public class TargetUIObj : MonoBehaviour
 
     void Update()
     {
-        if(_isQuest)
+        if(_isQuest && gameObject.activeSelf)
         {
-            float dis = Vector3.Distance(_playerTrans.position, gameObject.transform.position);
-            TargetArrowUI.UpdateClosestTarget(gameObject, dis);
+            TargetArrowUI.UpdateClosestTarget(gameObject);
+        }
+    }
+    void SetNPC(int id)
+    {
+        if(_parentObjID == id)
+        {
+            _isQuest = true;
         }
     }
     void SetQuest(int id) // 본인이 포함된 퀘스트가 시작하면 Update동작시작.
     {
         if (id == _parentObjID)
         {
-            
             _isQuest = true;
         }
     }

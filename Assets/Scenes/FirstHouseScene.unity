@@ -1152,8 +1152,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238691865}
-  m_LocalRotation: {x: 0.09226259, y: 0.7532111, z: -0.10820708, w: 0.6422242}
-  m_LocalPosition: {x: -0.0000009536743, y: 0, z: 0}
+  m_LocalRotation: {x: 0.121380225, y: 0.74750936, z: -0.14235672, w: 0.63736266}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4849,8 +4849,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101966308}
-  m_LocalRotation: {x: 0.10392906, y: 0.75111824, z: -0.12188969, w: 0.64043975}
-  m_LocalPosition: {x: -0.0000009536743, y: 0, z: 0}
+  m_LocalRotation: {x: 0.10392906, y: 0.7511183, z: -0.121889696, w: 0.64043975}
+  m_LocalPosition: {x: 0.7870283, y: -0.662776, z: -0.12598991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7238,6 +7238,7 @@ MonoBehaviour:
   _state: 0
   _questList:
   - _questID: 10
+    _npcID: 1000
     _questType: 0
     _questName: "\uBB3C\uAC74 \uAC00\uC838\uC624\uAE30"
     _questContentText: "\uBC29 \uC548\uC5D0\uC11C \uBB3C\uAC74\uC744 \uAC00\uC838\uB2E4\uC8FC\uC790."
@@ -7313,6 +7314,7 @@ MonoBehaviour:
     _isAchieve: 0
     _isFinish: 0
   - _questID: 20
+    _npcID: 1000
     _questType: 4
     _questName: "\uCC28\uB85C \uAC00\uAE30"
     _questContentText: "\uCC28\uC5D0 \uAC00\uC11C Space\uB97C \uB204\uB974\uC790."
@@ -7376,6 +7378,8 @@ MonoBehaviour:
     _isAchieve: 0
     _isFinish: 0
   _questMarkUI: {fileID: 1835556826}
+  _targetObj: {fileID: 1601155056}
+  _npcID: 1000
   _isSpace: 0
   _simpleSpace: 0
 --- !u!114 &1601155055
@@ -7478,7 +7482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614502757}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.223301, y: -14.048548, z: -7.110364}
+  m_LocalPosition: {x: 14.436273, y: -13.385772, z: -6.984373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8667,8 +8671,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797230607}
-  m_LocalRotation: {x: 0.08059653, y: 0.7550501, z: -0.094524905, w: 0.6437924}
-  m_LocalPosition: {x: -0.0000009536743, y: 0, z: 0}
+  m_LocalRotation: {x: 0.10979758, y: 0.7499689, z: -0.12877241, w: 0.6394598}
+  m_LocalPosition: {x: 0.0000009536743, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
