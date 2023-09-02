@@ -11,14 +11,17 @@ public class QuestManager : MonoBehaviour
     public static QuestManager _instance;
 
     public Action<QuestData> _quests = null;
-    
+
+    public Action<int> _objEffectEvt = null; // 오브젝트들은 이 이벤트를 구독하고 있으며, 인자로는 ObjID를 뿌림 => 오브젝트들은 인자의 값과 본인의 ID값이 같으면, 이펙트 활성화. 
+
+    public Action<QuestMark> _questMarkEvt = null; // 플레이어가 무언가를 하여 퀘스트 마크를 변경해야한다면, => NPC에게 퀘스트 마크 변경해라고 전달.
+
     Dictionary<int, QuestData> _processQuestDict = new Dictionary<int, QuestData>(); // 현재 진행중인 퀘스트 Dict
 
     Dictionary<int, List<QuestData>> _questObjDict = new Dictionary<int, List<QuestData>>();
 
     List<QuestData> _processQeustLst = new List<QuestData>(); // 현재 진행중인 퀘스트? => 현재는 일단 그냥 만들어 놓기만 함, 후에 필요(사용)하면 이 주석 지울 예정
     
-
     private void Awake()
     {
         _instance = this;
@@ -79,7 +82,11 @@ public class QuestManager : MonoBehaviour
         foreach (ObjectData data in questData._objLst)
         {
             if (!_questObjDict.ContainsKey(data._objID))
+            {
                 _questObjDict.Add(data._objID, new List<QuestData>() { questData });
+                _questMarkEvt?.Invoke(QuestMark.Preced);
+                _objEffectEvt?.Invoke(data._objID);
+            }
             else
                 _questObjDict[data._objID].Add(questData);
         }
@@ -94,16 +101,20 @@ public class QuestManager : MonoBehaviour
         foreach (TriggerData data in questData._triggerDatas)
         {
             if (!_questObjDict.ContainsKey(data._objID))
+            {
                 _questObjDict.Add(data._objID, new List<QuestData>() { questData });
+                _questMarkEvt?.Invoke(QuestMark.Preced);
+                _objEffectEvt?.Invoke(data._objID);
+            }
             else
                 _questObjDict[data._objID].Add(questData);
         }
     }
     
-    public void QuestTrigger(int id)
+    public bool QuestTrigger(int id) // id가 해당하는 퀘스트를 플레이어가 받고 있으면, true리턴, 없으면 false리턴.
     {
         List<QuestData> dataLst = null;
-        if (!_questObjDict.ContainsKey(id)) return;
+        if (!_questObjDict.ContainsKey(id)) return false;
 
         dataLst = _questObjDict[id];
 
@@ -124,6 +135,7 @@ public class QuestManager : MonoBehaviour
             }
             if (dataLst.Count <= 0) break; // 한바퀴 돌고 dataLst에 데이터가 없으면 멈춤 => break안하면 에러발생
         }
+        return true;
     }
     void ObjectQuest(List<QuestData> dataLst, QuestData data, int id) // 퀘스트 데이터와 오브젝트 id를 확인하여 trigger확인
     {
@@ -154,6 +166,9 @@ public class QuestManager : MonoBehaviour
         if (isAchieve)
         {
             data._isAchieve = true; // Object리스트의 isFull이 모두 true라면, 퀘스트 완료조건이 만족하므로, isAchieve를 true;
+            
+            _questMarkEvt?.Invoke(QuestMark.Finish); // 퀘스트 완료가능이라는 마크로 전환
+
             if (data._questType == QuestType.KillMonster || data._questType == QuestType.KillBossMonster || data._questType == QuestType.InteractionObject) // 만약 몬스터 퇴치 퀘스트라면
             {
                 data._isFinish = true; // 바로 퀘스트 끝내기
@@ -234,6 +249,8 @@ public class QuestManager : MonoBehaviour
 
         // 퀘스트 보상
         GetQuestReward(questData);
+
+        _questMarkEvt?.Invoke(QuestMark.None); // 마크 없애기
 
         if (_processQuestDict.ContainsKey(questData._questID)) // 진행중인 퀘스트 Dict에 퀘스트가 존재한다면,
             _processQuestDict.Remove(questData._questID); // Dict에 해당 퀘스트를 지워준다.

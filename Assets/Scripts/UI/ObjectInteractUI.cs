@@ -15,8 +15,6 @@ public class ObjectInteractUI : MonoBehaviour
         _cam = Camera.main.transform;
 
         _text.text = text;
-
-
     }
 
     void Update()

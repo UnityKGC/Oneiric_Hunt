@@ -14,13 +14,15 @@ public class TriggerObject : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            QuestManager._instance.QuestTrigger(_objID);
-            
-            gameObject.SetActive(false);
+            if(QuestManager._instance.QuestTrigger(_objID)) // 본인이 포함되는 퀘스트가 있다면,
+            {
+                gameObject.SetActive(false); // 비활성화 시킨다.
+            }
         }
     }
 }
