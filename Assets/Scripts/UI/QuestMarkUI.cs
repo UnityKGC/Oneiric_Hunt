@@ -13,8 +13,12 @@ public class QuestMarkUI : MonoBehaviour
 {
     [SerializeField] List<GameObject> _markImages;
 
-    private Transform _cam;
+    private Transform _cam = null;
 
+    private void Start()
+    {
+        _cam = Camera.main.transform;
+    }
     public void SetQuestMark(QuestMark mark)
     {
         for(int i = 0; i < _markImages.Count; i++)

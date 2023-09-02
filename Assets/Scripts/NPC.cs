@@ -116,8 +116,10 @@ public class NPC : MonoBehaviour
             _isTalkAble = false;
         }
     }
-    void SetQuestMark(QuestMark mark) // 퀘스트매니저로부터 전달받으면,
+    void SetQuestMark(QuestMark mark, QuestData quest) // 퀘스트매니저로부터 전달받으면,
     {
+        if (_quest != quest) return; // 본인이 담당하는 퀘스트가 아니라면 리턴
+
         _questMarkUI.SetQuestMark(mark);
 
         if(mark == QuestMark.None) // None을 전달받았으면 => 퀘스트를 완료했으면, 현재 지니고 있는 quest는 null로, 마크활성화여부는false로 전환

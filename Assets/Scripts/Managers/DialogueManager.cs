@@ -58,9 +58,6 @@ public class DialogueManager : MonoBehaviour
                 _quest._isFinish = true;
                 QuestManager._instance.FinishQuest(_quest);
                 break;
-            case DialogueType.ChangeScene:
-                SceneManagerEX._instance.LoadScene(SceneManagerEX.SceneType.FirstDreamScene);
-                break;
         }
         _nowData = null;
         Input.ResetInputAxes();

@@ -8,7 +8,6 @@ public enum DialogueType // 대사 타입
     QuestStart, // 퀘스트 시작 시 대사
     QuestProgress,  // 퀘스트 진행 중 대사
     QuestEnd, // 퀘스트 종료 시 대사.
-    ChangeScene, // Scene전환 단 하나를 위해 사용
     Normal, // 기본
 }
 

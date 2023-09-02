@@ -27,6 +27,9 @@ public class Interaction : MonoBehaviour
             _playerPos = other.transform.position; // 플레이어의 위치
             _Pos = transform.position;//  객체의 위치
 
+            float dis = Vector3.Distance(_playerPos,_Pos);
+            InteractionManager._instance.UpdateClosestInteractObj(this, dis);
+
             Vector3 temp = new Vector3((_playerPos.x + _Pos.x) / 2, 2.5f, (_playerPos.z + _Pos.z) / 2); // y는 고정시키고, 플레이어와 객체 사이의 중앙값을 가져온다.
             _interactUIRect.position = temp;
 

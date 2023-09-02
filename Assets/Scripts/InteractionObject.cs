@@ -2,43 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ObjectType
-{
-    None = -1,
-    NPC,
-    Clue,
-    Object,
-}
-
-public class Object : MonoBehaviour
+public class InteractionObject : MonoBehaviour
 {
     [SerializeField] private QuestMarkUI _questMarkUI; // 퀘스트 이펙트
-    [SerializeField] private TargetUIObj _targetObj;
+
     public int _objID; // 본인의 ID
-    
+
     bool _isActive = false;
+
     private void Awake()
     {
-        
+
     }
     void Start()
     {
         QuestManager._instance._objEffectEvt -= SetEffect;
         QuestManager._instance._objEffectEvt += SetEffect;
-
-        _targetObj.Init(_objID);
     }
 
     void Update()
     {
-        if(_isActive)
+        if (_isActive)
         {
             if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space")) // Sapce를 누를때
             {
-                if(QuestManager._instance.QuestTrigger(_objID)) // 플레이어의 퀘스트에 본인이 포함되어 있으면
-                {
-                    gameObject.SetActive(false); // 비활성화 시킨다.
-                }
+                QuestManager._instance.QuestTrigger(_objID); // 플레이어의 퀘스트에 본인이 포함되어 있으면
             }
         }
     }
@@ -64,9 +52,5 @@ public class Object : MonoBehaviour
         {
             _isActive = false;
         }
-    }
-    private void OnDestroy()
-    {
-        QuestManager._instance._objEffectEvt -= SetEffect;
     }
 }

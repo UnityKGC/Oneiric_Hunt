@@ -14,7 +14,9 @@ public class QuestManager : MonoBehaviour
 
     public Action<int> _objEffectEvt = null; // 오브젝트들은 이 이벤트를 구독하고 있으며, 인자로는 ObjID를 뿌림 => 오브젝트들은 인자의 값과 본인의 ID값이 같으면, 이펙트 활성화. 
 
-    public Action<QuestMark> _questMarkEvt = null; // 플레이어가 무언가를 하여 퀘스트 마크를 변경해야한다면, => NPC에게 퀘스트 마크 변경해라고 전달.
+    public Action<QuestMark, QuestData> _questMarkEvt = null; // 플레이어가 무언가를 하여 퀘스트 마크를 변경해야한다면, => NPC에게 퀘스트 마크 변경해라고 전달.
+
+    public Action<bool> _targetArrowEvt = null; // 목표 위치를 가르키는 가이드 UI
 
     Dictionary<int, QuestData> _processQuestDict = new Dictionary<int, QuestData>(); // 현재 진행중인 퀘스트 Dict
 
@@ -76,6 +78,7 @@ public class QuestManager : MonoBehaviour
                 InitTriggerQuest(questData);
                 break;
         }
+        _targetArrowEvt?.Invoke(true);
     }
     void InitObjectQuest(QuestData questData)
     {
@@ -84,7 +87,7 @@ public class QuestManager : MonoBehaviour
             if (!_questObjDict.ContainsKey(data._objID))
             {
                 _questObjDict.Add(data._objID, new List<QuestData>() { questData });
-                _questMarkEvt?.Invoke(QuestMark.Preced);
+                _questMarkEvt?.Invoke(QuestMark.Preced, questData);
                 _objEffectEvt?.Invoke(data._objID);
             }
             else
@@ -103,7 +106,7 @@ public class QuestManager : MonoBehaviour
             if (!_questObjDict.ContainsKey(data._objID))
             {
                 _questObjDict.Add(data._objID, new List<QuestData>() { questData });
-                _questMarkEvt?.Invoke(QuestMark.Preced);
+                _questMarkEvt?.Invoke(QuestMark.Preced, questData);
                 _objEffectEvt?.Invoke(data._objID);
             }
             else
@@ -167,7 +170,7 @@ public class QuestManager : MonoBehaviour
         {
             data._isAchieve = true; // Object리스트의 isFull이 모두 true라면, 퀘스트 완료조건이 만족하므로, isAchieve를 true;
             
-            _questMarkEvt?.Invoke(QuestMark.Finish); // 퀘스트 완료가능이라는 마크로 전환
+            _questMarkEvt?.Invoke(QuestMark.Finish, data); // 퀘스트 완료가능이라는 마크로 전환
 
             if (data._questType == QuestType.KillMonster || data._questType == QuestType.KillBossMonster || data._questType == QuestType.InteractionObject) // 만약 몬스터 퇴치 퀘스트라면
             {
@@ -214,7 +217,7 @@ public class QuestManager : MonoBehaviour
             _quests.Invoke(questData);
 
         UIManager._instacne.FinishQuest(questData); // 퀘스트 UI 갱신 => 끝냄
-
+        _targetArrowEvt?.Invoke(false);
 
         switch (questData._questType)
         {
@@ -250,7 +253,7 @@ public class QuestManager : MonoBehaviour
         // 퀘스트 보상
         GetQuestReward(questData);
 
-        _questMarkEvt?.Invoke(QuestMark.None); // 마크 없애기
+        _questMarkEvt?.Invoke(QuestMark.None, questData); // 마크 없애기
 
         if (_processQuestDict.ContainsKey(questData._questID)) // 진행중인 퀘스트 Dict에 퀘스트가 존재한다면,
             _processQuestDict.Remove(questData._questID); // Dict에 해당 퀘스트를 지워준다.
