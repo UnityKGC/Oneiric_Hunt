@@ -183,7 +183,7 @@ public class QuestManager : MonoBehaviour
             
             _questMarkEvt?.Invoke(QuestMark.Finish, data._npcID); // 퀘스트 완료조건이 만족하므로, NPC에게 ? 퀘스트 마크 세팅
 
-            _npcIDEvt.Invoke(data._npcID); // 완료가능이면, 퀘스트를 받은 NPC에게 NPCID를 뿌려, 본인의 ID와 동일하면, 가이드라인UI에게 본인이라고 알려준다
+            _npcIDEvt?.Invoke(data._npcID); // 완료가능이면, 퀘스트를 받은 NPC에게 NPCID를 뿌려, 본인의 ID와 동일하면, 가이드라인UI에게 본인이라고 알려준다
 
             if (data._questType == QuestType.KillMonster || data._questType == QuestType.KillBossMonster || data._questType == QuestType.InteractionObject) // 만약 몬스터 퇴치 퀘스트라면
             {

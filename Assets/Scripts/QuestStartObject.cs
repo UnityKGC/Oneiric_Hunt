@@ -5,6 +5,7 @@ using UnityEngine;
 public class QuestStartObject : MonoBehaviour
 {
     [SerializeField] QuestData _data;
+
     void Start()
     {
         

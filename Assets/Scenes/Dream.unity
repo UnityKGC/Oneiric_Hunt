@@ -303,6 +303,7 @@ MonoBehaviour:
     _pos: {fileID: 1968849081}
   _questData:
     _questID: 50
+    _npcID: 0
     _questType: 4
     _questName: "\uCCAB\uBC88\uC9F8 \uC870\uC815"
     _questContentText: "\uC9C0\uC815\uB41C \uC704\uCE58\uB85C \uC774\uB3D9\uD558\uC138\uC694"
@@ -2372,7 +2373,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378461752}
-  m_LocalRotation: {x: 0.0016938094, y: 0.98811734, z: -0.15330385, w: 0.0109174205}
+  m_LocalRotation: {x: 0.0016938093, y: 0.98811734, z: -0.15330385, w: 0.0109174205}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3507,10 +3508,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DreamPlayUI
       objectReference: {fileID: 0}
-    - target: {fileID: 6898355763862059809, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6898355763862059810, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3896,6 +3893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _questID: 53
+    _npcID: 0
     _questType: 2
     _questName: "\uB9C8\uC9C0\uB9C9 \uC870\uC815"
     _questContentText: "\uBB34\uAE30\uAE30\uC220\uC744 \uC774\uC6A9\uD558\uC5EC \uBAAC\uC2A4\uD130\uB4E4\uC744
@@ -5407,6 +5405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _questID: 51
+    _npcID: 0
     _questType: 2
     _questName: "\uB450\uBC88\uC9F8 \uC870\uC815"
     _questContentText: "\uD5C8\uC218\uC544\uBE44\uB97C \uD574\uCE58\uC6B0\uC790."
@@ -7959,8 +7958,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 328f350503e02284b834ff426791c31b, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: efe413a3b0802344eb89cce682cc2eff, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8883,6 +8882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _questID: 52
+    _npcID: 0
     _questType: 2
     _questName: "\uC138\uBC88\uC9F8 \uC870\uC815"
     _questContentText: "\uAE30\uBCF8 \uAE30\uC220\uC744 \uC774\uC6A9\uD558\uC5EC
@@ -10863,7 +10863,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761433997}
-  m_LocalRotation: {x: 0.0020892692, y: 0.98189646, z: -0.18909599, w: 0.010848702}
+  m_LocalRotation: {x: 0.0020892678, y: 0.98189646, z: -0.18909597, w: 0.0108486945}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11123,6 +11123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _questID: 54
+    _npcID: 0
     _questType: 3
     _questName: "\uACE0\uB9BD"
     _questContentText: "\uBAA8\uB4E0 \uBAAC\uC2A4\uD130\uB4E4\uC744 \uD574\uCE58\uC6B0\uC790."

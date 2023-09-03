@@ -22,11 +22,7 @@ public class TargetUIObj : MonoBehaviour
 
     void Update()
     {
-        /*
-        if(_isQuest && gameObject.activeSelf)
-        {
-            
-        }*/
+        
     }
     void SetNPC(int id)
     {
