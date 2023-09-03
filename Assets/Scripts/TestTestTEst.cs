@@ -7,6 +7,7 @@ public class TestTestTEst : MonoBehaviour
     [SerializeField] Animation _anim;
     [SerializeField] GameObject _interactUI;
     private bool _isActive = false;
+    private GameObject _player;
     void Start()
     {
         
@@ -18,11 +19,13 @@ public class TestTestTEst : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space"))
             {
-                GameManager._instance.Player.SetActive(false);
+                _player.SetActive(false);
                 _interactUI.SetActive(false);
 
                 CameraManager._instance.SetVirtualCam();
                 _anim.Play();
+
+                _isActive = false;
             }
         }
     }
@@ -30,6 +33,7 @@ public class TestTestTEst : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            _player = other.gameObject;
             _isActive = true;
         }
     }
@@ -37,6 +41,7 @@ public class TestTestTEst : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            _player = null;
             _isActive = false;
         }
     }

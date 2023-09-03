@@ -12,10 +12,10 @@ public class QuestManager : MonoBehaviour
 
     public Action<QuestData> _quests = null;
 
-    public Action<int> _objEffectEvt = null; // 오브젝트들은 이 이벤트를 구독하고 있으며, 인자로는 ObjID를 뿌림 => 오브젝트들은 인자의 값과 본인의 ID값이 같으면, 이펙트 활성화. 
+    public Action<int> _objEffectEvt = null; // 현재 TargetUIObj가 이걸 사용하고 있음 => 인자로 받은 ID와 본인 부모의 ID가 같으면, TargetArrowUI에게 본인 차례라고 전달함
     public Action<int> _npcIDEvt = null; // NPC에게로 돌아갈 경우 호출.
 
-    public Action<QuestMark, QuestData> _questMarkEvt = null; // 플레이어가 무언가를 하여 퀘스트 마크를 변경해야한다면, => NPC에게 퀘스트 마크 변경해라고 전달.
+    public Action<QuestMark, int> _questMarkEvt = null; // 플레이어가 무언가를 하여 퀘스트 마크를 변경해야한다면, => NPC에게 퀘스트 마크 변경해라고 전달.
 
     public Action<bool> _targetArrowEvt = null; // 목표 위치를 가르키는 가이드 UI
 
@@ -88,7 +88,10 @@ public class QuestManager : MonoBehaviour
             if (!_questObjDict.ContainsKey(data._objID))
             {
                 _questObjDict.Add(data._objID, new List<QuestData>() { questData });
-                _questMarkEvt?.Invoke(QuestMark.Preced, questData);
+
+                _questMarkEvt?.Invoke(QuestMark.Finish, data._objID); // 오브젝트는 바로 ?마크 활성화
+                _questMarkEvt?.Invoke(QuestMark.Preced, questData._npcID); // NPC는 ... 마크 활성화
+
                 _objEffectEvt?.Invoke(data._objID);
             }
             else
@@ -107,7 +110,10 @@ public class QuestManager : MonoBehaviour
             if (!_questObjDict.ContainsKey(data._objID))
             {
                 _questObjDict.Add(data._objID, new List<QuestData>() { questData });
-                _questMarkEvt?.Invoke(QuestMark.Preced, questData);
+
+                _questMarkEvt?.Invoke(QuestMark.Finish, data._objID); // 오브젝트는 바로 ?마크 활성화
+                _questMarkEvt?.Invoke(QuestMark.Preced, questData._npcID); // NPC는 ... 마크 활성화
+
                 _objEffectEvt?.Invoke(data._objID);
             }
             else
@@ -150,7 +156,11 @@ public class QuestManager : MonoBehaviour
             objData._nowCount++;
 
             if (objData._totalCount <= objData._nowCount)
+            {
                 objData._isFull = true;
+                _questMarkEvt?.Invoke(QuestMark.None, objData._objID); // 오브젝트는 얻으면 필요개수를 다 채웠으면 비활성화
+            }
+                
         }
 
         bool isAchieve = true; // 퀘스트 완료 조건 만족여부 => Default를 true로 준다.
@@ -171,8 +181,9 @@ public class QuestManager : MonoBehaviour
         {
             data._isAchieve = true; // Object리스트의 isFull이 모두 true라면, 퀘스트 완료조건이 만족하므로, isAchieve를 true;
             
-            _questMarkEvt?.Invoke(QuestMark.Finish, data); // 퀘스트 완료가능이라는 마크로 전환
-            _npcIDEvt.Invoke(data._npcID);
+            _questMarkEvt?.Invoke(QuestMark.Finish, data._npcID); // 퀘스트 완료조건이 만족하므로, NPC에게 ? 퀘스트 마크 세팅
+
+            _npcIDEvt.Invoke(data._npcID); // 완료가능이면, 퀘스트를 받은 NPC에게 NPCID를 뿌려, 본인의 ID와 동일하면, 가이드라인UI에게 본인이라고 알려준다
 
             if (data._questType == QuestType.KillMonster || data._questType == QuestType.KillBossMonster || data._questType == QuestType.InteractionObject) // 만약 몬스터 퇴치 퀘스트라면
             {
@@ -188,6 +199,7 @@ public class QuestManager : MonoBehaviour
             if (triData._objID != id || triData._isFinish) continue;
 
             triData._isFinish = true;
+            _questMarkEvt?.Invoke(QuestMark.None, triData._objID); // Trigger오브젝트는 얻으면 비활성화
         }
 
         bool isAchieve = true; // 퀘스트 완료 조건 만족여부 => Default를 true로 준다.
@@ -219,7 +231,10 @@ public class QuestManager : MonoBehaviour
             _quests.Invoke(questData);
 
         UIManager._instacne.FinishQuest(questData); // 퀘스트 UI 갱신 => 끝냄
-        _targetArrowEvt?.Invoke(false);
+
+        _targetArrowEvt?.Invoke(false); // 가이드 라인 UI 비활성화
+
+        _questMarkEvt?.Invoke(QuestMark.None, questData._npcID); // 퀘스트 완료 시, 마크 비활성화 => NPC전용 => 오브젝트들은 QuestTrigger에서 이미 없어짐.
 
         switch (questData._questType)
         {
@@ -254,8 +269,6 @@ public class QuestManager : MonoBehaviour
 
         // 퀘스트 보상
         GetQuestReward(questData);
-
-        _questMarkEvt?.Invoke(QuestMark.None, questData); // 마크 없애기
 
         if (_processQuestDict.ContainsKey(questData._questID)) // 진행중인 퀘스트 Dict에 퀘스트가 존재한다면,
             _processQuestDict.Remove(questData._questID); // Dict에 해당 퀘스트를 지워준다.

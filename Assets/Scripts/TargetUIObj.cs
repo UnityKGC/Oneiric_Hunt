@@ -22,16 +22,18 @@ public class TargetUIObj : MonoBehaviour
 
     void Update()
     {
+        /*
         if(_isQuest && gameObject.activeSelf)
         {
-            TargetArrowUI.UpdateClosestTarget(gameObject);
-        }
+            
+        }*/
     }
     void SetNPC(int id)
     {
         if(_parentObjID == id)
         {
             _isQuest = true;
+            TargetArrowUI.UpdateClosestTarget(gameObject);
         }
     }
     void SetQuest(int id) // 본인이 포함된 퀘스트가 시작하면 Update동작시작.
@@ -39,6 +41,7 @@ public class TargetUIObj : MonoBehaviour
         if (id == _parentObjID)
         {
             _isQuest = true;
+            TargetArrowUI.UpdateClosestTarget(gameObject);
         }
     }
     private void OnDestroy()

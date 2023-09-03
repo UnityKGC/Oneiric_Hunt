@@ -23,8 +23,8 @@ public class Object : MonoBehaviour
     }
     void Start()
     {
-        QuestManager._instance._objEffectEvt -= SetEffect;
-        QuestManager._instance._objEffectEvt += SetEffect;
+        QuestManager._instance._questMarkEvt -= SetQuestMark;
+        QuestManager._instance._questMarkEvt += SetQuestMark;
 
         _targetObj.Init(_objID);
     }
@@ -43,12 +43,11 @@ public class Object : MonoBehaviour
         }
     }
 
-    void SetEffect(int id) // 오브젝트의 id를 인자로 받아 같으면, 해당하는 UI 호출
+    void SetQuestMark(QuestMark mark, int id)
     {
-        if (id == _objID)
-        {
-            _questMarkUI.SetQuestMark(QuestMark.Finish);
-        }
+        if (id != _objID) return; // 본인의 ID와 다르면 리턴
+
+        _questMarkUI.SetQuestMark(mark);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -67,6 +66,6 @@ public class Object : MonoBehaviour
     }
     private void OnDestroy()
     {
-        QuestManager._instance._objEffectEvt -= SetEffect;
+        QuestManager._instance._questMarkEvt -= SetQuestMark;
     }
 }
