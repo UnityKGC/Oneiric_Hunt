@@ -3504,10 +3504,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460511199086307618}
     m_Modifications:
-    - target: {fileID: 6207500480431809582, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6898355763862059809, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
       propertyPath: m_Name
       value: DreamPlayUI
@@ -4336,11 +4332,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2443084872924781365, guid: d2d6eef92ef4138438de9fdf726507fa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.010885668
+      value: 0.010885633
       objectReference: {fileID: 0}
     - target: {fileID: 2443084872924781365, guid: d2d6eef92ef4138438de9fdf726507fa, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0018917226
+      value: 0.0018917164
       objectReference: {fileID: 0}
     - target: {fileID: 2443084872924781365, guid: d2d6eef92ef4138438de9fdf726507fa, type: 3}
       propertyPath: m_LocalRotation.y
@@ -10365,7 +10361,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701176352}
-  m_LocalRotation: {x: 0.0018917215, y: 0.9851736, z: -0.17120449, w: 0.010885661}
+  m_LocalRotation: {x: 0.0018917182, y: 0.9851736, z: -0.17120449, w: 0.010885642}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10871,7 +10867,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761433997}
-  m_LocalRotation: {x: 0.0020894117, y: 0.98189646, z: -0.18909599, w: 0.010849442}
+  m_LocalRotation: {x: 0.0020894166, y: 0.98189646, z: -0.18909594, w: 0.010849469}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
