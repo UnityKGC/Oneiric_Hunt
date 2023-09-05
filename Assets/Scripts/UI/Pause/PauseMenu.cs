@@ -18,9 +18,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] List<GameObject> _popupUI;
     void Start()
     {
-
+        
     }
-
+    
     void OnEnable()
     {
         _pausePanel.DOMoveX(0, 0.3f).SetUpdate(true);
@@ -28,6 +28,8 @@ public class PauseMenu : MonoBehaviour
     private void OnDisable()
     {
         _pausePanel.DOMoveX(-500, 0f).SetUpdate(true);
+
+        _pausePanel.gameObject.SetActive(true); // UI상태가 변하면(어지간하면 Play로), pausePanel을 다시 활성화
     }
 
     public void ClickResume() // 게임 재개는 혼자 Popup을 여는게 아니므로 따로 제작
@@ -52,7 +54,9 @@ public class PauseMenu : MonoBehaviour
                 _popupUI[i].transform.DOScale(0, 0f).SetUpdate(true); // 닷트윈 실행 => 스케일을 1로 만듬
             }
         }
+        _pausePanel.gameObject.SetActive(false); // 아무 버튼이 눌러지면, pausePanel은 비활성화
     }
+    /*
     public void ClickEncy()
     {
         // 도감 UI 호출
@@ -69,5 +73,5 @@ public class PauseMenu : MonoBehaviour
     public void ClickEnd()
     {
         // 정말 게임을 종료하시겠습니까? UI 호출
-    }
+    }*/
 }

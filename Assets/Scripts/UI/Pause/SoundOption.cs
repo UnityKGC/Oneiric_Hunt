@@ -42,7 +42,7 @@ public class SoundOption : MonoBehaviour
 
     private void OnEnable() // 시작할 때, 현재 저장되어 있는 수치들을 전부 저장한다.
     {
-
+        _warningUI.transform.localScale = Vector3.one; // 그, warning이 닫기를 누르고, 다시 키면, Scale이 0으로 되어 있어, 옵션UI가 Enable할 때, 스케일을 1로 바꾸도록 구현.
         for (int i = 0; i < _soundValueLst.Count; i++)
         {
             float value = float.Parse(_soundValueLst[i].text);

@@ -6,6 +6,7 @@ public class CluePanel : MonoBehaviour
 {
     public void ClickCloseBtn()
     {
+        Debug.Log(transform.root.name);
         UIManager._instacne.ClosePopupUI();
     }
 }
