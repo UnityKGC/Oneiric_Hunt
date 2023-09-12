@@ -218,9 +218,10 @@ public class UIManager : MonoBehaviour
                               // => 후에 Popup UI의 부모를 만들어서, ClosePopupUI를 호출하게 만들어야 겠다?
                               // => 왜? 옵션같은 경우는, 수치를 바꾸면, 변경된 수치가 있습니다. 적용시키겠습니까? 라는 경고 UI를 호출시켜야 한다. => 즉! 각 popupUI마다 Close할 때 호출하는게 다르니, 공통적인 종료 함수를 만들어 주고, 여기에서 호출시키게 해야 한다.    }
     
-        if(_popupUIStack.Count <= 0)
+        
+        if(_popupUIStack.Count <= 0 && SceneManagerEX._instance.NowScene != SceneManagerEX.SceneType.Title)
         {
-            SetSceneUI(SceneUIState.Play); // 더이상 팝업창이 없다면, Play로 전환
+            SetSceneUI(SceneUIState.Play); // 더이상 팝업창이 없고, 타이틀이 아니라면, Play로 전환
         }
     }
 
