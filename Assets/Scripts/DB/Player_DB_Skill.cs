@@ -46,7 +46,7 @@ public class Player_DB_Skill : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) || SimpleInput.GetButtonDown("Tab"))
         {
             SkillManager._instance.StartSkill(SkillManager.Skills.WeaponSwap, 0f, transform.position, transform.rotation, transform);
-            _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.WeaponSwap);
+            //_anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.WeaponSwap);
         }
 
         if (!GameManager._instance.SecondTuto) return;

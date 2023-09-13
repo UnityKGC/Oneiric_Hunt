@@ -18,11 +18,11 @@ public class Player_DB_Attack : MonoBehaviour
 
     //private float _stopAtkTime;
     private float _startStopAtkTime; // 공격을 그만 둔 시간
-    private float _atkAgreeTime = 0.8f; // 공격 인정 시간
+    private float _atkAgreeTime = 1f; // 공격 인정 시간
     private float _atkDelay = 0.8f;
     //private float _idleTime = 2f;
 
-    //private bool _isStopAtk = true;
+    private bool _isStopAtk = true;
     private bool _isFirstAttack = false;
     private bool _isSecondAtk = false;
     private bool _isThirdAtk = false;
@@ -49,88 +49,76 @@ public class Player_DB_Attack : MonoBehaviour
         
     }
     
-    IEnumerator StartAttackDelayTime() // 공격 딜레이
-    {
-        _ischeckAttack = true;
-        AttackStart();
-
-        yield return new WaitForSeconds(_atkDelay);
-        
-        AttackEnd();
-        _ischeckAttack = false;
-    }
+    
     void FixedUpdate()
     {
 
     }
     void PCCtrl()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             _isAttack = true;
 
-            if (_ischeckAttack) return;
+            if (_ischeckAttack) return; // 공격 딜레이 코루틴에서 _ischeckAttack을 조절하여, 계속 공격하지 못하게 막음.
 
-            //_isStopAtk = false;
+            _isStopAtk = false;
 
             _startStopAtkTime = 0f;
 
-            if (Input.GetMouseButton(0) && _isFirstAttack == false)
+            if (Input.GetMouseButtonDown(0) && _isFirstAttack == false)
             {
                 Debug.Log("첫번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_1);
                 _isFirstAttack = true;
             }
-            else if (Input.GetMouseButton(0) && _isSecondAtk == false)
+            else if (Input.GetMouseButtonDown(0) && _isSecondAtk == false)
             {
                 Debug.Log("두번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_2);
                 _isSecondAtk = true;
+
             }
-            else if (Input.GetMouseButton(0) && _isThirdAtk == false)
+            else if (Input.GetMouseButtonDown(0) && _isThirdAtk == false)
             {
                 Debug.Log("세번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_3);
                 _isThirdAtk = true;
+
             }
-            else if (Input.GetMouseButton(0))
+            else if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("네번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_4);
                 _isFirstAttack = _isSecondAtk = _isThirdAtk = false; // 다시 첫번째 공격으로
+
             }
 
-            /*
-            if (_atkCo != null) // 사실 할 필요 없는 듯 한데 혹시나 모를 변수를 막기위해
-                StopCoroutine(StartAttackDelayTime());*/
+            
+            if (_atkCo != null) // 사실 할 필요 없는 듯 한데 혹시나 모를 변수를 막기위해??
+                StopCoroutine(StartAttackDelayTime());
+
             StartCoroutine(StartAttackDelayTime());
         }
-        else// if (_isStopAtk == false) // 공격을 하지 않으면, 대기상태 시간측정 시작
+        else // 공격을 하지 않으면, 대기상태 시간측정 시작
         {
-            /*
             if (_startStopAtkTime == 0) // 시간재기
-                _startStopAtkTime = Time.time;*/
-            StopAllCoroutines();
-            _isAttack = false;
-            _weaponColl.enabled = false;
-            _ischeckAttack = false;
-            _isFirstAttack = _isSecondAtk = _isThirdAtk = false;
-            /*
-            if (Time.time - _startStopAtkTime > _atkAgreeTime) // 좌클릭을 0.8초 동안 하지 않으면
+                _startStopAtkTime = Time.time;
+            
+            if (Time.time - _startStopAtkTime > _atkAgreeTime) // 좌클릭을 1.2초 동안 하지 않으면
             {
-                //_isAttack = false;  // 변수들 초기화
-                
+                //StopAllCoroutines();
+                _isAttack = false; // 공격중지
+                _weaponColl.enabled = false;
+                _ischeckAttack = false;
+                _isFirstAttack = _isSecondAtk = _isThirdAtk = false;
 
-                //_stopAtkTime = Time.time;
-                //_isStopAtk = true;
-
-                
                 _startStopAtkTime = 0f; // 시간도 초기화
-            }*/
+            }
         }
     }
     void MobileCtrl()
@@ -184,11 +172,13 @@ public class Player_DB_Attack : MonoBehaviour
             /*
             if (_startStopAtkTime == 0) // 시간재기
                 _startStopAtkTime = Time.time;*/
+
             StopAllCoroutines();
             _isAttack = false;
             _weaponColl.enabled = false;
             _ischeckAttack = false;
             _isFirstAttack = _isSecondAtk = _isThirdAtk = false;
+
             /*
             if (Time.time - _startStopAtkTime > _atkAgreeTime) // 좌클릭을 0.8초 동안 하지 않으면
             {
@@ -226,6 +216,17 @@ public class Player_DB_Attack : MonoBehaviour
                 return;
             }
         }
+    }
+
+    IEnumerator StartAttackDelayTime() // 공격 딜레이
+    {
+        _ischeckAttack = true;
+        AttackStart();
+
+        yield return new WaitForSeconds(_atkDelay);
+
+        AttackEnd();
+        _ischeckAttack = false;
     }
 
     public void AttackStart()

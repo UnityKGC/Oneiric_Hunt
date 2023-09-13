@@ -23,6 +23,7 @@ public class TriggerData
 
     public bool _isFinish; // 해당 오브젝트에 Trigger했는지,
 }
+
 [System.Serializable]
 public class ObjectData
 {
