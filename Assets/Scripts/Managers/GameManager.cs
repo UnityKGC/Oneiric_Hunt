@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
     private bool _isSecond = false;
 
     public bool _isUsingJoyStick = false;
+
+
+    public bool _isGameEnd = false;
     private void Awake()
     {
         _instance = this;

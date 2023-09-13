@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
         GameOver,
         Tutorial,
     }
+    public GameObject _endUI;
 
     public Action<QuestData> _questDataEvt = null; // 퀘스트 UI를 등록시키기 위해 사용하는 콜백
     public Action<QuestData> _questContentEvt = null; // 퀘스트 내용을 갱신시키기 위해 사용하는 콜백
@@ -61,10 +62,13 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        
+        if(_endUI != null)
+            _endUI.SetActive(false);
     }
     void Update()
     {
+        if (GameManager._instance._isGameEnd) return;
+
         Debug.Log("Stack 크기 : "+_popupUIStack.Count);
 
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -253,6 +257,15 @@ public class UIManager : MonoBehaviour
                 break;
         }
 
+    }
+    public void GameEnd()
+    {
+        _endUI.SetActive(true);
+
+        SetCursor(SceneUIState.GameOver);
+        Time.timeScale = 0f;
+
+        GameManager._instance._isGameEnd = true;
     }
     private void OnDestroy() // Scene전환될 때, 
     {

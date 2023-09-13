@@ -37,7 +37,7 @@ public class BattleManager : MonoBehaviour
 
         Debug.Log("전투 시작");
     }
-    public void EndBattle() // 몬스터를 다 해치워 전투가 끝날 시
+    public void EndBattle(bool isBossBattle = false) // 몬스터를 다 해치워 전투가 끝날 시
     {
         _isBattle = false;
 
@@ -47,6 +47,7 @@ public class BattleManager : MonoBehaviour
         if(_isBossBattle) // 보스 전투라면
         {
             UIManager._instacne.SetBossHP(false); // UI를 끈다.
+            UIManager._instacne.GameEnd();
             _isBossBattle = false; // 보스 전투 분별 초기화
         }
 
