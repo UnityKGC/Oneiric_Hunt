@@ -6,12 +6,13 @@ using UnityEngine.EventSystems;
 public class Player_DB_Attack : MonoBehaviour
 {
     [SerializeField] Collider[] _weaponColls;
-
+    [SerializeField] GameObject[] _weaponTrails; // 무기 잔상효과
     private PlayerStat _stat;
     private Player_DB_Anim _anim;
     private Player_DB_Move _move;
     private Coroutine _atkCo;
     private Collider _weaponColl;
+    private GameObject _weaponTrail;
 
     public bool _isAttack = false; // 외부에서 플레이어가 공격을 그만 뒀는지 확인하는 변수
     private bool _ischeckAttack = false; // 내부에서 플레이어의 공격을 했는지 확인하는 변수
@@ -36,7 +37,11 @@ public class Player_DB_Attack : MonoBehaviour
     void Start()
     {
         _weaponColl = GameObject.FindWithTag("PlayerAtk").GetComponent<Collider>();
+
         _weaponColl.enabled = false; // 무기 collider의 기본은 false
+
+        _weaponTrail = _weaponTrails[0];
+        _weaponTrail.SetActive(false);
     }
     void Update()
     {
@@ -97,7 +102,6 @@ public class Player_DB_Attack : MonoBehaviour
                 _isFirstAttack = _isSecondAtk = _isThirdAtk = false; // 다시 첫번째 공격으로
 
             }
-
             
             if (_atkCo != null) // 사실 할 필요 없는 듯 한데 혹시나 모를 변수를 막기위해??
                 StopCoroutine(StartAttackDelayTime());
@@ -213,8 +217,9 @@ public class Player_DB_Attack : MonoBehaviour
             if (i == (int)weapon)
             {
                 _weaponColl = _weaponColls[i];
-                return;
+                _weaponTrail = _weaponTrails[i];
             }
+            _weaponTrails[i].SetActive(false);
         }
     }
 
@@ -232,9 +237,11 @@ public class Player_DB_Attack : MonoBehaviour
     public void AttackStart()
     {
         _weaponColl.enabled = true;
+        _weaponTrail.SetActive(true);
     }
     public void AttackEnd()
     {
         _weaponColl.enabled = false;
+        _weaponTrail.SetActive(false);
     }
 }
