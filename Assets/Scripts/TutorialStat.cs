@@ -2,25 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterStat : Stat
+public class TutorialStat : Stat
 {
     public EnemyCanvas _canvas;
 
     private bool _isDead;
 
-    Monster _monster;
     [SerializeField] int _id; // 몬스터 id
 
     void Start()
     {
         Type = TypeEnum.Enemy;
-
-        _monster = gameObject?.GetComponent<Monster>();
     }
 
     void Update()
     {
-        
+
     }
 
     public override float GetDamage() // 누군가에게 데미지를 줄 때
@@ -38,9 +35,6 @@ public class MonsterStat : Stat
 
         _canvas.SetHPAmount(HP / MaxHp);
 
-        if (_monster != null)
-            _monster.State = Monster.MonsterState.Hit;
-
         if (HP <= 0)
         {
             _isDead = true;
@@ -50,10 +44,14 @@ public class MonsterStat : Stat
             QuestManager._instance.QuestTrigger(_id);
             SpawnManager._instance.KilledMonster();
 
-            if(_monster != null)
-                _monster.State = Monster.MonsterState.Die;
-            else
-                Destroy(gameObject);
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PlayerAtk"))
+        {
+            SetDamage(other.GetComponentInParent<PlayerStat>().GetDamage());
         }
     }
 }

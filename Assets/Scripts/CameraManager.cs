@@ -135,7 +135,7 @@ public class CameraManager : MonoBehaviour
             FindPlayerFocus();
             _playerCam = _nowCam.GetComponent<CinemachineFreeLook>();
             _nowCam.LookAt = _playerFocus.transform;
-            _nowCam.Follow = PlayerManager._instance._nowPlayer.transform;
+            _nowCam.Follow = _playerFocus.transform;
         }
     }
 }

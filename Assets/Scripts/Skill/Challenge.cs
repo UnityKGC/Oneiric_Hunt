@@ -51,6 +51,14 @@ public class Challenge : MonoBehaviour
     {
         _startTime = Time.time;
 
+        StartCoroutine(StartSkill());
+
+        
+    }
+    IEnumerator StartSkill()
+    {
+        yield return new WaitForSeconds(1.5f);
+
         GameObject player = GameManager._instance.Player;
 
         BuffManager._instance.StartBuff(BuffManager.BuffEffect.AtkUp, player, _upAtkValue, _buffDuringTime);
@@ -58,7 +66,9 @@ public class Challenge : MonoBehaviour
 
         _colls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
 
-        foreach(Collider coll in _colls)
+        CameraManager._instance.StartEffectCam(CameraType.PlayerCam, 3f, 1f);
+
+        foreach (Collider coll in _colls)
         {
             Stat stat = coll.GetComponent<Stat>();
 

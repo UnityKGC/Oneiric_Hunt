@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class TitleScene : MonoBehaviour
 {
+    public Material _skybox;
     void Start()
     {
+        RenderSettings.skybox = _skybox;
+        RenderSettings.customReflection = null; // Reset any custom reflection probes
+        DynamicGI.UpdateEnvironment();
+
         SceneManagerEX._instance.NowScene = SceneManagerEX.SceneType.Title;
         UIManager._instacne.SetSceneUI(UIManager.SceneUIState.None); // SceneUI가 없어용
 

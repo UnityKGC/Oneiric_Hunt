@@ -35,6 +35,8 @@ public class Berserk : MonoBehaviour
     {
         _startTime = Time.time;
 
+        CameraManager._instance.StartEffectCam(CameraType.PlayerCam, 5f, 1f);
+
         GameObject player = GameManager._instance.Player;
 
         BuffManager._instance.StartBuff(BuffManager.BuffEffect.AtkUp, player, _upAtkValue, _buffDuringTime);

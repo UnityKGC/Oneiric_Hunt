@@ -63,6 +63,7 @@ public class PlayerStat : Stat
         float dmg = value - Defense;
         HP -= dmg;
 
+        //CameraManager._instance.StartEffectCam(CameraType.PlayerCam, 1f, 0.25f);
         UIManager._instacne.SetPlayerHP(HP); // 현재 HP를 UI매니저에게 전달
 
         if (HP <= 0 && !GameManager._instance.PlayerDie)

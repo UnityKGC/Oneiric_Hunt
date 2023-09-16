@@ -4,11 +4,29 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    enum NPCState
+    public enum NPCState
     {
         None = -1,
         Normal,
         Talk,
+    }
+
+    public NPCState State
+    {
+        get { return _state; }
+        set
+        {
+            _state = value;
+            switch(_state)
+            {
+                case NPCState.Normal:
+                    _anim.CrossFade("Idle", 0.1f);
+                    break;
+                case NPCState.Talk:
+                    _anim.CrossFade("Talk", 0.1f);
+                    break;
+            }
+        }
     }
 
     [SerializeField] NPCState _state = NPCState.Normal;
@@ -16,6 +34,7 @@ public class NPC : MonoBehaviour
     [SerializeField] List<QuestData> _questList = new List<QuestData>(); // 해당 NPC가 지니고 있는 퀘스트 목록 => 1. 이렇게 NPC가 퀘스트를 지니고 있는게 맞을까? 2. 아니면, 퀘스트 ID만 지니고, 퀘스트 매니저가 모든 퀘스트를 지니고 있는게 맞을가? => 일단 1로 진행한다.
     [SerializeField] private QuestMarkUI _questMarkUI; // 퀘스트 마크
     [SerializeField] private TargetUIObj _targetObj;
+    private Animator _anim;
 
     QuestData _quest = null; // 플레이어가 받고 있는 퀘스트, null이면 받고 있지 않음
 
@@ -35,6 +54,8 @@ public class NPC : MonoBehaviour
         QuestManager._instance._questMarkEvt -= SetQuestMark;
         QuestManager._instance._questMarkEvt += SetQuestMark;
 
+        _anim = GetComponent<Animator>();
+
         if (CheckQuest()) // 받야아 하는 퀘스트가 있다면s
             _questMarkUI.SetQuestMark(QuestMark.Start); // ! 마크 활성화
 
@@ -42,7 +63,7 @@ public class NPC : MonoBehaviour
     }
     void Update()
     {
-        switch(_state)
+        switch(State)
         {
             case NPCState.Normal:
                 UpdateNormal();
@@ -94,9 +115,11 @@ public class NPC : MonoBehaviour
 
                 DialogueManager._instance.GetQuestDialogue(_quest, data);
 
+                transform.LookAt(_player.transform);
+
                 Input.ResetInputAxes();
 
-                _state = NPCState.Talk;
+                State = NPCState.Talk;
 
                 CameraManager._instance.StartTalkCam(_player, gameObject);
             }
@@ -160,6 +183,6 @@ public class NPC : MonoBehaviour
 
     void EndDialogue()
     {
-        _state = NPCState.Normal;
+        State = NPCState.Normal;
     }
 }
