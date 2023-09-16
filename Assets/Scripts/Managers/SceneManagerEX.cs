@@ -58,20 +58,42 @@ public class SceneManagerEX : MonoBehaviour
     }
     IEnumerator LoadSceneAsync(SceneType scene) // sceneID를 SceneType으로 변환 후 받는다.
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync((int)scene);
-
         int idx = Random.Range(0, 3);
 
         GameObject loadImg = _images[idx];
 
         loadImg.SetActive(true); // 로딩화면을 활성화 시킨다.
+
         Image fillimg = loadImg.transform.GetChild(0).GetComponent<Image>(); // 0번째가 Fillimg
 
+        AsyncOperation operation = SceneManager.LoadSceneAsync((int)scene);
+
+        operation.allowSceneActivation = false;
+
+        float timer = 0.0f;
         while (!operation.isDone) // 프로세스가 완료되지 않으면 반복
         {
-            float progressValue = Mathf.Clamp01(operation.progress / 0.9f); // 진행값(0.dd)을 0.9로 나눠, 진행상태를 Value에 넣는다
-            fillimg.fillAmount = progressValue; // 그 value를 fill에 기입한다.
-            yield return null; // null 리턴
+            yield return null;
+
+            timer += Time.deltaTime;
+
+            if (operation.progress < 0.9f)
+            {
+                fillimg.fillAmount = Mathf.Lerp(fillimg.fillAmount, operation.progress, timer);
+                if (fillimg.fillAmount >= operation.progress)
+                {
+                    timer = 0f;
+                }
+            }
+            else
+            {
+                fillimg.fillAmount = Mathf.Lerp(fillimg.fillAmount, 1f, timer);
+                if (fillimg.fillAmount == 1.0f)
+                {
+                    operation.allowSceneActivation = true;
+                    yield break;
+                }
+            }
         }
     }
 }

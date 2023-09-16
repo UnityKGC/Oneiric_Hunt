@@ -61,6 +61,7 @@ public class DialogueManager : MonoBehaviour
         }
         _nowData = null;
         Input.ResetInputAxes();
+        CameraManager._instance.ChangeCam(CameraType.PlayerCam);
         _npcEvt?.Invoke(); // NPC에게 대화가 끝났다고 알림.
     }
 }

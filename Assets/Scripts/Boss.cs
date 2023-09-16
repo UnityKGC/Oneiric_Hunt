@@ -6,6 +6,8 @@ public class Boss : MonoBehaviour
 {
     public enum BossState
     {
+        None = -1,
+        Appear,
         Idle,
         Run,
         Attack, // 공격 중
@@ -21,6 +23,9 @@ public class Boss : MonoBehaviour
             _state = value;
             switch(_state)
             {
+                case BossState.Appear:
+                    _anim.CrossFade("Appear", 0.1f);
+                    break;
                 case BossState.Idle:
                     _anim.CrossFade("Idle",0.1f);
                     break;
@@ -90,6 +95,10 @@ public class Boss : MonoBehaviour
         _farSkillCount = System.Enum.GetValues(typeof(BossSkill.FarSkill)).Length;
 
         transform.LookAt(_player.transform);
+
+        CameraManager._instance.StartBossCam();
+
+        StartCoroutine(StartCo());
     }
 
     void Update()
@@ -113,8 +122,9 @@ public class Boss : MonoBehaviour
 
         switch (State)
         {
-            case BossState.Idle:
-                UpdateIdle();
+            case BossState.Appear:
+                if(!_isAppear) // 최초 상태라면
+                    StartCoroutine(StartAppearCo());
                 break;
             case BossState.Run:
                 UpdateRun();
@@ -130,10 +140,18 @@ public class Boss : MonoBehaviour
                 break;
         }
     }
-    void UpdateIdle() // Idle이 존재할려나? => 몬스터들이 소환되는 연출때 사용할 듯?
+    IEnumerator StartCo()
     {
-        if (!_isAppear)
-            StartCoroutine(StartAppear());
+        yield return new WaitForSeconds(1f); // 카메라 이동 시간
+
+        State = BossState.Appear; // 상태변경 => 등장 애니메이션 실행
+    }
+    IEnumerator StartAppearCo()
+    {
+        _isAppear = true; // 등장했으니 true로
+        yield return new WaitForSeconds(3.5f); // 등장 연출
+
+        State = BossState.Run;
     }
     void UpdateRun() // 플레이어를 쫓는다.
     {
@@ -250,12 +268,6 @@ public class Boss : MonoBehaviour
     void UpdateDie()
     {
 
-    }
-    IEnumerator StartAppear()
-    {
-        _isAppear = true;
-        yield return new WaitForSeconds(2f);
-        State = BossState.Run;
     }
     IEnumerator StartAttackCo()
     {

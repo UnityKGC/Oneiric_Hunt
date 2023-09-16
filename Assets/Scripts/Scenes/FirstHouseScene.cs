@@ -14,7 +14,7 @@ public class FirstHouseScene : MonoBehaviour
 
         GameManager._instance.Playstate = GameManager.PlayState.Real_Normal;
         SceneManagerEX._instance.NowScene = SceneManagerEX.SceneType.FirstHouseScene;
-        CameraManager._instance.SetFreeLookCam();
+        CameraManager._instance.ChangeCam(CameraType.PlayerCam);
 
         UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Tutorial);
     }

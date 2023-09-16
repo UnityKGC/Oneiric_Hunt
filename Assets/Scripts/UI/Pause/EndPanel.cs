@@ -6,6 +6,7 @@ public class EndPanel : MonoBehaviour
 {
     public void ClickLobbyBtn()
     {
+        gameObject.SetActive(false);
         SceneManagerEX._instance.LoadScene(SceneManagerEX.SceneType.Title); // 로비(타이틀)로 이동
     }
     public void ClickEndBtn()

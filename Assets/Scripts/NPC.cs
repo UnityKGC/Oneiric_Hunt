@@ -19,6 +19,7 @@ public class NPC : MonoBehaviour
 
     QuestData _quest = null; // 플레이어가 받고 있는 퀘스트, null이면 받고 있지 않음
 
+    GameObject _player = null;
     
     bool _isTalkAble; // 플레이어가 본인의 대화범위에 도달했는지
     bool _activeMark; // 퀘스트 마크가 활성화 되어 있는지 확인
@@ -96,6 +97,8 @@ public class NPC : MonoBehaviour
                 Input.ResetInputAxes();
 
                 _state = NPCState.Talk;
+
+                CameraManager._instance.StartTalkCam(_player, gameObject);
             }
         }
     }
@@ -110,6 +113,7 @@ public class NPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _isTalkAble = true;
+            _player = other.gameObject;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -117,6 +121,7 @@ public class NPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _isTalkAble = false;
+            _player = null;
         }
     }
     void SetQuestMark(QuestMark mark, int id) // 퀘스트매니저로부터 전달받으면,

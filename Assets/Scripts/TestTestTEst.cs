@@ -22,7 +22,7 @@ public class TestTestTEst : MonoBehaviour
                 _player.SetActive(false);
                 _interactUI.SetActive(false);
 
-                CameraManager._instance.SetVirtualCam();
+                CameraManager._instance.ChangeCam(CameraType.ViewCam);
                 _anim.Play();
 
                 _isActive = false;

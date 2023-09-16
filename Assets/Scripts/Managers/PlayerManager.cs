@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] List<GameObject> _playerLst; // 플레이어 리스트 (순서는 게임 상태 Enum의 순서와 매치)
 
-    GameObject _nowPlayer;
+    public GameObject _nowPlayer;
     private void Awake()
     {
         _instance = this;
@@ -99,6 +99,6 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
 
-        CameraManager._instance.SetFreeLookCam(); // 바뀐 플레이어에게 카메라 포커스
+        CameraManager._instance.ChangeCam(CameraType.PlayerCam); // 바뀐 플레이어에게 카메라 포커스
     }
 }

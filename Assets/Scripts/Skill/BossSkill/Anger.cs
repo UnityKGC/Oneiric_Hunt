@@ -103,6 +103,8 @@ public class Anger : MonoBehaviour
 
         _firstColl.enabled = true; // 도착했으니, 첫번재 공격력 감지 coll 키기 => 먼저 키고 있으면, 스킬 사용할 때 이미 플레이어가 데미지를 입거나, 점프중에 Enter에 들어와서 데미지를 입지 않음
 
+        CameraManager._instance.StartEffectCam(CameraType.PlayerCam, 5, 1f);
+
         yield return new WaitForSeconds(0.5f); // 도착 후 0.5초 대기
 
         SecondSetDmg();
