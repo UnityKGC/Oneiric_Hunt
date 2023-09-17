@@ -16,6 +16,8 @@ public class TitleScene : MonoBehaviour
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None; // 강제로 변경
+
+        SoundManager._instance.PlayBGM(BGM.Title);
     }
 
     void Update()

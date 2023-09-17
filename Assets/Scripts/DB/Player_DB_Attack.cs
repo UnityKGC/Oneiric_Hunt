@@ -28,6 +28,8 @@ public class Player_DB_Attack : MonoBehaviour
     private bool _isSecondAtk = false;
     private bool _isThirdAtk = false;
 
+    private WeaponType _nowType = WeaponType.Sword; // 현재 무기타입
+
     void Awake()
     {
         _stat = GetComponent<PlayerStat>();
@@ -216,6 +218,7 @@ public class Player_DB_Attack : MonoBehaviour
         {
             if (i == (int)weapon)
             {
+                _nowType = weapon;
                 _weaponColl = _weaponColls[i];
                 _weaponTrail = _weaponTrails[i];
             }
@@ -225,6 +228,8 @@ public class Player_DB_Attack : MonoBehaviour
 
     IEnumerator StartAttackDelayTime() // 공격 딜레이
     {
+        SoundManager._instance.PlayEffectSound((WeaponSound)((int)_nowType)); // 현재 착용중인 무기 정보(Enum)과 EffectSound의 Enum이 동일
+
         _ischeckAttack = true;
         AttackStart();
 
@@ -232,6 +237,10 @@ public class Player_DB_Attack : MonoBehaviour
 
         AttackEnd();
         _ischeckAttack = false;
+    }
+    void AttackSound()
+    {
+        
     }
 
     public void AttackStart()
