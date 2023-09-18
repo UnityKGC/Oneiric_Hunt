@@ -15,9 +15,9 @@ MonoBehaviour:
   _skillName: Slash
   _skillAmount: 1
   _damageAmount: 1
-  _durationTime: 1
+  _durationTime: 0.35
   _remainTime: 3
-  _castTime: 0.75
+  _castTime: 0.5
   _skillCoolTime: 3
   _damageDelay: 0
   _damageValue: 1

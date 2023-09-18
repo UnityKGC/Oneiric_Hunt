@@ -15,6 +15,8 @@ public class Dodge : MonoBehaviour
 
         //BuffManager._instance.StartMovSpdBuff(transform.parent.gameObject, _scriptable._movSpdBuffValue, _scriptable._buffDurationTime);
 
+        SoundManager._instance.PlaySkillSound(Skills.Dodge, 0.3f, transform);
+
         StartCoroutine(StartDodgeCo(playerRot));
     }
     IEnumerator StartDodgeCo(Quaternion playerRot)

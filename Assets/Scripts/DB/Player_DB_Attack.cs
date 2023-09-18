@@ -228,7 +228,7 @@ public class Player_DB_Attack : MonoBehaviour
 
     IEnumerator StartAttackDelayTime() // 공격 딜레이
     {
-        SoundManager._instance.PlayEffectSound((WeaponSound)((int)_nowType)); // 현재 착용중인 무기 정보(Enum)과 EffectSound의 Enum이 동일
+        //SoundManager._instance.PlayEffectSound((WeaponSound)((int)_nowType)); // 현재 착용중인 무기 정보(Enum)과 EffectSound의 Enum이 동일
 
         _ischeckAttack = true;
         AttackStart();
@@ -253,4 +253,10 @@ public class Player_DB_Attack : MonoBehaviour
         _weaponColl.enabled = false;
         _weaponTrail.SetActive(false);
     }
+    private void OnDisable()
+    {
+        if(_weaponTrail != null)
+            _weaponTrail.SetActive(false);
+    }
+
 }

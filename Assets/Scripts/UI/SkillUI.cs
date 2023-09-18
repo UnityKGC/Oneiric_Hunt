@@ -24,7 +24,7 @@ public class SkillUI : MonoBehaviour
     {
         
     }
-    void StartCoolTime(SkillScriptable scriptable, SkillManager.Skills skill) // 스크립터블 객체와, Skill Enum을 이용하여 스킬UI 쿨타임 구현
+    void StartCoolTime(SkillScriptable scriptable, Skills skill) // 스크립터블 객체와, Skill Enum을 이용하여 스킬UI 쿨타임 구현
     {
         if (scriptable == null || !gameObject.activeSelf) return; // 게임오브젝트가 꺼져있는지 판단하여 PC버전UI와 모바일UI를 동시에 실행하지 않게 구현.
 

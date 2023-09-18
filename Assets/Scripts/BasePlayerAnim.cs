@@ -7,7 +7,7 @@ public class BasePlayerAnim : MonoBehaviour
     protected Animator _anim;
     BasePlayerState.EPlayerState _animState;
 
-    public virtual void CrossFade(BasePlayerState.EPlayerState state, SkillManager.Skills type = SkillManager.Skills.None) // 무기 종류의 인자?
+    public virtual void CrossFade(BasePlayerState.EPlayerState state, Skills type = Skills.None) // 무기 종류의 인자?
     {
         if (_animState == state)
             return;

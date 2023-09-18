@@ -17,6 +17,8 @@ public class Slash : MonoBehaviour
 
     public void Init(SkillScriptable scriptable, float playerAtk)
     {
+        SoundManager._instance.PlaySkillSound(Skills.Slash, 0.5f, transform);
+
         _scriptable = scriptable;
 
         _scriptable._isAble = false;
@@ -43,9 +45,8 @@ public class Slash : MonoBehaviour
         }
         Destroy(gameObject, _durationTime);
     }
-
-    void Update()
+    private void OnDestroy()
     {
-        
+        SkillManager._instance.EndSkill();
     }
 }

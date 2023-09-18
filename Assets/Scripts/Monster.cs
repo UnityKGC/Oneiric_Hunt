@@ -52,6 +52,8 @@ public class Monster : MonoBehaviour
 
     private GameObject _player;
 
+    [SerializeField] GameObject _atkTrail;
+
     private Vector3 _dir; // 몬스터 => 플레이어의 방향벡터
     [SerializeField]
     private float _dist; // 몬스터와 플레이어 사이의 거리
@@ -74,6 +76,8 @@ public class Monster : MonoBehaviour
         _player = GameManager._instance.Player;
         _anim = GetComponent<Animator>();
         transform.LookAt(_player.transform);
+
+        _atkTrail.SetActive(false);
     }
 
     void Update()
@@ -137,9 +141,11 @@ public class Monster : MonoBehaviour
     {
         _isAttack = true;
         _hand.SetActive(true);
+        _atkTrail.SetActive(true);
 
         yield return new WaitForSeconds(1.5f);
 
+        _atkTrail.SetActive(false);
         _hand.SetActive(false);
         _isAttack = false;
 
@@ -160,6 +166,7 @@ public class Monster : MonoBehaviour
             State = MonsterState.Run;
 
         _isHit = false;
+        
     }
     private void OnTriggerEnter(Collider other)
     {

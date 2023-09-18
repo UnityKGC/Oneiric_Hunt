@@ -39,14 +39,14 @@ public class Player_DB_Skill : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButtonDown("Space"))
         {
-            SkillManager._instance.StartSkill(SkillManager.Skills.Dodge, 0f, transform.position, transform.rotation, transform);
-            _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.Dodge);
+            SkillManager._instance.StartSkill(Skills.Dodge, 0f, transform.position, transform.rotation, transform);
+            _anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.Dodge);
         }
 
         if (Input.GetKeyDown(KeyCode.Tab) || SimpleInput.GetButtonDown("Tab"))
         {
-            SkillManager._instance.StartSkill(SkillManager.Skills.WeaponSwap, 0f, transform.position, transform.rotation, transform);
-            //_anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.WeaponSwap);
+            SkillManager._instance.StartSkill(Skills.WeaponSwap, 0f, transform.position, transform.rotation, transform);
+            //_anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.WeaponSwap);
         }
 
         //if (!GameManager._instance.SecondTuto) return;
@@ -58,18 +58,18 @@ public class Player_DB_Skill : MonoBehaviour
             {
                 case WeaponType.Sword:
                     dmg = Random.Range(_stat.SwordMinAtk, _stat.SwordMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.Slash, dmg, transform.position, transform.rotation);
-                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.Slash);
+                    SkillManager._instance.StartSkill(Skills.Slash, dmg, transform.position, transform.rotation);
+                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.Slash);
                     break;
                 case WeaponType.Spear:
                     dmg = Random.Range(_stat.SpearMinAtk, _stat.SpearMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.Stabing, dmg, transform.position, transform.rotation);
-                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.Stabing);
+                    SkillManager._instance.StartSkill(Skills.Stabing, dmg, transform.position, transform.rotation);
+                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.Stabing);
                     break;
                 case WeaponType.Axe:
                     dmg = Random.Range(_stat.AxeMinAtk, _stat.AxeMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.Takedown, dmg, transform.position, transform.rotation);
-                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.Takedown);
+                    SkillManager._instance.StartSkill(Skills.Takedown, dmg, transform.position, transform.rotation);
+                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.Takedown);
                     break;
             }
         }
@@ -81,20 +81,20 @@ public class Player_DB_Skill : MonoBehaviour
             {
                 case WeaponType.Sword:
                     dmg = Random.Range(_stat.SwordMinAtk, _stat.SwordMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.SwordForce, dmg, transform.position, transform.rotation);
-                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.SwordForce);
+                    SkillManager._instance.StartSkill(Skills.SwordForce, dmg, transform.position, transform.rotation);
+                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.SwordForce);
                     break;
 
                 case WeaponType.Spear:
                     dmg = Random.Range(_stat.SpearMinAtk, _stat.SpearMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.Sweep, dmg, transform.position, transform.rotation);
-                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.Sweep);
+                    SkillManager._instance.StartSkill(Skills.Sweep, dmg, transform.position, transform.rotation);
+                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.Sweep);
                     break;
 
                 case WeaponType.Axe:
                     dmg = Random.Range(_stat.AxeMinAtk, _stat.AxeMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.WindMill, dmg, transform.position, transform.rotation, transform);
-                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.WindMill);
+                    SkillManager._instance.StartSkill(Skills.WindMill, dmg, transform.position, transform.rotation, transform);
+                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.WindMill);
                     break;
             }
         }
@@ -106,20 +106,20 @@ public class Player_DB_Skill : MonoBehaviour
             {
                 case WeaponType.Sword:
                     dmg = Random.Range(_stat.SwordMinAtk, _stat.SwordMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.SpaceCut, dmg, transform.position, transform.rotation);
-                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.SpaceCut);
+                    SkillManager._instance.StartSkill(Skills.SpaceCut, dmg, transform.position, transform.rotation);
+                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.SpaceCut);
                     break;
 
                 case WeaponType.Spear:
                     dmg = Random.Range(_stat.SpearMinAtk, _stat.SpearMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.Challenge, dmg, transform.position, transform.rotation);
-                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.Challenge);
+                    SkillManager._instance.StartSkill(Skills.Challenge, dmg, transform.position, transform.rotation);
+                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.Challenge);
                     break;
 
                 case WeaponType.Axe:
                     dmg = Random.Range(_stat.AxeMinAtk, _stat.AxeMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.Berserk, dmg, transform.position, transform.rotation);
-                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, SkillManager.Skills.Berserk);
+                    SkillManager._instance.StartSkill(Skills.Berserk, dmg, transform.position, transform.rotation);
+                    _anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.Berserk);
                     break;
             }
         }

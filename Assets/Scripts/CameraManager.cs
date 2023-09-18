@@ -10,6 +10,13 @@ public enum CameraType
     ViewCam,
     TalkCam,
 }
+[System.Serializable]
+public struct PlayerCam
+{
+    public CinemachineVirtualCamera _cam;
+    public float _height;
+    public float _radius;
+}
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager _instance;
@@ -25,13 +32,32 @@ public class CameraManager : MonoBehaviour
     [SerializeField] CinemachineFreeLook _playerCam;
 
     public GameObject _playerFocus;
+
+    float wheelValue = 0f;
     private void Awake()
     {
         _instance = this;
     }
     private void Start()
     {
-        
+
+    }
+    private void Update()
+    {
+        float value = Input.GetAxis("Mouse ScrollWheel");
+        if(value != 0)
+        {
+            wheelValue += value;
+            wheelValue = Mathf.Clamp(wheelValue, -5f, 3f);
+
+            if (wheelValue >= 3f || wheelValue <= -5f) return; // 최대치에 도달하면 리턴 => 값이 변하지 않음.
+
+            for (int i = 0; i < 3; i++)
+            {
+                _playerCam.m_Orbits[i].m_Height -= value;
+                _playerCam.m_Orbits[i].m_Radius -= value;
+            }
+        }
     }
     void FindPlayerFocus()
     {

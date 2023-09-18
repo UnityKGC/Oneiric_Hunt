@@ -30,7 +30,7 @@ public class PlayerSkill : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            SkillManager._instance.StartSkill(SkillManager.Skills.WeaponSwap, 0f, transform.position, transform.rotation, transform);
+            SkillManager._instance.StartSkill(Skills.WeaponSwap, 0f, transform.position, transform.rotation, transform);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -38,7 +38,7 @@ public class PlayerSkill : MonoBehaviour
             // 회피
             // 0.5초? 간 캐릭터의 Collider를 끄기 => 무적상태
             // 이동속도를 잠시동안 2배로 늘린다.
-            SkillManager._instance.StartSkill(SkillManager.Skills.Dodge, 0f, transform.position, transform.rotation, transform);
+            SkillManager._instance.StartSkill(Skills.Dodge, 0f, transform.position, transform.rotation, transform);
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -63,17 +63,17 @@ public class PlayerSkill : MonoBehaviour
             {
                 case WeaponType.Sword:
                     dmg = Random.Range(_stat.SwordMinAtk, _stat.SwordMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.SwordForce, dmg, transform.position, transform.rotation);
+                    SkillManager._instance.StartSkill(Skills.SwordForce, dmg, transform.position, transform.rotation);
                     break;
 
                 case WeaponType.Spear:
                     dmg = Random.Range(_stat.SpearMinAtk, _stat.SpearMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.Sweep, dmg, transform.position, transform.rotation);
+                    SkillManager._instance.StartSkill(Skills.Sweep, dmg, transform.position, transform.rotation);
                     break;
 
                 case WeaponType.Axe:
                     dmg = Random.Range(_stat.AxeMinAtk, _stat.AxeMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.WindMill, dmg, transform.position, transform.rotation, transform);
+                    SkillManager._instance.StartSkill(Skills.WindMill, dmg, transform.position, transform.rotation, transform);
                     break;
             }
         }
@@ -84,17 +84,17 @@ public class PlayerSkill : MonoBehaviour
             {
                 case WeaponType.Sword:
                     dmg = Random.Range(_stat.SwordMinAtk, _stat.SwordMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.SpaceCut, dmg, transform.position, transform.rotation);
+                    SkillManager._instance.StartSkill(Skills.SpaceCut, dmg, transform.position, transform.rotation);
                     break;
 
                 case WeaponType.Spear:
                     dmg = Random.Range(_stat.SpearMinAtk, _stat.SpearMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.Challenge, dmg, transform.position, transform.rotation);
+                    SkillManager._instance.StartSkill(Skills.Challenge, dmg, transform.position, transform.rotation);
                     break;
 
                 case WeaponType.Axe:
                     dmg = Random.Range(_stat.AxeMinAtk, _stat.AxeMaxAtk);
-                    SkillManager._instance.StartSkill(SkillManager.Skills.Berserk, dmg, transform.position, transform.rotation);
+                    SkillManager._instance.StartSkill(Skills.Berserk, dmg, transform.position, transform.rotation);
                     break;
             }
         }

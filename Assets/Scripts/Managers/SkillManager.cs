@@ -2,29 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Skills
+{
+    None = -1,
+
+    WeaponSwap,
+    Dodge,
+
+    Slash,
+    SwordForce,
+    SpaceCut,
+
+    Stabing,
+    Sweep,
+    Challenge,
+
+    Takedown,
+    WindMill,
+    Berserk,
+}
+
 public class SkillManager : MonoBehaviour
 {
     public static SkillManager _instance;
-
-    public enum Skills
-    {
-        None = -1,
-
-        WeaponSwap,
-        Dodge,
-
-        Slash,
-        SwordForce,
-        SpaceCut,
-
-        Stabing,
-        Sweep,
-        Challenge,
-
-        Takedown,
-        WindMill,
-        Berserk,
-    }
 
     [SerializeField]
     List<SkillScriptable> _skills = new List<SkillScriptable>();
@@ -148,7 +148,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
 
-        EndSkill();
+        //EndSkill();
 
         Vector3 forward = playerRot * Vector3.forward;
 

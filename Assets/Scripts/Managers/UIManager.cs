@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
 
     public Action<GameManager.PlayState> _playStateEvt = null; // 게임의 현재 진행 상태
 
-    public Action<SkillScriptable, SkillManager.Skills> _skillEvt = null; // 스킬 스크립터블을 이용하여 스킬 쿨타임 확인
+    public Action<SkillScriptable, Skills> _skillEvt = null; // 스킬 스크립터블을 이용하여 스킬 쿨타임 확인
     
     public Action<BuffManager.BuffEffect, float> _buffEvt = null; // 지속 시간을 이용하여 버프 UI 구현.
     public Action<Transform, BuffManager.BuffEffect, float> _enemyBuffEvt = null; // 적 버프 UI
@@ -158,7 +158,7 @@ public class UIManager : MonoBehaviour
     {
         _hpEvt?.Invoke(value); // ?. 은, _hpEvt가 null일시 null 리턴, 값이 존재할 시 Invoke실행 => 삼항연산자 : A>B ? 10 : 20 => A>B조건이 true면 10 아니면 20이라는 뜻
     }
-    public void SetSkillUI(SkillScriptable scriptable, SkillManager.Skills skill)
+    public void SetSkillUI(SkillScriptable scriptable, Skills skill)
     {
         _skillEvt?.Invoke(scriptable, skill);
     }
