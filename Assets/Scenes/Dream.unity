@@ -6604,7 +6604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4133593168828780091, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.1340338
+      value: -0.13403381
       objectReference: {fileID: 0}
     - target: {fileID: 4133593168828780091, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6832,6 +6832,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4919222969460022897, guid: ea4afab77145ef145ad7080d1782771f, type: 3}
+      propertyPath: _skillClips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919222969460022897, guid: ea4afab77145ef145ad7080d1782771f, type: 3}
+      propertyPath: _skillClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: cf1767eb8b2c9894c9f16da0f936f669, type: 3}
+    - target: {fileID: 4919222969460022897, guid: ea4afab77145ef145ad7080d1782771f, type: 3}
+      propertyPath: _skillClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: a0d0277acd98e6749a75381c9253344d, type: 3}
     - target: {fileID: 4919222969460022911, guid: ea4afab77145ef145ad7080d1782771f, type: 3}
       propertyPath: m_Name
       value: SoundManager
