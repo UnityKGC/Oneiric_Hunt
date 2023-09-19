@@ -49,12 +49,18 @@ public class SoundManager : MonoBehaviour
         AudioClip clip = _effectClips[(int)type];
         _effectAudio.PlayOneShot(clip);
     }
-    public void PlaySkillSound(Skills type, float volume = 1.0f, Transform parent = null)
+    public void PlaySkillSound(Skills type, float volume = 1.0f, float pitch = 1.0f, bool isLoop = false, Transform parent = null)
     {
         AudioSource temp = Instantiate(_skillAudio, parent); // 사운드를 스킬의 자식으로 생성.
 
+        temp.loop = isLoop; // 반복여부 => 배치스킬인 경우
+
         temp.clip = _skillClips[(int)type]; // 스킬에 맞는 사운드를 clip으로 저장한 후,
+        
         temp.volume = volume; // 소리 조절
+
+        temp.pitch = pitch;
+
         temp.Play(); // 실행
     }
 }

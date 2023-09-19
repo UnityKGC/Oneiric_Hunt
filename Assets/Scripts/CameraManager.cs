@@ -33,7 +33,8 @@ public class CameraManager : MonoBehaviour
 
     public GameObject _playerFocus;
 
-    float wheelValue = 0f;
+    float wheelValue = 0f; // 지역변수 => 수치가 변경된 현재 값
+    [SerializeField] float wheelSpd = 2f; // 변경되는 스피드
     private void Awake()
     {
         _instance = this;
@@ -44,18 +45,19 @@ public class CameraManager : MonoBehaviour
     }
     private void Update()
     {
-        float value = Input.GetAxis("Mouse ScrollWheel");
-        if(value != 0)
+        float value = Input.GetAxis("Mouse ScrollWheel"); // 마우스 휠 확인 => 휠을 위로 올리면 value = 0.1이 되고, 휠을 아래로 내리면 value = -0.1가 된다.
+        if (value != 0) // value가 0이 아니라면 => 값이 변경되었다면,
         {
-            wheelValue += value;
-            wheelValue = Mathf.Clamp(wheelValue, -5f, 3f);
+            wheelValue += value; // wheelValue에 value를 더해준다.
+            wheelValue = Mathf.Clamp(wheelValue, -5f, 3f); // wheelValue를 최소 -5, 최대 3의 수를 지닌다.
 
             if (wheelValue >= 3f || wheelValue <= -5f) return; // 최대치에 도달하면 리턴 => 값이 변하지 않음.
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++) // 각 Rig(Top, Middle, Bottom)의 돌면서 설정.
             {
-                _playerCam.m_Orbits[i].m_Height -= value;
-                _playerCam.m_Orbits[i].m_Radius -= value;
+                // 만들고 있는 게임이 스카이림 레퍼런스라서, 휠업하면 카메라가 가까워지고, 휠다운하면 카메라가 멀어지므로, 값을 -해준다.
+                _playerCam.m_Orbits[i].m_Height -= value * wheelSpd; // 높이를 value만큼 -해준다
+                _playerCam.m_Orbits[i].m_Radius -= value * wheelSpd; // 너비를 value만큼 -해준다.
             }
         }
     }

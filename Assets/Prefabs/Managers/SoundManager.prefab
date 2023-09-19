@@ -177,6 +177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectClips:
   - {fileID: 8300000, guid: a23c32a3fa3a10648870166715e1dc08, type: 3}
+  - {fileID: 8300000, guid: 92d921b3c42277946bc6f667a1f06a04, type: 3}
+  - {fileID: 8300000, guid: f649f48c447f32b48a7aee3105ab6273, type: 3}
   _bgmClips: []
   _skillClips:
   - {fileID: 8300000, guid: a3e6264c7eff23e46a6d5ad11f1f7198, type: 3}
