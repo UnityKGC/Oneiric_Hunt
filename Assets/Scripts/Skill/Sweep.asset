@@ -15,9 +15,9 @@ MonoBehaviour:
   _skillName: Sweep
   _skillAmount: 3
   _damageAmount: 3
-  _durationTime: 0
+  _durationTime: 0.75
   _remainTime: 10
-  _castTime: 0.6
+  _castTime: 0.45
   _skillCoolTime: 10
   _damageDelay: 0
   _damageValue: 4

@@ -49,8 +49,12 @@ public class SoundManager : MonoBehaviour
         AudioClip clip = _effectClips[(int)type];
         _effectAudio.PlayOneShot(clip);
     }
-    public void PlaySkillSound(Skills type, float volume = 1.0f, float pitch = 1.0f, bool isLoop = false, Transform parent = null)
+    public void PlaySkillSound(Skills type, float volume = 1.0f, float pitch = 1.0f, float time = 0f, bool isLoop = false, Transform parent = null)
     {
+        // 혹시 다른 전용공간에 넣고 싶으면, 매니저 안에 그 공간을 만들고, 스킬 사운드도 그 공간에 생성하도록 만들자.
+        // 그럼 시간은? SkillManager에서 각 스킬마다 스크립터블의 durationTime을 이용하자.
+        // 즉! SkillManager에서 PlaySkillSound를 실행하고 (인자로 _durationTime도 추가), 여기에서는 "코루틴"을 이용하여 오디오소스를 생성하고, _durationTime초 후에 파괴되도록 구현하자.
+        
         AudioSource temp = Instantiate(_skillAudio, parent); // 사운드를 스킬의 자식으로 생성.
 
         temp.loop = isLoop; // 반복여부 => 배치스킬인 경우
@@ -60,6 +64,9 @@ public class SoundManager : MonoBehaviour
         temp.volume = volume; // 소리 조절
 
         temp.pitch = pitch;
+
+        if (time > 0)
+            temp.time = time;
 
         temp.Play(); // 실행
     }

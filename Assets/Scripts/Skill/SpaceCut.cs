@@ -42,7 +42,7 @@ public class SpaceCut : MonoBehaviour
     {
         _startTime = Time.time; // 스킬 사용하자마자 소환되므로, 바로 시간체크
         _dmgStart = Time.time;
-        SoundManager._instance.PlaySkillSound(Skills.SpaceCut, 0.2f, 1.0f, false, transform);
+        SoundManager._instance.PlaySkillSound(Skills.SpaceCut, 0.2f, 1.0f, 0, false, transform);
     }
 
     // Update is called once per frame

@@ -21,7 +21,7 @@ public class WeaponSwap : MonoBehaviour
         _playerAtk = GetComponentInParent<Player_DB_Attack>();
         _anim = GetComponentInParent<Player_DB_Anim>();
 
-        SoundManager._instance.PlaySkillSound(Skills.WeaponSwap, 0.5f, 1.0f, false, transform);
+        SoundManager._instance.PlaySkillSound(Skills.WeaponSwap, 0.5f, 1.0f, 0, false, transform);
 
         if (_playerSkill != null)
         {

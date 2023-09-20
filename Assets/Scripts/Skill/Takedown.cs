@@ -27,6 +27,7 @@ public class Takedown : MonoBehaviour
 
     void Start()
     {
+        SoundManager._instance.PlaySkillSound(Skills.Takedown, 0.5f, 1f, 0.2f, false, transform);
         _colls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
 
         foreach (Collider coll in _colls)
@@ -37,5 +38,9 @@ public class Takedown : MonoBehaviour
                 stat.SetDamage(_atk);
         }
         Destroy(gameObject, _durationTime);
+    }
+    private void OnDestroy()
+    {
+        SkillManager._instance.EndSkill();
     }
 }

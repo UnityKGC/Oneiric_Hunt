@@ -199,11 +199,12 @@ public class SkillManager : MonoBehaviour
     IEnumerator StartStabing(SkillScriptable scriptable, float playerAtk, Vector3 playerPos, Quaternion playerRot, Transform parent = null)
     {
         PlayerManager._instance.IsSkill = true;
+
         _isSkilling = true; // 스킬 사용 중
 
-        yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
+        yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다. => 애니메이션이 적절하게 적을 공격할 때
 
-        EndSkill();
+        //EndSkill();
 
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Stabing], playerPos, playerRot, parent);
 
@@ -219,7 +220,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime);
 
-        EndSkill();
+        //EndSkill();
 
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Sweep], playerPos + Vector3.up * 1.5f, playerRot, parent);
 
@@ -231,6 +232,8 @@ public class SkillManager : MonoBehaviour
     {
         PlayerManager._instance.IsSkill = true;
         _isSkilling = true; // 스킬 사용 중
+
+        SoundManager._instance.PlaySkillSound(Skills.Challenge, 1, 1, 0, false);
 
         yield return new WaitForSeconds(scriptable._castTime);
 
@@ -250,7 +253,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
 
-        EndSkill();
+        //EndSkill();
 
         Vector3 forward = playerRot * Vector3.forward;
 

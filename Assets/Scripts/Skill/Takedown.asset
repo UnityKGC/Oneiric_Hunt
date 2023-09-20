@@ -15,9 +15,9 @@ MonoBehaviour:
   _skillName: Takedown
   _skillAmount: 2
   _damageAmount: 2
-  _durationTime: 1
+  _durationTime: 0.7
   _remainTime: 3
-  _castTime: 0.75
+  _castTime: 0.5
   _skillCoolTime: 3
   _damageDelay: 0
   _damageValue: 1

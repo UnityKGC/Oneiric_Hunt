@@ -25,12 +25,15 @@ public class Stabing : MonoBehaviour
 
         _dmgAmount = _scriptable._damageAmount;
         _durationTime = _scriptable._durationTime;
+
     }
 
     void Start()
     {
         _point0 = transform.position + Vector3.forward * 2;
         _point1 = transform.position + Vector3.forward;
+
+        SoundManager._instance.PlaySkillSound(Skills.Stabing, 0.3f, 1.2f, 0.5f, false, transform);
 
         _colls = Physics.OverlapCapsule(_point0, _point1, _dmgAmount, _layerMask);
 
@@ -42,6 +45,10 @@ public class Stabing : MonoBehaviour
                 stat.SetDamage(_atk);
         }
         Destroy(gameObject, _durationTime);
+    }
+    private void OnDestroy()
+    {
+        SkillManager._instance.EndSkill();
     }
     private void OnDrawGizmos()
     {

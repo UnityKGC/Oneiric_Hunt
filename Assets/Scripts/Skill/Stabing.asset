@@ -15,9 +15,9 @@ MonoBehaviour:
   _skillName: Stabing
   _skillAmount: 0.5
   _damageAmount: 0.5
-  _durationTime: 1
+  _durationTime: 0.8
   _remainTime: 3
-  _castTime: 0.65
+  _castTime: 0.5
   _skillCoolTime: 3
   _damageDelay: 0
   _damageValue: 1
