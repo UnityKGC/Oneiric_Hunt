@@ -28,7 +28,6 @@ public class Sweep : MonoBehaviour
 
     void Start()
     {
-        SoundManager._instance.PlaySkillSound(Skills.Sweep, 0.5f, 1.0f, 0, false, transform);
         colls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
         foreach(Collider coll in colls)
         {

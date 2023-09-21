@@ -42,7 +42,6 @@ public class WindMill : MonoBehaviour
         _startTime = Time.time; // 스킬 사용하자마자 소환되므로, 바로 시간체크
         _dmgStart = Time.time;
 
-        SoundManager._instance.PlaySkillSound(Skills.WindMill, 0.6f, 1, 0f, true, transform);
         CameraManager._instance.StartEffectCam(CameraType.PlayerCam, 2f, _duringTime);
     }
     void FixedUpdate()

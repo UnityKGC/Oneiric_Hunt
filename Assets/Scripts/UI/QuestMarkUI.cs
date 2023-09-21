@@ -31,8 +31,8 @@ public class QuestMarkUI : MonoBehaviour
     }
     void LateUpdate()
     {
-        Debug.Log("일반 Vector3.up : " + Vector3.up);
-        Debug.Log("카메라 회전 * Vector3.up : " + _cam.rotation * Vector3.up);
+        //Debug.Log("일반 Vector3.up : " + Vector3.up);
+        //Debug.Log("카메라 회전 * Vector3.up : " + _cam.rotation * Vector3.up);
 
         transform.LookAt(transform.position + _cam.rotation * Vector3.forward, _cam.rotation * Vector3.up);
         // 우선, 오브젝트의 현재위치와 카메라 방향의 정면을 더하여, ???벡터를 얻을 수 있다.

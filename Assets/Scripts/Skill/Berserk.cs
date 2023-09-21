@@ -35,7 +35,6 @@ public class Berserk : MonoBehaviour
     {
         _startTime = Time.time;
 
-        SoundManager._instance.PlaySkillSound(Skills.Berserk, 0.5f, 1, 0, false, transform);
         CameraManager._instance.StartEffectCam(CameraType.PlayerCam, 5f, 1f);
 
         GameObject player = GameManager._instance.Player;

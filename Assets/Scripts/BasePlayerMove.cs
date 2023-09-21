@@ -13,6 +13,7 @@ public class BasePlayerMove : MonoBehaviour
     protected BasePlayerAnim _anim;
     protected BasePlayerState _state;
     protected Transform _cameTrans;
+    protected AudioSource _moveSound;
 
     protected float _magnitude;
 

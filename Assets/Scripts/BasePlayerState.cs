@@ -21,5 +21,5 @@ public class BasePlayerState : MonoBehaviour
 
     public EPlayerState PlayerState { get { return _playerState; } set { _playerState = value; } }
 
-    private EPlayerState _playerState;
+    private EPlayerState _playerState = EPlayerState.Idle;
 }

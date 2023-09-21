@@ -25,7 +25,6 @@ public class SwordForce : MonoBehaviour
     void Start()
     {
         _startTime = Time.time;
-        SoundManager._instance.PlaySkillSound(Skills.SwordForce, 0.5f, 1.25f, 0, false, transform);
     }
     public void Init(SkillScriptable scriptable, float playerAtk)
     {
