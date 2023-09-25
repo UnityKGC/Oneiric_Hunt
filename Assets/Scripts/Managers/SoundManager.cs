@@ -54,25 +54,9 @@ public class SoundManager : MonoBehaviour
         _bgmAudio.clip = clip;
         _bgmAudio.Play();
     }
-    public void PlayMoveSound(MoveEffectSound type, bool isWalk = false)
+    public AudioClip GetMoveClip(int idx)
     {
-        if (type == MoveEffectSound.None) // 타입이 None이라면, Idle상태임.
-        {
-            _moveAudio.Stop();
-            return;
-        }
-
-        _moveAudio.clip = _moveClips[(int)type];
-        if (isWalk) // 걷고 있다면,
-        {
-            _moveAudio.pitch = 1f;
-            _moveAudio.Play(); // 그냥 바로 실행
-        }
-        else // 달리고 있다면,
-        {
-            _moveAudio.pitch = 1.25f; // 좀 더 빠르게 만들고,
-            _moveAudio.Play(); // 실행
-        }
+        return _moveClips[idx];
     }
     public void PlayAttackSound(WeaponSound type)
     {

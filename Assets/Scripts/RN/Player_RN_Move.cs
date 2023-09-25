@@ -4,53 +4,40 @@ using UnityEngine;
 
 public class Player_RN_Move : BasePlayerMove
 {
-    [SerializeField] MoveEffectSound _type = MoveEffectSound.None;
-
+    [SerializeField] MoveEffectSound _type = MoveEffectSound.Wood;
+    
     RaycastHit _hit, _previousHit;
 
-    int _layerMask = 1 << 13 | 1 << 14;//(int)MoveEffectSound.Grass | (int)MoveEffectSound.Wood;
+    int _layerMask = 1 << 13 | 1 << 14; //(int)MoveEffectSound.Grass | (int)MoveEffectSound.Wood;
 
     private bool _isWalk = false;
+
+    private AudioSource _stepSound;
+    [SerializeField] private AudioClip _nowClip;
 
     private void Awake()
     {
         _stat = GetComponent<PlayerStat>();
         _state = GetComponent<BasePlayerState>();
         _anim = GetComponent<Player_RN_Anim>();
+        _stepSound = GetComponent<AudioSource>();
 
         _cameTrans = Camera.main.transform;
     }
     void Start()
     {
-        SoundManager._instance.PlayMoveSound(MoveEffectSound.None, _isWalk); // NoneÀº À½¾ÇÀ» ²ô´Â °Í.
 
         if (Physics.Raycast(transform.position, Vector3.down, out _hit, 5f, _layerMask))
         {
             _previousHit = _hit;
             _type = (MoveEffectSound)_hit.collider.gameObject.layer;
+            _nowClip = SoundManager._instance.GetMoveClip((int)_type);
         }
     }
 
     void Update()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out _hit, 5f, _layerMask))
-        {
-            int hitLayer = _hit.collider.gameObject.layer;
-            if (hitLayer != _previousHit.collider.gameObject.layer)
-            {
-                _type = (MoveEffectSound)hitLayer;
-                _previousHit = _hit;
-
-                if (hitLayer == (int)MoveEffectSound.Grass)
-                {
-                    _type = MoveEffectSound.Grass;
-                }
-                else if (hitLayer == (int)MoveEffectSound.Wood)
-                {
-                    _type = MoveEffectSound.Wood;
-                }
-            }
-        }
+        CheckLayer();
     }
     private void FixedUpdate()
     {
@@ -75,16 +62,14 @@ public class Player_RN_Move : BasePlayerMove
                 _state.PlayerState = BasePlayerState.EPlayerState.Run;
                 _isWalk = false;
             }
-            SoundManager._instance.PlayMoveSound(_type, _isWalk);
+
             _anim.CrossFade(_state.PlayerState);
         }
     }
     protected override void UpdateMove()
     {
         if (_magnitude <= 0)
-        {
-            SoundManager._instance.PlayMoveSound(MoveEffectSound.None, _isWalk); // NoneÀº À½¾ÇÀ» ²ô´Â °Í.
-            
+        {  
             _state.PlayerState = BasePlayerState.EPlayerState.Idle;
             _anim.CrossFade(_state.PlayerState);
             return;
@@ -97,7 +82,6 @@ public class Player_RN_Move : BasePlayerMove
             {
                 _isWalk = true;
                 _state.PlayerState = BasePlayerState.EPlayerState.Walk;
-                SoundManager._instance.PlayMoveSound(_type, _isWalk);
             }
         }
         else
@@ -106,12 +90,37 @@ public class Player_RN_Move : BasePlayerMove
             {
                 _isWalk = false;
                 _state.PlayerState = BasePlayerState.EPlayerState.Run;
-                SoundManager._instance.PlayMoveSound(_type, _isWalk);
             }
         }
-
         _anim.CrossFade(_state.PlayerState);
 
         transform.position += _dir * _magnitude * Time.deltaTime;
+    }
+    void CheckLayer()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out _hit, 5f, _layerMask))
+        {
+            int hitLayer = _hit.collider.gameObject.layer;
+            if (hitLayer != _previousHit.collider.gameObject.layer)
+            {
+                _type = (MoveEffectSound)hitLayer;
+                _previousHit = _hit;
+
+                if (hitLayer == (int)MoveEffectSound.Grass)
+                {
+                    _type = MoveEffectSound.Grass;
+                }
+                else if (hitLayer == (int)MoveEffectSound.Wood)
+                {
+                    _type = MoveEffectSound.Wood;
+                }
+
+                _nowClip = SoundManager._instance.GetMoveClip((int)_type);
+            }
+        }
+    }
+    public void StepSound()
+    {
+        _stepSound.PlayOneShot(_nowClip);
     }
 }
