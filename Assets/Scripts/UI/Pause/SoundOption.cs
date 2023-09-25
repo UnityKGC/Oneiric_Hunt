@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
+[System.Serializable]
 public class SoundFieldData
 {
     public float _prevValue;
@@ -27,36 +29,41 @@ public class SoundOption : MonoBehaviour
 
     public List<GameObject> _soundUILst;
 
-    public List<RectTransform> _soundBarLst; // 소리의 Value막대를 리스트로 지님
+    public List<Slider> _soundSliderLst;
+
+    //public List<RectTransform> _soundBarLst; // 소리의 Value막대를 리스트로 지님
 
     public List<TMP_InputField> _soundValueLst; // 소리의 수치 필드를 리스트로 지님
 
     public GameObject _warningUI; // 변경사항이 존재하는데 적용하지 않고 닫을 시 호출하는 UI
 
     TMP_InputField _nowFocuseField; // 현재 선택중인 필드
-    RectTransform _nowFocuseBar; // 현재 선택중인 바
+    Slider _nowFocuseSlider;
+    //RectTransform _nowFocuseBar; // 현재 선택중인 바
 
-    List<SoundFieldData> _fieldData = new List<SoundFieldData>(); 
-
-    float _maxWidth = 800f; // 막대의 최대크기
+    [SerializeField] List<SoundFieldData> _fieldData = new List<SoundFieldData>(); 
 
     private void OnEnable() // 시작할 때, 현재 저장되어 있는 수치들을 전부 저장한다.
     {
         _warningUI.transform.localScale = Vector3.one; // 그, warning이 닫기를 누르고, 다시 키면, Scale이 0으로 되어 있어, 옵션UI가 Enable할 때, 스케일을 1로 바꾸도록 구현.
         for (int i = 0; i < _soundValueLst.Count; i++)
         {
+            
             float value = float.Parse(_soundValueLst[i].text);
+            //_soundSliderLst[i].value = value / 100;
 
-            RectTransform temp = _soundBarLst[i];
-            Vector2 tempVec = temp.sizeDelta;
-            float v = value / 100f;
-            tempVec.x = _maxWidth * v;
-            _soundBarLst[i].sizeDelta = tempVec;
+            //float value = float.Parse(_soundValueLst[i].text);
+
+            //RectTransform temp = _soundBarLst[i];
+            //Vector2 tempVec = temp.sizeDelta;
+            //float v = value / 100f;
+            //tempVec.x = _maxWidth * v;
+            //_soundBarLst[i].sizeDelta = tempVec;
 
             _fieldData.Add(new SoundFieldData(value, value));
         }
     }
-    public void SetValue(string value) // 수치를 조절
+    public void SetValue(string value) // 수치를 조절 => InputField에서 수치를 입력할 때,
     {
         float tempValue = 0;
 
@@ -66,22 +73,25 @@ public class SoundOption : MonoBehaviour
         if (tempValue >= 100)
             tempValue = 100;
 
-        if (_nowFocuseField != null && _nowFocuseBar != null)
+        if (_nowFocuseField != null && _nowFocuseSlider != null)
         {
             _nowFocuseField.text = tempValue.ToString();
 
             _fieldData[(int)_focusField]._nextValue = tempValue;
 
+            _nowFocuseSlider.value = tempValue / 100;
+
+            /*
             Vector2 tempVec = _nowFocuseBar.sizeDelta;
             float v = tempValue / 100f;
             tempVec.x = _maxWidth * v;
-            _nowFocuseBar.sizeDelta = tempVec;
+            _nowFocuseBar.sizeDelta = tempVec;*/
         }
         else
             FindFieldFocuse();
     }
     
-    public void EndEdit(string value) // 입력 끝남
+    public void EndEdit(string value) // 입력 끝남 => InputField에서 수치 입력을 끝낼 때,
     {
         float tempValue = 0;
 
@@ -91,22 +101,25 @@ public class SoundOption : MonoBehaviour
         if (tempValue >= 100)
             tempValue = 100;
 
-        if (_nowFocuseField != null && _nowFocuseBar != null)
+        if (_nowFocuseField != null && _nowFocuseSlider != null)
         {
             _nowFocuseField.text = tempValue.ToString();
 
             _fieldData[(int)_focusField]._nextValue = tempValue;
 
+            _nowFocuseSlider.value = tempValue / 100;
+
+            /*
             Vector2 tempVec = _nowFocuseBar.sizeDelta;
             float v = tempValue / 100f;
             tempVec.x = _maxWidth * v;
-            _nowFocuseBar.sizeDelta = tempVec;
+            _nowFocuseBar.sizeDelta = tempVec;*/
         }
 
         _nowFocuseField = null;
     }
 
-    void FindFieldFocuse() // 포커스된 필드가 무엇인지 확인하눈 함수.
+    void FindFieldFocuse() // 포커스된 필드가 무엇인지 확인하는 함수.
     {
         for (int i = 0; i < _soundValueLst.Count; i++)
         {
@@ -114,7 +127,8 @@ public class SoundOption : MonoBehaviour
             {
                 _focusField = (FocusSoundField)i;
                 _nowFocuseField = _soundValueLst[i];
-                _nowFocuseBar = _soundBarLst[i];
+                _nowFocuseSlider = _soundSliderLst[i];
+                //_nowFocuseBar = _soundBarLst[i];
                 break;
             }
         }
@@ -137,7 +151,6 @@ public class SoundOption : MonoBehaviour
     }
     public void ClickWarningAgreeBtn() // 변경된 사항을 적용한다.
     {
-
         UIManager._instacne.AllClosePopupUI(); // 모든 PopupUI 닫기
     }
     public void ClickWarningCancelBtn() // 변경된 사항을 적용하지 않고, 닫기버튼을 누른다.
@@ -159,8 +172,34 @@ public class SoundOption : MonoBehaviour
         }
         return false;
     }
+
+    public void AllSoundSliderValue(float value)
+    {
+        float tempValue = value * 100f;
+        _soundValueLst[0].text = ((int)tempValue).ToString();
+        _fieldData[0]._nextValue = (int)tempValue;
+    }
+
+    public void BackgroundSoundSliderValue(float value)
+    {
+        float tempValue = value * 100f;
+        _soundValueLst[1].text = ((int)tempValue).ToString();
+        _fieldData[1]._nextValue = (int)tempValue;
+    }
+
+    public void EffectSoundSliderValue(float value)
+    {
+        float tempValue = value * 100f;
+        _soundValueLst[2].text = ((int)tempValue).ToString();
+        _fieldData[2]._nextValue = (int)tempValue;
+    }
+
     private void OnDisable()
     {
+        AudioListener.volume = float.Parse(_soundValueLst[0].text) / 100f;
+        SoundManager._instance.BGMVolume = float.Parse(_soundValueLst[1].text) / 100f;
+        SoundManager._instance.EffectVolume = float.Parse(_soundValueLst[2].text) / 100f;
+
         _fieldData.Clear(); // 꺼질때 FieldData 리스트는 초기화 시켜준다.
     }
 }

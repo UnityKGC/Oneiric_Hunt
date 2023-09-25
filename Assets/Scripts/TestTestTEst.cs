@@ -6,11 +6,12 @@ public class TestTestTEst : MonoBehaviour
 {
     [SerializeField] Animation _anim;
     [SerializeField] GameObject _interactUI;
+    private AudioSource _audio;
     private bool _isActive = false;
     private GameObject _player;
     void Start()
     {
-        
+        _audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -24,6 +25,7 @@ public class TestTestTEst : MonoBehaviour
 
                 CameraManager._instance.ChangeCam(CameraType.ViewCam);
                 _anim.Play();
+                _audio.Play();
 
                 _isActive = false;
             }

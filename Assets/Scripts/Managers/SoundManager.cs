@@ -27,6 +27,28 @@ public enum MoveEffectSound
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager _instance;
+
+    public float BGMVolume
+    {
+        get { return _bgmVolume; } 
+        set
+        {
+            _bgmVolume = value;
+            _bgmAudio.volume = _bgmVolume;
+        }
+    }
+    public float EffectVolume
+    {
+        get { return _effectVolume; }
+        set
+        {
+            _effectVolume = value;
+            _stepSound.volume = _effectVolume;
+            foreach (AudioSource audio in _skillSoundPool)
+                audio.volume = _effectVolume;
+            _attackAudio.volume = _effectVolume;
+        }
+    }
     [SerializeField] AudioClip[] _attackClips;
     [SerializeField] AudioClip[] _bgmClips;
     [SerializeField] AudioClip[] _moveClips;
@@ -35,14 +57,17 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioSource _bgmAudio;
     [SerializeField] private AudioSource _attackAudio;
-    [SerializeField] private AudioSource _moveAudio;
+    public AudioSource _stepSound;
+
+    private float _bgmVolume = 0.7f;
+    private float _effectVolume = 0.7f;
+
     //[SerializeField] private AudioSource _skillAudio; // 스킬들을 스킬의 자식으로 오디오를 주고 실행시키게 한다.
 
     private void Awake()
     {
         _instance = this;
     }
-
 
     public void PlayBGM(BGM type)
     {
@@ -61,21 +86,20 @@ public class SoundManager : MonoBehaviour
     public void PlayAttackSound(WeaponSound type)
     {
         AudioClip clip = _attackClips[(int)type];
+        _attackAudio.time = 0.2f;
         _attackAudio.PlayOneShot(clip);
     }
-    public void PlaySkillSound(Skills type, float durationTime, float volume = 1.0f, float pitch = 1.0f, float startTime = 0f, bool isLoop = false)
+    public void PlaySkillSound(Skills type, float durationTime, float pitch = 1.0f, float startTime = 0f, bool isLoop = false)
     {
-        StartCoroutine(SkillSoundCo(type, durationTime, volume, pitch, startTime, isLoop));
+        StartCoroutine(SkillSoundCo(type, durationTime, pitch, startTime, isLoop));
     }
-    IEnumerator SkillSoundCo(Skills type, float durationTime, float volume = 1.0f, float pitch = 1.0f, float startTime = 0f, bool isLoop = false)
+    IEnumerator SkillSoundCo(Skills type, float durationTime, float pitch = 1.0f, float startTime = 0f, bool isLoop = false)
     {
         AudioSource temp = _skillSoundPool[(int)type];
 
         temp.gameObject.SetActive(true); // 사운드 오브젝트 활성화.
 
         temp.loop = isLoop; // 반복여부 => 배치스킬인 경우
-
-        temp.volume = volume; // 소리 조절
 
         temp.pitch = pitch;
 

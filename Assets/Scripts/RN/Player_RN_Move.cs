@@ -13,6 +13,7 @@ public class Player_RN_Move : BasePlayerMove
     private bool _isWalk = false;
 
     private AudioSource _stepSound;
+
     [SerializeField] private AudioClip _nowClip;
 
     private void Awake()
@@ -20,12 +21,13 @@ public class Player_RN_Move : BasePlayerMove
         _stat = GetComponent<PlayerStat>();
         _state = GetComponent<BasePlayerState>();
         _anim = GetComponent<Player_RN_Anim>();
-        _stepSound = GetComponent<AudioSource>();
-
+        
         _cameTrans = Camera.main.transform;
     }
     void Start()
     {
+        _stepSound = SoundManager._instance._stepSound;
+        _stepSound.volume = SoundManager._instance.EffectVolume;
 
         if (Physics.Raycast(transform.position, Vector3.down, out _hit, 5f, _layerMask))
         {
@@ -96,7 +98,7 @@ public class Player_RN_Move : BasePlayerMove
 
         transform.position += _dir * _magnitude * Time.deltaTime;
     }
-    void CheckLayer()
+    void CheckLayer() // Layer(플레이어가 서 있는 위치)에 따라 Type을 변경하여, 발 사운드(풀, 나무, 등등)의 사운드로 변경
     {
         if (Physics.Raycast(transform.position, Vector3.down, out _hit, 5f, _layerMask))
         {

@@ -116,7 +116,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime);
 
-        SoundManager._instance.PlaySkillSound(Skills.WeaponSwap, scriptable._durationTime, 0.5f, 1f, 0f, false);
+        SoundManager._instance.PlaySkillSound(Skills.WeaponSwap, scriptable._durationTime, 1f, 0f, false);
 
         EndSkill();
 
@@ -135,7 +135,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime);
 
-        SoundManager._instance.PlaySkillSound(Skills.Dodge, scriptable._durationTime, 0.3f, 1f, 0f, false);
+        SoundManager._instance.PlaySkillSound(Skills.Dodge, scriptable._durationTime, 1f, 0f, false);
 
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.Dodge], parent);
 
@@ -152,7 +152,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
 
-        SoundManager._instance.PlaySkillSound(Skills.Slash, scriptable._durationTime + 0.5f, 0.5f, 1f, 0f, false); // 스킬 지속시간 + 0.5초를 해서, 소리를 좀 더 지속되게 만듦
+        SoundManager._instance.PlaySkillSound(Skills.Slash, scriptable._durationTime + 0.5f, 1f, 0f, false); // 스킬 지속시간 + 0.5초를 해서, 소리를 좀 더 지속되게 만듦
 
         Vector3 forward = playerRot * Vector3.forward;
 
@@ -170,7 +170,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
 
-        SoundManager._instance.PlaySkillSound(Skills.SwordForce, scriptable._durationTime, 0.5f, 1.25f, 0f, false);
+        SoundManager._instance.PlaySkillSound(Skills.SwordForce, scriptable._durationTime, 1.25f, 0f, false);
 
         EndSkill();
 
@@ -190,7 +190,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
 
-        SoundManager._instance.PlaySkillSound(Skills.SpaceCut, scriptable._durationTime, 0.2f, 1f, 0f, false);
+        SoundManager._instance.PlaySkillSound(Skills.SpaceCut, scriptable._durationTime, 1f, 0f, false);
 
         EndSkill();
 
@@ -212,7 +212,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다. => 애니메이션이 적절하게 적을 공격할 때
 
-        SoundManager._instance.PlaySkillSound(Skills.Stabing, scriptable._durationTime, 0.3f, 1.2f, 0.5f, false);
+        SoundManager._instance.PlaySkillSound(Skills.Stabing, scriptable._durationTime, 1.2f, 0.5f, false);
 
         //EndSkill();
 
@@ -230,7 +230,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime);
 
-        SoundManager._instance.PlaySkillSound(Skills.Sweep, scriptable._durationTime, 0.5f, 1f, 0f, false);
+        SoundManager._instance.PlaySkillSound(Skills.Sweep, scriptable._durationTime, 1f, 0f, false);
 
         //EndSkill();
 
@@ -245,7 +245,7 @@ public class SkillManager : MonoBehaviour
         PlayerManager._instance.IsSkill = true;
         _isSkilling = true; // 스킬 사용 중
 
-        SoundManager._instance.PlaySkillSound(Skills.Challenge, scriptable._durationTime, 0.5f, 1f, 0f, false); // 선행 동작과 싱크를 맞추기 위해 미리 실행.
+        SoundManager._instance.PlaySkillSound(Skills.Challenge, scriptable._durationTime, 1f, 0f, false); // 선행 동작과 싱크를 맞추기 위해 미리 실행.
 
         yield return new WaitForSeconds(scriptable._castTime);
 
@@ -265,7 +265,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
 
-        SoundManager._instance.PlaySkillSound(Skills.Takedown, scriptable._durationTime, 0.5f, 1f, 0.2f, false);
+        SoundManager._instance.PlaySkillSound(Skills.Takedown, scriptable._durationTime, 1f, 0.2f, false);
 
         //EndSkill();
 
@@ -284,7 +284,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime);
 
-        SoundManager._instance.PlaySkillSound(Skills.WindMill, scriptable._durationTime, 0.5f, 1f, 0f, true);
+        SoundManager._instance.PlaySkillSound(Skills.WindMill, scriptable._durationTime, 1f, 0f, true);
 
         GameObject obj = Instantiate(_skillPrefabs[(int)Skills.WindMill], playerPos, Quaternion.identity, parent);
 
@@ -299,7 +299,7 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(scriptable._castTime); // 캐스팅 시간 만큼 대기한다.
 
-        SoundManager._instance.PlaySkillSound(Skills.Berserk, scriptable._durationTime, 0.5f, 1f, 0f, false);
+        SoundManager._instance.PlaySkillSound(Skills.Berserk, scriptable._durationTime, 1f, 0f, false);
 
         Vector3 down = Vector3.down * 1.5f;
 
