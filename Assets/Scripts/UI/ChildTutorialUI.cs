@@ -46,6 +46,7 @@ public class ChildTutorialUI : MonoBehaviour
     }
     public void ClickBtn(int idx)
     {
+        SoundManager._instance.PlayUISound();
         switch (idx)
         {
             case 0: // ¿Ã¿¸

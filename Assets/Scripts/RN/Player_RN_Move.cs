@@ -43,8 +43,13 @@ public class Player_RN_Move : BasePlayerMove
     }
     private void FixedUpdate()
     {
-        if (GameManager._instance.PlayerDie)
+        if (GameManager._instance.PlayerDie) return;
+        if (DialogueManager._instance._isTalk && _state.PlayerState != BasePlayerState.EPlayerState.Idle)
+        {
+            _state.PlayerState = BasePlayerState.EPlayerState.Idle;
+            _anim.CrossFade(_state.PlayerState);
             return;
+        }
 
         MoveLogic();
         UpdateState();

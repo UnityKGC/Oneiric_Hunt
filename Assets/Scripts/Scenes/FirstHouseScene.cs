@@ -17,8 +17,9 @@ public class FirstHouseScene : MonoBehaviour
         CameraManager._instance.ChangeCam(CameraType.PlayerCam);
 
         UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Tutorial);
-    }
 
+        SoundManager._instance.PlayBGM(BGM.PlayerHouse);
+    }
 
     void Update()
     {

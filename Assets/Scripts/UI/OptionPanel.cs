@@ -20,7 +20,8 @@ public class OptionPanel : MonoBehaviour
     }
     public void ClickBtn(int idx)
     {
-        for(int i = 0; i < _optionTabLst.Count; i++)
+        SoundManager._instance.PlayUISound();
+        for (int i = 0; i < _optionTabLst.Count; i++)
         {
             if (i == idx)
             {

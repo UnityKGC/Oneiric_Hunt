@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
     public Action _npcEvt = null; // 대화중인 NPC에게 알려줌.
     public Action _clickNext = null; // 다음 대사 출력해라.
 
+    public bool _isTalk = false;
+
     QuestData _quest;
     void Awake()
     {
@@ -26,6 +28,7 @@ public class DialogueManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space) && !_nowData._isFinish)
             {
+                SoundManager._instance.PlayDialogueSound();
                 _clickNext.Invoke();
             }
         }
@@ -33,6 +36,7 @@ public class DialogueManager : MonoBehaviour
     
     public void GetQuestDialogue(QuestData quest, DialogueData data) // 퀘스트를 받고, 그 퀘스트의 상태에 따라 다른 대사를 받는다.
     {
+        _isTalk = true;
         _quest = quest;
         _nowData = data;
         if (_dialogueEvt != null)
@@ -59,6 +63,7 @@ public class DialogueManager : MonoBehaviour
                 QuestManager._instance.FinishQuest(_quest);
                 break;
         }
+        _isTalk = false;
         _nowData = null;
         Input.ResetInputAxes();
         CameraManager._instance.ChangeCam(CameraType.PlayerCam);

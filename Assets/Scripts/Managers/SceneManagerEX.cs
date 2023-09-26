@@ -58,6 +58,8 @@ public class SceneManagerEX : MonoBehaviour
     }
     IEnumerator LoadSceneAsync(SceneType scene) // sceneID를 SceneType으로 변환 후 받는다.
     {
+        SoundManager._instance.StopAllSound();
+
         int idx = Random.Range(0, 3);
 
         GameObject loadImg = _images[idx];

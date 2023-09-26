@@ -15,6 +15,7 @@ public class GameOverUI : MonoBehaviour
     public GameObject _warning;
     public void ClickBtn(int idx)
     {
+        SoundManager._instance.PlayUISound();
         btnType = (ButtonType)idx;
         switch (btnType)
         {
@@ -30,7 +31,9 @@ public class GameOverUI : MonoBehaviour
     }
     public void ClickWarningBtn(int idx)
     {
-        if(idx == 0)
+        SoundManager._instance.PlayUISound();
+
+        if (idx == 0)
         {
             switch(btnType)
             {

@@ -6,7 +6,7 @@ public class CluePanel : MonoBehaviour
 {
     public void ClickCloseBtn()
     {
-        Debug.Log(transform.root.name);
+        SoundManager._instance.PlayUISound();
         UIManager._instacne.ClosePopupUI();
     }
 }

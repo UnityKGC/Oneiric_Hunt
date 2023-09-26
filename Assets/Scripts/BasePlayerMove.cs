@@ -19,11 +19,15 @@ public class BasePlayerMove : MonoBehaviour
 
     protected void MoveLogic()
     {
+        if (GameManager._instance.PlayerDie || DialogueManager._instance._isTalk) return;
+
         GetDir();
         Rotate();
     }
     protected void UpdateState()
     {
+        if (GameManager._instance.PlayerDie || DialogueManager._instance._isTalk) return;
+
         switch (_state.PlayerState)
         {
             case BasePlayerState.EPlayerState.Idle:
@@ -39,7 +43,7 @@ public class BasePlayerMove : MonoBehaviour
 
     void GetDir()
     {
-        if(Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android)
         {
             _h = SimpleInput.GetAxis("Horizontal");
             _v = SimpleInput.GetAxis("Vertical");

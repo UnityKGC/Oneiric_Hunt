@@ -23,11 +23,17 @@ public enum MoveEffectSound
     Grass = 13,
     Wood = 14,
 }
-
+public enum QuestSound
+{
+    None = -1,
+    Start,
+    Trigger, // 퀘스트 완료조건 오브젝트 습득
+    Clear,
+}
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager _instance;
-
+    
     public float BGMVolume
     {
         get { return _bgmVolume; } 
@@ -52,11 +58,16 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip[] _attackClips;
     [SerializeField] AudioClip[] _bgmClips;
     [SerializeField] AudioClip[] _moveClips;
+    [SerializeField] AudioClip[] _questClips;
 
     [SerializeField] AudioSource[] _skillSoundPool; // 스킬 사운드 풀링
 
     [SerializeField] private AudioSource _bgmAudio;
     [SerializeField] private AudioSource _attackAudio;
+    [SerializeField] private AudioSource _uiAudio;
+    [SerializeField] private AudioSource _dialogueAudio;
+    [SerializeField] private AudioSource _questAudio;
+
     public AudioSource _stepSound;
 
     private float _bgmVolume = 0.7f;
@@ -68,6 +79,19 @@ public class SoundManager : MonoBehaviour
     {
         _instance = this;
     }
+    private void Start()
+    {
+        
+    }
+
+    public void StopAllSound()
+    {
+        _bgmAudio.Stop();
+        _attackAudio.Stop();
+        _uiAudio.Stop();
+        _dialogueAudio.Stop();
+        _questAudio.Stop();
+    }
 
     public void PlayBGM(BGM type)
     {
@@ -78,6 +102,20 @@ public class SoundManager : MonoBehaviour
 
         _bgmAudio.clip = clip;
         _bgmAudio.Play();
+    }
+    public void PlayUISound()
+    {
+        _uiAudio.PlayOneShot(_uiAudio.clip);
+    }
+    public void PlayDialogueSound()
+    {
+        _dialogueAudio.PlayOneShot(_dialogueAudio.clip);
+    }
+    public void PlayQuestSound(QuestSound type)
+    {
+        if (type == QuestSound.None) return;
+
+        _questAudio.PlayOneShot(_questClips[(int)type]);
     }
     public AudioClip GetMoveClip(int idx)
     {

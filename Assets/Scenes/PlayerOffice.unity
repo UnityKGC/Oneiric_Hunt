@@ -391,6 +391,22 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1878572168}
+    - target: {fileID: 4133593168679634252, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
+      propertyPath: m_XAxis.m_MaxSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133593168679634252, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
+      propertyPath: m_YAxis.m_MaxSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133593168679634252, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
+      propertyPath: m_XAxis.m_SpeedMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4133593168679634252, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
+      propertyPath: m_YAxis.m_SpeedMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4133593168679634253, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.707863

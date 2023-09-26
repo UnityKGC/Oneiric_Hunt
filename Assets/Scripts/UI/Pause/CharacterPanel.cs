@@ -16,11 +16,13 @@ public class CharacterPanel : MonoBehaviour
 
     public void ClickBtn(int value)
     {
+        SoundManager._instance.PlayUISound();
         _nowCount += value;
         ChangeData();
     }
     public void ClickCloseBtn()
     {
+        SoundManager._instance.PlayUISound();
         UIManager._instacne.ClosePopupUI();
     }
     void ChangeData()

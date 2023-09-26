@@ -20,6 +20,7 @@ public class EncyPanel : MonoBehaviour
     }
     public void ClickBtn(int idx)
     {
+        SoundManager._instance.PlayUISound();
         for (int i = 0; i < _encyTabLst.Count; i++)
         {
             if (i == idx)

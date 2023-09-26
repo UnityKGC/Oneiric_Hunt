@@ -12,6 +12,8 @@ public class PlayerOfficeScene : MonoBehaviour
         UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Play);
 
         CameraManager._instance.ChangeCam(CameraType.PlayerCam);
+
+        SoundManager._instance.PlayBGM(BGM.PlayerOffice);
     }
     void Update()
     {

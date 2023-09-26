@@ -28,6 +28,7 @@ public class GraphicPanel : MonoBehaviour
     [SerializeField] int _prevNum; // 기존의 설정 Num
     public void ClickResolutionBtn(int idx) // 해상도 변경
     {
+        SoundManager._instance.PlayUISound();
         _graphicState = ChangeState.Resolution;
         _prevNum = _resolutionNum;
         ChangeResolution(idx);
@@ -36,6 +37,7 @@ public class GraphicPanel : MonoBehaviour
 
     public void ClickScreenBtn(int idx) // 화면 변경
     {
+        SoundManager._instance.PlayUISound();
         _graphicState = ChangeState.Screen;
         ChangeScreen(idx); // 화면 변경 적용
         CheckScreen(idx); // 이전의 값과 다른지 확인
@@ -65,10 +67,12 @@ public class GraphicPanel : MonoBehaviour
     }
     public void ClickAgreeBtn() // _checkUI => 예를 누르면 그대로 UI만 닫아, 변경한 설정을 유지한다
     {
+        SoundManager._instance.PlayUISound();
         UIManager._instacne.ClosePopupUI();
     }
     public void ClickDisagreeBtn() // _checkUI => 아니오를 누르면, 기존에 설정Num을 이용하여 이전 상태로 되돌린 후, UI를 닫는다.
     {
+        SoundManager._instance.PlayUISound();
         switch (_graphicState)
         {
             case ChangeState.Resolution:
@@ -124,6 +128,7 @@ public class GraphicPanel : MonoBehaviour
     }
     public void ClickGraphicBtn(int idx) // 이건 재확인 UI 하지 말자.
     {
+        SoundManager._instance.PlayUISound();
         QualitySettings.SetQualityLevel(idx);
         switch(idx)
         {
@@ -140,6 +145,7 @@ public class GraphicPanel : MonoBehaviour
     }
     public void ClickExitButton()
     {
+        SoundManager._instance.PlayUISound();
         UIManager._instacne.AllClosePopupUI(); // 모든 PopupUI 닫기
     }
 }

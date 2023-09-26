@@ -57,6 +57,8 @@ public class QuestManager : MonoBehaviour
 
         UIManager._instacne.StartQuest(questData);
 
+        //SoundManager._instance.PlayQuestSound(QuestSound.Start);
+
         GetQuestPreced(questData); // 퀘스트 선행보상 획득
 
         // 해당 퀘스트의 타입을 확인 후, => 알맞는 퀘스트를 시작하게 만듬 => 일단 전부 다 같이 받도록 하자.
@@ -153,6 +155,8 @@ public class QuestManager : MonoBehaviour
         {
             if (objData._objID != id || objData._isFull) continue; // objID가 맞지 않거나, 이미 완료 조건이 만족한 퀘스트라면 넘김
 
+            SoundManager._instance.PlayQuestSound(QuestSound.Trigger);
+
             objData._nowCount++;
 
             if (objData._totalCount <= objData._nowCount)
@@ -160,7 +164,6 @@ public class QuestManager : MonoBehaviour
                 objData._isFull = true;
                 _questMarkEvt?.Invoke(QuestMark.None, objData._objID); // 오브젝트는 얻으면 필요개수를 다 채웠으면 비활성화
             }
-                
         }
 
         bool isAchieve = true; // 퀘스트 완료 조건 만족여부 => Default를 true로 준다.
@@ -250,6 +253,7 @@ public class QuestManager : MonoBehaviour
                 break;
         }
 
+        //SoundManager._instance.PlayQuestSound(QuestSound.Clear);
         PluginManager._instance.GetToastMessage("퀘스트 완료");
     }
 

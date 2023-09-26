@@ -135,13 +135,14 @@ public class SoundOption : MonoBehaviour
     }
     public void ClickApplyBtn() // 작용 버튼
     {
-        // 소리 크기 적용 => 사운드 매니저?
+        SoundManager._instance.PlayUISound();
         UIManager._instacne.ClosePopupUI();
     }
 
     public void ClickCancelBtn() // 닫기 버튼
     {
-        if(CheckChangeValue()) // 변경된 사항이 존재한다면,
+        SoundManager._instance.PlayUISound();
+        if (CheckChangeValue()) // 변경된 사항이 존재한다면,
         {
             _warningUI.SetActive(true);
             UIManager._instacne.SetPopupUI(_warningUI);
@@ -151,6 +152,7 @@ public class SoundOption : MonoBehaviour
     }
     public void ClickWarningAgreeBtn() // 변경된 사항을 적용한다.
     {
+        SoundManager._instance.PlayUISound();
         UIManager._instacne.AllClosePopupUI(); // 모든 PopupUI 닫기
     }
     public void ClickWarningCancelBtn() // 변경된 사항을 적용하지 않고, 닫기버튼을 누른다.
@@ -159,6 +161,8 @@ public class SoundOption : MonoBehaviour
         {
             _soundValueLst[i].text = _fieldData[i]._prevValue.ToString();
         }
+
+        SoundManager._instance.PlayUISound();
 
         UIManager._instacne.AllClosePopupUI(); // 모든 PopupUI 닫기
     }

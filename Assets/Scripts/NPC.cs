@@ -22,6 +22,7 @@ public class NPC : MonoBehaviour
                 case NPCState.Normal:
                     _anim.CrossFade("Idle", 0.1f);
                     break;
+
                 case NPCState.Talk:
                     _anim.CrossFade("Talk", 0.1f);
                     break;
@@ -114,6 +115,8 @@ public class NPC : MonoBehaviour
                     data = _quest._dialogueData[(int)DialogueType.Normal];
 
                 DialogueManager._instance.GetQuestDialogue(_quest, data);
+
+                SoundManager._instance.PlayDialogueSound();
 
                 transform.LookAt(_player.transform);
 

@@ -34,12 +34,13 @@ public class PauseMenu : MonoBehaviour
 
     public void ClickResume() // 게임 재개는 혼자 Popup을 여는게 아니므로 따로 제작
     {
+        SoundManager._instance.PlayUISound();
         UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Play);
     }
     public void ClickBtn(int idx) // 버튼을 누르면 idx를 받는데, idx에 해당하는 PopupUI를 열어준다. 
     {
         UIManager._instacne.AllClosePopupUI(); // 메뉴버튼의 아무버튼(게임 재개, 옵션, 도감 등)을 누르면, 열려있던 모든 PopupUI는 닫아준다. => 열려고 하는 팝업UI만 열도록 만듬
-
+        SoundManager._instance.PlayUISound();
         for (int i = 0; i < _popupUI.Count; i++)
         {
             if(idx == i)
