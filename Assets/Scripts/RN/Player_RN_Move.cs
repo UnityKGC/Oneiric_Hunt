@@ -82,7 +82,7 @@ public class Player_RN_Move : BasePlayerMove
             return;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) || (Mathf.Abs(_h) <= 0.5f && Mathf.Abs(_v) <= 0.5f))
+        if (Input.GetKey(KeyCode.LeftShift) || (Mathf.Abs(_h) <= 0.5f && Mathf.Abs(_v) <= 0.5f)) // 모바일 환경에서는 조이스틱을 살짝 움직이면, Walk가 되도록 변경
         {
             _magnitude /= 2f;
             if(_state.PlayerState != BasePlayerState.EPlayerState.Walk)
