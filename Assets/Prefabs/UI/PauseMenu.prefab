@@ -2611,15 +2611,13 @@ MonoBehaviour:
   - {fileID: 3075356403882860926}
   - {fileID: 3075356402099498289}
   - {fileID: 3075356403596598944}
-  _soundBarLst:
-  - {fileID: 3075356402701546343}
-  - {fileID: 3075356403617399912}
-  - {fileID: 3075356403849613487}
+  _soundSliderLst: []
   _soundValueLst:
   - {fileID: 3075356403054079515}
   - {fileID: 3075356402173181887}
   - {fileID: 3075356403955147501}
   _warningUI: {fileID: 3075356402226699729}
+  _fieldData: []
 --- !u!1 &3075356401978207713
 GameObject:
   m_ObjectHideFlags: 0

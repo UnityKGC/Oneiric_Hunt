@@ -43,6 +43,7 @@ public class BattleManager : MonoBehaviour
 
         SkillManager._instance.EndBattle(); // 스킬이 남아있으면 스킬 파괴 및 스킬 변수 초기화
         UIManager._instacne.EndBattle(); // 스킬 UI 초기화
+        CameraManager._instance.EndEffectAction();
 
         if(_isBossBattle) // 보스 전투라면
         {

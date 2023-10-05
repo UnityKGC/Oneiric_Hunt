@@ -103,7 +103,8 @@ public class CameraManager : MonoBehaviour
     }
     public void StartEffectCam(CameraType type, float intensity, float time) // Shake효과
     {
-        switch(type)
+        _nowType = type;
+        switch (type)
         {
             case CameraType.PlayerCam:
                 {
@@ -121,13 +122,17 @@ public class CameraManager : MonoBehaviour
                 break;
         }
         
-        StartCoroutine(EffectAction(type, time)); // _shakeTime만큼의 시간동안 지속시켜준다.
+        StartCoroutine(EffectAction(time)); // _shakeTime만큼의 시간동안 지속시켜준다.
     }
-    IEnumerator EffectAction(CameraType type, float time) // time만큼 지속
+    IEnumerator EffectAction(float time) // time만큼 지속
     {
         yield return new WaitForSeconds(time); // 인자로 받은 time만큼 지속 후,
 
-        switch (type)
+        EndEffectAction();
+    }
+    public void EndEffectAction()
+    {
+        switch (_nowType)
         {
             case CameraType.PlayerCam:
                 {

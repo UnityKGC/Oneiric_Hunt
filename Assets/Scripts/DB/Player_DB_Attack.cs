@@ -133,34 +133,34 @@ public class Player_DB_Attack : MonoBehaviour
         {
             _isAttack = true;
 
-            if (_ischeckAttack) return;
+            if (_ischeckAttack) return; // 공격 딜레이 코루틴에서 _ischeckAttack을 조절하여, 계속 공격하지 못하게 막음.
 
-            //_isStopAtk = false;
+            _isStopAtk = false;
 
             _startStopAtkTime = 0f;
 
-            if (SimpleInput.GetButton("Attack") && _isFirstAttack == false)
+            if (SimpleInput.GetButtonDown("Attack") && _isFirstAttack == false)
             {
                 Debug.Log("첫번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_1);
                 _isFirstAttack = true;
             }
-            else if (SimpleInput.GetButton("Attack") && _isSecondAtk == false)
+            else if (SimpleInput.GetButtonDown("Attack") && _isSecondAtk == false)
             {
                 Debug.Log("두번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_2);
                 _isSecondAtk = true;
             }
-            else if (SimpleInput.GetButton("Attack") && _isThirdAtk == false)
+            else if (SimpleInput.GetButtonDown("Attack") && _isThirdAtk == false)
             {
                 Debug.Log("세번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_3);
                 _isThirdAtk = true;
             }
-            else if (SimpleInput.GetButton("Attack"))
+            else if (SimpleInput.GetButtonDown("Attack"))
             {
                 Debug.Log("네번째 공격 시작");
 
@@ -168,35 +168,26 @@ public class Player_DB_Attack : MonoBehaviour
                 _isFirstAttack = _isSecondAtk = _isThirdAtk = false; // 다시 첫번째 공격으로
             }
 
-            /*
-            if (_atkCo != null) // 사실 할 필요 없는 듯 한데 혹시나 모를 변수를 막기위해
-                StopCoroutine(StartAttackDelayTime());*/
+            if (_atkCo != null) // 사실 할 필요 없는 듯 한데 혹시나 모를 변수를 막기위해??
+                StopCoroutine(StartAttackDelayTime());
+
             StartCoroutine(StartAttackDelayTime());
         }
-        else// if (_isStopAtk == false) // 공격을 하지 않으면, 대기상태 시간측정 시작
+        else // 공격을 하지 않으면, 대기상태 시간측정 시작
         {
-            /*
             if (_startStopAtkTime == 0) // 시간재기
-                _startStopAtkTime = Time.time;*/
+                _startStopAtkTime = Time.time;
 
-            StopAllCoroutines();
-            _isAttack = false;
-            _weaponColl.enabled = false;
-            _ischeckAttack = false;
-            _isFirstAttack = _isSecondAtk = _isThirdAtk = false;
-
-            /*
-            if (Time.time - _startStopAtkTime > _atkAgreeTime) // 좌클릭을 0.8초 동안 하지 않으면
+            if (Time.time - _startStopAtkTime > _atkAgreeTime) // 좌클릭을 1.2초 동안 하지 않으면
             {
-                //_isAttack = false;  // 변수들 초기화
-                
+                //StopAllCoroutines();
+                _isAttack = false; // 공격중지
+                _weaponColl.enabled = false;
+                _ischeckAttack = false;
+                _isFirstAttack = _isSecondAtk = _isThirdAtk = false;
 
-                //_stopAtkTime = Time.time;
-                //_isStopAtk = true;
-
-                
                 _startStopAtkTime = 0f; // 시간도 초기화
-            }*/
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
