@@ -7,7 +7,7 @@ public class EndWarning : MonoBehaviour
     public void ClickAgreeBtn() // ¿¹ ¹öÆ°
     {
         SoundManager._instance.PlayUISound();
-        if (Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
         {
             PluginManager._instance.GetExitBox();
         }

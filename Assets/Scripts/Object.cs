@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum ObjectType
 {
@@ -14,6 +15,7 @@ public class Object : MonoBehaviour
 {
     [SerializeField] private QuestMarkUI _questMarkUI; // 퀘스트 이펙트
     [SerializeField] private TargetUIObj _targetObj;
+    [SerializeField] private Button _interactUI;
     public int _objID; // 본인의 ID
     
     bool _isActive = false;
@@ -26,6 +28,8 @@ public class Object : MonoBehaviour
         QuestManager._instance._questMarkEvt -= SetQuestMark;
         QuestManager._instance._questMarkEvt += SetQuestMark;
 
+        _interactUI.onClick.AddListener(CheckObj);
+
         _targetObj.Init(_objID);
     }
 
@@ -33,13 +37,17 @@ public class Object : MonoBehaviour
     {
         if(_isActive)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space")) // Sapce를 누를때
+            if (Input.GetKeyDown(KeyCode.Space)) // Sapce를 누를때
             {
-                if(QuestManager._instance.QuestTrigger(_objID)) // 플레이어의 퀘스트에 본인이 포함되어 있으면
-                {
-                    gameObject.SetActive(false); // 비활성화 시킨다.
-                }
+                CheckObj();
             }
+        }
+    }
+    void CheckObj()
+    {
+        if (QuestManager._instance.QuestTrigger(_objID)) // 플레이어의 퀘스트에 본인이 포함되어 있으면
+        {
+            gameObject.SetActive(false); // 비활성화 시킨다.
         }
     }
 

@@ -77,11 +77,13 @@ public class CameraManager : MonoBehaviour
     {
         ChangeCam(CameraType.TalkCam);
 
-        Vector3 pos = fromObj.transform.position + (fromObj.transform.forward * -5f) + (fromObj.transform.right * 3f);
-        pos.y = 3f;
+        Vector3 pos = fromObj.transform.position + (fromObj.transform.forward * -3f) + (fromObj.transform.right * 2f);
+        pos.y = 3.5f;
 
         _nowCam.ForceCameraPosition(pos, Quaternion.identity);
-        _nowCam.LookAt = toObj.transform;
+        Vector3 vec = new Vector3(toObj.transform.position.x, toObj.transform.position.y + 1, toObj.transform.position.z);
+        _nowCam.transform.rotation = Quaternion.LookRotation(vec - _nowCam.transform.position, Vector3.up);
+        //_nowCam.LookAt = toObj.transform;
     }
     public void StartBossCam()
     {

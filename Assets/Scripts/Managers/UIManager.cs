@@ -240,7 +240,7 @@ public class UIManager : MonoBehaviour
 
     void SetCursor(SceneUIState state) // UIScene 상태에 따라 커서 조정
     {
-        if (Application.platform == RuntimePlatform.Android) return; // 플랫폼이 안드로이드라면 바로 리턴 => 커서가 필요 없음.
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor) return; // 플랫폼이 안드로이드라면 바로 리턴 => 커서가 필요 없음.
 
         switch (state)
         {

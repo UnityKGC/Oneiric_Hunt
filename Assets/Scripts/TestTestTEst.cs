@@ -1,35 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestTestTEst : MonoBehaviour
 {
     [SerializeField] Animation _anim;
-    [SerializeField] GameObject _interactUI;
+    [SerializeField] Button _interactUI;
     private AudioSource _audio;
     private bool _isActive = false;
     private GameObject _player;
     void Start()
     {
         _audio = GetComponent<AudioSource>();
+        _interactUI.onClick.AddListener(StartMove);
     }
 
     private void Update()
     {
         if (_isActive)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space"))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                _player.SetActive(false);
-                _interactUI.SetActive(false);
-
-                CameraManager._instance.ChangeCam(CameraType.ViewCam);
-                _anim.Play();
-                _audio.Play();
-
-                _isActive = false;
+                StartMove();
             }
         }
+    }
+    void StartMove()
+    {
+        _player.SetActive(false);
+        _interactUI.gameObject.SetActive(false);
+
+        CameraManager._instance.ChangeCam(CameraType.ViewCam);
+        _anim.Play();
+        _audio.Play();
+
+        _isActive = false;
     }
     private void OnTriggerEnter(Collider other)
     {

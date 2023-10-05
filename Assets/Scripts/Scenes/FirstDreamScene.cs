@@ -10,7 +10,7 @@ public class MonsterSpawnData // 몬스터가 소환될 위치와 정보를 지니고 있다.
 }
 public class FirstDreamScene : MonoBehaviour
 {
-    
+    /*
     [SerializeField] List<DreamEvtTrigger> _triggers = new List<DreamEvtTrigger>(); // 이벤트 트리거를 지닌 오브젝트 들 => 후에 호출된 Trigger와 _triggers를 foreach를 사용하여 알맞는 trigger를 찾은 다음, 해당하는 순차에 맞는 몬스터들을 위치에 배치시킨다.
 
     [SerializeField] List<MonsterSpawnData> _spawnDataList_0 = new List<MonsterSpawnData>();
@@ -20,9 +20,11 @@ public class FirstDreamScene : MonoBehaviour
     private List<List<MonsterSpawnData>> _spawnList = new List<List<MonsterSpawnData>>(); // SpawnDataList의 List Dict에 쉽게 DataList들을 넣기 위해 만든 변수.. => 중첩 리스트인데... 더 좋은 방법이 없을까???
 
     private Dictionary<int, List<MonsterSpawnData>> _spawnDict = new Dictionary<int, List<MonsterSpawnData>>(); // _spawnList
-
+    */
     [SerializeField] QuestData _questData;
+    
 
+    public Material _skyBox;
     bool _isBattle; // 배틀 중인가 아닌가.
 
     [SerializeField] private GameObject _exitPortal;
@@ -31,18 +33,23 @@ public class FirstDreamScene : MonoBehaviour
         GameManager._instance.Playstate = GameManager.PlayState.Dream_Normal;
         SceneManagerEX._instance.NowScene = SceneManagerEX.SceneType.FirstDreamScene;
 
-        InitSpawnList();
-        InitDict();
+        RenderSettings.skybox = _skyBox;
+        RenderSettings.customReflection = null; // Reset any custom reflection probes
+        DynamicGI.UpdateEnvironment();
 
-        UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Play); // ㅋㅋ 이걸 안해서 그런거였네ㅋㅋㅋㅋㅋ
+        //InitSpawnList();
+        //InitDict();
+
+        UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Play);
 
         Invoke("StartQuest", 1f);
     }
-
+    
     void StartQuest()
     {
         DialogueManager._instance.GetQuestDialogue(_questData, _questData._dialogueData[0]);
     }
+    /*
     void Update()
     {
         
@@ -71,7 +78,7 @@ public class FirstDreamScene : MonoBehaviour
             }
         }
         StartBattle(isLastBattle); // 다 소환했으니 전투 시작
-    }
+    }*/
     public void EnablePortal(SceneManagerEX.PortalType portalType)
     {
         switch(portalType)

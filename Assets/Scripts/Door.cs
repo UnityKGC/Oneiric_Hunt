@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Door : MonoBehaviour
 {
@@ -10,37 +11,41 @@ public class Door : MonoBehaviour
     private bool _isOpen = false;
     private bool _isActive = false;
 
+    [SerializeField] private Button _interactUI;
     [SerializeField] private AudioClip[] _clips;
     private void Awake()
     {
         _anim = GetComponent<Animator>();
         _audio = GetComponent<AudioSource>();
     }
-
+    private void Start()
+    {
+        _interactUI.onClick.AddListener(DoorTrigger);
+    }
     void Update()
     {
         if (_isActive)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButton("Space"))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (!_isOpen)
-                {
-                    _anim.CrossFade("OpenDoor", 0.1f);
-                    _audio.PlayOneShot(_clips[0]);
-                    _isOpen = true;
-                }
-                else
-                {
-                    _anim.CrossFade("CloseDoor", 0.1f);
-                    _audio.PlayOneShot(_clips[1]);
-                    _isOpen = false;
-                }
+                DoorTrigger();
             }
         }
     }
-    private void OnTriggerStay(Collider other)
+    void DoorTrigger()
     {
-        
+        if (!_isOpen)
+        {
+            _anim.CrossFade("OpenDoor", 0.1f);
+            _audio.PlayOneShot(_clips[0]);
+            _isOpen = true;
+        }
+        else
+        {
+            _anim.CrossFade("CloseDoor", 0.1f);
+            _audio.PlayOneShot(_clips[1]);
+            _isOpen = false;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPC : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class NPC : MonoBehaviour
 
     [SerializeField] List<QuestData> _questList = new List<QuestData>(); // 해당 NPC가 지니고 있는 퀘스트 목록 => 1. 이렇게 NPC가 퀘스트를 지니고 있는게 맞을까? 2. 아니면, 퀘스트 ID만 지니고, 퀘스트 매니저가 모든 퀘스트를 지니고 있는게 맞을가? => 일단 1로 진행한다.
     [SerializeField] private QuestMarkUI _questMarkUI; // 퀘스트 마크
+    [SerializeField] private Button _interactionUI; // 상호작용 UI
     [SerializeField] private TargetUIObj _targetObj;
     private Animator _anim;
 
@@ -46,7 +48,7 @@ public class NPC : MonoBehaviour
 
     [SerializeField] int _npcID;
     [SerializeField] bool _isSpace = false;
-    [SerializeField] bool _simpleSpace = false;
+    //[SerializeField] bool _simpleSpace = false;
     void Start()
     {
         DialogueManager._instance._npcEvt -= EndDialogue;
@@ -56,6 +58,8 @@ public class NPC : MonoBehaviour
         QuestManager._instance._questMarkEvt += SetQuestMark;
 
         _anim = GetComponent<Animator>();
+
+        _interactionUI.onClick.AddListener(StartTalk);
 
         if (CheckQuest()) // 받야아 하는 퀘스트가 있다면s
             _questMarkUI.SetQuestMark(QuestMark.Start); // ! 마크 활성화
@@ -91,47 +95,53 @@ public class NPC : MonoBehaviour
         if (_isTalkAble) // 대화가능하고, 대화중이 아니라면,
         {
             _isSpace = Input.GetKeyDown(KeyCode.Space);
-            _simpleSpace = SimpleInput.GetButtonDown("Space");
+            //_simpleSpace = SimpleInput.GetButtonDown("Space");
             
-            if (_isSpace || _simpleSpace)
+            if (_isSpace)// || _simpleSpace)
             {
-                _quest = null;
-                DialogueData data = null;
-
-                _quest = GetQuestOrder();
-
-                if (_quest == null) return;
-
-                // 퀘스트 시작, 진행, 종료에 따라 전달하는 퀘스트 다이얼로그가 다르다.
-                // 이건 퀘스트 매니저에 함수로 만드는게 좋을듯? 리턴값이 DialogueData인거지.
-
-                if (!_quest._isStart)
-                    data = _quest._dialogueData[(int)DialogueType.QuestStart];
-                else if (!_quest._isAchieve)
-                    data = _quest._dialogueData[(int)DialogueType.QuestProgress];
-                else if (_quest._isAchieve)
-                    data = _quest._dialogueData[(int)DialogueType.QuestEnd];
-                else
-                    data = _quest._dialogueData[(int)DialogueType.Normal];
-
-                DialogueManager._instance.GetQuestDialogue(_quest, data);
-
-                SoundManager._instance.PlayDialogueSound();
-
-                transform.LookAt(_player.transform);
-
-                Input.ResetInputAxes();
-
-                State = NPCState.Talk;
-
-                CameraManager._instance.StartTalkCam(_player, gameObject);
+                StartTalk();
             }
         }
     }
-
+    
     void UpdateTalk()
     {
         
+    }
+
+    void StartTalk()
+    {
+        _quest = null;
+        DialogueData data = null;
+
+        _quest = GetQuestOrder();
+
+        if (_quest == null) return;
+
+        // 퀘스트 시작, 진행, 종료에 따라 전달하는 퀘스트 다이얼로그가 다르다.
+        // 이건 퀘스트 매니저에 함수로 만드는게 좋을듯? 리턴값이 DialogueData인거지.
+
+        if (!_quest._isStart)
+            data = _quest._dialogueData[(int)DialogueType.QuestStart];
+        else if (!_quest._isAchieve)
+            data = _quest._dialogueData[(int)DialogueType.QuestProgress];
+        else if (_quest._isAchieve)
+            data = _quest._dialogueData[(int)DialogueType.QuestEnd];
+        else
+            data = _quest._dialogueData[(int)DialogueType.Normal];
+
+        DialogueManager._instance.GetQuestDialogue(_quest, data);
+
+        SoundManager._instance.PlayDialogueSound();
+
+        transform.LookAt(_player.transform);
+
+        Input.ResetInputAxes();
+
+        State = NPCState.Talk;
+
+        _interactionUI.gameObject.SetActive(false);
+        CameraManager._instance.StartTalkCam(_player, gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -187,5 +197,7 @@ public class NPC : MonoBehaviour
     void EndDialogue()
     {
         State = NPCState.Normal;
+        _interactionUI.gameObject.SetActive(true);
+        
     }
 }

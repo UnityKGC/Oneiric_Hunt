@@ -876,6 +876,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 915374428}
     m_Modifications:
+    - target: {fileID: 215618849, guid: c58f3ca3cffaa1444acccdca1d6dd0c5, type: 3}
+      propertyPath: _interactUIRect
+      value: 
+      objectReference: {fileID: 215618848}
+    - target: {fileID: 215618850, guid: c58f3ca3cffaa1444acccdca1d6dd0c5, type: 3}
+      propertyPath: _interactUI
+      value: 
+      objectReference: {fileID: 215618849}
     - target: {fileID: 131070277604174472, guid: c58f3ca3cffaa1444acccdca1d6dd0c5, type: 3}
       propertyPath: m_Name
       value: Work Chair
@@ -943,6 +951,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 764054021077282866, guid: c58f3ca3cffaa1444acccdca1d6dd0c5, type: 3}
   m_PrefabInstance: {fileID: 215618846}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &215618848 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3666778390361514282, guid: c58f3ca3cffaa1444acccdca1d6dd0c5, type: 3}
+  m_PrefabInstance: {fileID: 215618846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &215618849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1683744079587820139, guid: c58f3ca3cffaa1444acccdca1d6dd0c5, type: 3}
+  m_PrefabInstance: {fileID: 215618846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &215618851 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 3763671028591694487, guid: c58f3ca3cffaa1444acccdca1d6dd0c5, type: 3}
@@ -3634,10 +3658,10 @@ MonoBehaviour:
     _isAchieve: 0
     _isFinish: 0
   _questMarkUI: {fileID: 1205781810}
+  _interactionUI: {fileID: 0}
   _targetObj: {fileID: 844864517}
   _npcID: 1001
   _isSpace: 0
-  _simpleSpace: 0
 --- !u!114 &844864516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3653,7 +3677,7 @@ MonoBehaviour:
   _interactionUI: {fileID: 1146724708}
   _objType: 0
   _playerPos: {x: 0, y: 0, z: 0}
-  _Pos: {x: 0, y: 0, z: 0}
+  _pos: {x: 0, y: 0, z: 0}
   _interactUIRect: {fileID: 0}
 --- !u!114 &844864517
 MonoBehaviour:
@@ -5554,6 +5578,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1973684171}
     m_Modifications:
+    - target: {fileID: 1642123411, guid: abb42912a153e374f92839b99b969ae3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9098502728258045280, guid: abb42912a153e374f92839b99b969ae3, type: 3}
       propertyPath: m_Name
       value: RealPlayUI
@@ -20674,6 +20702,10 @@ PrefabInstance:
       value: ColleagueNPC
       objectReference: {fileID: 0}
     - target: {fileID: 6625897839958586107, guid: 4546ce703aea31349a7e7519a2314761, type: 3}
+      propertyPath: _interactionUI
+      value: 
+      objectReference: {fileID: 6625897838553249651}
+    - target: {fileID: 6625897839958586107, guid: 4546ce703aea31349a7e7519a2314761, type: 3}
       propertyPath: _questList.Array.data[0]._preced._coll
       value: 
       objectReference: {fileID: 215618851}
@@ -20723,6 +20755,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4546ce703aea31349a7e7519a2314761, type: 3}
+--- !u!114 &6625897838553249651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5525413903034602872, guid: 4546ce703aea31349a7e7519a2314761, type: 3}
+  m_PrefabInstance: {fileID: 6625897838553249650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6625932236013923143
 Transform:
   m_ObjectHideFlags: 0

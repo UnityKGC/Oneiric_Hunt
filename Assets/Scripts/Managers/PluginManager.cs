@@ -16,7 +16,7 @@ public class PluginManager : MonoBehaviour
     }
     void Start()
     {
-        if(Application.platform == RuntimePlatform.Android)
+        if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
         {
             using (AndroidJavaClass unityPlayerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
             {

@@ -44,6 +44,7 @@ public class ChildTutorialUI : MonoBehaviour
         _btnLst[(int)Buttons.Prev].SetActive(_nowPage > 0); // _nowPage가 0보다 크면, 이전버튼은 활성화
         _btnLst[(int)Buttons.Next].SetActive(_nowPage < _pageLst.Count - 1); // _nowPage가 최대페이지 보다 작으면 다음버튼 활성화
     }
+
     public void ClickBtn(int idx)
     {
         SoundManager._instance.PlayUISound();
