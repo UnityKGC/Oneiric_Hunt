@@ -225,11 +225,11 @@ public class Player_DB_Attack : MonoBehaviour
         SoundManager._instance.PlayAttackSound((WeaponSound)((int)_nowType)); // 현재 착용중인 무기 정보(Enum)과 EffectSound의 Enum이 동일
 
         _ischeckAttack = true;
-        AttackStart();
+        //AttackStart();
 
         yield return new WaitForSeconds(_atkDelay);
 
-        AttackEnd();
+        //AttackEnd();
         _ischeckAttack = false;
     }
     void AttackSound()

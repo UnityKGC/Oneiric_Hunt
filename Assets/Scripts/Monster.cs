@@ -173,7 +173,6 @@ public class Monster : MonoBehaviour
         if(other.gameObject.CompareTag("PlayerAtk"))
         {
             _stat.SetDamage(other.GetComponentInParent<PlayerStat>().GetDamage());
-            
         }
     }
 }

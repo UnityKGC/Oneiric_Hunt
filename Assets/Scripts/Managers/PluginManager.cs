@@ -5,6 +5,7 @@ using UnityEngine;
 using WinformPlugin;
 public class PluginManager : MonoBehaviour
 {
+    /*
     public static PluginManager _instance;
 
     private AndroidJavaObject m_AndroidJavaObject = null;
@@ -48,5 +49,5 @@ public class PluginManager : MonoBehaviour
     {
         Plugin.MessageMsg("정말로 종료하시겠습니까?", "종료 메시지", Application.Quit); // 확인을 누르면, 0번째 action이 Invoke되고, 닫기를 누르면, 1번째가 Invoke된다.
     }
-
+    */
 }

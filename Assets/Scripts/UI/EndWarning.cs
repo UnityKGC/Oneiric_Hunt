@@ -9,11 +9,11 @@ public class EndWarning : MonoBehaviour
         SoundManager._instance.PlayUISound();
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
         {
-            PluginManager._instance.GetExitBox();
+            //PluginManager._instance.GetExitBox();
         }
         else if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
-            PluginManager._instance.GetExitWinMessageBox();
+            //PluginManager._instance.GetExitWinMessageBox();
         }
         else
             Application.Quit();

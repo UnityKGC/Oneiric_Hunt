@@ -254,7 +254,7 @@ public class QuestManager : MonoBehaviour
         }
 
         //SoundManager._instance.PlayQuestSound(QuestSound.Clear);
-        PluginManager._instance.GetToastMessage("퀘스트 완료");
+        //PluginManager._instance.GetToastMessage("퀘스트 완료");
     }
 
     void FinishObjQuest(QuestData questData)

@@ -43,7 +43,7 @@ public class GameOverUI : MonoBehaviour
                 case ButtonType.End:
                     if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WindowsEditor)
                     {
-                        PluginManager._instance.GetExitBox();
+                        //PluginManager._instance.GetExitBox();
                     }
                     Application.Quit(); // 게임 종료
                     break;

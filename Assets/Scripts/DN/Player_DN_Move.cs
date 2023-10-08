@@ -20,8 +20,7 @@ public class Player_DN_Move : BasePlayerMove
 
         _cameTrans = Camera.main.transform;
 
-
-        if (Physics.Raycast(transform.position, Vector3.down, out _hit, 5f, _layerMask))
+        if (Physics.Raycast(transform.position, Vector3.down, out _hit, 100f))
         {
             _previousHit = _hit;
             _type = (MoveEffectSound)_hit.collider.gameObject.layer;
@@ -31,6 +30,7 @@ public class Player_DN_Move : BasePlayerMove
 
     void Update()
     {
+        //Debug.DrawRay(transform.position, Vector3.down * 100f, Color.red);
         CheckLayer();
     }
     private void FixedUpdate()
@@ -87,6 +87,16 @@ public class Player_DN_Move : BasePlayerMove
     }
     void CheckLayer() // Layer(플레이어가 서 있는 위치)에 따라 Type을 변경하여, 발 사운드(풀, 나무, 등등)의 사운드로 변경
     {
+        if(_previousHit.collider == null)
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, out _hit, 100f))
+            {
+                _previousHit = _hit;
+                _type = (MoveEffectSound)_hit.collider.gameObject.layer;
+                _nowClip = SoundManager._instance.GetMoveClip((int)_type);
+            }
+        }
+
         if (Physics.Raycast(transform.position, Vector3.down, out _hit, 5f, _layerMask))
         {
             int hitLayer = _hit.collider.gameObject.layer;
