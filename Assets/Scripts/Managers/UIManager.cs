@@ -69,8 +69,6 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager._instance._isGameEnd) return;
 
-        Debug.Log("Stack 크기 : "+_popupUIStack.Count);
-
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             // Popup메뉴가 열려있으면, 가장 최근에 열린 PopupUI 순서대로 꺼준다. STack으로 Popup관리

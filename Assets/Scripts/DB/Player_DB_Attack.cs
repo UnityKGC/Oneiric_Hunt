@@ -129,7 +129,7 @@ public class Player_DB_Attack : MonoBehaviour
     }
     void MobileCtrl()
     {
-        if (SimpleInput.GetButton("Attack"))
+        if (SimpleInput.GetButtonDown("Attack"))
         {
             _isAttack = true;
 
@@ -192,6 +192,7 @@ public class Player_DB_Attack : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        /*
         if (other.CompareTag("MonsterAtk"))
         {
             float dmg = other.GetComponentInParent<MonsterStat>().GetDamage();
@@ -201,7 +202,9 @@ public class Player_DB_Attack : MonoBehaviour
         {
             float dmg = other.GetComponentInParent<BossStat>().GetDamage();
             _stat.SetDamage(dmg);
-        }
+        }*/
+        float dmg = other.GetComponentInParent<Stat>().GetDamage();
+        _stat.SetDamage(dmg);
     }
     public void ChangeWeapon(WeaponType weapon) // 무기 Collider를 갱신;
     {

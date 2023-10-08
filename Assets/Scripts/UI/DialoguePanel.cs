@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DialoguePanel : MonoBehaviour, IPointerDownHandler
 {
     public TextMeshProUGUI _name; // NPC이름
     public TextMeshProUGUI _content; // 대화 내용
+    public RectTransform _downArrow;
 
     DialogueData _data;
 
     private void Start()
     {
-        
         DialogueManager._instance._dialogueEvt -= SetDialogueData;
         DialogueManager._instance._dialogueEvt += SetDialogueData;
 
@@ -22,7 +23,10 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
 
         gameObject.SetActive(false);
     }
-
+    private void OnEnable()
+    {
+        
+    }
     void SetDialogueData(DialogueData data) // 매니저로 부터 NPC이름과 대사를 전달받는다.
     {
         if (data == null || data._isStart) return; // 가져온 데이터가 없거나 이미 시작한 대화라면 리턴

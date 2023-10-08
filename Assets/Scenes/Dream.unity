@@ -3329,7 +3329,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460511199086307618}
     m_Modifications:
+    - target: {fileID: 1261497967229665317, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -51
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393097565861860256, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504980595379431183, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645134723256035149, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -51
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113220242179009922, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -51
+      objectReference: {fileID: 0}
     - target: {fileID: 6476161397098933025, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6868763788413964716, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -3424,6 +3448,30 @@ PrefabInstance:
     - target: {fileID: 6898355763862059810, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898355763862059812, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6996186253382603036, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -51
+      objectReference: {fileID: 0}
+    - target: {fileID: 7053898424641615171, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7053898424641615171, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7053898424641615171, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7053898424641615171, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
@@ -5062,6 +5110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: {fileID: 1504208752}
   _content: {fileID: 1549259808}
+  _downArrow: {fileID: 0}
 --- !u!114 &864877518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6685,15 +6734,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4133593168828780091, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.29792282
+      value: 0.29792285
       objectReference: {fileID: 0}
     - target: {fileID: 4133593168828780091, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.48764318
+      value: -0.4876432
       objectReference: {fileID: 0}
     - target: {fileID: 4133593168828780091, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.18153013
+      value: 0.18153016
       objectReference: {fileID: 0}
     - target: {fileID: 4133593169058859249, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_FollowOffset.y
@@ -15366,7 +15415,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -18459,8 +18508,8 @@ MonoBehaviour:
   _hp: 99999
   _maxMp: 99999
   _mp: 100
-  _minAtk: 999
-  _maxAtk: 999
+  _minAtk: 10
+  _maxAtk: 20
   _defense: 5
   _moveSpd: 10
   _swordMinAtk: 1
