@@ -348,8 +348,8 @@ MonoBehaviour:
       - "\uB2E4\uD589\uD788 \uC811\uC18D \uC790\uCCB4\uB294 \uC6D0\uD65C\uD558\uAC8C
         \uB418\uB294 \uAC83 \uAC19\uB124"
       - "\uADF8\uB7FC \uBC14\uB85C \uC124\uC815\uBD80\uD130 \uB05D\uB0B4\uBCF4\uC790."
-      - "<color=red>W,A,S,D</color>\uB97C \uC774\uC6A9\uD574\uC11C \uBE5B\uB098\uB294
-        \uC704\uCE58\uAE4C\uC9C0 \uC774\uB3D9\uD574."
+      - "\uC55E\uC5D0 \uBCF4\uC774\uB294 \uBE5B\uB098\uB294 \uC704\uCE58\uAE4C\uC9C0
+        \uC774\uB3D9\uD574\uBD10."
       _index: 0
       _isStart: 0
       _isLast: 0
@@ -3853,9 +3853,8 @@ MonoBehaviour:
         \uC124\uC815\uD574 \uBCF4\uC790."
       - "<color=red>\uBB34\uAE30 \uAE30\uC220</color>\uC740 <color=blue>\uAC80</color>,
         <color=blue>\uCC3D</color>, <color=blue>\uB3C4\uB07C</color> \uC774\uB807\uAC8C
-        3\uAC1C\uC758 \uBB34\uAE30\uAE30\uC220\uB85C \uB098\uB220\uC838\uC788\uC5B4."
-      - "\uB610\uD55C, \uAC01 \uBB34\uAE30\uB9C8\uB2E4 <color=red>Z</color>, <color=red>X</color>,
-        <color=red>C</color>\uB97C \uB20C\uB7EC \uC0AC\uC6A9 \uD560 \uC218 \uC788\uC544"
+        3\uAC1C\uC758 \uBB34\uAE30\uAE30\uC220\uB85C \uB098\uB220\uC838\uC788\uB294\uAC70
+        \uC54C\uC9C0?"
       - "\uBAAC\uC2A4\uD130\uB4E4\uC744 \uC18C\uD658\uD574 \uC904 \uD14C\uB2C8\uAE4C,
         \uBB34\uAE30\uAE30\uC220\uC744 \uC774\uC6A9\uD574\uC11C \uD574\uCE58\uC6CC\uBD10."
       _index: 0
@@ -5747,8 +5746,7 @@ MonoBehaviour:
       _dialogueType: 0
       _dialogueLines:
       - "\uC88B\uC544 \uC774\uBC88\uC5D4 \uACF5\uACA9\uC744 \uC124\uC815\uD574 \uBCF4\uC790."
-      - "\uC55E \uCABD\uC5D0 \uD5C8\uC218\uC544\uBE44\uAC00 \uB098\uC62C\uAC70\uC57C."
-      - "<color=red>\uB9C8\uC6B0\uC2A4 \uC88C\uD074\uB9AD</color>\uC744 \uB204\uB974\uACE0
+      - "\uC55E \uCABD\uC5D0 \uD5C8\uC218\uC544\uBE44\uAC00 \uB098\uC624\uB2C8\uAE4C,
         \uACF5\uACA9\uC744 \uD574\uC11C \uD5C8\uC218\uC544\uBE44\uB97C \uD574\uCE58\uC6CC\uBD10."
       _index: 0
       _isStart: 0
@@ -6766,19 +6764,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4133593169209357774, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.78895634
+      value: 0.7889564
       objectReference: {fileID: 0}
     - target: {fileID: 4133593169209357774, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.32679623
+      value: 0.32679626
       objectReference: {fileID: 0}
     - target: {fileID: 4133593169209357774, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.48073015
+      value: -0.4807301
       objectReference: {fileID: 0}
     - target: {fileID: 4133593169209357774, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.19912487
+      value: 0.19912478
       objectReference: {fileID: 0}
     - target: {fileID: 4133593169591208724, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_FollowOffset.y
@@ -10078,9 +10076,6 @@ MonoBehaviour:
       - "\uC88B\uC544 \uC774\uBC88\uC5D4 \uAE30\uC220\uC744 \uC124\uC815\uD574 \uBCF4\uC790."
       - "<color=red>\uBB34\uAE30 \uBCC0\uACBD</color>\uACFC <color=red>\uAD6C\uB974\uAE30</color>
         \uC815\uB3C4\uB9CC \uD574\uC81C\uD588\uC5B4."
-      - "<color=red>\uBB34\uAE30 \uBCC0\uACBD</color>\uC740 <color=blue>Tab</color>\uC744
-        \uC774\uC6A9\uD574\uC11C \uC0AC\uC6A9 \uD560 \uC218 \uC788\uACE0, <color=red>\uAD6C\uB974\uAE30</color>\uB294
-        <color=blue>Space</color>\uC744 \uB20C\uB7EC \uC0AC\uC6A9 \uD560 \uC218 \uC788\uC5B4."
       - "\uAE30\uC220\uC744 \uC774\uC6A9\uD574\uC11C \uBAAC\uC2A4\uD130\uB4E4\uC744
         \uD574\uCE58\uC6CC\uBD10."
       _index: 0
