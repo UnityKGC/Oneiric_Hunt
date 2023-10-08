@@ -13,11 +13,16 @@ public class BuffUIDuration : MonoBehaviour
         _remainTime = _durationTime = time;
         StartCoroutine(BuffUICo());
     }
-
+    private void OnEnable() // 지속 도중 꺼지면, 후에 다시 켜질때, 남은시간만큼 코루틴 재실행
+    {
+        StartCoroutine(BuffUICo());
+    }
     IEnumerator BuffUICo()
     {
         while (_remainTime >= 0)
         {
+            Debug.Log("남은 시간 : " + _remainTime);
+
             _img.fillAmount = _remainTime / _durationTime;
 
             _remainTime -= Time.deltaTime;
