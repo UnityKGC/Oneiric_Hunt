@@ -48,7 +48,7 @@ public class NPC : MonoBehaviour
 
     [SerializeField] int _npcID;
     [SerializeField] bool _isSpace = false;
-    //[SerializeField] bool _simpleSpace = false;
+    [SerializeField] bool _simpleSpace = false;
     void Start()
     {
         DialogueManager._instance._npcEvt -= EndDialogue;
@@ -95,9 +95,9 @@ public class NPC : MonoBehaviour
         if (_isTalkAble) // 대화가능하고, 대화중이 아니라면,
         {
             _isSpace = Input.GetKeyDown(KeyCode.Space);
-            //_simpleSpace = SimpleInput.GetButtonDown("Space");
+            _simpleSpace = SimpleInput.GetButtonDown("Space");
             
-            if (_isSpace)// || _simpleSpace)
+            if (_isSpace || _simpleSpace)
             {
                 StartTalk();
             }

@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 3666778389695627666}
   - component: {fileID: 3666778389695627669}
   - component: {fileID: 1683744078640931536}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: InteractUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}

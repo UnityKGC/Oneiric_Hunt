@@ -20,7 +20,7 @@ public class TestTestTEst : MonoBehaviour
     {
         if (_isActive)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButtonDown("Space"))
             {
                 StartMove();
             }

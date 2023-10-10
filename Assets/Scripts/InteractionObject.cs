@@ -29,7 +29,7 @@ public class InteractionObject : MonoBehaviour
     {
         if (_isActive)
         {
-            if (Input.GetKeyDown(KeyCode.Space)) // Sapce를 누를때
+            if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButtonDown("Space")) // Sapce를 누를때
             {
                 CheckObj();
             }

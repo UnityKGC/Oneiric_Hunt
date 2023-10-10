@@ -6,134 +6,82 @@ using UnityEngine.EventSystems;
 using SimpleInputNamespace;
 using UnityEngine.UI;
 
-public enum TestEnum
-{
-    None = -1,
-    Assign,
-    TargetWorldUp,
-    NoRoll,
-    Target,
-    WorldSpace,
-    FollowWorldUp,
-
-}
-public class FreeLookCamCtrl : MonoBehaviour//, IDragHandler, IPointerDownHandler, IPointerUpHandler
+public class FreeLookCamCtrl : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] CinemachineFreeLook _freeLook;
 
     [SerializeField] Joystick _joyStick;
 
-    [SerializeField] Image _area;
+    [SerializeField] Image _area; // 카메라 회전을 위해, 화면 전체를 덮는 이미지 UI => 이것 때문에 월드 UI가 조작이 안됨.
     [SerializeField] Rect _rect;
     [SerializeField] Vector2 _mousePos;
-    [SerializeField] Image _joyStickArea;
-
-    [SerializeField] float _saveXAxis;
-    [SerializeField] float _saveYAxis;
-
-    [SerializeField] TestEnum _type;
 
     [SerializeField] string _xString, _yString;
 
-    Vector2 _startPos;
-    bool _isDrag;
-    Vector2 _lastDragPos;
+    [SerializeField] Vector2 _startPos;
+
+    [SerializeField] LayerMask _mask = 1 << 15;
+
+    [SerializeField] Ray ray;
+
+    [SerializeField] RaycastHit[] hits;
     private void Start()
     {
         _xString = "Mouse X";
         _yString = "Mouse Y";
 
-        RectTransform parentRectTransform = _joyStickArea.GetComponentInParent<RectTransform>();
-
-
-        // Create a Rect using the position and size of the RectTransform
-        _rect = parentRectTransform.rect;
-        /*
-        _rect = new Rect(parentRectTransform.position.x, parentRectTransform.position.y,
-                             parentRectTransform.rect.width, parentRectTransform.rect.height);*/
+        _rect = new Rect(0, 0, Screen.width, Screen.height);
     }
     private void Update()
     {
-        Debug.Log("Xvalue : " + _freeLook.m_XAxis.Value);
-        // Check if the mouse is inside the disableCameraArea
-        if (!_rect.Contains(Input.mousePosition) && Joystick._isUsing)
+        _mousePos = Input.mousePosition;
+
+        if (!_rect.Contains(_mousePos))
         {
-            Debug.Log("움직이지 않아");
-            // Disable the FreeLook camera components (Or set the enabled property of the components you want to disable)
-            _freeLook.m_XAxis.m_InputAxisValue = Input.GetAxis("Horizontal");
-            _freeLook.m_YAxis.m_InputAxisValue = Input.GetAxis("Vertical");
+            _freeLook.m_XAxis.m_InputAxisName = _xString;
+            _freeLook.m_YAxis.m_InputAxisName = _yString;
+
         }
-        else if(_rect.Contains(Input.mousePosition) && Joystick._isUsing)
+        else if(_rect.Contains(_mousePos))
         {
-            // Enable the FreeLook camera components
-            _freeLook.m_XAxis.m_InputAxisValue = 0; // For example, disable X-axis rotation
-            _freeLook.m_YAxis.m_InputAxisValue = 0;
+            _freeLook.m_XAxis.m_InputAxisName = ""; // For example, disable X-axis rotation
+            _freeLook.m_YAxis.m_InputAxisName = "";
+
+            _freeLook.m_XAxis.m_InputAxisValue = 0f;
+            _freeLook.m_YAxis.m_InputAxisValue = 0f;
         }
+
     }
-    /*
+    
     public void OnDrag(PointerEventData eventData)
     {
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_area.rectTransform, eventData.position, eventData.enterEventCamera, out Vector2 posOut))
         {
-            if(_isDrag)
-            {
-                Debug.Log("Drag");
-                Vector2 _lastDragPos = _startPos - posOut;
+            Vector2 currentMousePos = Input.mousePosition;
+            Vector2 offset = currentMousePos - _startPos;
 
-                _freeLook.m_XAxis.Value += _lastDragPos.x * 0.01f;
-                _freeLook.m_YAxis.Value += _lastDragPos.y * 1f;
-            }
+            _freeLook.m_XAxis.Value += offset.x * 1.5f * Time.deltaTime;
+            _freeLook.m_YAxis.Value -= offset.y * 0.01f * Time.deltaTime;
         }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        //_freeLook.m_BindingMode = CinemachineTransposer.BindingMode.LockToTargetOnAssign;
-
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_area.rectTransform, eventData.position, eventData.enterEventCamera, out Vector2 posOut))
         {
-            Debug.Log("Down");
-            _isDrag = true;
-            _startPos = posOut;
+            _startPos = Input.mousePosition;
         }
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("Up");
-        _isDrag = false;
-        _freeLook.m_XAxis.m_MaxSpeed = 2f;
-        _freeLook.m_YAxis.m_MaxSpeed = 0.01f;
-        
-    }
-    */
-    private void OnGUI()
-    {
-        //GUI.Box(_rect, "응애");
-        /*
-        if (GUI.Button(new Rect(0, 0, 300, 100), "Assign"))
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_area.rectTransform, eventData.position, eventData.enterEventCamera, out Vector2 posOut))
         {
-            _freeLook.m_BindingMode = CinemachineTransposer.BindingMode.LockToTargetOnAssign;
+            _freeLook.m_XAxis.m_InputAxisName = ""; // For example, disable X-axis rotation
+            _freeLook.m_YAxis.m_InputAxisName = "";
+
+            _startPos = Vector2.zero;
         }
-        if (GUI.Button(new Rect(0, 100, 300, 100), "TargetWorldUp"))
-        {
-            _freeLook.m_BindingMode = CinemachineTransposer.BindingMode.LockToTargetWithWorldUp;
-        }
-        if (GUI.Button(new Rect(0, 200, 300, 100), "NoRoll"))
-        {
-            _freeLook.m_BindingMode = CinemachineTransposer.BindingMode.LockToTargetNoRoll;
-        }
-        if (GUI.Button(new Rect(0, 300, 300, 100), "Target"))
-        {
-            _freeLook.m_BindingMode = CinemachineTransposer.BindingMode.LockToTarget;
-        }
-        if (GUI.Button(new Rect(0, 400, 300, 100), "WorldSpace"))
-        {
-            _freeLook.m_BindingMode = CinemachineTransposer.BindingMode.WorldSpace;
-        }
-        if (GUI.Button(new Rect(0, 500, 300, 100), "FollowWorldUp"))
-        {
-            _freeLook.m_BindingMode = CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
-        }*/
     }
 }
