@@ -9,7 +9,7 @@ public class Player_DB_Attack : MonoBehaviour
     [SerializeField] GameObject[] _weaponTrails; // 무기 잔상효과
     private PlayerStat _stat;
     private Player_DB_Anim _anim;
-    private Player_DB_Move _move;
+    //private Player_DB_Move _move;
     private Coroutine _atkCo;
     private Collider _weaponColl;
     private GameObject _weaponTrail;
@@ -23,7 +23,7 @@ public class Player_DB_Attack : MonoBehaviour
     private float _atkDelay = 0.8f;
     //private float _idleTime = 2f;
 
-    private bool _isStopAtk = true;
+    //private bool _isStopAtk = true;
     private bool _isFirstAttack = false;
     private bool _isSecondAtk = false;
     private bool _isThirdAtk = false;
@@ -34,7 +34,7 @@ public class Player_DB_Attack : MonoBehaviour
     {
         _stat = GetComponent<PlayerStat>();
         _anim = GetComponent<Player_DB_Anim>();
-        _move = GetComponent<Player_DB_Move>();
+        //_move = GetComponent<Player_DB_Move>();
     }
     void Start()
     {
@@ -69,7 +69,7 @@ public class Player_DB_Attack : MonoBehaviour
 
             if (_ischeckAttack) return; // 공격 딜레이 코루틴에서 _ischeckAttack을 조절하여, 계속 공격하지 못하게 막음.
 
-            _isStopAtk = false;
+            //_isStopAtk = false;
 
             _startStopAtkTime = 0f;
 
@@ -135,7 +135,7 @@ public class Player_DB_Attack : MonoBehaviour
 
             if (_ischeckAttack) return; // 공격 딜레이 코루틴에서 _ischeckAttack을 조절하여, 계속 공격하지 못하게 막음.
 
-            _isStopAtk = false;
+            //_isStopAtk = false;
 
             _startStopAtkTime = 0f;
 

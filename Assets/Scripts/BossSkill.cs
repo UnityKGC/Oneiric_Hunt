@@ -39,16 +39,14 @@ public class BossSkill : MonoBehaviour
         Stench,
     }
 
-    private GameObject _player;
-    private PlayerStat _playerStat;
+
     private Animator _anim;
     private BossStat _bossStat;
-    private int _mask = 1 << 3; // Overlap할때 사용할 LayerMask => 플레이어를 지정한다.
 
-    private bool _isSkill = false; // 스킬 사용 중인가 확인
+
+    //private bool _isSkill = false; // 스킬 사용 중인가 확인
     void Start()
     {
-        _player = GameManager._instance.Player;
         _bossStat = GetComponent<BossStat>();
         _anim = GetComponent<Animator>();
     }
@@ -62,7 +60,7 @@ public class BossSkill : MonoBehaviour
     {
         if (BossSkillManager._instance._isSkilling) return; // 스킬 사용중 이라면 리턴
 
-        BossSkillManager._instance._isSkilling = _isSkill = true; // 스킬사용 시작
+        BossSkillManager._instance._isSkilling  = true; // 스킬사용 시작
         _anim.CrossFade("Despair",0.1f);
         StartCoroutine(DespairCo());
     }
@@ -70,7 +68,7 @@ public class BossSkill : MonoBehaviour
     {
         if (BossSkillManager._instance._isSkilling) return; // 스킬 사용중 이라면 리턴
 
-        BossSkillManager._instance._isSkilling = _isSkill = true; // 스킬사용 시작
+        BossSkillManager._instance._isSkilling  = true; // 스킬사용 시작
         _anim.CrossFade("Guardian",0.1f);
         StartCoroutine(GuardianCo());
     }
@@ -78,7 +76,7 @@ public class BossSkill : MonoBehaviour
     {
         if (BossSkillManager._instance._isSkilling) return; // 스킬 사용중 이라면 리턴
 
-        BossSkillManager._instance._isSkilling = _isSkill = true; // 스킬사용 시작
+        BossSkillManager._instance._isSkilling  = true; // 스킬사용 시작
         _anim.CrossFade("Anger_1", 0.1f);
         StartCoroutine(AngerCo());
     }
@@ -87,7 +85,7 @@ public class BossSkill : MonoBehaviour
     {
         if (BossSkillManager._instance._isSkilling) return; // 스킬 사용중 이라면 리턴
 
-        BossSkillManager._instance._isSkilling = _isSkill = true; // 스킬사용 시작
+        BossSkillManager._instance._isSkilling  = true; // 스킬사용 시작
         _anim.CrossFade("Overdose", 0.1f);
         StartCoroutine(OverdoseCo());
     }
@@ -95,7 +93,7 @@ public class BossSkill : MonoBehaviour
     {
         if (BossSkillManager._instance._isSkilling) return; // 스킬 사용중 이라면 리턴
 
-        BossSkillManager._instance._isSkilling = _isSkill = true; // 스킬사용 시작
+        BossSkillManager._instance._isSkilling  = true; // 스킬사용 시작
         _anim.CrossFade("Rush", 0.1f);
         StartCoroutine(RushCo());
     }
@@ -103,7 +101,7 @@ public class BossSkill : MonoBehaviour
     {
         if (BossSkillManager._instance._isSkilling) return; // 스킬 사용중 이라면 리턴
 
-        BossSkillManager._instance._isSkilling = _isSkill = true; // 스킬사용 시작
+        BossSkillManager._instance._isSkilling  = true; // 스킬사용 시작
         _anim.CrossFade("Delirium", 0.1f);
         StartCoroutine(DeliriumCo());
     }
@@ -111,7 +109,7 @@ public class BossSkill : MonoBehaviour
     {
         if (BossSkillManager._instance._isSkilling) return; // 스킬 사용중 이라면 리턴
 
-        BossSkillManager._instance._isSkilling = _isSkill = true; // 스킬사용 시작
+        BossSkillManager._instance._isSkilling  = true; // 스킬사용 시작
         _anim.CrossFade("Stench", 0.1f);
         StartCoroutine(StenchCo());
     }

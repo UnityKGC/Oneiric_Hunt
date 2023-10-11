@@ -10,7 +10,7 @@ public class Player_RN_Move : BasePlayerMove
 
     int _layerMask = 1 << 13 | 1 << 14; //(int)MoveEffectSound.Grass | (int)MoveEffectSound.Wood;
 
-    private bool _isWalk = false;
+    //private bool _isWalk = false;
 
     private AudioSource _stepSound;
 
@@ -62,12 +62,12 @@ public class Player_RN_Move : BasePlayerMove
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 _state.PlayerState = BasePlayerState.EPlayerState.Walk;
-                _isWalk = true;
+                //_isWalk = true;
             }
             else
             {
                 _state.PlayerState = BasePlayerState.EPlayerState.Run;
-                _isWalk = false;
+                //_isWalk = false;
             }
 
             _anim.CrossFade(_state.PlayerState);
@@ -87,7 +87,7 @@ public class Player_RN_Move : BasePlayerMove
             _magnitude /= 2f;
             if(_state.PlayerState != BasePlayerState.EPlayerState.Walk)
             {
-                _isWalk = true;
+                //_isWalk = true;
                 _state.PlayerState = BasePlayerState.EPlayerState.Walk;
             }
         }
@@ -95,7 +95,7 @@ public class Player_RN_Move : BasePlayerMove
         {
             if(_state.PlayerState != BasePlayerState.EPlayerState.Run)
             {
-                _isWalk = false;
+                //_isWalk = false;
                 _state.PlayerState = BasePlayerState.EPlayerState.Run;
             }
         }

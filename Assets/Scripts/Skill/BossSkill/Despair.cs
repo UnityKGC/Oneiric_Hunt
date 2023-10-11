@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Despair : MonoBehaviour
 {
-
-    private float _skillRange = 10f;
-
-    private int _mask = 1 << 3; // Overlap할때 사용할 LayerMask => 플레이어를 지정한다.
-
     private PlayerStat _playerStat;
 
     float _startTime; // 시작시간
@@ -18,17 +13,6 @@ public class Despair : MonoBehaviour
 
     float _downValue = 0.3f; // 떨어져야 할 스탯 배율
     float _deBuffDuringTime = 10f; // 디버프 지속 시간
-
-    float _downDefense; // 감소된 방어력
-
-    float _downSwordMinAtk; // 감소된 검 최소공격력
-    float _downSwordMaxAtk; // 감소된 검 최소공격력
-
-    float _downSpearMinAtk;
-    float _downSpearMaxAtk;
-
-    float _downAxeMinAtk;
-    float _downAxeMaxAtk;
 
     bool _isApplySkill = false;
 

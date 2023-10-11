@@ -72,8 +72,6 @@ public class SceneManagerEX : MonoBehaviour
 
         operation.allowSceneActivation = false;
 
-        float timer = 0.0f;
-
         while (!operation.isDone) // 프로세스가 완료되지 않으면 반복
         {
             yield return null;

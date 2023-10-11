@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class DreamEvtTrigger : MonoBehaviour
 {
-    [SerializeField] FirstDreamScene _scene;
-    [SerializeField] bool _isLast = false;
-    Collider _coll;
+    //[SerializeField] FirstDreamScene _scene;
+    //[SerializeField] bool _isLast = false;
 
-    [SerializeField] QuestData _questData;
+    //[SerializeField] QuestData _questData;
     void Start()
     {
-        _coll = GetComponent<Collider>();
+        
     }
 
     void Update()

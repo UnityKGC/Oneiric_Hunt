@@ -13,7 +13,6 @@ public class Challenge : MonoBehaviour
     float _duringTime = 10f; // 지속시간
 
     float _dmgAmount = 5f; // 스킬 범위
-    float _atkPer = 7f; // 플레이어 공격력에 추가한 공격력 %
 
     float _atk; // 최종 스킬 공격력
 

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Guardian : MonoBehaviour
 {
-    private float _skillRange = 10f;
-
     private MonsterStat _monsterStat;
 
     float _startTime; // 시작시간

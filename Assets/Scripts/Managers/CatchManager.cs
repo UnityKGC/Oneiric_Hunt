@@ -20,7 +20,7 @@ public class CatchManager : MonoBehaviour
     private bool _isSuccess;
     private bool _isStart;
     //private bool _isFail; // 실패 확인 변수
-    private bool _isEnd; // 끝 확인 변수
+    //private bool _isEnd; // 끝 확인 변수
 
 
     private void Awake()
@@ -53,7 +53,7 @@ public class CatchManager : MonoBehaviour
         _eventData = evt;
 
         _isStart = true;
-        _isEnd = false;
+        //_isEnd = false;
         
         _police = _eventData._police;
     }
@@ -94,7 +94,7 @@ public class CatchManager : MonoBehaviour
         {
             ChaseManager._instance.Chasestate = ChaseManager.ChaseState.Normal; // 게임상태를 평상시로,
             _isStart = false;
-            _isEnd = true;
+            //_isEnd = true;
             _eventData = null;
             //Debug.Log("빠져나옴");
         }

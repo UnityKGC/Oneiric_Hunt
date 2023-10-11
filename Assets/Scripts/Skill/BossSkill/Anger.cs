@@ -18,9 +18,9 @@ public class Anger : MonoBehaviour
     private Animator _bossAnim;
     Boss _boss;
     Vector3 _playerPos; // 스킬 사용 시, 플레이어가 있는 위치
-    Vector3 _startBossPos; // 스킬 시작 시, 보스의 위치
+    //Vector3 _startBossPos; // 스킬 시작 시, 보스의 위치
 
-    float _height;
+    //float _height;
 
     float _dmgStart; // 데미지 시간측정 start
     float _dmgDelay = 0.5f; // 데미지 주는 딜레이 시간
@@ -31,8 +31,8 @@ public class Anger : MonoBehaviour
 
     float _duringTime = 5f; // 총 지속시간
     float _firstTime = 1.5f;
-    float _waitTime = 0.5f;
-    float _secondTime = 3f; // 난타 지속시간
+    //float _waitTime = 0.5f;
+    //float _secondTime = 3f; // 난타 지속시간
 
     float _bossDmg; // 스킬 사용 시, 보스 공격력
 
@@ -65,7 +65,7 @@ public class Anger : MonoBehaviour
     void Start()
     {
         _playerPos = GameManager._instance.Player.transform.position;
-        _startBossPos = transform.parent.position;
+        //_startBossPos = transform.parent.position;
 
         _boss = transform.parent.GetComponent<Boss>();
         _bossAnim = _boss.GetComponent<Animator>();
