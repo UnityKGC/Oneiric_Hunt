@@ -160,6 +160,7 @@ public class SoundOption : MonoBehaviour
         for (int i = 0; i < _soundValueLst.Count; i++) // 리스트를 이전 값으로 초기화 시켜준다.
         {
             _soundValueLst[i].text = _fieldData[i]._prevValue.ToString();
+            _soundSliderLst[i].value = _fieldData[i]._prevValue / 100f;
         }
 
         SoundManager._instance.PlayUISound();

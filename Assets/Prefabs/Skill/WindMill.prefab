@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 8046174929723387960}
   - component: {fileID: 5793437673001921601}
   - component: {fileID: 3542449550558926107}
-  - component: {fileID: 6566991542579687724}
+  - component: {fileID: 9038923074853167149}
   m_Layer: 0
   m_Name: Effect_33_Flame_2
   m_TagString: Untagged
@@ -4878,7 +4878,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d14723fdaa13cb419081b4c0053cbbf, type: 2}
+  - {fileID: 2100000, guid: ab86f978dca34de42bdbb1e1d410d214, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4920,7 +4920,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 000103040508
-  m_Mesh: {fileID: 4300000, guid: fdfc131c9d90df948955fbad04f7738b, type: 3}
+  m_Mesh: {fileID: 4300000, guid: ce54284985491f8419f2d051b4538fff, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -4929,7 +4929,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6566991542579687724
+--- !u!114 &9038923074853167149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4938,7 +4938,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1826796075804519270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de6923c0c6c4164193436b82af45485, type: 3}
+  m_Script: {fileID: 11500000, guid: e8b66314a1ccd37458a24def24a3289b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2895618035792708640
@@ -9772,7 +9772,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 37cb13795ae2926499d89bb76772a38e, type: 2}
+  - {fileID: 2100000, guid: de6a663bb66ad824bb3bf9da4c0ccf29, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14654,7 +14654,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 37cb13795ae2926499d89bb76772a38e, type: 2}
+  - {fileID: 2100000, guid: de6a663bb66ad824bb3bf9da4c0ccf29, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19536,7 +19536,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 100a0f751c37aaa4085671f814f2de6b, type: 2}
+  - {fileID: 2100000, guid: bb3edce46827a804d93eca8541a856c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24418,7 +24418,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 772b613daad61a442918c0a779ca4a6c, type: 2}
+  - {fileID: 2100000, guid: a0bc78b0cf432764a83f4955b378c664, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29300,7 +29300,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 37cb13795ae2926499d89bb76772a38e, type: 2}
+  - {fileID: 2100000, guid: de6a663bb66ad824bb3bf9da4c0ccf29, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29362,7 +29362,7 @@ GameObject:
   - component: {fileID: 8977077594639163881}
   - component: {fileID: 6154052477917642925}
   - component: {fileID: 1711648286788514714}
-  - component: {fileID: 8385266024852560293}
+  - component: {fileID: 6421336263731647678}
   m_Layer: 0
   m_Name: Effect_33_Flame
   m_TagString: Untagged
@@ -34178,7 +34178,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d14723fdaa13cb419081b4c0053cbbf, type: 2}
+  - {fileID: 2100000, guid: ab86f978dca34de42bdbb1e1d410d214, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34220,7 +34220,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 000103040508
-  m_Mesh: {fileID: 4300000, guid: fdfc131c9d90df948955fbad04f7738b, type: 3}
+  m_Mesh: {fileID: 4300000, guid: ce54284985491f8419f2d051b4538fff, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -34229,7 +34229,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &8385266024852560293
+--- !u!114 &6421336263731647678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34238,6 +34238,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8940596573415601380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de6923c0c6c4164193436b82af45485, type: 3}
+  m_Script: {fileID: 11500000, guid: e8b66314a1ccd37458a24def24a3289b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

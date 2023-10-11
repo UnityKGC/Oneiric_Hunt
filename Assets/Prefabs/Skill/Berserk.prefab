@@ -4902,7 +4902,7 @@ GameObject:
   - component: {fileID: 4051622644346336925}
   - component: {fileID: 4051622644346336924}
   - component: {fileID: 4051622644346336927}
-  - component: {fileID: 4051622644346336926}
+  - component: {fileID: 668709378733317057}
   m_Layer: 0
   m_Name: Effect_21_Flame_2
   m_TagString: Untagged
@@ -9769,7 +9769,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 000103040508
-  m_Mesh: {fileID: 4300000, guid: fdfc131c9d90df948955fbad04f7738b, type: 3}
+  m_Mesh: {fileID: 4300000, guid: ce54284985491f8419f2d051b4538fff, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -9778,7 +9778,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &4051622644346336926
+--- !u!114 &668709378733317057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9787,7 +9787,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4051622644346336913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de6923c0c6c4164193436b82af45485, type: 3}
+  m_Script: {fileID: 11500000, guid: e8b66314a1ccd37458a24def24a3289b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4051622644355058128
@@ -9801,7 +9801,7 @@ GameObject:
   - component: {fileID: 4051622644355058140}
   - component: {fileID: 4051622644355058143}
   - component: {fileID: 4051622644355058142}
-  - component: {fileID: 4051622644355058129}
+  - component: {fileID: 7216633933625813371}
   m_Layer: 0
   m_Name: Effect_21_Flame_2
   m_TagString: Untagged
@@ -14677,7 +14677,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &4051622644355058129
+--- !u!114 &7216633933625813371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14686,7 +14686,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4051622644355058128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de6923c0c6c4164193436b82af45485, type: 3}
+  m_Script: {fileID: 11500000, guid: e8b66314a1ccd37458a24def24a3289b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4051622644717762572
@@ -14700,8 +14700,8 @@ GameObject:
   - component: {fileID: 4051622644717762569}
   - component: {fileID: 4051622644717762568}
   - component: {fileID: 4051622644717762571}
+  - component: {fileID: 1945430787107241694}
   - component: {fileID: 4051622644717762570}
-  - component: {fileID: 4051622644717762573}
   m_Layer: 0
   m_Name: Effect_21_Decal
   m_TagString: Untagged
@@ -14774,6 +14774,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1945430787107241694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4051622644717762572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e1ea5782e045741b003401c3f543ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isParticleSystem: 0
+  m_inputMaterial: {fileID: 2100000, guid: 307a1e73a70265b41aa099c14b2f1654, type: 2}
+  m_timeToReduce: 2
+  m_reduceFactor: 1
+  m_upFactor: 0
 --- !u!65 &4051622644717762570
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14787,23 +14804,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4051622644717762573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4051622644717762572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f875761d9a11f1b448dda0f9ee26e0f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isParticleSystem: 0
-  m_inputMaterial: {fileID: 2100000, guid: ec56cfb5c44dde9498ae3f10743f8897, type: 2}
-  m_timeToReduce: 2
-  m_reduceFactor: 1
-  m_upFactor: 0
 --- !u!1 &4051622645898760872
 GameObject:
   m_ObjectHideFlags: 0
