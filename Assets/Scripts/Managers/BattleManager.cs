@@ -35,7 +35,7 @@ public class BattleManager : MonoBehaviour
         }
         GameManager._instance.Playstate = GameManager.PlayState.Dream_Battle;
 
-        Debug.Log("전투 시작");
+        //Debug.Log("전투 시작");
     }
     public void EndBattle(bool isBossBattle = false) // 몬스터를 다 해치워 전투가 끝날 시
     {

@@ -61,6 +61,6 @@ public class ChasePolice : MonoBehaviour
     void UpdateCatch()
     {
         ChaseManager._instance.ChasePlayerDie = true;
-        Debug.Log("²ý");
+        //Debug.Log("²ý");
     }
 }

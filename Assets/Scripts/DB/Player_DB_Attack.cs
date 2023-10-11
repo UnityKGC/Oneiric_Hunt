@@ -75,14 +75,14 @@ public class Player_DB_Attack : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && _isFirstAttack == false)
             {
-                Debug.Log("첫번째 공격 시작");
+                //Debug.Log("첫번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_1);
                 _isFirstAttack = true;
             }
             else if (Input.GetMouseButtonDown(0) && _isSecondAtk == false)
             {
-                Debug.Log("두번째 공격 시작");
+                //Debug.Log("두번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_2);
                 _isSecondAtk = true;
@@ -90,7 +90,7 @@ public class Player_DB_Attack : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0) && _isThirdAtk == false)
             {
-                Debug.Log("세번째 공격 시작");
+                //Debug.Log("세번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_3);
                 _isThirdAtk = true;
@@ -98,7 +98,7 @@ public class Player_DB_Attack : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("네번째 공격 시작");
+                //Debug.Log("네번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_4);
                 _isFirstAttack = _isSecondAtk = _isThirdAtk = false; // 다시 첫번째 공격으로
@@ -141,28 +141,28 @@ public class Player_DB_Attack : MonoBehaviour
 
             if (SimpleInput.GetButtonDown("Attack") && _isFirstAttack == false)
             {
-                Debug.Log("첫번째 공격 시작");
+                //Debug.Log("첫번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_1);
                 _isFirstAttack = true;
             }
             else if (SimpleInput.GetButtonDown("Attack") && _isSecondAtk == false)
             {
-                Debug.Log("두번째 공격 시작");
+                //Debug.Log("두번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_2);
                 _isSecondAtk = true;
             }
             else if (SimpleInput.GetButtonDown("Attack") && _isThirdAtk == false)
             {
-                Debug.Log("세번째 공격 시작");
+                //Debug.Log("세번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_3);
                 _isThirdAtk = true;
             }
             else if (SimpleInput.GetButtonDown("Attack"))
             {
-                Debug.Log("네번째 공격 시작");
+                //Debug.Log("네번째 공격 시작");
 
                 _anim.CrossFade(BasePlayerState.EPlayerState.Attack_4);
                 _isFirstAttack = _isSecondAtk = _isThirdAtk = false; // 다시 첫번째 공격으로

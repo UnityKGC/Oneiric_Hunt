@@ -41,7 +41,7 @@ public class BossStat : Stat
         {
             _isDead = true;
 
-            Debug.Log("»ç¸Á");
+            //Debug.Log("»ç¸Á");
 
             QuestManager._instance.QuestTrigger(_id);
             SpawnManager._instance.KilledMonster();

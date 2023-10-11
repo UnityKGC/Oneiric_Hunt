@@ -37,7 +37,6 @@ public class Interaction : MonoBehaviour
 
             //Vector3 temp = new Vector3((_playerPos.x + _Pos.x) / 2, 2.5f, (_playerPos.z + _Pos.z) / 2); // y는 고정시키고, 플레이어와 객체 사이의 중앙값을 가져온다.
 
-            Debug.Log(dir);
             Vector3 temp = new Vector3(_pos.x + (dir.x * 0.1f) , 3f, _pos.z + dir.z);
 
             _interactUIRect.position = temp;

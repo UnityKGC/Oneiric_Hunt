@@ -73,6 +73,58 @@ public class SceneManagerEX : MonoBehaviour
         operation.allowSceneActivation = false;
 
         float timer = 0.0f;
+
+        while (!operation.isDone) // 프로세스가 완료되지 않으면 반복
+        {
+            yield return null;
+
+            //timer += Time.deltaTime;
+
+            fillimg.fillAmount = operation.progress;
+            if(operation.progress >= 0.9f)
+            {
+                operation.allowSceneActivation = true;
+                yield break;
+            }
+
+            /*
+            if (operation.progress < 0.9f)
+            {
+                fillimg.fillAmount = Mathf.Lerp(fillimg.fillAmount, operation.progress, timer);
+                if (fillimg.fillAmount >= operation.progress)
+                {
+                    timer = 0f;
+                }
+            }
+            else
+            {
+                fillimg.fillAmount = Mathf.Lerp(fillimg.fillAmount, 1f, timer);
+                if (fillimg.fillAmount == 1.0f)
+                {
+                    operation.allowSceneActivation = true;
+                    yield break;
+                }
+            }*/
+        }
+    }
+    /*
+    IEnumerator LoadSceneAsync(SceneType scene) // sceneID를 SceneType으로 변환 후 받는다.
+    {
+        SoundManager._instance.StopAllSound();
+
+        int idx = Random.Range(0, 3);
+
+        GameObject loadImg = _images[idx];
+
+        loadImg.SetActive(true); // 로딩화면을 활성화 시킨다.
+
+        Image fillimg = loadImg.transform.GetChild(0).GetComponent<Image>(); // 0번째가 Fillimg
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync((int)scene);
+
+        operation.allowSceneActivation = false;
+
+        float timer = 0.0f;
         while (!operation.isDone) // 프로세스가 완료되지 않으면 반복
         {
             yield return null;
@@ -97,5 +149,37 @@ public class SceneManagerEX : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
+    /*
+    IEnumerator LoadSceneAsync(SceneType scene)
+    {
+        SoundManager._instance.StopAllSound();
+
+        int idx = Random.Range(0, 3);
+
+        GameObject loadImg = _images[idx];
+        loadImg.SetActive(true);
+
+        Image fillimg = loadImg.transform.GetChild(0).GetComponent<Image>();
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync((int)scene);
+        operation.allowSceneActivation = false;
+
+        float targetProgress = 0.9f;
+        float threshold = 0.01f; // small threshold to account for floating-point precision
+
+        while (true)
+        {
+            float progress = Mathf.Lerp(fillimg.fillAmount, operation.progress, Time.deltaTime);
+            fillimg.fillAmount = progress;
+
+            if (operation.progress >= targetProgress && progress >= targetProgress - threshold)
+            {
+                operation.allowSceneActivation = true;
+                yield break;
+            }
+
+            yield return null;
+        }
+    }*/
 }

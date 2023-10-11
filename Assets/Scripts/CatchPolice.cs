@@ -98,7 +98,7 @@ public class CatchPolice : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, 10f * Time.deltaTime);
         Vector3 dir = _player.transform.position - transform.position;
-        Debug.Log("잡았다!");
+        //Debug.Log("잡았다!");
         if (dir.magnitude < 1.5f)
         {
             // 애니메이션 실행
@@ -118,6 +118,6 @@ public class CatchPolice : MonoBehaviour
         // 플레이어가 본인에게서 빠져나올 시
         transform.position = Vector3.MoveTowards(transform.position, _jumpDest, 10f * Time.deltaTime);
         Destroy(gameObject, 5f);
-        Debug.Log("죽었다!");
+        //Debug.Log("죽었다!");
     }
 }

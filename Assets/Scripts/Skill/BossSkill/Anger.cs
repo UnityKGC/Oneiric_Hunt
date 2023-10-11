@@ -121,7 +121,7 @@ public class Anger : MonoBehaviour
         {
             if (_firstColl.enabled && !_secondColl.enabled) // 또, 첫번째 coll이 켜져있고, 두번째 coll이 꺼져있고, 도착했다면(_isArrive을 추가하지 않으면, 처음 스킬 시전 시, 플레이어가 있다면 데미지 입음)
             {
-                Debug.Log("첫번째 데미지 입힘 : " + _atk);
+                //Debug.Log("첫번째 데미지 입힘 : " + _atk);
                 other.GetComponent<PlayerStat>().SetDamage(_atk); // 데미지 입힘
             }
         }
@@ -135,7 +135,7 @@ public class Anger : MonoBehaviour
         {
             if (!_firstColl.enabled && _secondColl.enabled) // 첫번째는 꺼져있고, 두번째는 켜져있다면
             {
-                Debug.Log("두번째 데미지 입힘 : " + _atk);
+                //Debug.Log("두번째 데미지 입힘 : " + _atk);
                 _isDmg = true; // 데미지 줬으므로, 변수 true로 전환
                 other.GetComponent<PlayerStat>().SetDamage(_atk); // 데미지 입힘
             }

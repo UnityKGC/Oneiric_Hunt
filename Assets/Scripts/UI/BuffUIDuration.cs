@@ -21,7 +21,7 @@ public class BuffUIDuration : MonoBehaviour
     {
         while (_remainTime >= 0)
         {
-            Debug.Log("남은 시간 : " + _remainTime);
+            //Debug.Log("남은 시간 : " + _remainTime);
 
             _img.fillAmount = _remainTime / _durationTime;
 

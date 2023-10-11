@@ -315,8 +315,9 @@ public class SkillManager : MonoBehaviour
 
         state = _skills[(int)skill]._isAble; // 해달 스킬의 스크립터블의 스킬상태를 가져온다.
 
-        if(!state)
-            Debug.Log(_skills[(int)skill].name + "은(는) 쿨 타임 상태 입니다. 남은 시간 : " + _skills[(int)skill]._remainTime);
+        
+        //if(!state)
+           //Debug.Log(_skills[(int)skill].name + "은(는) 쿨 타임 상태 입니다. 남은 시간 : " + _skills[(int)skill]._remainTime);
 
         return state;
     }

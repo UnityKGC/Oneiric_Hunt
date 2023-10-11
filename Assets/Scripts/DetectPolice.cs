@@ -106,7 +106,7 @@ public class DetectPolice : MonoBehaviour
             {
                 // ! Ç¥½Ã
                 State = DetectPoliceState.Run;
-                Debug.Log("ÂÑ¾Æ°£´Ù.");
+                //Debug.Log("ÂÑ¾Æ°£´Ù.");
             }
         }
     }
