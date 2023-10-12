@@ -12,7 +12,7 @@ public class Overdose : MonoBehaviour
     float _downHpValue = 0.05f; // 초당 깎이는 체력 비율(현재 체력)
     float _downHp; // 실제로 깎이는 체력
     float _upValue = 0.5f; // 올라야 할 공격력 스탯 배율
-    float _buffDuringTime = 10f; // 디버프 지속 시간
+    float _buffDuringTime = 10f; // 버프 지속 시간
 
     BossStat _bossStat;
     void Start()
@@ -44,7 +44,9 @@ public class Overdose : MonoBehaviour
     {
         while(true)
         {
-            _bossStat.HP -= _downHp;
+            _bossStat.SetDamage(_downHp);
+            //_bossStat.HP -= _downHp;
+
             yield return new WaitForSeconds(1f);
         }
     }

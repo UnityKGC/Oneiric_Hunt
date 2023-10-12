@@ -9,6 +9,8 @@ public class BasePlayerMove : MonoBehaviour
     public float _rotSpd;
     public float _h, _v;
 
+    public bool _isConfus = false;
+
     protected PlayerStat _stat;
     protected BasePlayerAnim _anim;
     protected BasePlayerState _state;
@@ -58,6 +60,9 @@ public class BasePlayerMove : MonoBehaviour
         _dir = Quaternion.AngleAxis(_cameTrans.rotation.eulerAngles.y, Vector3.up) * _dir; // 기존 _dir * y축 기준으로 카메라의 rotation.y값만큼 Quaternion을 리턴한다.
 
         _dir = _dir.normalized;
+
+        if (_isConfus) // 상태이상 조건
+            _dir = -_dir;
 
         _magnitude = Mathf.Clamp01(_dir.magnitude) * _stat.MoveSpd; // 움직여야만 속도를 준다.
     }

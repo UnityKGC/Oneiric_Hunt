@@ -11,7 +11,7 @@ public class BossStat : Stat
     [SerializeField] private int _id;
     void Start()
     {
-        Type = TypeEnum.Enemy;
+        Type = TypeEnum.Boss;
 
         // UI 체력 이벤트 등록.
     }

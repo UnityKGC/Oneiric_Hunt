@@ -9,6 +9,7 @@ public abstract class Stat : MonoBehaviour
         None = -1,
         Player,
         Enemy,
+        Boss,
     }
 
     public TypeEnum Type

@@ -34,6 +34,9 @@ public class Buff : MonoBehaviour
             case Stat.TypeEnum.Enemy:
                 UIManager._instacne.StartEnemyBuffUI(transform.parent, type, time);
                 break;
+            case Stat.TypeEnum.Boss:
+                UIManager._instacne.StartBossBuffUI(type, time);
+                break;
         }
         
         switch (type)

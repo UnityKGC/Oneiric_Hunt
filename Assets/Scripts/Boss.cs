@@ -176,6 +176,7 @@ public class Boss : MonoBehaviour
 
         if (_ableSkill)
         {
+            State = BossState.Skill;
             _skillType = BossSkill.SkillType.Near;
         }
         else if (!_isAttack)
