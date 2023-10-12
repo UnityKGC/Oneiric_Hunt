@@ -16,6 +16,9 @@ public class BuffManager : MonoBehaviour
 
         MovSpdUp,
         MovSpdDown,
+
+        Poison,
+        Confusion,
     }
     public static BuffManager _instance;
 

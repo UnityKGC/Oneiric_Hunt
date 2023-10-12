@@ -14,7 +14,6 @@ public class BossSkillManager : MonoBehaviour
         OverDose,
         Rush,
         Delirium,
-        Scent,
         Stench,
     }
 
@@ -27,7 +26,6 @@ public class BossSkillManager : MonoBehaviour
     [SerializeField] GameObject _overdose;
     [SerializeField] GameObject _rush;
     [SerializeField] GameObject _delirium;
-    [SerializeField] GameObject _scent;
     [SerializeField] GameObject _stench;
 
     public bool _isSkilling = false;

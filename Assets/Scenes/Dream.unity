@@ -3329,6 +3329,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 460511199086307618}
     m_Modifications:
+    - target: {fileID: 341397315, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: _buffList.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 341397315, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
+      propertyPath: _buffList.Array.data[6]
+      value: 
+      objectReference: {fileID: 2225360887247622498, guid: 2cbd694bddcc0da41b6d3846c02d80d8, type: 3}
     - target: {fileID: 2916924641196033166, guid: 911ab5c990ed7ee47862b2793b3e590d, type: 3}
       propertyPath: _freeLook
       value: 
@@ -17368,6 +17376,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossSkillManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3827063824960175442, guid: 75e4f28cc050ebb418016109a694f214, type: 3}
+      propertyPath: _scent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3827063824960175442, guid: 75e4f28cc050ebb418016109a694f214, type: 3}
+      propertyPath: _stench
+      value: 
+      objectReference: {fileID: 1761889558798484109, guid: 0b4951fbecbd38f42b5684f35f024a9c, type: 3}
     - target: {fileID: 3827063824960175443, guid: 75e4f28cc050ebb418016109a694f214, type: 3}
       propertyPath: m_RootOrder
       value: 2

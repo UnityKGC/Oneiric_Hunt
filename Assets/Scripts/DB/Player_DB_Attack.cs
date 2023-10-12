@@ -203,8 +203,12 @@ public class Player_DB_Attack : MonoBehaviour
             float dmg = other.GetComponentInParent<BossStat>().GetDamage();
             _stat.SetDamage(dmg);
         }*/
-        float dmg = other.GetComponentInParent<Stat>().GetDamage();
-        _stat.SetDamage(dmg);
+
+        if(other.CompareTag("MonsterAtk") || other.CompareTag("BossAtk"))
+        {
+            float dmg = other.GetComponentInParent<Stat>().GetDamage();
+            _stat.SetDamage(dmg);
+        }
     }
     public void ChangeWeapon(WeaponType weapon) // 무기 Collider를 갱신;
     {
