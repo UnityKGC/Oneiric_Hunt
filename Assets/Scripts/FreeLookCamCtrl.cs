@@ -30,6 +30,7 @@ public class FreeLookCamCtrl : MonoBehaviour, IDragHandler, IPointerDownHandler,
         _xString = "Mouse X";
         _yString = "Mouse Y";
 
+        _freeLook = CameraManager._instance._playerCam;
         _rect = new Rect(0, 0, Screen.width, Screen.height);
     }
     private void Update()

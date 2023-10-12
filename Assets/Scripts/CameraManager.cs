@@ -29,7 +29,7 @@ public class CameraManager : MonoBehaviour
 
     public CinemachineVirtualCameraBase _nowCam = null;
 
-    [SerializeField] CinemachineFreeLook _playerCam;
+    [SerializeField] public CinemachineFreeLook _playerCam;
 
     public GameObject _playerFocus;
 

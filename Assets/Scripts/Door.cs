@@ -11,7 +11,7 @@ public class Door : MonoBehaviour
     private bool _isOpen = false;
     private bool _isActive = false;
 
-    [SerializeField] private Button _interactUI;
+    //[SerializeField] private Button _interactUI;
     [SerializeField] private AudioClip[] _clips;
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class Door : MonoBehaviour
     }
     private void Start()
     {
-        _interactUI.onClick.AddListener(DoorTrigger);
+        //_interactUI.onClick.AddListener(DoorTrigger);
     }
     void Update()
     {

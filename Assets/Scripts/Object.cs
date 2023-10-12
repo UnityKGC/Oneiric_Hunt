@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public enum ObjectType
 {
-    None = -1,
+    None,
     NPC,
-    Clue,
+    Door,
     Object,
 }
 
@@ -15,7 +15,7 @@ public class Object : MonoBehaviour
 {
     [SerializeField] private QuestMarkUI _questMarkUI; // ƒ˘Ω∫∆Æ ¿Ã∆Â∆Æ
     [SerializeField] private TargetUIObj _targetObj;
-    [SerializeField] private Button _interactUI;
+    //[SerializeField] private Button _interactUI;
     public int _objID; // ∫ª¿Œ¿« ID
     
     bool _isActive = false;
@@ -28,7 +28,7 @@ public class Object : MonoBehaviour
         QuestManager._instance._questMarkEvt -= SetQuestMark;
         QuestManager._instance._questMarkEvt += SetQuestMark;
 
-        _interactUI.onClick.AddListener(CheckObj);
+        //_interactUI.onClick.AddListener(CheckObj);
 
         _targetObj.Init(_objID);
     }

@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class TestTestTEst : MonoBehaviour
 {
     [SerializeField] Animation _anim;
-    [SerializeField] Button _interactUI;
+    //[SerializeField] Button _interactUI;
     private AudioSource _audio;
     private bool _isActive = false;
     private GameObject _player;
     void Start()
     {
         _audio = GetComponent<AudioSource>();
-        _interactUI.onClick.AddListener(StartMove);
+        //_interactUI.onClick.AddListener(StartMove);
     }
 
     private void Update()
@@ -29,7 +29,7 @@ public class TestTestTEst : MonoBehaviour
     void StartMove()
     {
         _player.SetActive(false);
-        _interactUI.gameObject.SetActive(false);
+        //_interactUI.gameObject.SetActive(false);
 
         CameraManager._instance.ChangeCam(CameraType.ViewCam);
         _anim.Play();

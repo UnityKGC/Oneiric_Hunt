@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    public ObjectInteractUI _interactionUI; // 상호작용 UI
+    //public ObjectInteractUI _interactionUI; // 상호작용 UI
     public ObjectType ObjType { get { return _objType; } set { _objType = value; } }
 
     [SerializeField] private ObjectType _objType = ObjectType.None;
 
-    [SerializeField] private Vector3 _playerPos;
-    [SerializeField] private Vector3 _pos;
+    //[SerializeField] private Vector3 _playerPos;
+    //[SerializeField] private Vector3 _pos;
 
-    [SerializeField] private RectTransform _interactUIRect; // UI의 Rect
+    //[SerializeField] private RectTransform _interactUIRect; // UI의 Rect
     void Start()
     {
-        _interactionUI.Init(InteractionManager._instance.SetUIText(ObjType));
-        _interactUIRect = _interactionUI.GetComponent<RectTransform>();
-        _interactionUI.gameObject.SetActive(false);
+        //_interactionUI.Init(InteractionManager._instance.SetUIText(ObjType));
+        //_interactUIRect = _interactionUI.GetComponent<RectTransform>();
+        //_interactionUI.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other) // 1. 처음 들어오면 판단 => 선택된 아이템이 없으면 선택, 이미 존재해도 본인이 가장 가깝지 않을 것 이므로 넘김
     {
         if (other.gameObject.tag == "Player")
         {
+            UIManager._instacne.SetInteractBtnEvt(ObjType);
+            /*
             _playerPos = other.transform.position; // 플레이어의 위치
             _pos = transform.position;//  객체의 위치
 
@@ -41,7 +43,7 @@ public class Interaction : MonoBehaviour
 
             _interactUIRect.position = temp;
 
-            _interactionUI.gameObject.SetActive(true);
+            _interactionUI.gameObject.SetActive(true);*/
         }
     }
 
@@ -49,8 +51,9 @@ public class Interaction : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            _interactionUI.gameObject.SetActive(false);
-            InteractionManager._instance.ExitClosestInteractObj(this);
+            UIManager._instacne.SetInteractBtnEvt(ObjectType.None); // 빠져 나오면, 초기화.
+            //_interactionUI.gameObject.SetActive(false);
+            //InteractionManager._instance.ExitClosestInteractObj(this);
         }
     }
 }

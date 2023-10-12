@@ -35,7 +35,7 @@ public class NPC : MonoBehaviour
 
     [SerializeField] List<QuestData> _questList = new List<QuestData>(); // 해당 NPC가 지니고 있는 퀘스트 목록 => 1. 이렇게 NPC가 퀘스트를 지니고 있는게 맞을까? 2. 아니면, 퀘스트 ID만 지니고, 퀘스트 매니저가 모든 퀘스트를 지니고 있는게 맞을가? => 일단 1로 진행한다.
     [SerializeField] private QuestMarkUI _questMarkUI; // 퀘스트 마크
-    [SerializeField] private Button _interactionUI; // 상호작용 UI
+//[SerializeField] private Button _interactionUI; // 상호작용 UI
     [SerializeField] private TargetUIObj _targetObj;
     private Animator _anim;
 
@@ -59,7 +59,7 @@ public class NPC : MonoBehaviour
 
         _anim = GetComponent<Animator>();
 
-        _interactionUI.onClick.AddListener(StartTalk);
+        //_interactionUI.onClick.AddListener(StartTalk);
 
         if (CheckQuest()) // 받야아 하는 퀘스트가 있다면s
             _questMarkUI.SetQuestMark(QuestMark.Start); // ! 마크 활성화
@@ -140,7 +140,7 @@ public class NPC : MonoBehaviour
 
         State = NPCState.Talk;
 
-        _interactionUI.gameObject.SetActive(false);
+        //_interactionUI.gameObject.SetActive(false);
         CameraManager._instance.StartTalkCam(_player, gameObject);
     }
 
@@ -197,7 +197,7 @@ public class NPC : MonoBehaviour
     void EndDialogue()
     {
         State = NPCState.Normal;
-        _interactionUI.gameObject.SetActive(true);
+        //_interactionUI.gameObject.SetActive(true);
         
     }
 }

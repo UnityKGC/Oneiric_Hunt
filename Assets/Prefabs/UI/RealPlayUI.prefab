@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 1642123415}
   - component: {fileID: 1642123414}
   - component: {fileID: 1642123413}
+  - component: {fileID: 1270140576}
   m_Layer: 5
   m_Name: InteractionBtn
   m_TagString: Untagged
@@ -142,7 +143,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68779cbdef076cc4fa3f6e3c4edc7873, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e932d73e51942740b797cd118720210, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -167,6 +168,23 @@ MonoBehaviour:
   button:
     m_key: Space
     value: 0
+--- !u!114 &1270140576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642123411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4579c85fc8e9994b852f3ac6dcdc5fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprites:
+  - {fileID: 21300000, guid: 0e932d73e51942740b797cd118720210, type: 3}
+  - {fileID: 21300000, guid: b5f9d2a06f70ce34ca2090d3c692c547, type: 3}
+  - {fileID: 21300000, guid: dde0708fdac965749b75a093bf13df42, type: 3}
+  - {fileID: 21300000, guid: 411d5a58bd8a1ad4d80976baf45fcc05, type: 3}
 --- !u!1 &5787597885726598422
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9098502728258045283
 Transform:
   m_ObjectHideFlags: 0
@@ -384,7 +402,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &9098502729437910189
 MonoBehaviour:

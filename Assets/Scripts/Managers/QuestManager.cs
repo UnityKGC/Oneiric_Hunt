@@ -157,6 +157,8 @@ public class QuestManager : MonoBehaviour
 
             SoundManager._instance.PlayQuestSound(QuestSound.Trigger);
 
+            UIManager._instacne._interactBtnEvt.Invoke(ObjectType.None);
+
             objData._nowCount++;
 
             if (objData._totalCount <= objData._nowCount)

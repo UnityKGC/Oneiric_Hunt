@@ -6620,11 +6620,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4133593168828780091, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.028494107
+      value: -0.028494138
       objectReference: {fileID: 0}
     - target: {fileID: 4133593168828780091, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0106071895
+      value: 0.010607201
       objectReference: {fileID: 0}
     - target: {fileID: 4133593169058859249, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_FollowOffset.y
@@ -6656,11 +6656,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4133593169209357774, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.028089983
+      value: -0.02809001
       objectReference: {fileID: 0}
     - target: {fileID: 4133593169209357774, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.011635231
+      value: 0.011635241
       objectReference: {fileID: 0}
     - target: {fileID: 4133593169591208724, guid: 934f7c98cd303b145a1fd48f8797ac17, type: 3}
       propertyPath: m_FollowOffset.y
@@ -9122,7 +9122,7 @@ PrefabInstance:
     - target: {fileID: 2733594716181720253, guid: fd5d41d75dab9cf4383afdc3354f34b7, type: 3}
       propertyPath: _playerCam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1220984805}
     - target: {fileID: 2733594716181720253, guid: fd5d41d75dab9cf4383afdc3354f34b7, type: 3}
       propertyPath: _sceneCams
       value: 

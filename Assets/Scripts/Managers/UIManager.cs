@@ -42,9 +42,12 @@ public class UIManager : MonoBehaviour
     public Action<float> _catchUIEvt = null; // CatchEvt의 게이지 UI
 
     public Action<bool> _setBossHPUI = null;
+
     public Action<float> _bossHPEvt = null;
 
     public Action _activePauseEvt = null;
+
+    public Action<ObjectType> _interactBtnEvt = null;
     public SceneUIState SceneUI { get { return _sceneUIState; } set { _sceneUIState = value; } }
 
     [SerializeField] private SceneUIState _sceneUIState = SceneUIState.None; // 이건 Scene이 시작할 때 Scene관리자가 설정해준다.
@@ -199,6 +202,10 @@ public class UIManager : MonoBehaviour
     public void BossHPUIEvt(float value)
     {
         _bossHPEvt?.Invoke(value);
+    }
+    public void SetInteractBtnEvt(ObjectType type)
+    {
+        _interactBtnEvt?.Invoke(type);
     }
     #endregion
 

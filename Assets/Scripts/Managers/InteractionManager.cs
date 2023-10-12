@@ -20,13 +20,13 @@ public class InteractionManager : MonoBehaviour
         switch (type)
         {
             case ObjectType.NPC:
-                text = "대화하기";
+                text = "대화";
                 break;
-            case ObjectType.Clue:
-                text = "확인하기";
+            case ObjectType.Door:
+                text = "열기";
                 break;
             case ObjectType.Object:
-                text = "상호작용";
+                text = "줍기";
                 break;
         }
         return text;

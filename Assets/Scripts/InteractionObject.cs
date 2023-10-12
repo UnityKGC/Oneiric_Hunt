@@ -7,7 +7,7 @@ public class InteractionObject : MonoBehaviour
 {
     [SerializeField] private QuestMarkUI _questMarkUI; // ƒ˘Ω∫∆Æ ¿Ã∆Â∆Æ
     [SerializeField] private TargetUIObj _targetObj;
-    [SerializeField] private Button _interactUI;
+    //[SerializeField] private Button _interactUI;
     public int _objID; // ∫ª¿Œ¿« ID
 
     bool _isActive = false;
@@ -21,7 +21,7 @@ public class InteractionObject : MonoBehaviour
         QuestManager._instance._questMarkEvt -= SetQuestMark;
         QuestManager._instance._questMarkEvt += SetQuestMark;
 
-        _interactUI.onClick.AddListener(CheckObj);
+        //_interactUI.onClick.AddListener(CheckObj);
         _targetObj.Init(_objID);
     }
 
