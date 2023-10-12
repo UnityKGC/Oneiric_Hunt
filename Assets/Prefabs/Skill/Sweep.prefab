@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2001521073467605033}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_43_Draw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 4939087583221014790}
   - component: {fileID: 4939087583221014789}
   - component: {fileID: 4939087583221014788}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_43_Slash_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4929,7 +4929,7 @@ GameObject:
   - component: {fileID: 4939087583339938001}
   - component: {fileID: 4939087583339938000}
   - component: {fileID: 4939087583339938007}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_43_Slash_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9810,7 +9810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4939087583431606035}
   - component: {fileID: 7466775059070153422}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Sweep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9856,7 +9856,7 @@ GameObject:
   - component: {fileID: 4939087584153078951}
   - component: {fileID: 4939087584153078950}
   - component: {fileID: 4939087584153078949}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_43_Slash_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14738,7 +14738,7 @@ GameObject:
   - component: {fileID: 4939087584385040925}
   - component: {fileID: 4939087584385040924}
   - component: {fileID: 4939087584385040915}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_43_Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19620,7 +19620,7 @@ GameObject:
   - component: {fileID: 4939087584842766312}
   - component: {fileID: 4939087584842766319}
   - component: {fileID: 4939087584842766318}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_43_Slash_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3200708302816682613}
   - component: {fileID: 4314727013308952968}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Point_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   m_Component:
   - component: {fileID: 994648147149870780}
   - component: {fileID: 3758957784903581541}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Point_1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 578995481960583326}
   - component: {fileID: 4328068189928769197}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Point_1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 4007697801494134090}
   - component: {fileID: 4007697801494134088}
   - component: {fileID: 4007697801494134091}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Ring_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5052,7 +5052,7 @@ GameObject:
   - component: {fileID: 4007697802544681628}
   - component: {fileID: 4007697802544681618}
   - component: {fileID: 4007697802544681629}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Ring_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9932,7 +9932,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5162013335872893140}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_MakeObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9966,7 +9966,7 @@ GameObject:
   - component: {fileID: 5162013336540940476}
   - component: {fileID: 5162013336540940477}
   - component: {fileID: 5162013336540940474}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14847,7 +14847,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5162013336600525570}
   - component: {fileID: 301847649686355811}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Point_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14900,7 +14900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5162013336684402715}
   - component: {fileID: 8795494388799795257}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Point_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14952,7 +14952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5162013336932362205}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_SwordDropPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14992,7 +14992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5162013337131237919}
   - component: {fileID: 7651833695958912428}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Challenge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15041,7 +15041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5162013337624995883}
   - component: {fileID: 4216400795944776512}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Point_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15094,7 +15094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5162013337640203614}
   - component: {fileID: 4323737470039843923}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Point_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15148,7 +15148,7 @@ GameObject:
   - component: {fileID: 5162013337700697338}
   - component: {fileID: 5162013337700697339}
   - component: {fileID: 5162013337700697336}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Ring_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20029,7 +20029,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8673138311726878690}
   - component: {fileID: 3800477261566987388}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Point_1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

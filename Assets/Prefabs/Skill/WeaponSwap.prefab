@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7973337378966529651}
   - component: {fileID: 6764709237537235941}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: WeaponSwap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

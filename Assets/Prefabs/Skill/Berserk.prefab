@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4051622643855101312}
   - component: {fileID: 4051622643855101315}
   - component: {fileID: 4051622643855101314}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_21_ParticleScatter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4903,7 +4903,7 @@ GameObject:
   - component: {fileID: 4051622644346336924}
   - component: {fileID: 4051622644346336927}
   - component: {fileID: 668709378733317057}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_21_Flame_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9802,7 +9802,7 @@ GameObject:
   - component: {fileID: 4051622644355058143}
   - component: {fileID: 4051622644355058142}
   - component: {fileID: 7216633933625813371}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_21_Flame_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14702,7 +14702,7 @@ GameObject:
   - component: {fileID: 4051622644717762571}
   - component: {fileID: 1945430787107241694}
   - component: {fileID: 4051622644717762570}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_21_Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14815,7 +14815,7 @@ GameObject:
   - component: {fileID: 4051622645898760855}
   - component: {fileID: 4051622645898760854}
   - component: {fileID: 4051622645898760873}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_21_ParticleScatter_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19705,7 +19705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5332312031001634598}
   - component: {fileID: -5005164381092195641}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Berserk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

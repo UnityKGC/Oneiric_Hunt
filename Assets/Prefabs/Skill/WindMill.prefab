@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8897972915609460837}
   - component: {fileID: 8863968987624621770}
-  m_Layer: 8
+  m_Layer: 16
   m_Name: WindMill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 5793437673001921601}
   - component: {fileID: 3542449550558926107}
   - component: {fileID: 9038923074853167149}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_33_Flame_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4952,7 +4952,7 @@ GameObject:
   - component: {fileID: 2895618035792708641}
   - component: {fileID: 2895618035792708643}
   - component: {fileID: 2895618035792708642}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_33_Ring_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9834,7 +9834,7 @@ GameObject:
   - component: {fileID: 8341830530322619953}
   - component: {fileID: 8341830530322619952}
   - component: {fileID: 8341830530322619967}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_33_Ring_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14716,7 +14716,7 @@ GameObject:
   - component: {fileID: 8341830530383420972}
   - component: {fileID: 8341830530383420971}
   - component: {fileID: 8341830530383420970}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_33_Ring_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19598,7 +19598,7 @@ GameObject:
   - component: {fileID: 8341830530542284446}
   - component: {fileID: 8341830530542284445}
   - component: {fileID: 8341830530542284444}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_33_Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24480,7 +24480,7 @@ GameObject:
   - component: {fileID: 8341830531315198164}
   - component: {fileID: 8341830531315198163}
   - component: {fileID: 8341830531315198162}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_33_Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29363,7 +29363,7 @@ GameObject:
   - component: {fileID: 6154052477917642925}
   - component: {fileID: 1711648286788514714}
   - component: {fileID: 6421336263731647678}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_33_Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}

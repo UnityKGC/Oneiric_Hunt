@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1347993044287209535}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_34_Hit_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 652031861998227943}
   - component: {fileID: 1022781339641170390}
   - component: {fileID: 6509009537249519863}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 'Effect_34_Particle '
   m_TagString: Untagged
   m_Icon: {fileID: 0}

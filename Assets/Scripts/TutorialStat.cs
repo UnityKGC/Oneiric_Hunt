@@ -10,9 +10,12 @@ public class TutorialStat : Stat
 
     [SerializeField] int _id; // ∏ÛΩ∫≈Õ id
 
+    Animator _anim;
+
     void Start()
     {
         Type = TypeEnum.Enemy;
+        _anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -39,13 +42,16 @@ public class TutorialStat : Stat
         {
             _isDead = true;
 
-            Debug.Log("ªÁ∏¡");
-
             QuestManager._instance.QuestTrigger(_id);
             SpawnManager._instance.KilledMonster();
 
             Destroy(gameObject);
         }
+        else
+        {
+            _anim.CrossFade("Hit", 0.1f);
+        }
+
     }
     private void OnTriggerEnter(Collider other)
     {

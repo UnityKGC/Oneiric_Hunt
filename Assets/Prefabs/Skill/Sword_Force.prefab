@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 623986040524750555}
   - component: {fileID: 4993940603394601706}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Sword_Force
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 6028576630217689628}
   - component: {fileID: 6028576630217689629}
   - component: {fileID: 6028576630217689626}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_30_Slash_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4939,7 +4939,7 @@ GameObject:
   - component: {fileID: 6028576630956372723}
   - component: {fileID: 6028576630956372720}
   - component: {fileID: 6028576630956372721}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_30_Slash_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9819,7 +9819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6028576631116541138}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_30_Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9856,7 +9856,7 @@ GameObject:
   - component: {fileID: 6028576631379900197}
   - component: {fileID: 6028576631379900194}
   - component: {fileID: 6028576631379900195}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_30_Slash_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14738,7 +14738,7 @@ GameObject:
   - component: {fileID: 6028576631695900082}
   - component: {fileID: 6028576631695900083}
   - component: {fileID: 6028576631695900080}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Effect_30_Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
