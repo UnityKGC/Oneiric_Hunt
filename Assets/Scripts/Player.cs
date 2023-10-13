@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     private float _stopAtkTime;
     private float _startAtkDelay;
-    private float _atkDelay = 0.7f;
+
     private float _idleTime = 2f;
 
     private bool _isStopAtk = true;
@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private bool _isSecondAtk = false;
     private bool _isThirdAtk = false;
 
+    private WaitForSeconds _atkDelay = new WaitForSeconds(0.7f);
     void Awake()
     {
         _stat = GetComponent<PlayerStat>();
@@ -93,7 +94,7 @@ public class Player : MonoBehaviour
         _isAttack = true;
         _hand.enabled = true;
 
-        yield return new WaitForSeconds(_atkDelay);
+        yield return _atkDelay;
 
         _hand.enabled = false;
         _isAttack = false;

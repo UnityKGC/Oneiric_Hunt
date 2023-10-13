@@ -15,6 +15,7 @@ public class Poison : MonoBehaviour
     float _dmgValue; // 초당 입히는 데미지 비율
     float _dmg; // 실제 초당 입히는 데미지
 
+    private WaitForSeconds _delay = new WaitForSeconds(1f);
     private void Update()
     {
         _remainingTime = _duration - (Time.time - _startTime);
@@ -76,7 +77,7 @@ public class Poison : MonoBehaviour
             {
                 _bossStat.HP -= _dmg;
             }
-            yield return new WaitForSeconds(1f);
+            yield return _delay;
         }
         Destroy(gameObject);
     }

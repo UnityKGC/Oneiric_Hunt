@@ -64,7 +64,9 @@ public class Monster : MonoBehaviour
 
     private bool _isHit = false;
     private bool _isDie = false;
-    
+
+    private WaitForSeconds _atkDelay = new WaitForSeconds(1.5f);
+    private WaitForSeconds _hitDelay = new WaitForSeconds(0.5f);
     private void Awake()
     {
         _stat = GetComponent<MonsterStat>();
@@ -143,7 +145,7 @@ public class Monster : MonoBehaviour
         _hand.SetActive(true);
         _atkTrail.SetActive(true);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return _atkDelay;
 
         _atkTrail.SetActive(false);
         _hand.SetActive(false);
@@ -158,7 +160,7 @@ public class Monster : MonoBehaviour
     {
         _isHit = true;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return _hitDelay;
 
         if (_dist <= 1.5f)
             State = MonsterState.Attack;

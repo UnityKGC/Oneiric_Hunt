@@ -15,6 +15,8 @@ public class Overdose : MonoBehaviour
     float _buffDuringTime = 10f; // 버프 지속 시간
 
     BossStat _bossStat;
+
+    private WaitForSeconds _delay = new WaitForSeconds(1f);
     void Start()
     {
         _startTime = Time.time;
@@ -47,7 +49,7 @@ public class Overdose : MonoBehaviour
             _bossStat.SetDamage(_downHp);
             //_bossStat.HP -= _downHp;
 
-            yield return new WaitForSeconds(1f);
+            yield return _delay;
         }
     }
 }

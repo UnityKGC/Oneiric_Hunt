@@ -149,6 +149,7 @@ public class Boss : MonoBehaviour
     IEnumerator StartAppearCo()
     {
         _isAppear = true; // 등장했으니 true로
+        
         yield return new WaitForSeconds(3.5f); // 등장 연출
 
         State = BossState.Run;

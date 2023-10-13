@@ -25,7 +25,9 @@ public class Challenge : MonoBehaviour
     float _buffDuringTime; // 버프 지속 시간
 
     int _layerMask = (1 << 7) | (1 << 10); // 몬스터와 보스의 Layer만 체크
-    
+
+    private WaitForSeconds _second = new WaitForSeconds(1.5f);
+
     public void Init(SkillScriptable scriptable, float playerAtk)
     {
         _scriptable = scriptable;
@@ -56,7 +58,7 @@ public class Challenge : MonoBehaviour
     }
     IEnumerator StartSkill()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return _second;
 
         GameObject player = GameManager._instance.Player;
 

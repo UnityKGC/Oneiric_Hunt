@@ -10,79 +10,67 @@ public class FreeLookCamCtrl : MonoBehaviour, IDragHandler, IPointerDownHandler,
 {
     [SerializeField] CinemachineFreeLook _freeLook;
 
-    [SerializeField] Joystick _joyStick;
-
     [SerializeField] Image _area; // 카메라 회전을 위해, 화면 전체를 덮는 이미지 UI => 이것 때문에 월드 UI가 조작이 안됨.
-    [SerializeField] Rect _rect;
-    [SerializeField] Vector2 _mousePos;
 
-    [SerializeField] string _xString, _yString;
+    [SerializeField] Vector2 _currentMousePos;
+    [SerializeField] Vector2 _prevMousePos;
+    [SerializeField] Vector2 _nowDir;
 
-    [SerializeField] Vector2 _startPos;
+    private float _xSpd = 150f;
+    private float _ySpd = 1.5f;
 
-    [SerializeField] LayerMask _mask = 1 << 15;
-
-    [SerializeField] Ray ray;
-
-    [SerializeField] RaycastHit[] hits;
+    private bool _isDrag = false;
     private void Start()
     {
-        _xString = "Mouse X";
-        _yString = "Mouse Y";
-
         _freeLook = CameraManager._instance._playerCam;
-        _rect = new Rect(0, 0, Screen.width, Screen.height);
-    }
-    private void Update()
-    {
-        _mousePos = Input.mousePosition;
 
-        if (!_rect.Contains(_mousePos))
-        {
-            _freeLook.m_XAxis.m_InputAxisName = _xString;
-            _freeLook.m_YAxis.m_InputAxisName = _yString;
-
-        }
-        else if(_rect.Contains(_mousePos))
-        {
-            _freeLook.m_XAxis.m_InputAxisName = ""; // For example, disable X-axis rotation
-            _freeLook.m_YAxis.m_InputAxisName = "";
-
-            _freeLook.m_XAxis.m_InputAxisValue = 0f;
-            _freeLook.m_YAxis.m_InputAxisValue = 0f;
-        }
-
+        _freeLook.m_XAxis.m_InputAxisName = ""; // 모바일 환경에서는 FreeLook 카메라를 터치로만 진행할 수 있게 Name을 공백으로 설정.
+        _freeLook.m_YAxis.m_InputAxisName = "";
     }
     
     public void OnDrag(PointerEventData eventData)
     {
+        if (!_isDrag) return;
+
+        Vector2 currentMousePos = eventData.position;
+        Vector2 nowDir = (currentMousePos - _prevMousePos).normalized;
+
+        _freeLook.m_XAxis.Value += nowDir.x * _xSpd * Time.deltaTime;
+        _freeLook.m_YAxis.Value -= nowDir.y * _ySpd * Time.deltaTime;
+
+        _prevMousePos = currentMousePos;
+        /*
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_area.rectTransform, eventData.position, eventData.enterEventCamera, out Vector2 posOut))
         {
-            Vector2 currentMousePos = Input.mousePosition;
-            Vector2 offset = currentMousePos - _startPos;
+            _nowDir = ((Vector2)Input.mousePosition - _prevMousePos).normalized;
 
-            _freeLook.m_XAxis.Value += offset.x * 1.5f * Time.deltaTime;
-            _freeLook.m_YAxis.Value -= offset.y * 0.01f * Time.deltaTime;
-        }
+            _freeLook.m_XAxis.Value += _nowDir.x * _xSpd * Time.deltaTime;
+            _freeLook.m_YAxis.Value -= _nowDir.y * _ySpd * Time.deltaTime;
+
+            _prevMousePos = Input.mousePosition;
+        }*/
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        _prevMousePos = eventData.position;
+        _isDrag = true;
+
+        /*
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_area.rectTransform, eventData.position, eventData.enterEventCamera, out Vector2 posOut))
         {
-            _startPos = Input.mousePosition;
-        }
-
+            _prevMousePos = Input.mousePosition;
+            _isDrag = true;
+        }*/
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        _isDrag = false;
+        /*
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_area.rectTransform, eventData.position, eventData.enterEventCamera, out Vector2 posOut))
         {
-            _freeLook.m_XAxis.m_InputAxisName = ""; // For example, disable X-axis rotation
-            _freeLook.m_YAxis.m_InputAxisName = "";
-
-            _startPos = Vector2.zero;
-        }
+            _isDrag = false;
+        }*/
     }
 }

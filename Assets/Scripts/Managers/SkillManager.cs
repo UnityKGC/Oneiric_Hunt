@@ -39,6 +39,8 @@ public class SkillManager : MonoBehaviour
 
     public bool _isSkilling = false; // 스킬을 사용 중 인가
     //public bool _isMoveSkill = false; // 이동하는 스킬(Dodge)을 사용 중 인가 => 현재는 딱히 없음
+
+    private WaitForEndOfFrame _frameTime = new WaitForEndOfFrame();
     private void Awake()
     {
         _instance = this;
@@ -346,7 +348,7 @@ public class SkillManager : MonoBehaviour
         while (scriptable._remainTime > 0)
         {
             scriptable._remainTime = coolTime - (Time.time - _startCoolTime);
-            yield return new WaitForEndOfFrame();
+            yield return _frameTime;
         }
 
         scriptable._remainTime = scriptable._skillCoolTime; // 남은 시간 초기화

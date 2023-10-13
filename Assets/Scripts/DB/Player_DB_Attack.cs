@@ -20,7 +20,7 @@ public class Player_DB_Attack : MonoBehaviour
     //private float _stopAtkTime;
     private float _startStopAtkTime; // 공격을 그만 둔 시간
     private float _atkAgreeTime = 1f; // 공격 인정 시간
-    private float _atkDelay = 0.8f;
+
     //private float _idleTime = 2f;
 
     //private bool _isStopAtk = true;
@@ -29,6 +29,8 @@ public class Player_DB_Attack : MonoBehaviour
     private bool _isThirdAtk = false;
 
     private WeaponType _nowType = WeaponType.Sword; // 현재 무기타입
+
+    private WaitForSeconds _atkDelay = new WaitForSeconds(0.8f);
 
     void Awake()
     {
@@ -231,7 +233,7 @@ public class Player_DB_Attack : MonoBehaviour
         _ischeckAttack = true;
         //AttackStart();
 
-        yield return new WaitForSeconds(_atkDelay);
+        yield return _atkDelay;
 
         //AttackEnd();
         _ischeckAttack = false;

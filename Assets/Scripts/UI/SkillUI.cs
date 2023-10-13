@@ -8,6 +8,8 @@ public class SkillUI : MonoBehaviour
     public List<Image> _skillFrontImgLst; // Amount를 1 => 0으로 수정시켜 쿨타임처럼 만든다.
 
     public List<GameObject> _weaponSkillLst; // 무기 변경시 해당 무기 스킬UI만를 보이도록 활성,비활성화 함
+
+    private WaitForEndOfFrame _frameTime = new WaitForEndOfFrame();
     void Start()
     {
         UIManager._instacne._skillEvt -= StartCoolTime;
@@ -45,7 +47,7 @@ public class SkillUI : MonoBehaviour
         while (scriptable._remainTime > 0)
         {
             img.fillAmount = scriptable._remainTime / scriptable._skillCoolTime;
-            yield return new WaitForEndOfFrame();
+            yield return _frameTime;
         }
         img.fillAmount = 0f; // 쿨타임 끝나면 0으로 초기화 = 혹시나 모르니까
     }

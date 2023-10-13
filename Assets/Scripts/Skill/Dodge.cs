@@ -7,6 +7,7 @@ public class Dodge : MonoBehaviour
     SkillScriptable _scriptable;
 
     float _moveSpd = 15f;
+    private WaitForEndOfFrame _returnTime = new WaitForEndOfFrame();
     public void Init(SkillScriptable scriptable, Vector3 playerPos, Quaternion playerRot)
     {
         _scriptable = scriptable;
@@ -23,7 +24,7 @@ public class Dodge : MonoBehaviour
             Vector3 dir = playerRot * Vector3.forward;
             transform.parent.position += dir * _moveSpd * Time.deltaTime; // 부모가 플레이어니까 이렇게 하긴 했는데.. 이게 맞나...? KGC
             time -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            yield return _returnTime;
         }
 
         Destroy(gameObject);
