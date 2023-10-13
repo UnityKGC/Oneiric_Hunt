@@ -37,10 +37,13 @@ public class Stabing : MonoBehaviour
 
         foreach (Collider coll in _colls)
         {
-            Stat stat = coll.GetComponent<Stat>();
+            if (coll)
+            {
+                Stat stat = coll.GetComponent<Stat>();
 
-            if (stat != null)
-                stat.SetDamage(_atk);
+                if (stat != null)
+                    stat.SetDamage(_atk);
+            }
         }
         Destroy(gameObject, _durationTime);
     }

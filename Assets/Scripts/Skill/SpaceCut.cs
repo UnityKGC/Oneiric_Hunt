@@ -7,8 +7,8 @@ public class SpaceCut : MonoBehaviour
 {
     SkillScriptable _scriptable;
 
-    Collider[] _monsterColls = new Collider[10]; // 끌어들이는 몬스터 들
-    Collider[] _monsterDamageColls = new Collider[10]; // 데미지를 입히는 몬스터 들
+    [SerializeField] Collider[] _monsterColls = new Collider[10]; // 끌어들이는 몬스터 들
+    [SerializeField] Collider[] _monsterDamageColls = new Collider[10]; // 데미지를 입히는 몬스터 들
 
     float _startTime; // 시작시간
     float _duringTime = 10f; // 지속시간
@@ -57,23 +57,28 @@ public class SpaceCut : MonoBehaviour
 
             foreach (Collider coll in _monsterColls)  // 빨려드는 범위
             {
-                Vector3 dir = transform.position - coll.transform.position;
-                coll.transform.position += dir * Time.deltaTime;
+                if(coll)
+                {
+                    Vector3 dir = transform.position - coll.transform.position;
+                    coll.transform.position += dir * Time.deltaTime;
+                }
             }
 
             foreach(Collider coll in _monsterDamageColls)  // 데미지 입히는 범위
             {
-                if (!_damagedTargets.Contains(coll.gameObject))
+                if(coll)
                 {
-                    Stat stat = coll.GetComponent<Stat>();
+                    if (!_damagedTargets.Contains(coll.gameObject)) // _dmgDelay마다 데미지를 받도록 하는 로직.
+                    {
+                        Stat stat = coll.GetComponent<Stat>();
 
-                    if (stat != null)
-                        stat.SetDamage(_atk);
+                        if (stat != null)
+                            stat.SetDamage(_atk);
 
-                    _damagedTargets.Add(coll.gameObject);
+                        _damagedTargets.Add(coll.gameObject);
+                    }
                 }
             }
-
             if (Time.time - _dmgStart >= _dmgDelay) // 데미지 딜레이 시간이 지날때 마다, 맞은 적 리스트 초기화 => 도중에 죽었거나, 범위 밖으로 빠져나간 몬스터도 존재할 수 있으니 해준다.
             {
                 _dmgStart = Time.time;

@@ -53,20 +53,26 @@ public class WindMill : MonoBehaviour
 
             foreach (Collider coll in _monsterColls) // 빨려드는 범위
             {
-                Vector3 dir = transform.position - coll.transform.position;
-                coll.transform.position += dir * 1f * Time.deltaTime;
+                if (coll)
+                {
+                    Vector3 dir = transform.position - coll.transform.position;
+                    coll.transform.position += dir * Time.deltaTime;
+                }
             }
 
             foreach (Collider coll in _monsterDamageColls) // 데미지 입히는 범위
             {
-                if (!_damagedTargets.Contains(coll.gameObject))
+                if (coll)
                 {
-                    Stat stat = coll.GetComponent<Stat>();
+                    if (!_damagedTargets.Contains(coll.gameObject)) // _dmgDelay마다 데미지를 받도록 하는 로직.
+                    {
+                        Stat stat = coll.GetComponent<Stat>();
 
-                    if (stat != null)
-                        stat.SetDamage(_atk);
+                        if (stat != null)
+                            stat.SetDamage(_atk);
 
-                    _damagedTargets.Add(coll.gameObject);
+                        _damagedTargets.Add(coll.gameObject);
+                    }
                 }
             }
 

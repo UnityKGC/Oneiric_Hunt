@@ -44,15 +44,18 @@ public class SwordForce : MonoBehaviour
             Physics.OverlapSphereNonAlloc(transform.position, _amount, _monsters, _layerMask);
             foreach(Collider coll in _monsters)
             {
-                if (!_damagedTargets.Contains(coll.gameObject)) // 한번 맞은 적은 건너뛴다.
+                if(coll)
                 {
-                    Stat stat = coll.GetComponent<Stat>();
+                    if (!_damagedTargets.Contains(coll.gameObject)) // 한번 맞은 적은 건너뛴다.
+                    {
+                        Stat stat = coll.GetComponent<Stat>();
 
-                    if (stat != null)
-                        stat.SetDamage(_atk);
+                        if (stat != null)
+                            stat.SetDamage(_atk);
 
-                    HitObj(coll.gameObject.transform.position);
-                    _damagedTargets.Add(coll.gameObject);
+                        HitObj(coll.gameObject.transform.position);
+                        _damagedTargets.Add(coll.gameObject);
+                    }
                 }
             }
         }

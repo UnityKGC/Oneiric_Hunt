@@ -71,13 +71,16 @@ public class Challenge : MonoBehaviour
 
         foreach (Collider coll in _colls)
         {
-            Stat stat = coll.GetComponent<Stat>();
+            if(coll)
+            {
+                Stat stat = coll.GetComponent<Stat>();
 
-            if (stat != null)
-                stat.SetDamage(_atk);
+                if (stat != null)
+                    stat.SetDamage(_atk);
 
-            BuffManager._instance.StartDeBuff(BuffManager.BuffEffect.AtkDown, coll.gameObject, _downAtkValue, _buffDuringTime);
-            BuffManager._instance.StartDeBuff(BuffManager.BuffEffect.DefDown, coll.gameObject, _downDefValue, _buffDuringTime);
+                BuffManager._instance.StartDeBuff(BuffManager.BuffEffect.AtkDown, coll.gameObject, _downAtkValue, _buffDuringTime);
+                BuffManager._instance.StartDeBuff(BuffManager.BuffEffect.DefDown, coll.gameObject, _downDefValue, _buffDuringTime);
+            }
         }
     }
     void Update()
