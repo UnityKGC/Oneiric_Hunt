@@ -60,4 +60,8 @@ public class TutorialStat : Stat
             SetDamage(other.GetComponentInParent<PlayerStat>().GetDamage());
         }
     }
+    private void OnDestroy()
+    {
+        
+    }
 }
