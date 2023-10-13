@@ -6,7 +6,7 @@ public class Challenge : MonoBehaviour
 {
     SkillScriptable _scriptable;
 
-    private Collider[] _colls;
+    private Collider[] _colls = new Collider[10];
 
     float _startTime; // 시작시간
     float _remainingTime; // 남은시간
@@ -65,7 +65,7 @@ public class Challenge : MonoBehaviour
         BuffManager._instance.StartBuff(BuffManager.BuffEffect.AtkUp, player, _upAtkValue, _buffDuringTime);
         BuffManager._instance.StartBuff(BuffManager.BuffEffect.DefUp, player, _upDefValue, _buffDuringTime);
 
-        _colls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
+        Physics.OverlapSphereNonAlloc(transform.position, _dmgAmount, _colls, _layerMask);
 
         CameraManager._instance.StartEffectCam(CameraType.PlayerCam, 3f, 1f);
 

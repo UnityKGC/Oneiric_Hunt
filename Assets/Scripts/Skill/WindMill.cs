@@ -6,8 +6,8 @@ public class WindMill : MonoBehaviour
 {
     SkillScriptable _scriptable;
 
-    Collider[] _monsterColls; // 끌어들이는 몬스터 들
-    Collider[] _monsterDamageColls; // 데미지를 입히는 몬스터 들
+    Collider[] _monsterColls = new Collider[10]; // 끌어들이는 몬스터 들
+    Collider[] _monsterDamageColls = new Collider[10]; // 데미지를 입히는 몬스터 들
 
     HashSet<GameObject> _damagedTargets = new HashSet<GameObject>(); // 스킬과 한번 맞닿은 적을 다룬다.
 
@@ -48,8 +48,8 @@ public class WindMill : MonoBehaviour
     {
         if (Time.time - _startTime <= _duringTime)
         {
-            _monsterColls = Physics.OverlapSphere(transform.position, _attractAmount, _layerMask); // Layer가 Monster인 오브젝트들의 Collider를 _monsterColls에 담는다.
-            _monsterDamageColls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
+            Physics.OverlapSphereNonAlloc(transform.position, _attractAmount, _monsterColls, _layerMask); // Layer가 Monster인 오브젝트들의 Collider를 _monsterColls에 담는다.
+            Physics.OverlapSphereNonAlloc(transform.position, _dmgAmount, _monsterDamageColls, _layerMask);
 
             foreach (Collider coll in _monsterColls) // 빨려드는 범위
             {

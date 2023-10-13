@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sweep : MonoBehaviour
 {
     SkillScriptable _scriptable;
-    Collider[] colls;
+    Collider[] _colls = new Collider[10];
 
     float _dmgAmount; // 스킬 범위
 
@@ -28,8 +28,9 @@ public class Sweep : MonoBehaviour
 
     void Start()
     {
-        colls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
-        foreach(Collider coll in colls)
+        Physics.OverlapSphereNonAlloc(transform.position, _dmgAmount, _colls, _layerMask);
+
+        foreach (Collider coll in _colls)
         {
             Stat stat = coll.GetComponent<Stat>();
 

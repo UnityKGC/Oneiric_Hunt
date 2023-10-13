@@ -5,7 +5,7 @@ using UnityEngine;
 public class Stabing : MonoBehaviour
 {
     SkillScriptable _scriptable;
-    Collider[] _colls;
+    Collider[] _colls = new Collider[10];
 
     float _dmgAmount; // 스킬 범위
     float _durationTime;
@@ -33,7 +33,7 @@ public class Stabing : MonoBehaviour
         _point0 = transform.position + Vector3.forward * 2;
         _point1 = transform.position + Vector3.forward;
 
-        _colls = Physics.OverlapCapsule(_point0, _point1, _dmgAmount, _layerMask);
+        Physics.OverlapCapsuleNonAlloc(_point0, _point1, _dmgAmount, _colls, _layerMask);
 
         foreach (Collider coll in _colls)
         {

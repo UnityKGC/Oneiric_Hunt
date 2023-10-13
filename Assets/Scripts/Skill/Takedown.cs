@@ -27,7 +27,7 @@ public class Takedown : MonoBehaviour
 
     void Start()
     {
-        _colls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
+        Physics.OverlapSphereNonAlloc(transform.position, _dmgAmount, _colls, _layerMask);
 
         foreach (Collider coll in _colls)
         {

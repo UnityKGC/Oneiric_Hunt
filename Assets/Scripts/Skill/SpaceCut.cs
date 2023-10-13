@@ -7,8 +7,8 @@ public class SpaceCut : MonoBehaviour
 {
     SkillScriptable _scriptable;
 
-    Collider[] _monsterColls; // 끌어들이는 몬스터 들
-    Collider[] _monsterDamageColls; // 데미지를 입히는 몬스터 들
+    Collider[] _monsterColls = new Collider[10]; // 끌어들이는 몬스터 들
+    Collider[] _monsterDamageColls = new Collider[10]; // 데미지를 입히는 몬스터 들
 
     float _startTime; // 시작시간
     float _duringTime = 10f; // 지속시간
@@ -23,7 +23,7 @@ public class SpaceCut : MonoBehaviour
 
     int _layerMask = (1 << 7) | (1 << 10); // 몬스터와 보스의 Layer만 체크
 
-    HashSet<GameObject> _damagedTargets = new HashSet<GameObject>(); // 스킬과 한번 맞닿은 적을 다룬다.
+    List<GameObject> _damagedTargets = new List<GameObject>(); // 스킬과 한번 맞닿은 적을 다룬다.
     public void Init(SkillScriptable scriptable, float playerAtk)
     {
         _scriptable = scriptable;
@@ -37,11 +37,14 @@ public class SpaceCut : MonoBehaviour
         _dmgDelay = _scriptable._damageDelay;
 
         _duringTime = _scriptable._durationTime;
+
+        _startTime = Time.time; // 스킬 사용하자마자 소환되므로, 바로 시간체크
+        _dmgStart = Time.time;
     }
     void Start()
     {
-        _startTime = Time.time; // 스킬 사용하자마자 소환되므로, 바로 시간체크
-        _dmgStart = Time.time;
+        //_startTime = Time.time; // 스킬 사용하자마자 소환되므로, 바로 시간체크
+        //_dmgStart = Time.time;
     }
 
     // Update is called once per frame
@@ -49,13 +52,13 @@ public class SpaceCut : MonoBehaviour
     {
         if (Time.time - _startTime <= _duringTime)
         {
-            _monsterColls = Physics.OverlapSphere(transform.position, _attractAmount, _layerMask); // Layer가 Monster인 오브젝트들의 Collider를 _monsterColls에 담는다.
-            _monsterDamageColls = Physics.OverlapSphere(transform.position, _dmgAmount, _layerMask);
+            Physics.OverlapSphereNonAlloc(transform.position, _attractAmount, _monsterColls, _layerMask);
+            Physics.OverlapSphereNonAlloc(transform.position, _dmgAmount, _monsterDamageColls, _layerMask);
 
             foreach (Collider coll in _monsterColls)  // 빨려드는 범위
             {
                 Vector3 dir = transform.position - coll.transform.position;
-                coll.transform.position += dir * 1f * Time.deltaTime;
+                coll.transform.position += dir * Time.deltaTime;
             }
 
             foreach(Collider coll in _monsterDamageColls)  // 데미지 입히는 범위
