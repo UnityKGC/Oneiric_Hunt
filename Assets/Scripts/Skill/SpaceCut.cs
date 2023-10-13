@@ -23,7 +23,7 @@ public class SpaceCut : MonoBehaviour
 
     int _layerMask = (1 << 7) | (1 << 10); // 몬스터와 보스의 Layer만 체크
 
-    List<GameObject> _damagedTargets = new List<GameObject>(); // 스킬과 한번 맞닿은 적을 다룬다.
+    HashSet<GameObject> _damagedTargets = new HashSet<GameObject>(); // 스킬과 한번 맞닿은 적을 다룬다.
     public void Init(SkillScriptable scriptable, float playerAtk)
     {
         _scriptable = scriptable;
@@ -74,7 +74,7 @@ public class SpaceCut : MonoBehaviour
                 }
             }
 
-            if (Time.time - _dmgStart >= _dmgDelay) // 데미지 딜레이 시간이 지날때 마다, 맞은 적 리스트 초기화
+            if (Time.time - _dmgStart >= _dmgDelay) // 데미지 딜레이 시간이 지날때 마다, 맞은 적 리스트 초기화 => 도중에 죽었거나, 범위 밖으로 빠져나간 몬스터도 존재할 수 있으니 해준다.
             {
                 _dmgStart = Time.time;
                 _damagedTargets.Clear();
