@@ -5,7 +5,7 @@ using UnityEngine;
 public class Takedown : MonoBehaviour
 {
     SkillScriptable _scriptable;
-    Collider[] _colls;
+    Collider[] _colls = new Collider[10];
 
     float _dmgAmount; // 스킬 범위
     float _durationTime;
