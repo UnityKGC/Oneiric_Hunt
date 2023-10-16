@@ -1290,14 +1290,15 @@ MonoBehaviour:
   - _questID: 10
     _npcID: 1000
     _questType: 0
-    _questName: "\uBB3C\uAC74 \uAC00\uC838\uC624\uAE30"
-    _questContentText: "\uBC29 \uC548\uC5D0\uC11C \uBB3C\uAC74\uC744 \uAC00\uC838\uB2E4\uC8FC\uC790."
+    _questName: "\uD578\uB4DC\uD3F0 \uAC00\uC838\uC624\uAE30"
+    _questContentText: "\uBC29 \uC548\uC5D0 \uC788\uB294 \uD578\uB4DC\uD3F0\uC744
+      \uAC00\uC838\uB2E4\uC8FC\uC790."
     _dialogueData:
     - _name: "\uC544\uB0B4"
       _dialogueType: 0
       _dialogueLines:
-      - "\uC77C\uB0A8?"
-      - "\uBC29 \uC548\uC5D0 \uAC00\uC11C \uBB3C\uAC74 \uC880 \uAC00\uC838\uC640
+      - "\uC77C\uC5B4\uB0AC\uC5B4?"
+      - "\uBC29 \uC548\uC5D0 \uAC00\uC11C \uD578\uB4DC\uD3F0 \uC880 \uAC00\uC838\uC640
         \uC918."
       _index: 0
       _isStart: 0
@@ -1306,7 +1307,7 @@ MonoBehaviour:
     - _name: "\uC544\uB0B4"
       _dialogueType: 1
       _dialogueLines:
-      - "\uBB50\uD574 \uBE68\uB9AC \uAC00\uC838\uC640 \uC918."
+      - "\uBE68\uB9AC \uAC00\uC838\uC640 \uC918."
       _index: 0
       _isStart: 0
       _isLast: 0
@@ -1314,15 +1315,14 @@ MonoBehaviour:
     - _name: "\uC544\uB0B4"
       _dialogueType: 2
       _dialogueLines:
-      - "\uB561\uD050"
+      - "\uACE0\uB9C8\uC6CC~"
       _index: 0
       _isStart: 0
       _isLast: 0
       _isFinish: 0
     _objLst:
     - _objID: 10000
-      _type: 0
-      _objName: "\uD050\uBE0C"
+      _objName: "\uD578\uB4DC\uD3F0"
       _totalCount: 1
       _nowCount: 0
       _isFull: 0
@@ -1373,7 +1373,9 @@ MonoBehaviour:
     - _name: "\uC544\uB0B4"
       _dialogueType: 0
       _dialogueLines:
-      - "\uC5F0\uAD6C\uC2E4\uC5D0\uC11C \uC640\uB2EC\uB798"
+      - "\uC0DD\uAC01\uD574\uBCF4\uB2C8 \uC544\uAE4C \uD68C\uC0AC\uC5D0\uC11C \uC7A0\uC2DC
+        \uC640\uC904 \uC218 \uC788\uB0D0\uACE0 \uC804\uD654\uC654\uC5B4."
+      - "\uD55C\uBC88 \uAC00\uBCF4\uB294\uAC8C \uC5B4\uB54C?"
       _index: 0
       _isStart: 0
       _isLast: 0
@@ -1381,7 +1383,7 @@ MonoBehaviour:
     - _name: "\uC544\uB0B4"
       _dialogueType: 1
       _dialogueLines:
-      - "\uBE68\uB9AC \uAC00\uBD10"
+      - "\uBE68\uB9AC \uAC00\uBD10."
       _index: 0
       _isStart: 0
       _isLast: 0
@@ -1446,8 +1448,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objType: 1
-  _playerPos: {x: 0, y: 0, z: 0}
-  _pos: {x: 0, y: 0, z: 0}
 --- !u!114 &4042516304521741712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2174,7 +2174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1906472475689947354
 Transform:
   m_ObjectHideFlags: 0
