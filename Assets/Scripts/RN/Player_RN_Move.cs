@@ -9,8 +9,9 @@ public class Player_RN_Move : BasePlayerMove
     RaycastHit _hit, _previousHit;
 
     int _layerMask = 1 << 13 | 1 << 14; //(int)MoveEffectSound.Grass | (int)MoveEffectSound.Wood;
+    int _wallMask = 1 << 17;
 
-    //private bool _isWalk = false;
+    [SerializeField] private bool _isWall = false;
 
     private AudioSource _stepSound;
 
@@ -57,6 +58,8 @@ public class Player_RN_Move : BasePlayerMove
 
     protected override void UpdateIdle()
     {
+        if (_isWall) return;
+
         if (_magnitude > 0)
         {
             if (Input.GetKey(KeyCode.LeftShift))
@@ -75,7 +78,7 @@ public class Player_RN_Move : BasePlayerMove
     }
     protected override void UpdateMove()
     {
-        if (_magnitude <= 0)
+        if (_magnitude <= 0 || _isWall)
         {  
             _state.PlayerState = BasePlayerState.EPlayerState.Idle;
             _anim.CrossFade(_state.PlayerState);
@@ -125,6 +128,9 @@ public class Player_RN_Move : BasePlayerMove
                 _nowClip = SoundManager._instance.GetMoveClip((int)_type);
             }
         }
+
+        _isWall = Physics.Raycast(transform.position + Vector3.up, _dir, 0.8f, _wallMask) ? true : false;
+
     }
     public void StepSound()
     {

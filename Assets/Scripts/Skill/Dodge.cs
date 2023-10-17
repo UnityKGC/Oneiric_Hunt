@@ -30,9 +30,6 @@ public class Dodge : MonoBehaviour
             Vector3 dir = playerRot * Vector3.forward;
             Vector3 RayDir = new Vector3(dir.x, 1.5f, dir.z);
 
-            Ray ray;
-            RaycastHit hit;
-
             Debug.DrawRay(_player.position, RayDir, Color.blue);
 
             if (Physics.Raycast(_player.position, RayDir, _mask))
