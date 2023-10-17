@@ -53,6 +53,9 @@ public class SoundManager : MonoBehaviour
             foreach (AudioSource audio in _skillSoundPool)
                 audio.volume = _effectVolume;
             _attackAudio.volume = _effectVolume;
+            _uiAudio.volume = _effectVolume;
+            _dialogueAudio.volume = _effectVolume;
+            _questAudio.volume = _effectVolume;
         }
     }
     [SerializeField] AudioClip[] _attackClips;
@@ -70,8 +73,8 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource _stepSound;
 
-    private float _bgmVolume = 0.7f;
-    private float _effectVolume = 0.7f;
+    private float _bgmVolume = 0.15f;
+    private float _effectVolume = 0.4f;
 
     //[SerializeField] private AudioSource _skillAudio; // 스킬들을 스킬의 자식으로 오디오를 주고 실행시키게 한다.
 

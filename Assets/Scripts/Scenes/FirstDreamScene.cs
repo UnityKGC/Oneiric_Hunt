@@ -37,6 +37,8 @@ public class FirstDreamScene : MonoBehaviour
         RenderSettings.customReflection = null; // Reset any custom reflection probes
         DynamicGI.UpdateEnvironment();
 
+        SoundManager._instance.PlayBGM(BGM.TutorialDream);
+
         //InitSpawnList();
         //InitDict();
 

@@ -69,6 +69,7 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
     {
         if(gameObject.activeSelf)
         {
+            SoundManager._instance.PlayDialogueSound();
             NextDialogue();
         }
     }

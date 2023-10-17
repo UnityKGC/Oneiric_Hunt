@@ -8,7 +8,7 @@ public class Door : MonoBehaviour
     private Animator _anim;
 
     private AudioSource _audio;
-    private bool _isOpen = false;
+    [SerializeField] private bool _isOpen = false;
     private bool _isActive = false;
 
     //[SerializeField] private Button _interactUI;
