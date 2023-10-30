@@ -20,6 +20,10 @@ public abstract class Stat : MonoBehaviour
 
     private TypeEnum _type = TypeEnum.None;
 
+    public abstract float GetDamage(); // 누군가에게 데미지를 줄 때
+
+    public abstract void SetDamage(float value); // 누군가로부터 데미지를 받을 때
+
     public float MaxHp { get { return _maxHp; } set { _maxHp = value; } }
     [SerializeField]
     private float _maxHp;
@@ -51,8 +55,4 @@ public abstract class Stat : MonoBehaviour
     [SerializeField]
     private float _moveSpd;
 
-
-    public abstract float GetDamage(); // 누군가에게 데미지를 줄 때
-
-    public abstract void SetDamage(float value);
 }

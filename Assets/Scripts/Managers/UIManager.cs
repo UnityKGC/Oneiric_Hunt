@@ -91,10 +91,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    #region Scene 관련로직
+    #region SceneUI 로직
     public void SetSceneUI(SceneUIState state) // SceneState 갱신
     {
-        AllClosePopupUI(); // 혹시나 열려있는 모든 PopupUI를 꺼준다. => 해줄필요 있는지 다시 판단하기 바람 KGC
+        AllClosePopupUI(); // 혹시나 열려있는 모든 PopupUI를 꺼준다.
 
         if (state == SceneUIState.None)
             return;
@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
         {
             case SceneUIState.Pause: // Pause메뉴 호출
             case SceneUIState.Tutorial: // Tutorial메뉴 호출
-                Time.timeScale = 0f; // 시간 멈춰!
+                Time.timeScale = 0f;
                 break;
             case SceneUIState.Play: // 미니맵, 등등 호출
             case SceneUIState.None: // 미니맵, 등등 호출
