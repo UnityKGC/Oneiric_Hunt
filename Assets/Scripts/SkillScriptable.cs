@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SkillScriptable : ScriptableObject
 {
+    [Header("Skill Properties")]
     public string _skillName; // 스킬 이름
 
     public float _skillAmount; // 스킬 범위
@@ -21,6 +22,7 @@ public class SkillScriptable : ScriptableObject
 
     public float _moveSpd; // 스킬 이동 속도
 
+    [Header("Buff Properties")]
     public float _buffDurationTime; // 버프 지속 시간
 
     public float _atkBuffValue; // 공격 버프 증가 비율
@@ -31,5 +33,6 @@ public class SkillScriptable : ScriptableObject
     public float _defDeBuffValue; // 방어 디버프 증가 비율
     public float _movSpdDeBuffValue; // 이속 버프 증가 비율
 
+    [Header("Other Properties")]
     public bool _isAble = true; // 스킬을 사용 가능 여부
 }

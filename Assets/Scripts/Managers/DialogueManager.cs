@@ -7,11 +7,11 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager _instance;
 
-    public DialogueData _nowData; // 현재 대화 데이터 => 필요정보? 1. 대화참여하는 NPC리스트 2. 대사 리스트 3. NPC마다 지니는 대사 index 4. 마지막대사인지? 
+    public DialogueData _nowData; // 현재 대화 데이터
 
     public Action<DialogueData> _dialogueEvt = null;
-    public Action _npcEvt = null; // 대화중인 NPC에게 알려줌.
-    public Action _clickNext = null; // 다음 대사 출력해라.
+    public Action _npcEvt = null; // 대화중인 NPC에게 알려준다.
+    public Action _clickNext = null; // 다음 대사 출력
 
     public bool _isTalk = false;
 
@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
     }
     private void Update()
     {
-        if (_nowData == null) return; // 현재 등록된 대화가 없으면 바로 리턴때림
+        if (_nowData == null) return; // 현재 등록된 대화가 없으면 바로 리턴
 
         if(_clickNext != null && _nowData._isStart)
         {
@@ -41,7 +41,7 @@ public class DialogueManager : MonoBehaviour
         _nowData = data;
         if (_dialogueEvt != null)
         {
-            _dialogueEvt.Invoke(data); // 보낸다.
+            _dialogueEvt.Invoke(data);
         }
     }
 

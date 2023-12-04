@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SpaceCut : MonoBehaviour
+public class SpaceCut : MonoBehaviour // Skill스크립트를 상속받게 리팩토링 할 예정
 {
     SkillScriptable _scriptable;
 
@@ -24,7 +24,7 @@ public class SpaceCut : MonoBehaviour
     int _layerMask = (1 << 7) | (1 << 10); // 몬스터와 보스의 Layer만 체크
 
     HashSet<GameObject> _damagedTargets = new HashSet<GameObject>(); // 스킬과 한번 맞닿은 적을 다룬다.
-    public void Init(SkillScriptable scriptable, float playerAtk)
+    public void Init(SkillScriptable scriptable, float playerAtk) // 초기화
     {
         _scriptable = scriptable;
 
@@ -38,16 +38,10 @@ public class SpaceCut : MonoBehaviour
 
         _duringTime = _scriptable._durationTime;
 
-        _startTime = Time.time; // 스킬 사용하자마자 소환되므로, 바로 시간체크
+        _startTime = Time.time; // 시간체크
         _dmgStart = Time.time;
     }
-    void Start()
-    {
-        //_startTime = Time.time; // 스킬 사용하자마자 소환되므로, 바로 시간체크
-        //_dmgStart = Time.time;
-    }
 
-    // Update is called once per frame
     void FixedUpdate() // 0.5초마다 스킬 범위내의 모든 적에게 데미지를 준다.
     {
         if (Time.time - _startTime <= _duringTime)
