@@ -105,6 +105,8 @@ public class Anger : MonoBehaviour
 
         CameraManager._instance.StartEffectCam(CameraType.PlayerCam, 5, 1f);
 
+        //_boss.transform.position = new Vector3(_boss.transform.position.x, 1f, _boss.transform.position.z);
+
         yield return new WaitForSeconds(0.5f); // 도착 후 0.5초 대기
 
         SecondSetDmg();
