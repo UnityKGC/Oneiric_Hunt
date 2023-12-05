@@ -44,7 +44,6 @@ public class BossStat : Stat
             //Debug.Log("»ç¸Á");
 
             QuestManager._instance.QuestTrigger(_id);
-            SpawnManager._instance.KilledMonster();
 
             Destroy(gameObject);
         }

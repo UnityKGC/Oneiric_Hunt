@@ -37,7 +37,16 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
         _name.text = _data._name; // NPC 이름 등록
         _content.text = _data._dialogueLines[_data._index++]; // _lineCount 대사 출력.
 
-        StartDialogue(); // 대화 시작
+        if (_content.text == "CamEvt")
+        {
+            DialogueManager._instance.CamEvent(gameObject);
+        }
+        else if (_content.text == "MonsterSpawn")
+        {
+            DialogueManager._instance.MonsterSpawnEvent(gameObject);
+        }
+        else
+            StartDialogue(); // 대화 시작
     }
     void StartDialogue() // 대화 시작
     {
@@ -51,12 +60,21 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
             _data = null;
 
             DialogueManager._instance.EndDialogue();
+            CameraManager._instance.ChangeCam(CameraType.PlayerCam);
 
             gameObject.SetActive(false);
         }
         else
         {
             _content.text = _data._dialogueLines[_data._index++]; // _lineCount 대사 출력.
+            if(_content.text == "CamEvt")
+            {
+                DialogueManager._instance.CamEvent(gameObject);
+            }
+            else if(_content.text == "MonsterSpawn")
+            {
+                DialogueManager._instance.MonsterSpawnEvent(gameObject);
+            }
         }
     }
     private void OnDestroy()

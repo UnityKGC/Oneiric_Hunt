@@ -9,6 +9,11 @@ public enum CameraType
     PlayerCam,
     ViewCam,
     TalkCam,
+    Event_1_Cam,
+    Event_2_Cam,
+    Event_3_Cam,
+    Event_4_Cam,
+    Boss_Cam,
 }
 [System.Serializable]
 public struct PlayerCam
@@ -85,12 +90,80 @@ public class CameraManager : MonoBehaviour
         _nowCam.transform.rotation = Quaternion.LookRotation(vec - _nowCam.transform.position, Vector3.up);
         //_nowCam.LookAt = toObj.transform;
     }
-    public void StartBossCam()
+
+    public void StartViewCam()
     {
         ChangeCam(CameraType.ViewCam);
 
+        StartCoroutine(StartViewCamCo());
+    }
+    IEnumerator StartViewCamCo()
+    {
+        yield return new WaitForSeconds(1.5f); // 카메라 이동 시간(1.5 => Default) + 보스 Appear애니메이션에서 울부짖는 타이밍의 시간(1)
+
+        ChangeCam(CameraType.PlayerCam);
+    }
+
+    public void StartEvent_1_Cam()
+    {
+        ChangeCam(CameraType.Event_1_Cam);
+
+        StartCoroutine(StartEvent_1_CamCo());
+    }
+    IEnumerator StartEvent_1_CamCo()
+    {
+        yield return new WaitForSeconds(2f); // 카메라 이동 시간(1.5 => Default) + 보스 Appear애니메이션에서 울부짖는 타이밍의 시간(1)
+
+        //ChangeCam(CameraType.PlayerCam);
+    }
+
+    public void StartEvent_2_Cam()
+    {
+        ChangeCam(CameraType.Event_2_Cam);
+
+        StartCoroutine(StartEvent_2_CamCo());
+    }
+    IEnumerator StartEvent_2_CamCo()
+    {
+        yield return new WaitForSeconds(3f); // 카메라 이동 시간(1.5 => Default) + 보스 Appear애니메이션에서 울부짖는 타이밍의 시간(1)
+
+        //ChangeCam(CameraType.PlayerCam);
+    }
+
+    public void StartEvent_3_Cam()
+    {
+        ChangeCam(CameraType.Event_3_Cam);
+
+        StartCoroutine(StartEvent_3_CamCo());
+    }
+    IEnumerator StartEvent_3_CamCo()
+    {
+        yield return new WaitForSeconds(3f); // 카메라 이동 시간(1.5 => Default) + 보스 Appear애니메이션에서 울부짖는 타이밍의 시간(1)
+
+        //ChangeCam(CameraType.PlayerCam);
+    }
+    public void StartEvent_4_Cam()
+    {
+        ChangeCam(CameraType.Event_4_Cam);
+
+        //StartCoroutine(StartEvent_4_CamCo());
+    }
+    /*
+    IEnumerator StartEvent_4_CamCo()
+    {
+        //yield return new WaitForSeconds(3f); // 카메라 이동 시간(1.5 => Default) + 보스 Appear애니메이션에서 울부짖는 타이밍의 시간(1)
+
+        //ChangeCam(CameraType.PlayerCam);
+    }
+    */
+
+    public void StartBossCam()
+    {
+        ChangeCam(CameraType.Boss_Cam);
+
         StartCoroutine(StartBossCamCo());
     }
+
     IEnumerator StartBossCamCo()
     {
         yield return new WaitForSeconds(2.0f); // 카메라 이동 시간(1.5) + 보스 Appear애니메이션에서 울부짖는 타이밍의 시간(1)
@@ -101,6 +174,7 @@ public class CameraManager : MonoBehaviour
 
         ChangeCam(CameraType.PlayerCam);
     }
+
     public void StartEffectCam(CameraType type, float intensity, float time) // Shake효과
     {
         _nowType = type;
@@ -157,6 +231,9 @@ public class CameraManager : MonoBehaviour
         {
             if(i == (int)type)
             {
+                if (!_cams[i].gameObject.activeSelf)
+                    _cams[i].gameObject.SetActive(true);
+
                 _cams[i].Priority = 1;
                 _nowType = type;
                 _nowCam = _cams[i];

@@ -48,7 +48,6 @@ public class MonsterStat : Stat
             //Debug.Log("»ç¸Á");
 
             QuestManager._instance.QuestTrigger(_id);
-            SpawnManager._instance.KilledMonster();
 
             if(_monster != null)
                 _monster.State = Monster.MonsterState.Die;

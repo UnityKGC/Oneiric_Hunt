@@ -21,11 +21,17 @@ public class DialogueData
 
     public DialogueType _dialogueType; // 대사 타입
 
+    public CameraType _camType;
+    public TutorialType _tutorialType;
+
     public List<string> _dialogueLines; // 대사 리스트
+
+    // 어떤 카메라 전환 이벤트를 실행하는지
 
     public int _index; // 몇 번째 대사인지
 
     public bool _isStart; // 대화를 시작했는지
     public bool _isLast; // 마지막 대사인지
     public bool _isFinish; // 대화를 끝냈는지
+    public bool _isCamEvt; // 카메라 전환 이벤트가 존재하는지
 }

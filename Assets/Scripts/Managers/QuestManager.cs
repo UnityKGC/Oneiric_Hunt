@@ -103,7 +103,7 @@ public class QuestManager : MonoBehaviour
         if (questData._questType == QuestType.KillMonster)
             BattleManager._instance.StartBattle();
         else if(questData._questType == QuestType.KillBossMonster)
-            BattleManager._instance.StartBattle(true); // 보스 몬스터는 이렇게.
+            BattleManager._instance.StartBattle(true); // 보스 몬스터는 인자 true로
     }
     void InitTriggerQuest(QuestData questData)
     {

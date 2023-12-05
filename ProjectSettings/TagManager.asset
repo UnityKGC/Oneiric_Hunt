@@ -19,6 +19,7 @@ TagManager:
   - Wood
   - Asphalt
   - Grass
+  - ClearFog
   layers:
   - Default
   - TransparentFX

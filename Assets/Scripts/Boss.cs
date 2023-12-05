@@ -96,7 +96,7 @@ public class Boss : MonoBehaviour
 
         transform.LookAt(_player.transform);
 
-        CameraManager._instance.StartBossCam();
+        //CameraManager._instance.StartBossCam();
 
         StartCoroutine(StartCo());
     }

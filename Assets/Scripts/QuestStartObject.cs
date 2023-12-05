@@ -6,6 +6,13 @@ public class QuestStartObject : MonoBehaviour
 {
     [SerializeField] QuestData _data;
 
+    [SerializeField] GameObject _city, _japan;
+
+    [SerializeField] Cinemachine.CinemachineVirtualCamera _viewCam;
+    private Cinemachine.LensSettings _playerCamSetting;
+
+    private Cinemachine.LensSettings _viewCamSetting;
+    private float _time;
     void Start()
     {
         
@@ -29,7 +36,33 @@ public class QuestStartObject : MonoBehaviour
                 GameManager._instance.SecondTuto = true;
             }
 
-            gameObject.SetActive(false);
+            if(gameObject.CompareTag("ClearFog"))
+            {
+                RenderSettings.fog = false;
+                _city.SetActive(false);
+                _japan.SetActive(true);
+
+                _playerCamSetting = CameraManager._instance._playerCam.m_Lens;
+                _viewCamSetting = _viewCam.m_Lens;
+                StartCoroutine(StartFarClipPlaneCo());
+            }
+            else
+                gameObject.SetActive(false);
         }
+    }
+    IEnumerator StartFarClipPlaneCo()
+    {
+        float t = 0f;
+        while (t < 1f)
+        {
+            _time += Time.deltaTime;
+            t = _time / 5f;
+
+            _viewCamSetting.FarClipPlane = Mathf.Lerp(10f, 500f, t);
+
+            yield return new WaitForEndOfFrame();
+        }
+        _playerCamSetting.FarClipPlane = 1000f;
+        gameObject.SetActive(false);
     }
 }

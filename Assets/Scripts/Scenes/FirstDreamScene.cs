@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class MonsterSpawnData // 몬스터가 소환될 위치와 정보를 지니고 있다.
-{
-    public SpawnManager.MonsterType type;
-    public Transform _pos;
-}
 public class FirstDreamScene : MonoBehaviour
 {
     /*
@@ -22,9 +16,9 @@ public class FirstDreamScene : MonoBehaviour
     private Dictionary<int, List<MonsterSpawnData>> _spawnDict = new Dictionary<int, List<MonsterSpawnData>>(); // _spawnList
     */
     [SerializeField] QuestData _questData;
-    
 
-    public Material _skyBox;
+
+    public Light _light;
     bool _isBattle; // 배틀 중인가 아닌가.
 
     [SerializeField] private GameObject _exitPortal;
@@ -33,7 +27,11 @@ public class FirstDreamScene : MonoBehaviour
         GameManager._instance.Playstate = GameManager.PlayState.Dream_Normal;
         SceneManagerEX._instance.NowScene = SceneManagerEX.SceneType.FirstDreamScene;
 
-        RenderSettings.skybox = _skyBox;
+        
+        _light.color = new Color(0.32f, 0.67f, 1f); // 여기서 1f가 최대 즉, 255이므로, RGB값/255를 해야 한다.
+        
+        RenderSettings.fog = true;
+
         RenderSettings.customReflection = null; // Reset any custom reflection probes
         DynamicGI.UpdateEnvironment();
 

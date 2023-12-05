@@ -75,7 +75,11 @@ public class Monster : MonoBehaviour
     }
     void Start()
     {
+        BattleManager._instance._battleEvt -= SetState; // 전투 시작
+        BattleManager._instance._battleEvt += SetState;
+
         _player = GameManager._instance.Player;
+
         _anim = GetComponent<Animator>();
         transform.LookAt(_player.transform);
 
@@ -88,6 +92,15 @@ public class Monster : MonoBehaviour
         _dir = (_player.transform.position - transform.position).normalized;
         _dist = Vector3.Distance(_player.transform.position, transform.position);
         quat = Quaternion.LookRotation(_dir, Vector3.up);
+    }
+    void SetState(bool value) // 전투시작, value가 true면 Idle에서 Move로 상태전환, 반대는 반대
+    {
+        if (value)
+            State = MonsterState.Run;
+        else
+            State = MonsterState.Idle;
+
+        _player = GameManager._instance.Player; // 플레이어 다시 찾기 => Start의 Player는 노말플레이어, 다시 해서 배틀플레이어로 변경해야한다.
     }
     private void FixedUpdate()
     {
@@ -136,8 +149,8 @@ public class Monster : MonoBehaviour
     IEnumerator StartAppear()
     {
         _isAppear = true;
-        yield return new WaitForSeconds(1f);
-        State = MonsterState.Run;
+        transform.LookAt(Camera.main.transform);
+        yield return null;
     }
     IEnumerator StartAttackCo()
     {
@@ -176,5 +189,9 @@ public class Monster : MonoBehaviour
         {
             _stat.SetDamage(other.GetComponentInParent<PlayerStat>().GetDamage());
         }
+    }
+    private void OnDestroy()
+    {
+        BattleManager._instance._battleEvt -= SetState;
     }
 }

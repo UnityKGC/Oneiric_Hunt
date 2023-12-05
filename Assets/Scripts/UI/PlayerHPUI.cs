@@ -9,8 +9,11 @@ public class PlayerHPUI : MonoBehaviour
 
     public Image _hpImg;
 
+    //private Transform _camTrans;
     void Start()
     {
+        //_camTrans = Camera.main.transform;
+
         UIManager._instacne._hpEvt -= SetUI;
         UIManager._instacne._hpEvt += SetUI;
 
@@ -19,7 +22,7 @@ public class PlayerHPUI : MonoBehaviour
 
     void Update()
     {
-        
+        //transform.LookAt(_camTrans);
     }
     void SetUI(float value) // 플레이어의 HP에 증감 발생
     {

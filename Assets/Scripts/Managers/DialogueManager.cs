@@ -12,8 +12,11 @@ public class DialogueManager : MonoBehaviour
     public Action<DialogueData> _dialogueEvt = null;
     public Action _npcEvt = null; // 대화중인 NPC에게 알려준다.
     public Action _clickNext = null; // 다음 대사 출력
+    public Action _camEvt = null; // 시네머신 이벤트
 
     public bool _isTalk = false;
+
+    TutorialType _tutorialType = TutorialType.None;
 
     QuestData _quest;
     void Awake()
@@ -43,6 +46,77 @@ public class DialogueManager : MonoBehaviour
         {
             _dialogueEvt.Invoke(data);
         }
+    }
+
+    public void CamEvent(GameObject dialoguePanel)
+    {
+        if (!_nowData._isCamEvt) return;
+
+        dialoguePanel.gameObject.SetActive(false);
+        StartCoroutine(CamEventCo(dialoguePanel));
+    }
+
+    IEnumerator CamEventCo(GameObject dialoguePanel)
+    {
+        switch (_nowData._camType)
+        {
+            case CameraType.Event_1_Cam:
+                CameraManager._instance.StartEvent_1_Cam();
+                yield return new WaitForSeconds(2f); // 카메라 이동 시간
+                break;
+            case CameraType.Event_2_Cam:
+                CameraManager._instance.StartEvent_2_Cam();
+                yield return new WaitForSeconds(2.5f); // 카메라 이동 시간
+                break;
+            case CameraType.Event_3_Cam:
+                CameraManager._instance.StartEvent_3_Cam();
+                yield return new WaitForSeconds(3.0f); // 카메라 이동 시간
+                break;
+            case CameraType.Event_4_Cam:
+                CameraManager._instance.StartEvent_4_Cam();
+                yield return new WaitForSeconds(7f); // 카메라 이동 시간
+                break;
+            case CameraType.Boss_Cam:
+                CameraManager._instance.StartBossCam();
+                yield return new WaitForSeconds(2.5f); // 카메라 이동 시간
+                break;
+        }
+        
+        dialoguePanel.gameObject.SetActive(true); // 다이얼로그 진행
+
+        _clickNext.Invoke();
+    }
+
+    public void MonsterSpawnEvent(GameObject dialoguePanel)
+    {
+        dialoguePanel.gameObject.SetActive(false);
+        StartCoroutine(MonsterSpawnEventCo(dialoguePanel));
+    }
+
+    IEnumerator MonsterSpawnEventCo(GameObject dialoguePanel)
+    {
+        switch (_nowData._tutorialType)
+        {
+            case TutorialType.Event_1:
+                _tutorialType = TutorialType.Event_1;
+                break;
+            case TutorialType.Event_2:
+                _tutorialType = TutorialType.Event_2;
+                break;
+            case TutorialType.Event_3:
+                _tutorialType = TutorialType.Event_3;
+                break;
+            case TutorialType.BossEvt:
+                _tutorialType = TutorialType.BossEvt;
+                break;
+        }
+
+        TutorialManager._instance.EnableObject(_tutorialType); // 튜토리얼 => 몬스터 생성
+
+        yield return new WaitForSeconds(1f); // 몬스터 확인 시간
+
+        dialoguePanel.gameObject.SetActive(true); // 다이얼로그 진행
+        _clickNext.Invoke();
     }
 
     public void EndDialogue() // 마지막 대사가 출력되고 대화 타입에 따라 퀘스트 시작인지 끝인지를 전달함.

@@ -43,7 +43,6 @@ public class TutorialStat : Stat
             _isDead = true;
 
             QuestManager._instance.QuestTrigger(_id);
-            SpawnManager._instance.KilledMonster();
 
             Destroy(gameObject);
         }
