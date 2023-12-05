@@ -152,6 +152,8 @@ public class Boss : MonoBehaviour
         
         yield return new WaitForSeconds(3.5f); // 등장 연출
 
+        _player = GameManager._instance.Player;
+
         State = BossState.Run;
     }
     void UpdateRun() // 플레이어를 쫓는다.

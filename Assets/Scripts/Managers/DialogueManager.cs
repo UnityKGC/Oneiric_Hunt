@@ -78,7 +78,7 @@ public class DialogueManager : MonoBehaviour
                 break;
             case CameraType.Boss_Cam:
                 CameraManager._instance.StartBossCam();
-                yield return new WaitForSeconds(2.5f); // 카메라 이동 시간
+                yield return new WaitForSeconds(5f); // 카메라 이동 시간
                 break;
         }
         
@@ -113,7 +113,7 @@ public class DialogueManager : MonoBehaviour
 
         TutorialManager._instance.EnableObject(_tutorialType); // 튜토리얼 => 몬스터 생성
 
-        yield return new WaitForSeconds(1f); // 몬스터 확인 시간
+        yield return null; //new WaitForSeconds(1f); // 몬스터 확인 시간
 
         dialoguePanel.gameObject.SetActive(true); // 다이얼로그 진행
         _clickNext.Invoke();
