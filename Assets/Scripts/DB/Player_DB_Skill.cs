@@ -35,7 +35,7 @@ public class Player_DB_Skill : MonoBehaviour
         if (GameManager._instance.PlayerDie || SkillManager._instance._isSkilling || GameManager._instance.Playstate != GameManager.PlayState.Dream_Battle) return; // 플레이어가 죽었거나, 스킬 사용 중 이라면 리턴
         // 우선 이것부터 별로다... 차라리 변수를 새로 만들어, 이벤트가 콜백될 때 마다 변수를 갱신키기게 하는게 좋으려나?
 
-        if (!GameManager._instance.FirstTuto) return;
+        //if (!GameManager._instance.FirstTuto) return;
 
         if (Input.GetKeyDown(KeyCode.Space) || SimpleInput.GetButtonDown("Space"))
         {
@@ -49,7 +49,7 @@ public class Player_DB_Skill : MonoBehaviour
             //_anim.CrossFade(BasePlayerState.EPlayerState.Skill, Skills.WeaponSwap);
         }
 
-        if (!GameManager._instance.SecondTuto) return;
+        //if (!GameManager._instance.SecondTuto) return;
 
         if (Input.GetKeyDown(KeyCode.Z) || SimpleInput.GetButtonDown("Z"))
         {

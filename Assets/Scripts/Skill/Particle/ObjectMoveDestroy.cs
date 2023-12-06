@@ -32,6 +32,8 @@ public class ObjectMoveDestroy : MonoBehaviour
 
     void LateUpdate()
     {
+        if (transform.position.y <= 0) return; // KGC
+
         transform.Translate(Vector3.forward * Time.deltaTime * MoveSpeed * m_scalefactor);
         if (!ishit)
         {

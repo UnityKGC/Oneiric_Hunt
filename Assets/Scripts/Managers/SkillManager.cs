@@ -176,7 +176,7 @@ public class SkillManager : MonoBehaviour
 
         Vector3 forward = playerRot * Vector3.forward * 2;
 
-        GameObject obj = Instantiate(_skillPrefabLst[(int)Skills.SwordForce], playerPos + forward, playerRot, parent);
+        GameObject obj = Instantiate(_skillPrefabLst[(int)Skills.SwordForce], playerPos + forward + Vector3.up, playerRot, parent);
 
         obj.GetComponent<SwordForce>().Init(scriptable, playerAtk); // 인자에 플레이어 공격력을 넣는다.
 
