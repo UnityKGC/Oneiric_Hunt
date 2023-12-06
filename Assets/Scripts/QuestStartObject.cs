@@ -38,6 +38,7 @@ public class QuestStartObject : MonoBehaviour
 
             if(gameObject.CompareTag("ClearFog"))
             {
+                GameManager._instance._isLastQuest = true;
                 RenderSettings.fog = false;
                 _city.SetActive(false);
                 _japan.SetActive(true);

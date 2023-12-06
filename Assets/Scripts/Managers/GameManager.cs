@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
 
 
     public bool _isGameEnd = false;
+
+    public bool _isLastQuest = false;
     private void Awake()
     {
         _instance = this;
