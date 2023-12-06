@@ -9,6 +9,7 @@ public enum CameraType
     PlayerCam,
     ViewCam,
     TalkCam,
+    Event_0_Cam,
     Event_1_Cam,
     Event_2_Cam,
     Event_3_Cam,
@@ -100,6 +101,19 @@ public class CameraManager : MonoBehaviour
     IEnumerator StartViewCamCo()
     {
         yield return new WaitForSeconds(1.5f); // 카메라 이동 시간(1.5 => Default) + 보스 Appear애니메이션에서 울부짖는 타이밍의 시간(1)
+
+        ChangeCam(CameraType.PlayerCam);
+    }
+
+    public void StartEvent_0_Cam()
+    {
+        ChangeCam(CameraType.Event_0_Cam);
+
+        StartCoroutine(StartEvent_0_CamCo());
+    }
+    IEnumerator StartEvent_0_CamCo()
+    {
+        yield return new WaitForSeconds(5f); // 카메라 이동 시간(1.5 => Default) + 보스 Appear애니메이션에서 울부짖는 타이밍의 시간(1)
 
         ChangeCam(CameraType.PlayerCam);
     }
@@ -227,6 +241,8 @@ public class CameraManager : MonoBehaviour
 
     public void ChangeCam(CameraType type)
     {
+        if (_nowCam == _cams[(int)type]) return; // 현재 카메라가 전환하려는 카메라인 경우 바로 리턴
+
         for(int i = 0; i < _cams.Count; i++)
         {
             if(i == (int)type)

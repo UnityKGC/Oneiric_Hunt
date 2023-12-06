@@ -60,6 +60,10 @@ public class DialogueManager : MonoBehaviour
     {
         switch (_nowData._camType)
         {
+            case CameraType.Event_0_Cam:
+                CameraManager._instance.StartEvent_0_Cam();
+                yield return new WaitForSeconds(5f); // 카메라 이동 시간
+                break;
             case CameraType.Event_1_Cam:
                 CameraManager._instance.StartEvent_1_Cam();
                 yield return new WaitForSeconds(2f); // 카메라 이동 시간

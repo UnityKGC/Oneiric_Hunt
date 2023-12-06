@@ -44,6 +44,7 @@ public class PlayerManager : MonoBehaviour
         //Instantiate(_playerLst[(int)playState], pos, rot);
 
         // 처음 시작할 시, _nowPlayer가 null이기 때문에 비활성화 시키면 안됨..
+
         if (_nowPlayer != null)
         {
             _nowPlayer.SetActive(false);

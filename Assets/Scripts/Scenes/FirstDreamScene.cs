@@ -27,7 +27,6 @@ public class FirstDreamScene : MonoBehaviour
         GameManager._instance.Playstate = GameManager.PlayState.Dream_Normal;
         SceneManagerEX._instance.NowScene = SceneManagerEX.SceneType.FirstDreamScene;
 
-        
         _light.color = new Color(0.32f, 0.67f, 1f); // 여기서 1f가 최대 즉, 255이므로, RGB값/255를 해야 한다.
         
         RenderSettings.fog = true;
@@ -41,6 +40,8 @@ public class FirstDreamScene : MonoBehaviour
         //InitDict();
 
         UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Play);
+
+        CameraManager._instance.ChangeCam(CameraType.Event_0_Cam);
 
         Invoke("StartQuest", 1f);
     }
