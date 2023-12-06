@@ -17,7 +17,7 @@ public class FirstDreamScene : MonoBehaviour
     */
     [SerializeField] QuestData _questData;
 
-
+    [SerializeField] Material _skybox;
     public Light _light;
     bool _isBattle; // 배틀 중인가 아닌가.
 
@@ -31,6 +31,7 @@ public class FirstDreamScene : MonoBehaviour
         
         RenderSettings.fog = true;
 
+        RenderSettings.skybox = _skybox;
         RenderSettings.customReflection = null; // Reset any custom reflection probes
         DynamicGI.UpdateEnvironment();
 

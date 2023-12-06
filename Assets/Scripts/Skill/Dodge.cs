@@ -8,7 +8,8 @@ public class Dodge : MonoBehaviour
 
     float _moveSpd = 15f;
     private WaitForEndOfFrame _returnTime = new WaitForEndOfFrame();
-    int _mask = 1 << 13;
+    [SerializeField] 
+    int _mask = 1 << 17;
 
     Transform _player;
     public void Init(SkillScriptable scriptable, Vector3 playerPos, Quaternion playerRot)
@@ -24,15 +25,15 @@ public class Dodge : MonoBehaviour
     IEnumerator StartDodgeCo(Quaternion playerRot)
     {
         float time = _scriptable._durationTime;
-        while(time > 0f)
+
+        while (time > 0f)
         {
-            
             Vector3 dir = playerRot * Vector3.forward;
             Vector3 RayDir = new Vector3(dir.x, 1.5f, dir.z);
 
             Debug.DrawRay(_player.position, RayDir, Color.blue);
 
-            if (Physics.Raycast(_player.position, RayDir, _mask))
+            if (Physics.Raycast(_player.position, RayDir, 1f, _mask))
             {
                 //_player.position += dir * 0 * Time.deltaTime;
             }

@@ -241,7 +241,7 @@ public class CameraManager : MonoBehaviour
 
     public void ChangeCam(CameraType type)
     {
-        if (_nowCam == _cams[(int)type]) return; // 현재 카메라가 전환하려는 카메라인 경우 바로 리턴
+        //if (_nowCam == _cams[(int)type]) return; // 현재 카메라가 전환하려는 카메라인 경우 바로 리턴
 
         for(int i = 0; i < _cams.Count; i++)
         {
