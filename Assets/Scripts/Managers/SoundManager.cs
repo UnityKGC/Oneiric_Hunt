@@ -155,4 +155,5 @@ public class SoundManager : MonoBehaviour
 
         temp.gameObject.SetActive(false); // 사운드 오브젝트 비활성화
     }
+    
 }
