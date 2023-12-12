@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
 
     public bool _isTalk = false;
 
+    public float _typingSpeed = 0.05f;
+
     TutorialType _tutorialType = TutorialType.None;
 
     QuestData _quest;
@@ -42,10 +44,8 @@ public class DialogueManager : MonoBehaviour
         _isTalk = true;
         _quest = quest;
         _nowData = data;
-        if (_dialogueEvt != null)
-        {
-            _dialogueEvt.Invoke(data);
-        }
+
+        _dialogueEvt?.Invoke(data);
     }
 
     public void CamEvent(GameObject dialoguePanel)

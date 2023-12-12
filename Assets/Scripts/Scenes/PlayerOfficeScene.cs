@@ -9,7 +9,7 @@ public class PlayerOfficeScene : MonoBehaviour
         GameManager._instance.Playstate = GameManager.PlayState.Real_Normal;
         SceneManagerEX._instance.NowScene = SceneManagerEX.SceneType.PlayerOfficeScene;
 
-        UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Play);
+        //UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Play);
 
         CameraManager._instance.ChangeCam(CameraType.PlayerCam);
 

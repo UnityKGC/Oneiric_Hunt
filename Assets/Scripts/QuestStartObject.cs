@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class QuestStartObject : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class QuestStartObject : MonoBehaviour
     [SerializeField] Cinemachine.CinemachineVirtualCamera _viewCam;
 
     [SerializeField] Light _light;
+    [SerializeField] LensFlareComponentSRP _lesnFlare;
 
     private Cinemachine.LensSettings _viewCamSetting;
     private float _time;
@@ -27,6 +29,7 @@ public class QuestStartObject : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        
         if(other.CompareTag("Player"))
         {
             DialogueManager._instance.GetQuestDialogue(_data, _data._dialogueData[0]);
@@ -47,6 +50,8 @@ public class QuestStartObject : MonoBehaviour
                 _light.intensity = 1.2f;
                 _city.SetActive(false);
                 _japan.SetActive(true);
+
+                _lesnFlare.enabled = true; // 렌즈 플레어 효과 활성화
 
                 _viewCamSetting = _viewCam.m_Lens;
                 StartCoroutine(StartFarClipPlaneCo());

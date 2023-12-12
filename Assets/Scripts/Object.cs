@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,13 @@ public enum ObjectType
 
 public class Object : MonoBehaviour
 {
+    public Action<bool> _checkPlayerEvt = null;
+
     [SerializeField] private QuestMarkUI _questMarkUI; // 퀘스트 이펙트
     [SerializeField] private TargetUIObj _targetObj;
+    [SerializeField] private OutlineScript _outline;
+
+
     //[SerializeField] private Button _interactUI;
     public int _objID; // 본인의 ID
     
@@ -63,6 +69,7 @@ public class Object : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _isActive = true;
+            _checkPlayerEvt?.Invoke(true); // 플레이어가 들어왔으니, true를 전달
         }
     }
     private void OnTriggerExit(Collider other)
@@ -70,6 +77,7 @@ public class Object : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _isActive = false;
+            _checkPlayerEvt?.Invoke(false); // 플레이어가 나갔으니, false를 전달
         }
     }
     private void OnDestroy()

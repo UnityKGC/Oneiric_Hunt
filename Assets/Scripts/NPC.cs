@@ -21,11 +21,11 @@ public class NPC : MonoBehaviour
             switch(_state)
             {
                 case NPCState.Normal:
-                    _anim.CrossFade("Idle", 0.1f);
+                    //_anim.CrossFade("Idle", 0.1f);
                     break;
 
                 case NPCState.Talk:
-                    _anim.CrossFade("Talk", 0.1f);
+                    //_anim.CrossFade("Talk", 0.1f);
                     break;
             }
         }
@@ -37,7 +37,8 @@ public class NPC : MonoBehaviour
     [SerializeField] private QuestMarkUI _questMarkUI; // 퀘스트 마크
 //[SerializeField] private Button _interactionUI; // 상호작용 UI
     [SerializeField] private TargetUIObj _targetObj;
-    private Animator _anim;
+    
+    //private Animator _anim;
 
     QuestData _quest = null; // 플레이어가 받고 있는 퀘스트, null이면 받고 있지 않음
 
@@ -57,7 +58,7 @@ public class NPC : MonoBehaviour
         QuestManager._instance._questMarkEvt -= SetQuestMark;
         QuestManager._instance._questMarkEvt += SetQuestMark;
 
-        _anim = GetComponent<Animator>();
+        //_anim = GetComponent<Animator>();
 
         //_interactionUI.onClick.AddListener(StartTalk);
 

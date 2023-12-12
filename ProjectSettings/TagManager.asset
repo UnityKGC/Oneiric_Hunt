@@ -20,6 +20,8 @@ TagManager:
   - Asphalt
   - Grass
   - ClearFog
+  - door
+  - Door
   layers:
   - Default
   - TransparentFX

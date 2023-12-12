@@ -16,7 +16,7 @@ public class FirstHouseScene : MonoBehaviour
 
         GameManager._instance.Playstate = GameManager.PlayState.Real_Normal;
         SceneManagerEX._instance.NowScene = SceneManagerEX.SceneType.FirstHouseScene;
-        CameraManager._instance.ChangeCam(CameraType.ViewCam);
+        CameraManager._instance.ChangeCam(CameraType.ViewCam); // 최초 시네머신(View Cam이 진행)을 위해 변경
 
         SoundManager._instance.PlayBGM(BGM.PlayerHouse);
 
@@ -38,7 +38,8 @@ public class FirstHouseScene : MonoBehaviour
 
         yield return new WaitForSeconds(2f); // 2초(뷰 Cam에서 PlayerCam으로 전환시간)후, 튜토리얼 활성화 및 대화 시작
 
-        UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Tutorial);
+        //UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Tutorial);
+        //UIManager._instacne.SetSceneUI(UIManager.SceneUIState.Play);
 
         DialogueManager._instance.GetQuestDialogue(_data, _data._dialogueData[0]);
     }
