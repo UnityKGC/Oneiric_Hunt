@@ -12,16 +12,15 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
     public TextMeshProUGUI _content; // 대화 내용
     public RectTransform _downArrow;
 
-    public DOTweenAnimation _toDOT;
-    public DOTweenAnimation _fromDOT;
-
     DialogueData _data;
 
     private string _nowText;
 
     private WaitForSeconds _typingSpeed;
+    private bool _isTyping;
 
-    Vector3 _nowPos;
+    [SerializeField] Vector3 _fromPos;
+    [SerializeField] Vector3 _toPos;
     private void Start()
     {
         DialogueManager._instance._dialogueEvt -= SetDialogueData;
@@ -30,8 +29,9 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
         DialogueManager._instance._clickNext -= NextDialogue;
         DialogueManager._instance._clickNext += NextDialogue;
 
-        _nowPos = transform.position;
-
+        _fromPos = transform.position;
+        _toPos = new Vector3(_fromPos.x, 0);
+            
         _typingSpeed = new WaitForSeconds(DialogueManager._instance._typingSpeed);
 
         //gameObject.SetActive(false);
@@ -63,11 +63,12 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
             StartDialogue(); // 대화 시작
             StartCoroutine(TypingCo());
         }
-        //_content.text = _data._dialogueLines[_data._index++]; // _lineCount 대사 출력.
     }
     public void StartDialogue() // 대화 시작
     {
-        _toDOT.DORestart();
+        transform.DOMove(_toPos, 0);
+
+        //_toDOT.DORestart();
         //gameObject.SetActive(true); // UI 활성화
     }
     void NextDialogue()
@@ -75,7 +76,7 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
         if (_data._index >= _data._dialogueLines.Count) // 마지막 대사가 끝났다면
         {
             //_fromDOT.DORestart();
-            transform.position = _nowPos;
+            transform.DOMove(_fromPos, 0);
 
             _data._isFinish = true;
             _data = null;
@@ -99,6 +100,8 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
                 DialogueManager._instance.MonsterSpawnEvent(gameObject);
             }
 
+            if (_isTyping)
+                StopAllCoroutines();
             StartCoroutine(TypingCo());
             
         }
@@ -106,12 +109,15 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
     IEnumerator TypingCo()
     {
         _content.text = null;
-        
-        for(int i = 0; i < _nowText.Length; i++)
+        _isTyping = true;
+
+        for (int i = 0; i < _nowText.Length; i++)
         {
             _content.text += _nowText[i];
             yield return _typingSpeed;
         }
+
+        _isTyping = false;
     }
     private void OnDestroy()
     {

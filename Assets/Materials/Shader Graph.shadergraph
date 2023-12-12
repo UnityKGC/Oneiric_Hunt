@@ -483,10 +483,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1843.39404296875,
-            "y": 340.48260498046877,
-            "width": 0.0,
-            "height": 0.0
+            "x": -1841.0,
+            "y": 360.0,
+            "width": 208.0,
+            "height": 361.0
         }
     },
     "m_Slots": [
@@ -733,9 +733,9 @@
     "m_ShaderOutputName": "Emission",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 0.5188679099082947,
-        "y": 0.5188679099082947,
-        "z": 0.5188679099082947
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
     },
     "m_DefaultValue": {
         "x": 0.0,
