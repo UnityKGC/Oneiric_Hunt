@@ -9,7 +9,6 @@ public class DreamPlayUI : MonoBehaviour
         None = -1,
         Normal,
         Battle,
-        Dialogue,
         Max,
     }
 

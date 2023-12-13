@@ -50,33 +50,29 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
         _name.text = _data._name; // NPC 이름 등록
         _nowText = _data._dialogueLines[_data._index++];
 
-        if (_content.text == "CamEvt")
+        if (_nowText == "CamEvt")
         {
-            DialogueManager._instance.CamEvent(gameObject);
+            ActivePanel(false);
+            DialogueManager._instance.CamEvent();
         }
-        else if (_content.text == "MonsterSpawn")
+        else if (_nowText == "MonsterSpawn")
         {
-            DialogueManager._instance.MonsterSpawnEvent(gameObject);
+            ActivePanel(false);
+            DialogueManager._instance.MonsterSpawnEvent();
         }
         else
         {
-            StartDialogue(); // 대화 시작
+            ActivePanel(true);
             StartCoroutine(TypingCo());
         }
     }
-    public void StartDialogue() // 대화 시작
-    {
-        transform.DOMove(_toPos, 0);
-
-        //_toDOT.DORestart();
-        //gameObject.SetActive(true); // UI 활성화
-    }
     void NextDialogue()
     {
+        
         if (_data._index >= _data._dialogueLines.Count) // 마지막 대사가 끝났다면
         {
             //_fromDOT.DORestart();
-            transform.DOMove(_fromPos, 0);
+            ActivePanel(false);
 
             _data._isFinish = true;
             _data = null;
@@ -91,19 +87,25 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
         {
             _nowText = _data._dialogueLines[_data._index++]; // _lineCount 대사를 가져온다.
 
-            if(_content.text == "CamEvt") // 카메라 이벤트라면
+            if(_nowText == "CamEvt") // 카메라 이벤트라면
             {
-                DialogueManager._instance.CamEvent(gameObject);
+                ActivePanel(false);
+                DialogueManager._instance.CamEvent();
             }
-            else if(_content.text == "MonsterSpawn") // 몬스터 스폰이라면
+            else if(_nowText == "MonsterSpawn") // 몬스터 스폰이라면
             {
-                DialogueManager._instance.MonsterSpawnEvent(gameObject);
+                ActivePanel(false);
+                DialogueManager._instance.MonsterSpawnEvent();
             }
+            else
+            {
+                if (_isTyping)
+                    StopAllCoroutines();
 
-            if (_isTyping)
-                StopAllCoroutines();
-            StartCoroutine(TypingCo());
-            
+                ActivePanel(true);
+
+                StartCoroutine(TypingCo());
+            }
         }
     }
     IEnumerator TypingCo()
@@ -118,6 +120,13 @@ public class DialoguePanel : MonoBehaviour, IPointerDownHandler
         }
 
         _isTyping = false;
+    }
+    public void ActivePanel(bool value)
+    {
+        if(value)
+            transform.DOMove(_toPos, 0);
+        else
+            transform.DOMove(_fromPos, 0);
     }
     private void OnDestroy()
     {

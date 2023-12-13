@@ -48,15 +48,14 @@ public class DialogueManager : MonoBehaviour
         _dialogueEvt?.Invoke(data);
     }
 
-    public void CamEvent(GameObject dialoguePanel)
+    public void CamEvent()
     {
         if (!_nowData._isCamEvt) return;
 
-        dialoguePanel.gameObject.SetActive(false);
-        StartCoroutine(CamEventCo(dialoguePanel));
+        StartCoroutine(CamEventCo());
     }
 
-    IEnumerator CamEventCo(GameObject dialoguePanel)
+    IEnumerator CamEventCo()
     {
         switch (_nowData._camType)
         {
@@ -86,18 +85,18 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
         
-        dialoguePanel.gameObject.SetActive(true); // 다이얼로그 진행
+        //dialoguePanel.gameObject.SetActive(true); // 다이얼로그 진행
 
         _clickNext.Invoke();
     }
 
-    public void MonsterSpawnEvent(GameObject dialoguePanel)
+    public void MonsterSpawnEvent()
     {
-        dialoguePanel.gameObject.SetActive(false);
-        StartCoroutine(MonsterSpawnEventCo(dialoguePanel));
+        //dialoguePanel.gameObject.SetActive(false);
+        StartCoroutine(MonsterSpawnEventCo());
     }
 
-    IEnumerator MonsterSpawnEventCo(GameObject dialoguePanel)
+    IEnumerator MonsterSpawnEventCo()
     {
         switch (_nowData._tutorialType)
         {
@@ -119,7 +118,7 @@ public class DialogueManager : MonoBehaviour
 
         yield return null; //new WaitForSeconds(1f); // 몬스터 확인 시간
 
-        dialoguePanel.gameObject.SetActive(true); // 다이얼로그 진행
+        //dialoguePanel.gameObject.SetActive(true); // 다이얼로그 진행
         _clickNext.Invoke();
     }
 
