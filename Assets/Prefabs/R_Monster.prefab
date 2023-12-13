@@ -933,6 +933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3424211050150977268}
   - component: {fileID: 3424211050162048992}
+  - component: {fileID: 5729449137262096034}
   m_Layer: 0
   m_Name: ghoul
   m_TagString: Untagged
@@ -1072,6 +1073,22 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.006053418, y: 0.0000023245811, z: 0.20349339}
     m_Extent: {x: 0.9228401, y: 0.9072103, z: 0.5062481}
   m_DirtyAABB: 0
+--- !u!114 &5729449137262096034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424211050150544022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763e0ba8ed561834ea842d6c83b0ae4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _normalMat: {fileID: 2100000, guid: e02eb956af4e548d8a272b11a85391a4, type: 2}
+  _phaseMat: {fileID: 2100000, guid: 0314bf6fec6c0af41bf08072ffcd5896, type: 2}
+  _isChanged: 0
+  _phaseValue: -0.1
 --- !u!1 &3424211050150544024
 GameObject:
   m_ObjectHideFlags: 0
@@ -3427,6 +3444,9 @@ MonoBehaviour:
   - {fileID: 2225360887247622498, guid: 895abdc3fb24b794ba4c9dc8b5ab40c8, type: 3}
   - {fileID: 2225360887247622498, guid: cdf4e390ba64c2e40b30db8a44322d71, type: 3}
   - {fileID: 2225360887247622498, guid: e2654c70b3f99784c95b74ca6545995e, type: 3}
+  _remainDmg: 0
+  _nowHP: 1
+  _damage: 0
 --- !u!1 &3424211050187476048
 GameObject:
   m_ObjectHideFlags: 0
