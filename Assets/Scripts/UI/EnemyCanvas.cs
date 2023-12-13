@@ -39,6 +39,9 @@ public class EnemyCanvas : MonoBehaviour
         StopAllCoroutines();
 
         _damage = _nowHP - value;
+
+        _remainDmg += _damage;
+
         _nowHP -= _damage;
 
         StartCoroutine(DamageUI());
@@ -53,11 +56,12 @@ public class EnemyCanvas : MonoBehaviour
     }
     IEnumerator DamageUI() // 데미지 받은 부분(흰색)을 감소시키는 코루틴
     {
-        while(_damage > 0) // 받은 비율만큼 UI가 감소한다. value를 damagedSpd만큼 감소시키게 만들어, 0보다 작거나 같아지면 멈춘다.
+        yield return new WaitForSeconds(0.1f);
+        while(_remainDmg > 0) // 받은 비율만큼 UI가 감소한다. value를 damagedSpd만큼 감소시키게 만들어, 0보다 작거나 같아지면 멈춘다.
         {
             _midImg.fillAmount -= _damageSpd;
 
-            _damage -= _damageSpd;
+            _remainDmg -= _damageSpd;
 
             yield return _waitFrame;
         }
