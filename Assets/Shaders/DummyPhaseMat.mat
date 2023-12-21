@@ -82,7 +82,7 @@ Material:
     - _QueueOffset: 0
     - _SplitValue: 0
     m_Colors:
-    - _Emission_Color: {r: 0, g: 0, b: 32, a: 0}
+    - _Emission_Color: {r: 10.200166, g: 42.722507, b: 0, a: 0}
     - _GlowColor: {r: 21.361254, g: 21.361254, b: 21.361254, a: 0}
     - _HologramColor: {r: 0, g: 0.9139125, b: 1, a: 0}
   m_BuildTextureStacks: []
