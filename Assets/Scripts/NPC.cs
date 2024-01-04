@@ -135,7 +135,7 @@ public class NPC : MonoBehaviour
 
         SoundManager._instance.PlayDialogueSound();
 
-        transform.LookAt(_player.transform);
+        //transform.LookAt(_player.transform);
 
         Input.ResetInputAxes();
 

@@ -12,7 +12,7 @@ public class QuestStartObject : MonoBehaviour
     [SerializeField] Cinemachine.CinemachineVirtualCamera _viewCam;
 
     [SerializeField] Light _light;
-    [SerializeField] LensFlareComponentSRP _lesnFlare;
+    //[SerializeField] LensFlareComponentSRP _lesnFlare;
 
     private Cinemachine.LensSettings _viewCamSetting;
     private float _time;
@@ -51,7 +51,7 @@ public class QuestStartObject : MonoBehaviour
                 _city.SetActive(false);
                 _japan.SetActive(true);
 
-                _lesnFlare.enabled = true; // 렌즈 플레어 효과 활성화
+                //_lesnFlare.enabled = true; // 렌즈 플레어 효과 활성화
 
                 _viewCamSetting = _viewCam.m_Lens;
                 StartCoroutine(StartFarClipPlaneCo());
