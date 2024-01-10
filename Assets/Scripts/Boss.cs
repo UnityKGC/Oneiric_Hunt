@@ -105,7 +105,10 @@ public class Boss : MonoBehaviour
     {
         if (_isDie || GameManager._instance.PlayerDie) return;
 
-        if(_ableSkill == false)
+        if (!_player.activeSelf)
+            _player = GameManager._instance.Player;
+
+        if (_ableSkill == false)
         {
             if (_skillDelayTime <= Time.time - _skillStartTime)
             {
